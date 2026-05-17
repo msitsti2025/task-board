@@ -316,13 +316,13 @@ const timelineStart = new Date("2025-06-15T00:00:00");
 const timelineEnd = new Date("2027-06-30T00:00:00");
 const sessionKey = "osti-dashboard-staff-session-v1";
 const legacyStorageKey = "osti-dashboard-items-v1";
-const config = globalThis.OSTI_CONFIG || {};
-const apiBase = typeof config.apiBase === "string" ? config.apiBase.replace(/\/$/, "") : "";
 let activeCategory = "all";
 let items = [];
 let selectedItemId = "";
 let isStaff = localStorage.getItem(sessionKey) === "true";
 let canWrite = false;
+let storageMode = "readonly";
+let needsLegacyRestorePersist = false;
 
 const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
 const categoryFilters = document.querySelector("#categoryFilters");
@@ -394,6 +394,47 @@ function inferImpact(item) {
   return `${title}이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.`;
 }
 
+function taskSignature(item) {
+  return JSON.stringify({
+    title: item.title || "",
+    category: item.category || "",
+    owner: item.owner || "",
+    manager: item.manager || "",
+    start: item.start || "",
+    end: item.end || "",
+    visible: item.visible !== false,
+    content: item.content || "",
+    impact: item.impact || "",
+    milestones: (item.milestones || []).map((milestone) => ({
+      date: milestone.date || "",
+      label: milestone.label || "",
+    })),
+  });
+}
+
+function datasetSignature(source) {
+  return JSON.stringify((Array.isArray(source) ? source : []).map((item) => taskSignature(item)));
+}
+
+function readLegacyItems() {
+  try {
+    const legacyItems = localStorage.getItem(legacyStorageKey);
+    if (!legacyItems) return null;
+    const parsed = JSON.parse(legacyItems);
+    return Array.isArray(parsed) ? normalizeItems(parsed) : null;
+  } catch (error) {
+    console.warn("기존 브라우저 저장 데이터를 불러오지 못했습니다.", error);
+    return null;
+  }
+}
+
+function isLocalEditableHost() {
+  return (
+    location.protocol === "file:" ||
+    ["localhost", "127.0.0.1", "::1"].includes(location.hostname)
+  );
+}
+
 function normalizeCategory(item) {
   if (categoryGroups.some((category) => category.id === item.category)) return item.category;
 
@@ -406,39 +447,81 @@ function normalizeCategory(item) {
 }
 
 async function loadItems() {
-  const apiUrl = apiBase ? `${apiBase}/items` : "/api/items";
+  const legacyItems = readLegacyItems();
+  let serverItems = null;
+  let fileItems = null;
+
   try {
-    const response = await fetch(apiUrl, { cache: "no-store" });
+    const response = await fetch("api/items", { cache: "no-store" });
     if (response.ok) {
       const stored = await response.json();
+      storageMode = "api";
       canWrite = true;
-      if (Array.isArray(stored)) return normalizeItems(stored);
+      if (Array.isArray(stored)) serverItems = normalizeItems(stored);
     }
   } catch (error) {
-    console.warn("폴더 저장 데이터를 불러오지 못했습니다. 기본 데이터를 사용합니다.", error);
+    console.warn("편집 API를 찾지 못했습니다. 읽기 전용으로 전환합니다.", error);
+  }
+
+  if (storageMode !== "api") {
+    storageMode = isLocalEditableHost() ? "local" : "readonly";
+    canWrite = false;
   }
 
   try {
-    const legacyItems = localStorage.getItem(legacyStorageKey);
-    if (legacyItems) return normalizeItems(JSON.parse(legacyItems));
+    const response = await fetch("data/dashboard-items.json", { cache: "no-store" });
+    if (response.ok) {
+      const stored = await response.json();
+      if (Array.isArray(stored)) fileItems = normalizeItems(stored);
+    }
   } catch (error) {
-    console.warn("기존 브라우저 저장 데이터를 불러오지 못했습니다.", error);
+    console.warn("업무 데이터를 불러오지 못했습니다. 기본 데이터를 사용합니다.", error);
   }
 
+  const defaultSignature = datasetSignature(defaultItems);
+  const legacySignature = legacyItems ? datasetSignature(legacyItems) : "";
+  const serverSignature = serverItems ? datasetSignature(serverItems) : "";
+  const fileSignature = fileItems ? datasetSignature(fileItems) : "";
+
+  if (
+    storageMode === "api" &&
+    legacyItems &&
+    legacySignature !== defaultSignature &&
+    (serverItems ? serverSignature === defaultSignature : true) &&
+    (fileItems ? fileSignature === defaultSignature : true)
+  ) {
+    needsLegacyRestorePersist = true;
+    return legacyItems;
+  }
+
+  if (storageMode === "local" && legacyItems) return legacyItems;
+  if (serverItems) return serverItems;
+  if (fileItems) return fileItems;
   canWrite = false;
   return normalizeItems(defaultItems);
 }
 
 function persistItems() {
-  if (!canWrite) return Promise.resolve();
-  const apiUrl = apiBase ? `${apiBase}/items` : "/api/items";
-  return fetch(apiUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(items, null, 2),
-  }).catch((error) => {
-    console.error("폴더에 데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
-  });
+  if (storageMode === "api") {
+    return fetch("api/items", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(items, null, 2),
+    }).catch((error) => {
+      console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
+    });
+  }
+
+  if (storageMode === "local") {
+    try {
+      localStorage.setItem(legacyStorageKey, JSON.stringify(items));
+    } catch (error) {
+      console.error("브라우저 저장소에 업무 데이터를 저장하지 못했습니다.", error);
+    }
+    return Promise.resolve();
+  }
+
+  return Promise.resolve();
 }
 
 function dateValue(value) {
@@ -548,11 +631,11 @@ function renderOwnerOptions(selectedOwner = "") {
 }
 
 function renderAuthState() {
-  const editable = canWrite;
+  const editable = storageMode !== "readonly";
   editorPanel.hidden = !editable || !isStaff;
-  staffLoginButton.hidden = !editable || isStaff;
-  staffLogoutButton.hidden = !editable || !isStaff;
-  if (!editable || isStaff) {
+  staffLoginButton.hidden = storageMode === "readonly" || isStaff;
+  staffLogoutButton.hidden = storageMode === "readonly" || !isStaff;
+  if (storageMode === "readonly" || isStaff) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
@@ -1190,6 +1273,10 @@ async function init() {
   renderAuthState();
   renderEditor();
   renderTimeline();
+  if (needsLegacyRestorePersist && canWrite) {
+    needsLegacyRestorePersist = false;
+    await persistItems();
+  }
 }
 
 init();
