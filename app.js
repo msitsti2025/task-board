@@ -316,13 +316,12 @@ const timelineStart = new Date("2025-06-15T00:00:00");
 const timelineEnd = new Date("2027-06-30T00:00:00");
 const sessionKey = "osti-dashboard-staff-session-v1";
 const legacyStorageKey = "osti-dashboard-items-v1";
+const localEditableHost = isLocalEditableHost();
 let activeCategory = "all";
 let items = [];
 let selectedItemId = "";
-let isStaff = localStorage.getItem(sessionKey) === "true";
+let isStaff = localEditableHost || localStorage.getItem(sessionKey) === "true";
 let canWrite = false;
-let storageMode = "readonly";
-let needsLegacyRestorePersist = false;
 
 const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
 const categoryFilters = document.querySelector("#categoryFilters");
@@ -394,47 +393,6 @@ function inferImpact(item) {
   return `${title}이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.`;
 }
 
-function taskSignature(item) {
-  return JSON.stringify({
-    title: item.title || "",
-    category: item.category || "",
-    owner: item.owner || "",
-    manager: item.manager || "",
-    start: item.start || "",
-    end: item.end || "",
-    visible: item.visible !== false,
-    content: item.content || "",
-    impact: item.impact || "",
-    milestones: (item.milestones || []).map((milestone) => ({
-      date: milestone.date || "",
-      label: milestone.label || "",
-    })),
-  });
-}
-
-function datasetSignature(source) {
-  return JSON.stringify((Array.isArray(source) ? source : []).map((item) => taskSignature(item)));
-}
-
-function readLegacyItems() {
-  try {
-    const legacyItems = localStorage.getItem(legacyStorageKey);
-    if (!legacyItems) return null;
-    const parsed = JSON.parse(legacyItems);
-    return Array.isArray(parsed) ? normalizeItems(parsed) : null;
-  } catch (error) {
-    console.warn("기존 브라우저 저장 데이터를 불러오지 못했습니다.", error);
-    return null;
-  }
-}
-
-function isLocalEditableHost() {
-  return (
-    location.protocol === "file:" ||
-    ["localhost", "127.0.0.1", "::1"].includes(location.hostname)
-  );
-}
-
 function normalizeCategory(item) {
   if (categoryGroups.some((category) => category.id === item.category)) return item.category;
 
@@ -446,63 +404,56 @@ function normalizeCategory(item) {
   return "science-policy";
 }
 
-async function loadItems() {
-  const legacyItems = readLegacyItems();
-  let serverItems = null;
-  let fileItems = null;
+function isLocalEditableHost() {
+  return (
+    location.protocol === "file:" ||
+    ["localhost", "127.0.0.1", "::1"].includes(location.hostname)
+  );
+}
 
+async function loadItems() {
   try {
     const response = await fetch("api/items", { cache: "no-store" });
     if (response.ok) {
       const stored = await response.json();
-      storageMode = "api";
       canWrite = true;
-      if (Array.isArray(stored)) serverItems = normalizeItems(stored);
+      if (Array.isArray(stored)) return normalizeItems(stored);
     }
   } catch (error) {
     console.warn("편집 API를 찾지 못했습니다. 읽기 전용으로 전환합니다.", error);
   }
 
-  if (storageMode !== "api") {
-    storageMode = isLocalEditableHost() ? "local" : "readonly";
-    canWrite = false;
+  if (localEditableHost) {
+    try {
+      const legacyItems = localStorage.getItem(legacyStorageKey);
+      if (legacyItems) {
+        canWrite = true;
+        const parsed = JSON.parse(legacyItems);
+        if (Array.isArray(parsed)) return normalizeItems(parsed);
+      }
+    } catch (error) {
+      console.warn("기존 브라우저 저장 데이터를 불러오지 못했습니다.", error);
+    }
   }
 
   try {
-    const response = await fetch("data/dashboard-items.json", { cache: "no-store" });
+    const response = await fetch("dashboard-items.json", { cache: "no-store" });
     if (response.ok) {
       const stored = await response.json();
-      if (Array.isArray(stored)) fileItems = normalizeItems(stored);
+      if (Array.isArray(stored)) {
+        canWrite = localEditableHost;
+        return normalizeItems(stored);
+      }
     }
   } catch (error) {
     console.warn("업무 데이터를 불러오지 못했습니다. 기본 데이터를 사용합니다.", error);
   }
-
-  const defaultSignature = datasetSignature(defaultItems);
-  const legacySignature = legacyItems ? datasetSignature(legacyItems) : "";
-  const serverSignature = serverItems ? datasetSignature(serverItems) : "";
-  const fileSignature = fileItems ? datasetSignature(fileItems) : "";
-
-  if (
-    storageMode === "api" &&
-    legacyItems &&
-    legacySignature !== defaultSignature &&
-    (serverItems ? serverSignature === defaultSignature : true) &&
-    (fileItems ? fileSignature === defaultSignature : true)
-  ) {
-    needsLegacyRestorePersist = true;
-    return legacyItems;
-  }
-
-  if (storageMode === "local" && legacyItems) return legacyItems;
-  if (serverItems) return serverItems;
-  if (fileItems) return fileItems;
-  canWrite = false;
+  canWrite = localEditableHost;
   return normalizeItems(defaultItems);
 }
 
 function persistItems() {
-  if (storageMode === "api") {
+  if (canWrite && !localEditableHost) {
     return fetch("api/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -512,7 +463,7 @@ function persistItems() {
     });
   }
 
-  if (storageMode === "local") {
+  if (localEditableHost) {
     try {
       localStorage.setItem(legacyStorageKey, JSON.stringify(items));
     } catch (error) {
@@ -521,7 +472,13 @@ function persistItems() {
     return Promise.resolve();
   }
 
-  return Promise.resolve();
+  return fetch("api/items", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(items, null, 2),
+  }).catch((error) => {
+    console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
+  });
 }
 
 function dateValue(value) {
@@ -631,11 +588,11 @@ function renderOwnerOptions(selectedOwner = "") {
 }
 
 function renderAuthState() {
-  const editable = storageMode !== "readonly";
-  editorPanel.hidden = !editable || !isStaff;
-  staffLoginButton.hidden = storageMode === "readonly" || isStaff;
-  staffLogoutButton.hidden = storageMode === "readonly" || !isStaff;
-  if (storageMode === "readonly" || isStaff) {
+  const editable = canWrite;
+  editorPanel.hidden = !editable || (!isStaff && !localEditableHost);
+  staffLoginButton.hidden = !editable || isStaff || localEditableHost;
+  staffLogoutButton.hidden = !editable || !isStaff || localEditableHost;
+  if (!editable || isStaff || localEditableHost) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
@@ -1063,6 +1020,7 @@ duplicateButton.addEventListener("click", duplicateSelectedTask);
 resetButton.addEventListener("click", resetToDefaults);
 
 staffLoginButton.addEventListener("click", () => {
+  if (localEditableHost) return;
   loginPanel.hidden = !loginPanel.hidden;
   if (!loginPanel.hidden) {
     if (!staffId.value.trim()) staffId.value = "admin";
@@ -1071,6 +1029,7 @@ staffLoginButton.addEventListener("click", () => {
 });
 
 staffLogoutButton.addEventListener("click", () => {
+  if (localEditableHost) return;
   isStaff = false;
   localStorage.removeItem(sessionKey);
   selectedItemId = "";
@@ -1080,6 +1039,7 @@ staffLogoutButton.addEventListener("click", () => {
 
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (localEditableHost) return;
   if (staffId.value.trim() && staffPassword.value === "osti2026") {
     isStaff = true;
     localStorage.setItem(sessionKey, "true");
@@ -1273,10 +1233,6 @@ async function init() {
   renderAuthState();
   renderEditor();
   renderTimeline();
-  if (needsLegacyRestorePersist && canWrite) {
-    needsLegacyRestorePersist = false;
-    await persistItems();
-  }
 }
 
 init();
