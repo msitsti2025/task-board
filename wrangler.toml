@@ -1,0 +1,9 @@
+name = "osti-dashboard"
+pages_build_output_dir = "."
+compatibility_date = "2026-05-18"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "osti-dashboard"
+database_id = "replace-with-cloudflare-d1-database-id"
+preview_database_id = "DB"

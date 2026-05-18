@@ -314,13 +314,12 @@ const defaultItems = [
 
 const timelineStart = new Date("2025-06-15T00:00:00");
 const timelineEnd = new Date("2027-06-30T00:00:00");
-const sessionKey = "osti-dashboard-staff-session-v1";
 const legacyStorageKey = "osti-dashboard-items-v1";
 const localEditableHost = isLocalEditableHost();
 let activeCategory = "all";
 let items = [];
 let selectedItemId = "";
-let isStaff = localEditableHost || localStorage.getItem(sessionKey) === "true";
+let isStaff = localEditableHost;
 let canWrite = false;
 
 const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
@@ -405,10 +404,7 @@ function normalizeCategory(item) {
 }
 
 function isLocalEditableHost() {
-  return (
-    location.protocol === "file:" ||
-    ["localhost", "127.0.0.1", "::1"].includes(location.hostname)
-  );
+  return location.protocol === "file:";
 }
 
 async function loadItems() {
@@ -453,11 +449,12 @@ async function loadItems() {
 }
 
 function persistItems() {
-  if (canWrite && !localEditableHost) {
+  if (canWrite && isStaff && !localEditableHost) {
     return fetch("api/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(items, null, 2),
+      credentials: "same-origin",
     }).catch((error) => {
       console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
     });
@@ -476,9 +473,29 @@ function persistItems() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(items, null, 2),
+    credentials: "same-origin",
   }).catch((error) => {
     console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
   });
+}
+
+async function refreshStaffSession() {
+  if (localEditableHost || !canWrite) return;
+
+  try {
+    const response = await fetch("api/session", {
+      cache: "no-store",
+      credentials: "same-origin",
+    });
+    if (!response.ok) {
+      isStaff = false;
+      return;
+    }
+    const session = await response.json();
+    isStaff = Boolean(session.authenticated);
+  } catch (error) {
+    isStaff = false;
+  }
 }
 
 function dateValue(value) {
@@ -1028,28 +1045,50 @@ staffLoginButton.addEventListener("click", () => {
   }
 });
 
-staffLogoutButton.addEventListener("click", () => {
+staffLogoutButton.addEventListener("click", async () => {
   if (localEditableHost) return;
+  await fetch("api/logout", {
+    method: "POST",
+    credentials: "same-origin",
+  }).catch((error) => {
+    console.error("로그아웃 요청을 처리하지 못했습니다.", error);
+  });
   isStaff = false;
-  localStorage.removeItem(sessionKey);
   selectedItemId = "";
   renderAuthState();
   renderTimeline();
 });
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (localEditableHost) return;
-  if (staffId.value.trim() && staffPassword.value === "osti2026") {
+
+  try {
+    const response = await fetch("api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify({
+        user: staffId.value.trim(),
+        password: staffPassword.value,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      loginMessage.textContent = error.message || "직원 ID와 비밀번호를 확인하세요.";
+      return;
+    }
+
     isStaff = true;
-    localStorage.setItem(sessionKey, "true");
     loginForm.reset();
     renderAuthState();
     renderEditor();
     renderTimeline();
     return;
+  } catch (error) {
+    loginMessage.textContent = "로그인 서버에 연결하지 못했습니다.";
   }
-  loginMessage.textContent = "직원 ID와 데모 비밀번호를 확인하세요.";
 });
 
 addMilestoneButton.addEventListener("click", () => {
@@ -1226,6 +1265,7 @@ timeline.addEventListener("click", (event) => {
 
 async function init() {
   items = await loadItems();
+  await refreshStaffSession();
   selectedItemId = items[0]?.id ?? "";
   renderCategoryOptions();
   renderOwnerOptions();

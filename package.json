@@ -1,0 +1,15 @@
+{
+  "name": "osti-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "seed:sql": "node scripts/make-d1-seed.js",
+    "cf:dev": "wrangler pages dev . --binding STAFF_USER=admin --binding STAFF_PASSWORD=dev-password --binding SESSION_SECRET=dev-session-secret",
+    "cf:migrate:local": "wrangler d1 migrations apply osti-dashboard --local",
+    "cf:migrate:remote": "wrangler d1 migrations apply osti-dashboard --remote",
+    "cf:deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
