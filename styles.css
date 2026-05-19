@@ -657,6 +657,14 @@ button:disabled {
   box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 55%, transparent);
 }
 
+.endpoint.clipped {
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  box-shadow: none;
+}
+
 .milestone {
   top: 50%;
   width: 13px;

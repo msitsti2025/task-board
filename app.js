@@ -455,15 +455,29 @@ async function loadItems() {
   return normalizeItems(defaultItems);
 }
 
+async function apiPost(body) {
+  const response = await fetch("api/items", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body,
+    credentials: "same-origin",
+  });
+  if (response.ok) return;
+  if (response.status === 401) {
+    isStaff = false;
+    renderAuthState();
+    alert("세션이 만료되었습니다. 다시 로그인해 주세요.\n\n방금 저장한 내용은 이 세션에서만 유지되며 새로고침 시 사라집니다.");
+    return;
+  }
+  const text = await response.text().catch(() => "");
+  alert(`데이터 저장에 실패했습니다 (오류 ${response.status}).\n${text || "서버 오류가 발생했습니다."}`);
+}
+
 function persistItems() {
   if (storageMode === "api" && canWrite && isStaff) {
-    return fetch("api/items", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(items, null, 2),
-      credentials: "same-origin",
-    }).catch((error) => {
+    return apiPost(JSON.stringify(items, null, 2)).catch((error) => {
       console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
+      alert("서버에 연결하지 못했습니다. node server.js가 실행 중인지 확인해 주세요.");
     });
   }
 
@@ -476,15 +490,6 @@ function persistItems() {
     autoSaveToFile();
     return Promise.resolve();
   }
-
-  return fetch("api/items", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(items, null, 2),
-    credentials: "same-origin",
-  }).catch((error) => {
-    console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
-  });
 }
 
 async function refreshStaffSession() {
@@ -939,6 +944,8 @@ function renderLane(item, ticks) {
   const category = categoryById[item.category];
   const start = boundedPct(item.start);
   const end = boundedPct(item.end);
+  const startOutside = pct(item.start) < 0;
+  const endOutside = pct(item.end) > 100;
   const todayPct = boundedPct(isoDate(new Date()));
   const width = Math.max(end - start, 0.8);
   const milestones = item.milestones
@@ -977,14 +984,14 @@ function renderLane(item, ticks) {
           aria-hidden="true"
         ></span>
         <span
-          class="endpoint start-point draggable-point"
+          class="endpoint start-point draggable-point${startOutside ? ' clipped' : ''}"
           style="left:${start}%"
           data-drag-kind="start"
           data-id="${escapeHtml(item.id)}"
           aria-label="${escapeHtml(item.title)} 시작일 ${escapeHtml(formatDateLabel(item.start))}"
         ></span>
         <span
-          class="endpoint end-point draggable-point"
+          class="endpoint end-point draggable-point${endOutside ? ' clipped' : ''}"
           style="left:${end}%"
           data-drag-kind="end"
           data-id="${escapeHtml(item.id)}"
@@ -1042,7 +1049,7 @@ function renderTimeline() {
       `;
     })
     .join("");
-  updateTimelineScrollbar();
+  requestAnimationFrame(updateTimelineScrollbar);
 }
 
 function updateTimelineScrollbar() {

@@ -3,10 +3,10 @@
     "id": "task-1-bd1b55d3-63a4-4a49-999c-f20dff0f9a5a",
     "category": "science-policy",
     "order": 0,
-    "title": "국가전략기술 체계 고도화 방향 발표",
+    "title": "국가전략기술 체계 고도화",
     "owner": "전략기술육성과",
     "manager": "",
-    "start": "2026-04-27",
+    "start": "2025-05-29",
     "end": "2026-04-27",
     "visible": true,
     "tentative": false,
@@ -14,9 +14,44 @@
     "impact": "국가전략기술 체계 고도화 방향 발표이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
-        "id": "milestone-9adbfa0f-867e-4788-a0fb-4121be83173f",
+        "id": "milestone-41d4ffb1-5fd6-4b87-a169-437647f4569f",
+        "date": "2025-05-29",
+        "label": "국가전략기술 특위 의결"
+      },
+      {
+        "id": "milestone-1a263add-aa1c-449b-931f-d22de661ce65",
+        "date": "2025-08-14",
+        "label": "출연연 현장 간담회"
+      },
+      {
+        "id": "milestone-5e68df06-9c47-4472-b5cb-1d75c8efbb80",
+        "date": "2025-09-12",
+        "label": "산업계 오픈 포럼"
+      },
+      {
+        "id": "milestone-2fcde159-15d2-40ae-bc6c-479fdd283b43",
+        "date": "2025-09-18",
+        "label": "과학기술인 오픈포럼"
+      },
+      {
+        "id": "milestone-6dae72d0-94af-4c08-b7b8-794dbb037c40",
+        "date": "2025-09-23",
+        "label": "젊은 과학기술인 간담회"
+      },
+      {
+        "id": "milestone-c01a9d7c-e5f1-42ea-98f7-462d060a1830",
+        "date": "2025-09-26",
+        "label": "국가전략기술 특별위원회 간담회"
+      },
+      {
+        "id": "milestone-1a65e8d2-5511-4a4a-b12a-7c8c1965df7f",
+        "date": "2026-03-11",
+        "label": "과기장관회의 의결"
+      },
+      {
+        "id": "milestone-67196e8e-4b7b-4100-9293-e810d747c1c4",
         "date": "2026-04-27",
-        "label": "고도화 방향 발표"
+        "label": "국가과학기술자문회의 심의의결"
       }
     ]
   },
@@ -368,20 +403,35 @@
     "id": "task-16-b633771f-96af-45ca-9858-834e04f6fbd5",
     "category": "rnd-management",
     "order": 15,
-    "title": "가칭 연구24 통합로그인체계 구축",
+    "title": "국가 R&D 서비스 통합 로그인 \"연구24\" 구축",
     "owner": "과학기술정보분석과",
-    "manager": "",
-    "start": "2026-06-01",
-    "end": "2026-06-10",
+    "manager": "원성호사무관",
+    "start": "2026-02-01",
+    "end": "2026-06-30",
     "visible": true,
     "tentative": false,
-    "content": "주요 국가 R&D 시스템들의 로그인 창구를 단일화하는 연구24 구축.",
-    "impact": "가칭 연구24 통합로그인체계 구축을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "\"연구24\" 통합 로그인 사이트를 통해 주요 국가R&D 시스템(과기정통부 소관 8개) 연계 및 로그인 창구 단일화",
+    "impact": "국가 R&D 시스템 간 연계 불편 사항을 개선하여 연구자 중심의 시스템 이용환경 조성",
     "milestones": [
       {
+        "id": "milestone-2655ad3f-5b77-4195-a64f-36fe96d6040b",
+        "date": "2026-02-12",
+        "label": "통합 로그인 구축 계획 수립"
+      },
+      {
         "id": "milestone-0639055a-4c09-46db-bc1e-6f5cdbd073e2",
-        "date": "2026-06-05",
-        "label": "통합로그인체계 구축 보도"
+        "date": "2026-05-22",
+        "label": "개발 완료"
+      },
+      {
+        "id": "milestone-95f41503-5734-49c5-8b3c-4c5eb74c5694",
+        "date": "2026-06-01",
+        "label": "\"연구24\" 시연회"
+      },
+      {
+        "id": "milestone-827898a7-51e7-4126-bccc-54ead0a34cf0",
+        "date": "2026-06-15",
+        "label": "\"연구24\" 사이트 오픈"
       }
     ]
   },
