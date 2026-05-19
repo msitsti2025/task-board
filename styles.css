@@ -355,9 +355,20 @@ h1 {
 
 .milestone-row {
   display: grid;
-  grid-template-columns: 170px 1fr auto;
+  grid-template-columns: 170px 1fr auto auto;
   gap: 8px;
   align-items: end;
+}
+
+.milestone-empty-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.milestone-empty-row .empty-small {
+  flex: 1;
+  margin: 0;
 }
 
 button {
@@ -836,9 +847,12 @@ body:has(.drag-date-tooltip.is-visible) .draggable-point,
     font-size: 16px;
   }
 
-  .form-grid,
-  .milestone-row {
+  .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .milestone-row {
+    grid-template-columns: 1fr auto auto;
   }
 
   .editor-actions,

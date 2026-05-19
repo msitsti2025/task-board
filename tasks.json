@@ -61,8 +61,8 @@
     "order": 1,
     "title": "국가전략기술 선도 NEXT 프로젝트",
     "owner": "전략기술육성과",
-    "manager": "",
-    "start": "2026-04-30",
+    "manager": "신현중 사무관",
+    "start": "2025-06-01",
     "end": "2026-04-30",
     "visible": true,
     "tentative": false,
@@ -70,9 +70,24 @@
     "impact": "국가전략기술 선도 NEXT 프로젝트이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
-        "id": "milestone-abe2068b-a2e9-41b3-a285-bfae08b1c018",
+        "id": "milestone-f7b0f857-ef68-47f0-9141-dfd4c4eae305",
+        "date": "2026-04-15",
+        "label": "국가전략기술 특위 의결"
+      },
+      {
+        "id": "milestone-f77ee9da-6df8-4eb0-8c67-dfc570573a9b",
         "date": "2026-04-30",
-        "label": "NEXT 프로젝트 보도"
+        "label": "과기관계장관회의 의결"
+      },
+      {
+        "id": "milestone-3f6c0a49-4842-4e57-8832-3023f31b053f",
+        "date": "2026-06-01",
+        "label": "NEXT 프로젝트 추진대회 개최"
+      },
+      {
+        "id": "milestone-4b2dc070-3e7b-4c2a-8e03-c65a22aee2fa",
+        "date": "2026-06-15",
+        "label": "NEXT 프로젝트 후보안 발표"
       }
     ]
   },
@@ -481,20 +496,50 @@
     "id": "task-19-43354570-21af-4cc6-8a1f-22633e4cfc68",
     "category": "rnd-management",
     "order": 18,
-    "title": "IRIS 운영 전담조직 개편",
+    "title": "IRIS-연구개발기관 자체시스템(MIS) 연계",
     "owner": "과학기술정보분석과",
-    "manager": "",
-    "start": "2026-06-01",
+    "manager": "장호원사무관",
+    "start": "2025-07-29",
     "end": "2026-06-30",
     "visible": true,
     "tentative": false,
-    "content": "4대 연구지원시스템 통합에 따른 운영 전담조직을 개편하고 연구자 중심의 IRIS 역량강화 방안을 발표.",
-    "impact": "IRIS 운영 전담조직 개편을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "연구개발기관 내 자체시스템에서 협약정보 변경 시 IRIS에 자동반영",
+    "impact": "주요 대학•출연연 중심으로 '26년 내 73개 기관 연계 후 순차적으로 대상 확대",
     "milestones": [
       {
         "id": "milestone-7185062e-864f-4021-addf-85c3ac608b95",
-        "date": "2026-06-30",
-        "label": "운영 전담조직 개편방안 발표"
+        "date": "2025-09-09",
+        "label": "대학 산단장 협의회 간담회"
+      },
+      {
+        "id": "milestone-3770bb43-c8c0-4893-af72-5feaa1430731",
+        "date": "2025-12-18",
+        "label": "연계모듈 베타버전 개발"
+      },
+      {
+        "id": "milestone-26b56297-9b99-48c4-bcc3-f5bec3b12906",
+        "date": "2025-12-23",
+        "label": "연계기능 테스트 완료"
+      },
+      {
+        "id": "milestone-929ac5bd-b05e-44b4-ae63-bb425dfb09e2",
+        "date": "2026-01-22",
+        "label": "연계 희망기관 조사"
+      },
+      {
+        "id": "milestone-7648be83-3ea8-4c76-ba32-19b362fb4eee",
+        "date": "2026-02-25",
+        "label": "기능개발 완료"
+      },
+      {
+        "id": "milestone-f4188277-5f04-4986-8ce3-9cbee3ecd8f0",
+        "date": "2026-03-10",
+        "label": "대학 참여 협조요청"
+      },
+      {
+        "id": "milestone-91845f9d-150a-49e1-82c1-4e4c3896547c",
+        "date": "2026-04-08",
+        "label": "출연연 참여 협조요청"
       }
     ]
   },
@@ -642,6 +687,37 @@
         "id": "milestone-151920f5-1ced-4005-bead-801e756c2c78",
         "date": "2026-09-30",
         "label": "연구보안 체계 강화 검토"
+      }
+    ]
+  },
+  {
+    "id": "task-3ae1be86-412b-48a5-9a73-81965c07c85c",
+    "category": "science-policy",
+    "order": 17,
+    "title": "국가전략기술 정보 보호 강화",
+    "owner": "전략기술육성과",
+    "manager": "신소영 과장",
+    "start": "2025-06-01",
+    "end": "2026-05-19",
+    "visible": true,
+    "tentative": false,
+    "content": "국가전략기술 정보 보호를 위한 국가전략기술육성법 개정 업무",
+    "impact": "",
+    "milestones": [
+      {
+        "id": "milestone-8bc7fb2f-2759-4987-bb6a-91645e1b9c27",
+        "date": "2025-08-01",
+        "label": "국가전략기술육성법 시행령 개정"
+      },
+      {
+        "id": "milestone-4003bc47-868e-46cb-bb80-38411b5f1245",
+        "date": "2025-09-29",
+        "label": "연구관리전문기관 설명회 개최"
+      },
+      {
+        "id": "milestone-7cad786a-f6e1-4ac1-b71a-b1b604c75af6",
+        "date": "2025-12-15",
+        "label": "국가전략기술 정보보호 가이드라인 배부"
       }
     ]
   }

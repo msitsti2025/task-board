@@ -344,11 +344,9 @@ const taskEnd = document.querySelector("#taskEnd");
 const taskTentative = document.querySelector("#taskTentative");
 const taskContent = document.querySelector("#taskContent");
 const milestoneRows = document.querySelector("#milestoneRows");
-const addMilestoneButton = document.querySelector("#addMilestoneButton");
 const newTaskButton = document.querySelector("#newTaskButton");
 const duplicateButton = document.querySelector("#duplicateButton");
 const deleteButton = document.querySelector("#deleteButton");
-const exportButton = document.querySelector("#exportButton");
 const editorPanel = document.querySelector("#editorPanel");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
@@ -680,7 +678,11 @@ function renderEditor(item = getSelectedItem()) {
 
 function renderMilestoneRows(milestones = []) {
   if (!milestones.length) {
-    milestoneRows.innerHTML = '<p class="empty-small">주요 일정이 없습니다. 필요한 시점을 추가하세요.</p>';
+    milestoneRows.innerHTML = `
+      <div class="milestone-empty-row">
+        <p class="empty-small">주요 일정이 없습니다.</p>
+        <button type="button" class="mini-button" data-action="add-milestone">+ 추가</button>
+      </div>`;
     return;
   }
 
@@ -696,6 +698,7 @@ function renderMilestoneRows(milestones = []) {
             ${index === 0 ? "<span>주요 일정 내용</span>" : ""}
             <input data-field="label" value="${escapeHtml(milestone.label)}" placeholder="주요 일정 내용" />
           </label>
+          <button type="button" class="mini-button" data-action="add-after-milestone">추가</button>
           <button type="button" class="mini-button danger" data-action="remove-milestone">삭제</button>
         </div>
       `,
@@ -768,6 +771,7 @@ function saveTask(event) {
   }
   selectedItemId = nextTask.id;
   persistItems();
+  if (storageMode === "local") saveToLocalFile();
   renderEditor();
   renderTimeline();
 }
@@ -806,52 +810,32 @@ function duplicateSelectedTask() {
   renderTimeline();
 }
 
-let taskFileHandle = null;
+let taskDirHandle = null;
 
 async function autoSaveToFile() {
-  if (!taskFileHandle) return;
+  if (!taskDirHandle) return;
   const json = JSON.stringify(items, null, 2);
   try {
-    const writable = await taskFileHandle.createWritable();
+    const fileHandle = await taskDirHandle.getFileHandle("tasks.json", { create: true });
+    const writable = await fileHandle.createWritable();
     await writable.write(json);
     await writable.close();
-    exportButton.textContent = "저장 완료 ✓";
-    setTimeout(() => { exportButton.textContent = "JSON 업데이트"; }, 1500);
   } catch (error) {
-    taskFileHandle = null;
+    taskDirHandle = null;
     console.warn("자동 파일 저장 실패:", error);
   }
 }
 
-async function exportItemsAsJson() {
-  if (window.showSaveFilePicker) {
-    try {
-      if (!taskFileHandle) {
-        taskFileHandle = await window.showSaveFilePicker({
-          suggestedName: "tasks.json",
-          types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
-        });
-      }
-      await autoSaveToFile();
-      return;
-    } catch (error) {
-      if (error.name === "AbortError") return;
-      taskFileHandle = null;
-      console.error("파일 저장에 실패했습니다.", error);
-    }
+// 로컬 모드에서 최초 저장 시 폴더를 지정하고 이후 자동 저장.
+// taskDirHandle이 이미 설정된 경우 persistItems() → autoSaveToFile()이 처리하므로 여기선 최초 설정만 담당.
+async function saveToLocalFile() {
+  if (!window.showDirectoryPicker || taskDirHandle) return;
+  try {
+    taskDirHandle = await window.showDirectoryPicker({ mode: "readwrite" });
+    await autoSaveToFile();
+  } catch (error) {
+    if (error.name !== "AbortError") console.error("폴더 선택 실패:", error);
   }
-
-  // File System Access API를 지원하지 않는 브라우저: 다운로드로 대체
-  const json = JSON.stringify(items, null, 2);
-  const blob = new Blob([json], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = "tasks.json";
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
-  URL.revokeObjectURL(url);
 }
 
 function updateItemDateFromDrag(target, nextIsoDate) {
@@ -1089,7 +1073,6 @@ taskForm.addEventListener("submit", saveTask);
 newTaskButton.addEventListener("click", startNewTask);
 deleteButton.addEventListener("click", deleteSelectedTask);
 duplicateButton.addEventListener("click", duplicateSelectedTask);
-exportButton.addEventListener("click", exportItemsAsJson);
 
 staffLoginButton.addEventListener("click", () => {
   if (storageMode !== "api") return;
@@ -1146,27 +1129,36 @@ loginForm.addEventListener("submit", async (event) => {
   }
 });
 
-addMilestoneButton.addEventListener("click", () => {
-  if (!isStaff) return;
-  const milestones = readMilestonesFromForm();
-  milestones.push({
-    id: createId("milestone"),
-    date: taskStart.value || "2026-05-01",
-    label: "",
-  });
-  renderMilestoneRows(milestones);
-  const labels = milestoneRows.querySelectorAll('[data-field="label"]');
-  labels[labels.length - 1]?.focus();
-});
-
 milestoneRows.addEventListener("click", (event) => {
   if (!isStaff) return;
-  const button = event.target.closest('[data-action="remove-milestone"]');
+  const button = event.target.closest("[data-action]");
   if (!button) return;
-  const row = button.closest(".milestone-row");
-  row.remove();
-  if (!milestoneRows.querySelector(".milestone-row")) {
-    renderMilestoneRows([]);
+
+  if (button.dataset.action === "add-milestone") {
+    const newMs = { id: createId("milestone"), date: taskStart.value || "2026-05-01", label: "새 일정" };
+    const milestones = readMilestonesFromForm();
+    milestones.push(newMs);
+    renderMilestoneRows(milestones);
+    milestoneRows.querySelector(`[data-milestone-id="${newMs.id}"] [data-field="label"]`)?.focus();
+    return;
+  }
+
+  if (button.dataset.action === "add-after-milestone") {
+    const row = button.closest(".milestone-row");
+    const milestones = readMilestonesFromForm();
+    const idx = milestones.findIndex((m) => m.id === row.dataset.milestoneId);
+    const date = row.querySelector('[data-field="date"]').value || taskStart.value || "2026-05-01";
+    const newMs = { id: createId("milestone"), date, label: "새 일정" };
+    milestones.splice(idx === -1 ? milestones.length : idx + 1, 0, newMs);
+    renderMilestoneRows(milestones);
+    milestoneRows.querySelector(`[data-milestone-id="${newMs.id}"] [data-field="label"]`)?.focus();
+    return;
+  }
+
+  if (button.dataset.action === "remove-milestone") {
+    const row = button.closest(".milestone-row");
+    row.remove();
+    if (!milestoneRows.querySelector(".milestone-row")) renderMilestoneRows([]);
   }
 });
 
