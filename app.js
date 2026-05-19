@@ -3,6 +3,7 @@ const categories = [
   { id: "science-policy", label: "기획/정책/전략수립 업무", color: "#2563eb" },
   { id: "budget-review", label: "예산/투자/심의조정 업무", color: "#0f766e" },
   { id: "rnd-management", label: "평가/제도/정보분석 업무", color: "#b45309" },
+  { id: "outreach", label: "대외/홍보/현장소통 업무", color: "#7c3aed" },
 ];
 
 const categoryGroups = categories.filter((category) => category.id !== "all");
@@ -315,11 +316,13 @@ const defaultItems = [
 const timelineStart = new Date("2025-06-15T00:00:00");
 const timelineEnd = new Date("2027-06-30T00:00:00");
 const legacyStorageKey = "osti-dashboard-items-v1";
-const localEditableHost = isLocalEditableHost();
+const isDirectFileHost = isLocalEditableHost();
+const isLoopbackHost = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
 let activeCategory = "all";
 let items = [];
 let selectedItemId = "";
-let isStaff = localEditableHost;
+let storageMode = "readonly";
+let isStaff = false;
 let canWrite = false;
 
 const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
@@ -345,7 +348,7 @@ const addMilestoneButton = document.querySelector("#addMilestoneButton");
 const newTaskButton = document.querySelector("#newTaskButton");
 const duplicateButton = document.querySelector("#duplicateButton");
 const deleteButton = document.querySelector("#deleteButton");
-const resetButton = document.querySelector("#resetButton");
+const exportButton = document.querySelector("#exportButton");
 const editorPanel = document.querySelector("#editorPanel");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
@@ -413,17 +416,19 @@ async function loadItems() {
     if (response.ok) {
       const stored = await response.json();
       canWrite = true;
+      storageMode = "api";
       if (Array.isArray(stored)) return normalizeItems(stored);
     }
   } catch (error) {
     console.warn("편집 API를 찾지 못했습니다. 읽기 전용으로 전환합니다.", error);
   }
 
-  if (localEditableHost) {
+  if (isDirectFileHost || isLoopbackHost) {
     try {
       const legacyItems = localStorage.getItem(legacyStorageKey);
       if (legacyItems) {
         canWrite = true;
+        storageMode = "local";
         const parsed = JSON.parse(legacyItems);
         if (Array.isArray(parsed)) return normalizeItems(parsed);
       }
@@ -433,23 +438,25 @@ async function loadItems() {
   }
 
   try {
-    const response = await fetch("dashboard-items.json", { cache: "no-store" });
+    const response = await fetch("tasks.json", { cache: "no-store" });
     if (response.ok) {
       const stored = await response.json();
       if (Array.isArray(stored)) {
-        canWrite = localEditableHost;
+        canWrite = isDirectFileHost || isLoopbackHost;
+        if (canWrite) storageMode = "local";
         return normalizeItems(stored);
       }
     }
   } catch (error) {
     console.warn("업무 데이터를 불러오지 못했습니다. 기본 데이터를 사용합니다.", error);
   }
-  canWrite = localEditableHost;
+  canWrite = isDirectFileHost || isLoopbackHost;
+  if (canWrite) storageMode = "local";
   return normalizeItems(defaultItems);
 }
 
 function persistItems() {
-  if (canWrite && isStaff && !localEditableHost) {
+  if (storageMode === "api" && canWrite && isStaff) {
     return fetch("api/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -460,7 +467,7 @@ function persistItems() {
     });
   }
 
-  if (localEditableHost) {
+  if (storageMode === "local") {
     try {
       localStorage.setItem(legacyStorageKey, JSON.stringify(items));
     } catch (error) {
@@ -480,7 +487,7 @@ function persistItems() {
 }
 
 async function refreshStaffSession() {
-  if (localEditableHost || !canWrite) return;
+  if (storageMode !== "api" || !canWrite) return;
 
   try {
     const response = await fetch("api/session", {
@@ -606,10 +613,11 @@ function renderOwnerOptions(selectedOwner = "") {
 
 function renderAuthState() {
   const editable = canWrite;
-  editorPanel.hidden = !editable || (!isStaff && !localEditableHost);
-  staffLoginButton.hidden = !editable || isStaff || localEditableHost;
-  staffLogoutButton.hidden = !editable || !isStaff || localEditableHost;
-  if (!editable || isStaff || localEditableHost) {
+  const apiMode = storageMode === "api";
+  editorPanel.hidden = !editable || (apiMode && !isStaff);
+  staffLoginButton.hidden = !editable || !apiMode || isStaff;
+  staffLogoutButton.hidden = !editable || !apiMode || !isStaff;
+  if (!editable || !apiMode || isStaff) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
@@ -665,21 +673,21 @@ function renderEditor(item = getSelectedItem()) {
 
 function renderMilestoneRows(milestones = []) {
   if (!milestones.length) {
-    milestoneRows.innerHTML = '<p class="empty-small">마일스톤이 없습니다. 필요한 시점을 추가하세요.</p>';
+    milestoneRows.innerHTML = '<p class="empty-small">주요 일정이 없습니다. 필요한 시점을 추가하세요.</p>';
     return;
   }
 
   milestoneRows.innerHTML = milestones
     .map(
-      (milestone) => `
+      (milestone, index) => `
         <div class="milestone-row" data-milestone-id="${escapeHtml(milestone.id)}">
           <label>
-            <span>일자</span>
+            ${index === 0 ? "<span>주요일정 일자</span>" : ""}
             <input type="date" data-field="date" value="${escapeHtml(milestone.date)}" />
           </label>
           <label>
-            <span>설명</span>
-            <input data-field="label" value="${escapeHtml(milestone.label)}" placeholder="마일스톤 설명" />
+            ${index === 0 ? "<span>주요 일정 내용</span>" : ""}
+            <input data-field="label" value="${escapeHtml(milestone.label)}" placeholder="주요 일정 내용" />
           </label>
           <button type="button" class="mini-button danger" data-action="remove-milestone">삭제</button>
         </div>
@@ -791,15 +799,42 @@ function duplicateSelectedTask() {
   renderTimeline();
 }
 
-function resetToDefaults() {
-  if (!isStaff) return;
-  const confirmed = confirm("초기 PDF 기준 데이터로 복원할까요? 이 브라우저에 저장된 수정 내용은 사라집니다.");
-  if (!confirmed) return;
-  items = normalizeItems(defaultItems);
-  selectedItemId = items[0]?.id ?? "";
-  persistItems();
-  renderEditor();
-  renderTimeline();
+let dashboardFileHandle = null;
+
+async function exportItemsAsJson() {
+  const json = JSON.stringify(items, null, 2);
+
+  if (window.showSaveFilePicker) {
+    try {
+      if (!dashboardFileHandle) {
+        dashboardFileHandle = await window.showSaveFilePicker({
+          suggestedName: "tasks.json",
+          types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
+        });
+      }
+      const writable = await dashboardFileHandle.createWritable();
+      await writable.write(json);
+      await writable.close();
+      exportButton.textContent = "저장 완료 ✓";
+      setTimeout(() => { exportButton.textContent = "JSON 업데이트"; }, 2000);
+      return;
+    } catch (error) {
+      if (error.name === "AbortError") return;
+      dashboardFileHandle = null;
+      console.error("파일 저장에 실패했습니다.", error);
+    }
+  }
+
+  // File System Access API를 지원하지 않는 브라우저: 다운로드로 대체
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "tasks.json";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(url);
 }
 
 function updateItemDateFromDrag(target, nextIsoDate) {
@@ -892,6 +927,7 @@ function renderLane(item, ticks) {
   const category = categoryById[item.category];
   const start = boundedPct(item.start);
   const end = boundedPct(item.end);
+  const todayPct = boundedPct(isoDate(new Date()));
   const width = Math.max(end - start, 0.8);
   const milestones = item.milestones
     .map(
@@ -903,9 +939,8 @@ function renderLane(item, ticks) {
           data-id="${escapeHtml(item.id)}"
           data-milestone-id="${escapeHtml(milestone.id)}"
           aria-label="${escapeHtml(item.title)}: ${escapeHtml(milestone.label)}"
-        >
-          <span class="tip">${escapeHtml(milestone.label)}</span>
-        </button>
+        ></button>
+        <span class="ms-label" style="left:${boundedPct(milestone.date)}%">${escapeHtml(milestone.label)}</span>
       `,
     )
     .join("");
@@ -923,6 +958,7 @@ function renderLane(item, ticks) {
       </div>
       <div class="lane-chart">
         ${ticks.map((tick) => `<span class="grid-line" style="left:${pct(tick)}%"></span>`).join("")}
+        <span class="today-line" style="left:${todayPct}%"></span>
         <span
           class="bar"
           style="left:${start}%; width:${width}%"
@@ -1034,10 +1070,10 @@ taskForm.addEventListener("submit", saveTask);
 newTaskButton.addEventListener("click", startNewTask);
 deleteButton.addEventListener("click", deleteSelectedTask);
 duplicateButton.addEventListener("click", duplicateSelectedTask);
-resetButton.addEventListener("click", resetToDefaults);
+exportButton.addEventListener("click", exportItemsAsJson);
 
 staffLoginButton.addEventListener("click", () => {
-  if (localEditableHost) return;
+  if (storageMode !== "api") return;
   loginPanel.hidden = !loginPanel.hidden;
   if (!loginPanel.hidden) {
     if (!staffId.value.trim()) staffId.value = "admin";
@@ -1046,7 +1082,7 @@ staffLoginButton.addEventListener("click", () => {
 });
 
 staffLogoutButton.addEventListener("click", async () => {
-  if (localEditableHost) return;
+  if (storageMode !== "api") return;
   await fetch("api/logout", {
     method: "POST",
     credentials: "same-origin",
@@ -1061,7 +1097,7 @@ staffLogoutButton.addEventListener("click", async () => {
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (localEditableHost) return;
+  if (storageMode !== "api") return;
 
   try {
     const response = await fetch("api/login", {
@@ -1265,7 +1301,8 @@ timeline.addEventListener("click", (event) => {
 
 async function init() {
   items = await loadItems();
-  await refreshStaffSession();
+  if (storageMode === "local" && canWrite) isStaff = true;
+  else await refreshStaffSession();
   selectedItemId = items[0]?.id ?? "";
   renderCategoryOptions();
   renderOwnerOptions();

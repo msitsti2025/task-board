@@ -60,7 +60,11 @@
           </div>
           <div class="editor-actions">
             <button type="button" class="secondary-button" id="newTaskButton">새 업무</button>
-            <button type="button" class="ghost-button" id="resetButton">초기 데이터 복원</button>
+            <button type="button" class="secondary-button" id="duplicateButton">복제</button>
+            <button type="button" class="secondary-button" id="addMilestoneButton">주요 일정 추가</button>
+            <button type="submit" class="secondary-button" form="taskForm">저장</button>
+            <button type="button" class="secondary-button" id="deleteButton">삭제</button>
+            <button type="button" class="secondary-button" id="exportButton">JSON 업데이트</button>
           </div>
         </div>
 
@@ -92,32 +96,23 @@
               <input id="taskEnd" type="date" required />
             </label>
             <label class="checkbox-field">
-              <input id="taskTentative" type="checkbox" />
               <span>현황판에 보이기</span>
+              <input id="taskTentative" type="checkbox" />
             </label>
             <label class="full-field">
               <span>업무 내용</span>
-              <textarea id="taskContent" rows="4" placeholder="무엇을 추진하는 업무인지 입력하세요"></textarea>
+              <textarea id="taskContent" rows="1" placeholder="무엇을 추진하는 업무인지 입력하세요"></textarea>
             </label>
             <label class="full-field">
               <span>추진 목표</span>
-              <textarea id="taskImpact" rows="3" placeholder="이 업무를 통해 달성하려는 목표를 입력하세요"></textarea>
+              <textarea id="taskImpact" rows="1" placeholder="이 업무를 통해 달성하려는 목표를 입력하세요"></textarea>
             </label>
           </div>
 
-          <div class="milestone-editor">
-            <div class="milestone-head">
-              <strong>마일스톤</strong>
-              <button type="button" class="secondary-button" id="addMilestoneButton">마일스톤 추가</button>
-            </div>
+          <div class="full-field milestone-inline">
             <div id="milestoneRows" class="milestone-rows"></div>
           </div>
 
-          <div class="form-actions">
-            <button type="submit" class="primary-button">업무 저장</button>
-            <button type="button" class="secondary-button" id="duplicateButton">복제</button>
-            <button type="button" class="danger-button" id="deleteButton">삭제</button>
-          </div>
         </form>
       </section>
 

@@ -1,0 +1,593 @@
+[
+  {
+    "id": "task-1-a8291f10-8e6c-4c31-98c3-4fb09dcadd99",
+    "category": "rnd-management",
+    "order": 2,
+    "title": "국가전략기술 체계 고도화 방향 발표",
+    "owner": "전략기술육성과",
+    "manager": "",
+    "start": "2026-04-27",
+    "end": "2026-04-27",
+    "visible": true,
+    "tentative": false,
+    "content": "기존 국가전략기술 체계를 국가임무, 범부처 협업 중심으로 재편.",
+    "impact": "국가전략기술 체계 고도화 방향 발표을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-f0ad1e0d-6951-4c9a-b625-f04f8d3d24d4",
+        "date": "2026-04-27",
+        "label": "고도화 방향 발표"
+      }
+    ]
+  },
+  {
+    "id": "task-2-56221f91-0337-48ae-b7fd-5543853122bc",
+    "category": "rnd-management",
+    "order": 4,
+    "title": "국가전략기술 선도 NEXT 프로젝트",
+    "owner": "전략기술육성과",
+    "manager": "",
+    "start": "2026-04-30",
+    "end": "2026-04-30",
+    "visible": true,
+    "tentative": false,
+    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축.",
+    "impact": "국가전략기술 선도 NEXT 프로젝트을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-c3a4e22e-2f2b-477f-9aae-b22eeb6a4b7b",
+        "date": "2026-04-30",
+        "label": "NEXT 프로젝트 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-3-cceccc14-b95b-463c-90a3-f1f9aede846b",
+    "category": "rnd-management",
+    "order": 3,
+    "title": "연구비 집행 자율성 확대",
+    "owner": "연구제도혁신과",
+    "manager": "",
+    "start": "2026-04-28",
+    "end": "2026-04-28",
+    "visible": true,
+    "tentative": false,
+    "content": "자율사용 비목 신설, 간접비 네거티브 전환 등 연구비 사용 자율성을 강화하고 사용불가 항목 외 연구 관련 모든 항목을 허용하는 방향으로 전환.",
+    "impact": "연구비 집행 자율성 확대을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-f032b53f-16df-471f-b30a-ebca524b4b5d",
+        "date": "2026-04-28",
+        "label": "혁신법 시행령 개정 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-4-f2385b15-4899-48da-8f72-c198daf30f1a",
+    "category": "rnd-management",
+    "order": 0,
+    "title": "R&D-IP 정책 협의회 개최",
+    "owner": "과학기술조정과",
+    "manager": "",
+    "start": "2026-02-02",
+    "end": "2026-02-02",
+    "visible": true,
+    "tentative": false,
+    "content": "R&D 및 연구성과 간 연계 전략 고도화를 위한 R&D-IP 총괄 부처 간 정책 협의.",
+    "impact": "R&D-IP 정책 협의회 개최을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-9b1935ee-3ae9-4872-bb2f-f172230a557c",
+        "date": "2026-03-19",
+        "label": "정책 협의회"
+      }
+    ]
+  },
+  {
+    "id": "task-5-9fb87726-104c-4322-9c4c-4dcda099c6fb",
+    "category": "science-policy",
+    "order": 2,
+    "title": "권역별 주요 R&D 정책간담회",
+    "owner": "과학기술정책과",
+    "manager": "",
+    "start": "2026-05-08",
+    "end": "2026-05-08",
+    "visible": true,
+    "tentative": false,
+    "content": "호남권 GIST 타운홀미팅을 통해 연구 현장과 직접 소통하고 주요 R&D 정책 방향 공유.",
+    "impact": "권역별 주요 R&D 정책간담회이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-c96eaa73-257b-488d-85ef-ba29abafc05e",
+        "date": "2026-05-08",
+        "label": "GIST 타운홀미팅"
+      }
+    ]
+  },
+  {
+    "id": "task-6-211b359a-aee8-490e-a69c-8161207fb06b",
+    "category": "budget-review",
+    "order": 1,
+    "title": "구축형 R&D 심사 시행 관련 시행령·세부지침",
+    "owner": "연구개발타당성심사팀",
+    "manager": "",
+    "start": "2026-05-11",
+    "end": "2026-05-11",
+    "visible": true,
+    "tentative": false,
+    "content": "예타폐지 후속 조치를 위한 과학기술기본법 시행령 개정 및 운용지침 제정.",
+    "impact": "구축형 R&D 심사 시행 관련 시행령·세부지침이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-d13cea3d-8d9f-43ba-8a1d-a103e12e93b3",
+        "date": "2026-05-11",
+        "label": "시행령 개정 및 지침 제정 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-7-bd08aa15-a221-48bd-a505-438ab36371eb",
+    "category": "science-policy",
+    "order": 1,
+    "title": "제6차 과학기술기본계획 수립",
+    "owner": "과학기술정책과",
+    "manager": "",
+    "start": "2026-05-06",
+    "end": "2026-06-15",
+    "visible": true,
+    "tentative": false,
+    "content": "연구자 현장간담회와 대국민 공청회를 거쳐 제6차 과학기술기본계획을 수립하고 자문회의 심의의결을 통해 발표.",
+    "impact": "제6차 과학기술기본계획 수립이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-2ca54c91-c0d3-465b-b9e0-9ef1917bb1d5",
+        "date": "2026-05-06",
+        "label": "연구자 현장간담회 1차"
+      },
+      {
+        "id": "milestone-1bbc52e0-58ac-4ed2-895c-b4b1a18a2db6",
+        "date": "2026-05-13",
+        "label": "연구자 현장간담회 후속"
+      },
+      {
+        "id": "milestone-772ced7d-ae94-428d-b036-524bc651c536",
+        "date": "2026-05-22",
+        "label": "대국민 공청회, 5월중"
+      },
+      {
+        "id": "milestone-54cccd85-56b0-4869-99cf-031ce4b502e0",
+        "date": "2026-06-15",
+        "label": "기본계획 발표, 6월 잠정"
+      }
+    ]
+  },
+  {
+    "id": "task-8-9b008904-e8e4-454c-8e85-501cc6490963",
+    "category": "science-policy",
+    "order": 0,
+    "title": "「K-Science」 추진 방안",
+    "owner": "과학기술전략과",
+    "manager": "",
+    "start": "2026-05-01",
+    "end": "2026-05-31",
+    "visible": true,
+    "tentative": false,
+    "content": "K-Science 추진배경, 정책추진 방향, 대표 프로젝트 내용 예시를 소개하고 후속 홍보를 검토.",
+    "impact": "「K-Science」 추진 방안이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-cbc11bf4-ae8a-4ba2-a52b-89856213b83d",
+        "date": "2026-05-15",
+        "label": "추진 방안 보도·기고"
+      },
+      {
+        "id": "milestone-ac4bbd01-8d18-4e60-b2d6-dcdac0f90b03",
+        "date": "2026-05-31",
+        "label": "후속 홍보 검토"
+      }
+    ]
+  },
+  {
+    "id": "task-9-faa9726b-72ba-4200-9b1a-4d45d4c14a2c",
+    "category": "rnd-management",
+    "order": 1,
+    "title": "지역 과학기술 혁신법 제정",
+    "owner": "과학기술전략과",
+    "manager": "",
+    "start": "2026-04-23",
+    "end": "2026-05-31",
+    "visible": true,
+    "tentative": false,
+    "content": "지역의 과학기술역량을 확충하고 지역기업·산업 경쟁력을 강화할 수 있는 종합 지원체계 마련.",
+    "impact": "지역 과학기술 혁신법 제정을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-37bdf797-5923-42b7-bd95-fc890f5ca440",
+        "date": "2026-04-23",
+        "label": "법 제정 통과"
+      },
+      {
+        "id": "milestone-45c8f6de-eff5-4053-8e6b-5fa62e2acf56",
+        "date": "2026-05-15",
+        "label": "보도·기고"
+      }
+    ]
+  },
+  {
+    "id": "task-10-e1ef00a0-7e47-446e-80fd-b7e189527b71",
+    "category": "rnd-management",
+    "order": 6,
+    "title": "국가연구데이터법 제정",
+    "owner": "성과평가정책과",
+    "manager": "",
+    "start": "2026-05-01",
+    "end": "2026-06-30",
+    "visible": true,
+    "tentative": false,
+    "content": "국가R&D 과제로 생산된 데이터를 국가연구데이터통합플랫폼에 표준화해 연계하고 공개 원칙으로 연구데이터 활용을 촉진.",
+    "impact": "국가연구데이터법 제정을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-337c946a-fb22-4aad-bf8f-023b66ba881d",
+        "date": "2026-05-15",
+        "label": "국회 통과 예상 구간"
+      },
+      {
+        "id": "milestone-f99eb604-1e09-40c6-8b18-f01039240d11",
+        "date": "2026-06-30",
+        "label": "보도·기고, 통과시"
+      }
+    ]
+  },
+  {
+    "id": "task-11-660c1b0e-a97b-443f-bcdf-efdfcb793a29",
+    "category": "budget-review",
+    "order": 3,
+    "title": "구축형 R&D 심사제도 설명회",
+    "owner": "연구개발타당성심사팀",
+    "manager": "",
+    "start": "2026-05-12",
+    "end": "2026-05-12",
+    "visible": true,
+    "tentative": false,
+    "content": "과학기술분야 학회를 대상으로 구축형 R&D 심사제도를 설명하고 현장 이해도를 높임.",
+    "impact": "구축형 R&D 심사제도 설명회이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-efc32bb2-9585-4cbc-9856-3c01dda43d94",
+        "date": "2026-05-12",
+        "label": "심사제도 설명회"
+      }
+    ]
+  },
+  {
+    "id": "task-12-c3d598a9-03fa-4bff-8abf-1e540181c99f",
+    "category": "budget-review",
+    "order": 4,
+    "title": "구축형 R&D 심사제도 시행",
+    "owner": "연구개발타당성심사팀",
+    "manager": "",
+    "start": "2026-05-15",
+    "end": "2026-05-15",
+    "visible": true,
+    "tentative": false,
+    "content": "연구 현장의 수요를 반영한 구축형 R&D 기획 및 심사제도 운영에 대한 현장 반응과 환영 메시지 확산.",
+    "impact": "구축형 R&D 심사제도 시행이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-1904b627-fc52-45f6-b29d-84fcb2ad8cd4",
+        "date": "2026-05-15",
+        "label": "기고"
+      }
+    ]
+  },
+  {
+    "id": "task-13-5d10245c-e2c4-4214-8567-4a7b5618e5de",
+    "category": "budget-review",
+    "order": 2,
+    "title": "27년도 국가연구개발사업 예산배분 조정(안)",
+    "owner": "연구예산총괄과",
+    "manager": "",
+    "start": "2026-05-11",
+    "end": "2026-09-30",
+    "visible": true,
+    "tentative": false,
+    "content": "국가연구개발사업 예산설명회를 시작으로 주요 R&D 예산 배분·조정안을 마련하고 정부 R&D 예산안을 간담회 등으로 홍보.",
+    "impact": "27년도 국가연구개발사업 예산배분 조정(안)이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-5a81058b-3e77-45ec-91a3-12e92dd00ed3",
+        "date": "2026-05-11",
+        "label": "국가연구개발사업 예산설명회"
+      },
+      {
+        "id": "milestone-e572a5b3-e8cd-46d1-89c8-830a1d770ac0",
+        "date": "2026-06-30",
+        "label": "주요 R&D 예산 배분·조정안 마련"
+      },
+      {
+        "id": "milestone-1da54a4c-c61f-42c2-9f4c-e20e70f065a6",
+        "date": "2026-09-30",
+        "label": "정부 R&D 예산안 홍보, 하반기"
+      }
+    ]
+  },
+  {
+    "id": "task-14-d4356dd7-f617-4771-bbe8-df23b23f4d0a",
+    "category": "rnd-management",
+    "order": 5,
+    "title": "R&D 행정서식 간소화",
+    "owner": "연구제도혁신과",
+    "manager": "",
+    "start": "2026-05-01",
+    "end": "2026-05-31",
+    "visible": true,
+    "tentative": false,
+    "content": "연구자 행정부담 완화를 위해 불요·중복 서식을 표준화하고 간소화.",
+    "impact": "R&D 행정서식 간소화을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-115e4b49-78c5-466e-abda-b98bb30ce6b1",
+        "date": "2026-05-15",
+        "label": "간소화 방안 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-15-27725ef9-3267-4ed3-9fcc-b1b2f5114185",
+    "category": "budget-review",
+    "order": 0,
+    "title": "R&D 예산심의 특화 AI 도입",
+    "owner": "기계정보통신조정과",
+    "manager": "",
+    "start": "2026-04-29",
+    "end": "2026-05-10",
+    "visible": true,
+    "tentative": false,
+    "content": "예산심의 특화 AI를 전문위 예산설명회부터 혁신본부 예산심의 전 단계에 본격 도입.",
+    "impact": "R&D 예산심의 특화 AI 도입이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-f4af2a16-8b47-42db-a145-c3ee7a3101b3",
+        "date": "2026-04-29",
+        "label": "본부장 대상 시연, 보도자료 미배포"
+      },
+      {
+        "id": "milestone-fa0a37f2-1e5b-430f-8f05-3b61ac4d6254",
+        "date": "2026-05-08",
+        "label": "5월초 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-16-4ffe1923-4607-4a11-8585-e1370ad3a3e7",
+    "category": "rnd-management",
+    "order": 7,
+    "title": "가칭 연구24 통합로그인체계 구축",
+    "owner": "과학기술정보분석과",
+    "manager": "",
+    "start": "2026-06-01",
+    "end": "2026-06-10",
+    "visible": true,
+    "tentative": false,
+    "content": "주요 국가 R&D 시스템들의 로그인 창구를 단일화하는 연구24 구축.",
+    "impact": "가칭 연구24 통합로그인체계 구축을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-1c2666b8-a322-498f-a506-b8eab71e36a6",
+        "date": "2026-06-05",
+        "label": "통합로그인체계 구축 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-17-d240361d-dcf6-4bd6-a336-955c87740e53",
+    "category": "budget-review",
+    "order": 6,
+    "title": "R&D 사업화 시스템 고도화 전략",
+    "owner": "과학기술혁신지원팀",
+    "manager": "",
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "visible": true,
+    "tentative": false,
+    "content": "R&D 성과확산 고속도로 구축, 연구성과 창업 활성화, 투자형 R&D 도입 등 성과확산 체계 개편.",
+    "impact": "R&D 사업화 시스템 고도화 전략이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-60b36978-16cb-4849-9b66-503f3667c1d7",
+        "date": "2026-06-15",
+        "label": "STEPI 원장 기고"
+      }
+    ]
+  },
+  {
+    "id": "task-18-ddf7b980-cbd6-42f1-9b0d-f2e006c7b4e6",
+    "category": "rnd-management",
+    "order": 8,
+    "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
+    "owner": "연구평가혁신과",
+    "manager": "",
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "visible": true,
+    "tentative": false,
+    "content": "AI 기반 장비검색시스템을 도입해 연구자들이 공공장비를 더 쉽게 활용하도록 제공.",
+    "impact": "AI 기반 장비검색시스템(ZEUS 3.0) 구축을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-e1588818-4516-44fe-b9f5-2dd17b3ece3a",
+        "date": "2026-06-30",
+        "label": "6월말 검토"
+      }
+    ]
+  },
+  {
+    "id": "task-19-3d822583-be24-443c-9f9d-aef96d4a09bf",
+    "category": "budget-review",
+    "order": 5,
+    "title": "IRIS 운영 전담조직 개편",
+    "owner": "과학기술정보분석과",
+    "manager": "",
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "visible": true,
+    "tentative": false,
+    "content": "4대 연구지원시스템 통합에 따른 운영 전담조직을 개편하고 연구자 중심의 IRIS 역량강화 방안을 발표.",
+    "impact": "IRIS 운영 전담조직 개편이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-9e86df6b-4a11-4367-8702-117203bed9ec",
+        "date": "2026-06-30",
+        "label": "운영 전담조직 개편방안 발표"
+      }
+    ]
+  },
+  {
+    "id": "task-20-c819bd7f-a166-45f6-9e26-c6a604d9aea4",
+    "category": "budget-review",
+    "order": 7,
+    "title": "제2차 국가연구개발 중장기 투자전략 수립",
+    "owner": "연구개발투자기획과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-07-31",
+    "visible": true,
+    "tentative": false,
+    "content": "향후 5년간 R&D 투자의 목표와 방향을 제시하는 정부의 R&D 최상위 전략 수립. 산·학·연 의견수렴 및 공청회 검토.",
+    "impact": "제2차 국가연구개발 중장기 투자전략 수립이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.",
+    "milestones": [
+      {
+        "id": "milestone-260038c8-e88f-4b35-af16-065879051fd4",
+        "date": "2026-07-15",
+        "label": "중장기 투자전략 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-21-83793d67-0597-4f7d-83f4-b1b79f3b96ee",
+    "category": "rnd-management",
+    "order": 10,
+    "title": "도전적 R&D 연구환경 조성",
+    "owner": "연구평가혁신과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-07-31",
+    "visible": true,
+    "tentative": false,
+    "content": "혁신법 및 시행령 개정으로 평가기준에 목표 혁신성을 추가하고 우수 과제 후속과제 지정근거, 과제평가 등급 폐지, 최종평가 방식 다양화, 비영리기관 기술료 사용 자율성 확대 등을 추진.",
+    "impact": "도전적 R&D 연구환경 조성을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-75e1adcc-89d5-4443-b3d1-1081d837f04e",
+        "date": "2026-07-31",
+        "label": "혁신법 및 시행령 개정 보도"
+      }
+    ]
+  },
+  {
+    "id": "task-22-4d765d5e-2f05-47f5-9d2d-9b34ff94e4e1",
+    "category": "rnd-management",
+    "order": 9,
+    "title": "도전적 목표 미달성 과제 재도약 지원",
+    "owner": "연구평가혁신과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-07-31",
+    "visible": true,
+    "tentative": false,
+    "content": "도전적 목표를 미달성한 과제도 우수성 평가를 통해 재도약을 지원하는 제도 개선 검토.",
+    "impact": "도전적 목표 미달성 과제 재도약 지원을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-0ff04de4-206c-4661-af42-88b92a0a8799",
+        "date": "2026-07-15",
+        "label": "재도약 지원 검토"
+      }
+    ]
+  },
+  {
+    "id": "task-23-2e000102-3a0d-4a0f-b71a-c160f950fb30",
+    "category": "rnd-management",
+    "order": 13,
+    "title": "연구비 부정사용 제재처분 강화",
+    "owner": "연구윤리권익보호과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "visible": true,
+    "tentative": false,
+    "content": "부정사용 근절을 위해 제재부가금 최대한도를 기지급 연구개발비의 5배에서 30배로, 참여제한 최대기간을 10년에서 20년으로 강화.",
+    "impact": "연구비 부정사용 제재처분 강화을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-890c9901-ea33-4014-81e1-db4626f3b1f5",
+        "date": "2026-09-30",
+        "label": "혁신법 개정 보도, 하반기"
+      }
+    ]
+  },
+  {
+    "id": "task-24-e5cc6c85-a194-48aa-bd95-fc24d50b150d",
+    "category": "rnd-management",
+    "order": 14,
+    "title": "연구자 중복정보입력 최소화",
+    "owner": "과학기술정보분석과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "visible": true,
+    "tentative": false,
+    "content": "IRIS와 기관 자체 시스템 간 정보연계를 강화해 연구자 중복정보 입력을 최소화.",
+    "impact": "연구자 중복정보입력 최소화을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-768ee12a-90aa-417f-aa72-93bb2aaf696d",
+        "date": "2026-09-30",
+        "label": "정보연계 강화 검토"
+      }
+    ]
+  },
+  {
+    "id": "task-25-a33c52eb-16a2-4e12-9e57-a0d84035f91d",
+    "category": "rnd-management",
+    "order": 11,
+    "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
+    "owner": "성과평가정책과 · 연구제도혁신과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "visible": true,
+    "tentative": false,
+    "content": "국제공동연구 연구비 관리 강화와 IP 확보를 위한 제도개선 검토.",
+    "impact": "국제공동연구 연구비 관리 및 IP 확보 제도개선을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-57789beb-4c01-4deb-aa17-7e0f02f63253",
+        "date": "2026-09-30",
+        "label": "제도개선 검토"
+      }
+    ]
+  },
+  {
+    "id": "task-26-136015de-a874-496a-82cc-14f8a272bfdb",
+    "category": "rnd-management",
+    "order": 12,
+    "title": "연구보안 체계 내실화",
+    "owner": "연구윤리권익보호과",
+    "manager": "",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "visible": true,
+    "tentative": false,
+    "content": "민감과제 신설, 보안대책 수립기관 확대 등을 통해 연구보안 체계를 강화.",
+    "impact": "연구보안 체계 내실화을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "milestones": [
+      {
+        "id": "milestone-8d47a853-2081-4501-97d1-38d415db22e4",
+        "date": "2026-09-30",
+        "label": "연구보안 체계 강화 검토"
+      }
+    ]
+  }
+]
