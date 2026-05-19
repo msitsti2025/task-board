@@ -13,7 +13,7 @@
   --shadow: 0 16px 36px rgba(29, 38, 51, 0.08);
   --axis-label: 440px;
   --timeline-min: 980px;
-  --lane-min: 72px;
+  --lane-min: 68px;
 }
 
 * {
@@ -43,12 +43,56 @@ body {
   gap: 26px;
   margin-bottom: 18px;
   padding: 22px 24px;
-  border: 1px solid var(--faint);
+  border: 1px solid transparent;
   border-radius: 8px;
-  background:
-    linear-gradient(110deg, rgba(255, 255, 255, 0.96), rgba(238, 243, 247, 0.78)),
-    #fff;
+  background: linear-gradient(135deg, #1a2f4e 0%, #1e4a82 100%);
+  color: #fff;
   box-shadow: var(--shadow);
+}
+
+.hero .eyebrow {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.hero .primary-button {
+  background: #fff;
+  color: var(--ink);
+}
+
+.hero .secondary-button {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.hero .segmented button {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.hero .segmented button[aria-pressed="true"] {
+  border-color: #fff;
+  background: #fff;
+  color: var(--ink);
+}
+
+.hero .search-box {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero .search-box span {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.hero .search-box input {
+  background: transparent;
+  color: #fff;
+}
+
+.hero .search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .hero-main {
@@ -287,29 +331,21 @@ h1 {
 }
 
 .checkbox-field {
-  align-content: end;
-  grid-template-columns: 18px 1fr;
-  gap: 8px;
-  min-height: 42px;
-  padding: 11px;
-  border: 1px solid var(--grid);
-  border-radius: 8px;
+  align-content: start;
+  grid-template-columns: 1fr;
+  gap: 6px;
 }
 
-.checkbox-field input {
+.checkbox-field input[type="checkbox"] {
   width: 18px;
   height: 18px;
+  margin: 0;
+  cursor: pointer;
 }
 
-.milestone-editor {
-  padding: 14px;
-  border: 1px solid var(--faint);
-  border-radius: 8px;
-  background: #fbfcfe;
-}
-
-.milestone-head {
-  margin-bottom: 10px;
+.milestone-inline {
+  display: grid;
+  gap: 6px;
 }
 
 .milestone-rows {
@@ -587,7 +623,8 @@ button:disabled {
 
 .bar {
   position: absolute;
-  top: 25px;
+  top: 50%;
+  transform: translateY(-50%);
   height: 6px;
   min-width: 8px;
   border-radius: 999px;
@@ -606,42 +643,29 @@ button:disabled {
 .endpoint,
 .milestone {
   position: absolute;
-  top: 18px;
-  transform: translateX(-50%);
   width: 20px;
   height: 20px;
-  border: 3px solid #fff;
-  border-radius: 50%;
 }
 
 .endpoint {
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  border-radius: 3px;
   background: currentColor;
   box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 55%, transparent);
 }
 
 .milestone {
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 50%;
+  border: 2.5px solid currentColor;
   background: #fff;
-  box-shadow:
-    inset 0 0 0 3px currentColor,
-    0 0 0 1px color-mix(in srgb, currentColor 55%, transparent);
-}
-
-.milestone .tip {
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 8px);
-  transform: translateX(-50%);
-  display: none;
-  width: max-content;
-  max-width: 280px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #101828;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.35;
-  z-index: 5;
 }
 
 .milestone:focus-visible,
@@ -649,9 +673,26 @@ button:disabled {
   outline: 3px solid rgba(29, 38, 51, 0.18);
 }
 
-.milestone:focus-visible .tip,
-.milestone:hover .tip {
-  display: block;
+.today-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e53e3e;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ms-label {
+  position: absolute;
+  top: calc(50% + 14px);
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .draggable-point {
@@ -692,7 +733,7 @@ body:has(.drag-date-tooltip.is-visible) .draggable-point,
 
 .timeline-content {
   position: absolute;
-  top: 38px;
+  top: 4px;
   transform: translateX(0);
   max-width: min(420px, calc(100% - 24px));
   margin: 0;
