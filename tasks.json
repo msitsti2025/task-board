@@ -594,16 +594,21 @@
     "id": "task-e99e74b0-40aa-4b76-ab01-0f767bfc8fb0",
     "category": "outreach",
     "order": 12,
-    "title": "테스트",
+    "title": "대외 강연 활동",
     "owner": "과학기술정책과",
     "manager": "",
     "start": "2026-05-19",
-    "end": "2026-05-31",
+    "end": "2026-12-31",
     "visible": true,
     "tentative": false,
     "content": "강연활동",
     "impact": "",
     "milestones": [
+      {
+        "id": "milestone-f71bdc63-3ae5-49ce-8e91-861fe6ef8f1a",
+        "date": "2026-04-08",
+        "label": "KIRD 기관장 강연"
+      },
       {
         "id": "milestone-321c4880-6818-4b34-a6f2-c043676530c7",
         "date": "2026-05-21",
