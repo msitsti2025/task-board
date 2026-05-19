@@ -27,7 +27,7 @@ const ownerOptions = [
 
 const defaultItems = [
   {
-    category: "policy",
+    category: "science-policy",
     title: "국가전략기술 체계 고도화 방향 발표",
     owner: "전략기술육성과",
     start: "2026-04-27",
@@ -36,7 +36,7 @@ const defaultItems = [
     milestones: [{ date: "2026-04-27", label: "고도화 방향 발표" }],
   },
   {
-    category: "policy",
+    category: "science-policy",
     title: "국가전략기술 선도 NEXT 프로젝트",
     owner: "전략기술육성과",
     start: "2026-04-30",
@@ -45,7 +45,7 @@ const defaultItems = [
     milestones: [{ date: "2026-04-30", label: "NEXT 프로젝트 보도" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "연구비 집행 자율성 확대",
     owner: "연구제도혁신과",
     start: "2026-04-28",
@@ -55,7 +55,7 @@ const defaultItems = [
     milestones: [{ date: "2026-04-28", label: "혁신법 시행령 개정 보도" }],
   },
   {
-    category: "field",
+    category: "outreach",
     title: "R&D-IP 정책 협의회 개최",
     owner: "과학기술조정과",
     start: "2026-05-07",
@@ -64,7 +64,7 @@ const defaultItems = [
     milestones: [{ date: "2026-05-07", label: "정책 협의회" }],
   },
   {
-    category: "field",
+    category: "outreach",
     title: "권역별 주요 R&D 정책간담회",
     owner: "과학기술정책과",
     start: "2026-05-08",
@@ -73,7 +73,7 @@ const defaultItems = [
     milestones: [{ date: "2026-05-08", label: "GIST 타운홀미팅" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "구축형 R&D 심사 시행 관련 시행령·세부지침",
     owner: "연구개발타당성심사팀",
     start: "2026-05-11",
@@ -82,7 +82,7 @@ const defaultItems = [
     milestones: [{ date: "2026-05-11", label: "시행령 개정 및 지침 제정 보도" }],
   },
   {
-    category: "policy",
+    category: "science-policy",
     title: "제6차 과학기술기본계획 수립",
     owner: "과학기술정책과",
     start: "2026-05-06",
@@ -98,7 +98,7 @@ const defaultItems = [
     ],
   },
   {
-    category: "policy",
+    category: "science-policy",
     title: "「K-Science」 추진 방안",
     owner: "과학기술전략과",
     start: "2026-05-01",
@@ -112,7 +112,7 @@ const defaultItems = [
     ],
   },
   {
-    category: "law",
+    category: "science-policy",
     title: "지역 과학기술 혁신법 제정",
     owner: "과학기술전략과",
     start: "2026-04-23",
@@ -126,7 +126,7 @@ const defaultItems = [
     ],
   },
   {
-    category: "law",
+    category: "rnd-management",
     title: "국가연구데이터법 제정",
     owner: "성과평가정책과",
     start: "2026-05-01",
@@ -140,7 +140,7 @@ const defaultItems = [
     ],
   },
   {
-    category: "field",
+    category: "outreach",
     title: "구축형 R&D 심사제도 설명회",
     owner: "연구개발타당성심사팀",
     start: "2026-05-12",
@@ -149,7 +149,7 @@ const defaultItems = [
     milestones: [{ date: "2026-05-12", label: "심사제도 설명회" }],
   },
   {
-    category: "field",
+    category: "outreach",
     title: "구축형 R&D 심사제도 시행",
     owner: "연구개발타당성심사팀",
     start: "2026-05-15",
@@ -158,7 +158,7 @@ const defaultItems = [
     milestones: [{ date: "2026-05-15", label: "기고" }],
   },
   {
-    category: "policy",
+    category: "budget-review",
     title: "27년도 국가연구개발사업 예산배분 조정(안)",
     owner: "연구예산총괄과",
     start: "2026-05-11",
@@ -173,7 +173,7 @@ const defaultItems = [
     ],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "R&D 행정서식 간소화",
     owner: "연구제도혁신과",
     start: "2026-05-01",
@@ -183,7 +183,7 @@ const defaultItems = [
     milestones: [{ date: "2026-05-15", label: "간소화 방안 보도" }],
   },
   {
-    category: "system",
+    category: "budget-review",
     title: "R&D 예산심의 특화 AI 도입",
     owner: "기계정보통신조정과",
     start: "2026-04-29",
@@ -197,7 +197,7 @@ const defaultItems = [
     ],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "가칭 연구24 통합로그인체계 구축",
     owner: "과학기술정보분석과",
     start: "2026-06-01",
@@ -207,7 +207,7 @@ const defaultItems = [
     milestones: [{ date: "2026-06-05", label: "통합로그인체계 구축 보도" }],
   },
   {
-    category: "policy",
+    category: "science-policy",
     title: "R&D 사업화 시스템 고도화 전략",
     owner: "과학기술혁신지원팀",
     start: "2026-06-01",
@@ -218,7 +218,7 @@ const defaultItems = [
     milestones: [{ date: "2026-06-15", label: "STEPI 원장 기고" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     owner: "연구평가혁신과",
     start: "2026-06-01",
@@ -228,7 +228,7 @@ const defaultItems = [
     milestones: [{ date: "2026-06-30", label: "6월말 검토" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "IRIS 운영 전담조직 개편",
     owner: "과학기술정보분석과",
     start: "2026-06-01",
@@ -239,7 +239,7 @@ const defaultItems = [
     milestones: [{ date: "2026-06-30", label: "운영 전담조직 개편방안 발표" }],
   },
   {
-    category: "policy",
+    category: "budget-review",
     title: "제2차 국가연구개발 중장기 투자전략 수립",
     owner: "연구개발투자기획과",
     start: "2026-07-01",
@@ -250,7 +250,7 @@ const defaultItems = [
     milestones: [{ date: "2026-07-15", label: "중장기 투자전략 보도" }],
   },
   {
-    category: "law",
+    category: "rnd-management",
     title: "도전적 R&D 연구환경 조성",
     owner: "연구평가혁신과",
     start: "2026-07-01",
@@ -261,7 +261,7 @@ const defaultItems = [
     milestones: [{ date: "2026-07-31", label: "혁신법 및 시행령 개정 보도" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "도전적 목표 미달성 과제 재도약 지원",
     owner: "연구평가혁신과",
     start: "2026-07-01",
@@ -271,7 +271,7 @@ const defaultItems = [
     milestones: [{ date: "2026-07-15", label: "재도약 지원 검토" }],
   },
   {
-    category: "law",
+    category: "rnd-management",
     title: "연구비 부정사용 제재처분 강화",
     owner: "연구윤리권익보호과",
     start: "2026-07-01",
@@ -282,7 +282,7 @@ const defaultItems = [
     milestones: [{ date: "2026-09-30", label: "혁신법 개정 보도, 하반기" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "연구자 중복정보입력 최소화",
     owner: "과학기술정보분석과",
     start: "2026-07-01",
@@ -292,7 +292,7 @@ const defaultItems = [
     milestones: [{ date: "2026-09-30", label: "정보연계 강화 검토" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     owner: "성과평가정책과 · 연구제도혁신과",
     start: "2026-07-01",
@@ -302,7 +302,7 @@ const defaultItems = [
     milestones: [{ date: "2026-09-30", label: "제도개선 검토" }],
   },
   {
-    category: "system",
+    category: "rnd-management",
     title: "연구보안 체계 내실화",
     owner: "연구윤리권익보호과",
     start: "2026-07-01",
@@ -315,7 +315,7 @@ const defaultItems = [
 
 const timelineStart = new Date("2025-06-15T00:00:00");
 const timelineEnd = new Date("2027-06-30T00:00:00");
-const legacyStorageKey = "osti-dashboard-items-v1";
+const legacyStorageKey = "osti-task-board-items-v1";
 const isDirectFileHost = isLocalEditableHost();
 const isLoopbackHost = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
 let activeCategory = "all";
@@ -473,6 +473,7 @@ function persistItems() {
     } catch (error) {
       console.error("브라우저 저장소에 업무 데이터를 저장하지 못했습니다.", error);
     }
+    autoSaveToFile();
     return Promise.resolve();
   }
 
@@ -624,10 +625,11 @@ function renderAuthState() {
 }
 
 function emptyTask() {
-  const today = "2026-05-01";
+  const today = new Date().toLocaleDateString("sv"); // YYYY-MM-DD
+  const defaultCategory = activeCategory !== "all" ? activeCategory : "science-policy";
   return {
     id: "",
-    category: "science-policy",
+    category: defaultCategory,
     title: "",
     owner: ownerOptions[0],
     manager: "",
@@ -799,33 +801,43 @@ function duplicateSelectedTask() {
   renderTimeline();
 }
 
-let dashboardFileHandle = null;
+let taskFileHandle = null;
+
+async function autoSaveToFile() {
+  if (!taskFileHandle) return;
+  const json = JSON.stringify(items, null, 2);
+  try {
+    const writable = await taskFileHandle.createWritable();
+    await writable.write(json);
+    await writable.close();
+    exportButton.textContent = "저장 완료 ✓";
+    setTimeout(() => { exportButton.textContent = "JSON 업데이트"; }, 1500);
+  } catch (error) {
+    taskFileHandle = null;
+    console.warn("자동 파일 저장 실패:", error);
+  }
+}
 
 async function exportItemsAsJson() {
-  const json = JSON.stringify(items, null, 2);
-
   if (window.showSaveFilePicker) {
     try {
-      if (!dashboardFileHandle) {
-        dashboardFileHandle = await window.showSaveFilePicker({
+      if (!taskFileHandle) {
+        taskFileHandle = await window.showSaveFilePicker({
           suggestedName: "tasks.json",
           types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
         });
       }
-      const writable = await dashboardFileHandle.createWritable();
-      await writable.write(json);
-      await writable.close();
-      exportButton.textContent = "저장 완료 ✓";
-      setTimeout(() => { exportButton.textContent = "JSON 업데이트"; }, 2000);
+      await autoSaveToFile();
       return;
     } catch (error) {
       if (error.name === "AbortError") return;
-      dashboardFileHandle = null;
+      taskFileHandle = null;
       console.error("파일 저장에 실패했습니다.", error);
     }
   }
 
   // File System Access API를 지원하지 않는 브라우저: 다운로드로 대체
+  const json = JSON.stringify(items, null, 2);
   const blob = new Blob([json], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
