@@ -1,8 +1,8 @@
 [
   {
     "id": "task-1-a8291f10-8e6c-4c31-98c3-4fb09dcadd99",
-    "category": "rnd-management",
-    "order": 2,
+    "category": "science-policy",
+    "order": 3,
     "title": "국가전략기술 체계 고도화 방향 발표",
     "owner": "전략기술육성과",
     "manager": "",
@@ -17,12 +17,17 @@
         "id": "milestone-f0ad1e0d-6951-4c9a-b625-f04f8d3d24d4",
         "date": "2026-04-27",
         "label": "고도화 방향 발표"
+      },
+      {
+        "id": "milestone-2c2f1776-518b-4955-9b26-2ad660f7edd5",
+        "date": "2026-04-27",
+        "label": "ㅇㅇ"
       }
     ]
   },
   {
     "id": "task-2-56221f91-0337-48ae-b7fd-5543853122bc",
-    "category": "rnd-management",
+    "category": "science-policy",
     "order": 4,
     "title": "국가전략기술 선도 NEXT 프로젝트",
     "owner": "전략기술육성과",
@@ -44,7 +49,7 @@
   {
     "id": "task-3-cceccc14-b95b-463c-90a3-f1f9aede846b",
     "category": "rnd-management",
-    "order": 3,
+    "order": 1,
     "title": "연구비 집행 자율성 확대",
     "owner": "연구제도혁신과",
     "manager": "",
@@ -64,13 +69,13 @@
   },
   {
     "id": "task-4-f2385b15-4899-48da-8f72-c198daf30f1a",
-    "category": "rnd-management",
+    "category": "outreach",
     "order": 0,
     "title": "R&D-IP 정책 협의회 개최",
     "owner": "과학기술조정과",
     "manager": "",
     "start": "2026-02-02",
-    "end": "2026-02-02",
+    "end": "2026-04-15",
     "visible": true,
     "tentative": false,
     "content": "R&D 및 연구성과 간 연계 전략 고도화를 위한 R&D-IP 총괄 부처 간 정책 협의.",
@@ -85,8 +90,8 @@
   },
   {
     "id": "task-5-9fb87726-104c-4322-9c4c-4dcda099c6fb",
-    "category": "science-policy",
-    "order": 2,
+    "category": "outreach",
+    "order": 1,
     "title": "권역별 주요 R&D 정책간담회",
     "owner": "과학기술정책과",
     "manager": "",
@@ -107,12 +112,12 @@
   {
     "id": "task-6-211b359a-aee8-490e-a69c-8161207fb06b",
     "category": "budget-review",
-    "order": 1,
+    "order": 0,
     "title": "구축형 R&D 심사 시행 관련 시행령·세부지침",
     "owner": "연구개발타당성심사팀",
     "manager": "",
-    "start": "2026-05-11",
-    "end": "2026-05-11",
+    "start": "2026-01-15",
+    "end": "2026-05-20",
     "visible": true,
     "tentative": false,
     "content": "예타폐지 후속 조치를 위한 과학기술기본법 시행령 개정 및 운용지침 제정.",
@@ -120,7 +125,7 @@
     "milestones": [
       {
         "id": "milestone-d13cea3d-8d9f-43ba-8a1d-a103e12e93b3",
-        "date": "2026-05-11",
+        "date": "2026-04-05",
         "label": "시행령 개정 및 지침 제정 보도"
       }
     ]
@@ -128,12 +133,12 @@
   {
     "id": "task-7-bd08aa15-a221-48bd-a505-438ab36371eb",
     "category": "science-policy",
-    "order": 1,
+    "order": 0,
     "title": "제6차 과학기술기본계획 수립",
     "owner": "과학기술정책과",
     "manager": "",
-    "start": "2026-05-06",
-    "end": "2026-06-15",
+    "start": "2025-11-14",
+    "end": "2026-10-01",
     "visible": true,
     "tentative": false,
     "content": "연구자 현장간담회와 대국민 공청회를 거쳐 제6차 과학기술기본계획을 수립하고 자문회의 심의의결을 통해 발표.",
@@ -141,7 +146,7 @@
     "milestones": [
       {
         "id": "milestone-2ca54c91-c0d3-465b-b9e0-9ef1917bb1d5",
-        "date": "2026-05-06",
+        "date": "2026-01-19",
         "label": "연구자 현장간담회 1차"
       },
       {
@@ -151,12 +156,12 @@
       },
       {
         "id": "milestone-772ced7d-ae94-428d-b036-524bc651c536",
-        "date": "2026-05-22",
+        "date": "2026-07-09",
         "label": "대국민 공청회, 5월중"
       },
       {
         "id": "milestone-54cccd85-56b0-4869-99cf-031ce4b502e0",
-        "date": "2026-06-15",
+        "date": "2026-03-14",
         "label": "기본계획 발표, 6월 잠정"
       }
     ]
@@ -164,11 +169,11 @@
   {
     "id": "task-8-9b008904-e8e4-454c-8e85-501cc6490963",
     "category": "science-policy",
-    "order": 0,
+    "order": 1,
     "title": "「K-Science」 추진 방안",
     "owner": "과학기술전략과",
     "manager": "",
-    "start": "2026-05-01",
+    "start": "2026-02-19",
     "end": "2026-05-31",
     "visible": true,
     "tentative": false,
@@ -189,13 +194,13 @@
   },
   {
     "id": "task-9-faa9726b-72ba-4200-9b1a-4d45d4c14a2c",
-    "category": "rnd-management",
-    "order": 1,
+    "category": "science-policy",
+    "order": 2,
     "title": "지역 과학기술 혁신법 제정",
     "owner": "과학기술전략과",
     "manager": "",
     "start": "2026-04-23",
-    "end": "2026-05-31",
+    "end": "2026-06-26",
     "visible": true,
     "tentative": false,
     "content": "지역의 과학기술역량을 확충하고 지역기업·산업 경쟁력을 강화할 수 있는 종합 지원체계 마련.",
@@ -215,8 +220,8 @@
   },
   {
     "id": "task-10-e1ef00a0-7e47-446e-80fd-b7e189527b71",
-    "category": "rnd-management",
-    "order": 6,
+    "category": "science-policy",
+    "order": 5,
     "title": "국가연구데이터법 제정",
     "owner": "성과평가정책과",
     "manager": "",
@@ -284,11 +289,11 @@
   {
     "id": "task-13-5d10245c-e2c4-4214-8567-4a7b5618e5de",
     "category": "budget-review",
-    "order": 2,
+    "order": 1,
     "title": "27년도 국가연구개발사업 예산배분 조정(안)",
     "owner": "연구예산총괄과",
     "manager": "",
-    "start": "2026-05-11",
+    "start": "2026-03-04",
     "end": "2026-09-30",
     "visible": true,
     "tentative": false,
@@ -297,7 +302,7 @@
     "milestones": [
       {
         "id": "milestone-5a81058b-3e77-45ec-91a3-12e92dd00ed3",
-        "date": "2026-05-11",
+        "date": "2026-05-28",
         "label": "국가연구개발사업 예산설명회"
       },
       {
@@ -315,7 +320,7 @@
   {
     "id": "task-14-d4356dd7-f617-4771-bbe8-df23b23f4d0a",
     "category": "rnd-management",
-    "order": 5,
+    "order": 2,
     "title": "R&D 행정서식 간소화",
     "owner": "연구제도혁신과",
     "manager": "",
@@ -336,7 +341,7 @@
   {
     "id": "task-15-27725ef9-3267-4ed3-9fcc-b1b2f5114185",
     "category": "budget-review",
-    "order": 0,
+    "order": 2,
     "title": "R&D 예산심의 특화 AI 도입",
     "owner": "기계정보통신조정과",
     "manager": "",
@@ -362,7 +367,7 @@
   {
     "id": "task-16-4ffe1923-4607-4a11-8585-e1370ad3a3e7",
     "category": "rnd-management",
-    "order": 7,
+    "order": 3,
     "title": "가칭 연구24 통합로그인체계 구축",
     "owner": "과학기술정보분석과",
     "manager": "",
@@ -404,7 +409,7 @@
   {
     "id": "task-18-ddf7b980-cbd6-42f1-9b0d-f2e006c7b4e6",
     "category": "rnd-management",
-    "order": 8,
+    "order": 4,
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "",
@@ -445,8 +450,8 @@
   },
   {
     "id": "task-20-c819bd7f-a166-45f6-9e26-c6a604d9aea4",
-    "category": "budget-review",
-    "order": 7,
+    "category": "science-policy",
+    "order": 6,
     "title": "제2차 국가연구개발 중장기 투자전략 수립",
     "owner": "연구개발투자기획과",
     "manager": "",
@@ -467,7 +472,7 @@
   {
     "id": "task-21-83793d67-0597-4f7d-83f4-b1b79f3b96ee",
     "category": "rnd-management",
-    "order": 10,
+    "order": 6,
     "title": "도전적 R&D 연구환경 조성",
     "owner": "연구평가혁신과",
     "manager": "",
@@ -488,7 +493,7 @@
   {
     "id": "task-22-4d765d5e-2f05-47f5-9d2d-9b34ff94e4e1",
     "category": "rnd-management",
-    "order": 9,
+    "order": 5,
     "title": "도전적 목표 미달성 과제 재도약 지원",
     "owner": "연구평가혁신과",
     "manager": "",
@@ -509,12 +514,12 @@
   {
     "id": "task-23-2e000102-3a0d-4a0f-b71a-c160f950fb30",
     "category": "rnd-management",
-    "order": 13,
+    "order": 9,
     "title": "연구비 부정사용 제재처분 강화",
     "owner": "연구윤리권익보호과",
     "manager": "",
     "start": "2026-07-01",
-    "end": "2026-09-30",
+    "end": "2026-12-01",
     "visible": true,
     "tentative": false,
     "content": "부정사용 근절을 위해 제재부가금 최대한도를 기지급 연구개발비의 5배에서 30배로, 참여제한 최대기간을 10년에서 20년으로 강화.",
@@ -522,7 +527,7 @@
     "milestones": [
       {
         "id": "milestone-890c9901-ea33-4014-81e1-db4626f3b1f5",
-        "date": "2026-09-30",
+        "date": "2026-08-22",
         "label": "혁신법 개정 보도, 하반기"
       }
     ]
@@ -530,12 +535,12 @@
   {
     "id": "task-24-e5cc6c85-a194-48aa-bd95-fc24d50b150d",
     "category": "rnd-management",
-    "order": 14,
+    "order": 0,
     "title": "연구자 중복정보입력 최소화",
     "owner": "과학기술정보분석과",
     "manager": "",
-    "start": "2026-07-01",
-    "end": "2026-09-30",
+    "start": "2026-04-08",
+    "end": "2026-12-01",
     "visible": true,
     "tentative": false,
     "content": "IRIS와 기관 자체 시스템 간 정보연계를 강화해 연구자 중복정보 입력을 최소화.",
@@ -543,7 +548,7 @@
     "milestones": [
       {
         "id": "milestone-768ee12a-90aa-417f-aa72-93bb2aaf696d",
-        "date": "2026-09-30",
+        "date": "2026-09-03",
         "label": "정보연계 강화 검토"
       }
     ]
@@ -551,7 +556,7 @@
   {
     "id": "task-25-a33c52eb-16a2-4e12-9e57-a0d84035f91d",
     "category": "rnd-management",
-    "order": 11,
+    "order": 7,
     "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     "owner": "성과평가정책과 · 연구제도혁신과",
     "manager": "",
@@ -572,7 +577,7 @@
   {
     "id": "task-26-136015de-a874-496a-82cc-14f8a272bfdb",
     "category": "rnd-management",
-    "order": 12,
+    "order": 8,
     "title": "연구보안 체계 내실화",
     "owner": "연구윤리권익보호과",
     "manager": "",
