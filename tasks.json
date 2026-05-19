@@ -6,7 +6,7 @@
     "title": "국가전략기술 체계 고도화",
     "owner": "전략기술육성과",
     "manager": "",
-    "start": "2025-09-01",
+    "start": "2025-05-01",
     "end": "2026-04-27",
     "visible": true,
     "tentative": false,
@@ -61,7 +61,7 @@
     "order": 1,
     "title": "국가전략기술 선도 NEXT 프로젝트",
     "owner": "전략기술육성과",
-    "manager": "",
+    "manager": "신소영, 신현중",
     "start": "2026-04-30",
     "end": "2026-04-30",
     "visible": true,
@@ -70,9 +70,29 @@
     "impact": "국가전략기술 선도 NEXT 프로젝트이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
+        "id": "milestone-45ff13b1-8e1a-43b9-a913-b6898d87b592",
+        "date": "2025-07-15",
+        "label": "프로젝트 기획 추진"
+      },
+      {
+        "id": "milestone-00852ee3-6c6e-4f63-9dff-866c1d6d1598",
+        "date": "2026-04-15",
+        "label": "국가전략기술 특위 의결"
+      },
+      {
         "id": "milestone-2448d189-c9d8-4419-ab26-36a6eb691ecf",
         "date": "2026-04-30",
-        "label": "NEXT 프로젝트 보도"
+        "label": "과기관계장관회의 의결"
+      },
+      {
+        "id": "milestone-29436eec-b7f3-4b6e-937f-f60ebdc2987f",
+        "date": "2026-06-01",
+        "label": "NEXT 프로젝트 추진대회 개최"
+      },
+      {
+        "id": "milestone-21ecb62d-6198-4109-9607-9642bcaeaebe",
+        "date": "2026-06-30",
+        "label": "NEXT 프로젝트 후보안 발표"
       }
     ]
   },
@@ -637,7 +657,7 @@
     "visible": true,
     "tentative": false,
     "content": "강연활동",
-    "impact": "",
+    "impact": "대외 강연 활동이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
         "id": "milestone-f71bdc63-3ae5-49ce-8e91-861fe6ef8f1a",
