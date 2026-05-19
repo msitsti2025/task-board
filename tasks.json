@@ -14,9 +14,44 @@
     "impact": "국가전략기술 분류 체계를 가다듬어 R&D 정책 방향을 구체화하고 실행력을 높인다.",
     "milestones": [
       {
+        "id": "milestone-e47b598b-1d89-4432-95cd-13ce4afb046a",
+        "date": "2025-05-29",
+        "label": "고도화 계획(안) 국가전략기술 특위 의결"
+      },
+      {
+        "id": "milestone-cfca958d-4899-4ded-b112-a89fad007ba1",
+        "date": "2025-08-14",
+        "label": "출연연 현장 간담회"
+      },
+      {
+        "id": "milestone-e0c6d97d-4359-4680-8e2b-9d788b8a5c34",
+        "date": "2025-09-12",
+        "label": "산업계 오픈 포럼"
+      },
+      {
+        "id": "milestone-b79bfbc1-f813-48cc-825b-8750fe35d041",
+        "date": "2025-09-18",
+        "label": "과학기술인 오픈포럼"
+      },
+      {
+        "id": "milestone-9fc1d0ca-e519-4e0f-a416-1acbc4a547d5",
+        "date": "2025-09-23",
+        "label": "YCAST 간담회"
+      },
+      {
+        "id": "milestone-9c4624b5-46b5-4486-9a47-9efd9d1910ab",
+        "date": "2025-09-26",
+        "label": "국가전략기술 특별위원회 개최"
+      },
+      {
+        "id": "milestone-2097d7a1-abde-4d59-bf7c-ac123b2b599c",
+        "date": "2026-03-11",
+        "label": "과기장관회의 의결"
+      },
+      {
         "id": "milestone-e87705c4-44f3-4698-9068-80eee6059bb2",
         "date": "2026-04-27",
-        "label": "고도화 방향 발표"
+        "label": "국가과학기술자문회의 심의의결"
       }
     ]
   },
