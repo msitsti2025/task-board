@@ -952,7 +952,7 @@ function renderLane(item, ticks) {
           data-milestone-id="${escapeHtml(milestone.id)}"
           aria-label="${escapeHtml(item.title)}: ${escapeHtml(milestone.label)}"
         ></button>
-        <span class="ms-label" style="left:${boundedPct(milestone.date)}%">${escapeHtml(milestone.label)}</span>
+        <span class="ms-label" style="left:${boundedPct(milestone.date)}%">${escapeHtml(formatDateLabel(milestone.date))} ${escapeHtml(milestone.label)}</span>
       `,
     )
     .join("");

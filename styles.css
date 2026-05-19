@@ -686,13 +686,35 @@ button:disabled {
 
 .ms-label {
   position: absolute;
-  top: calc(50% + 14px);
+  bottom: calc(100% + 8px);
+  left: 50%;
   transform: translateX(-50%);
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(29, 38, 51, 0.88);
   white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 5px;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.ms-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(29, 38, 51, 0.88);
+}
+
+.milestone:hover + .ms-label,
+.milestone:focus-visible + .ms-label {
+  opacity: 1;
 }
 
 .draggable-point {
