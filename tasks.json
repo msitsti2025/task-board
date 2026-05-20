@@ -161,23 +161,43 @@
   },
   {
     "id": "task-6-338a61de-e25a-448c-9554-8f81a237b60d",
-    "category": "rnd-management",
-    "order": 5,
-    "title": "구축형 R&D 심사 시행 관련 시행령·세부지침",
+    "category": "science-policy",
+    "order": 18,
+    "title": "투자형 R&D 사업 신규 도입",
     "owner": "연구개발타당성심사팀",
-    "manager": "",
-    "start": "2026-05-11",
-    "end": "2026-05-11",
+    "manager": "김주연",
+    "start": "2026-02-01",
+    "end": "2026-08-31",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
-    "content": "예타폐지 후속 조치를 위한 과학기술기본법 시행령 개정 및 운용지침 제정.",
-    "impact": "구축형 R&D 심사 시행 관련 시행령·세부지침을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "기업 R&D 지원의 효율성을 제고하기 위해 성과 회수•재투자가 가능한 투자(출자) 방식의 R&D 지원체계 도입",
+    "impact": "‘출연’ 중심의 R&D 지원 방식을 R&D 지출을 전제로 하는 ‘출자’ 지원 방식을 신설하여 투자 방식의 다양화 유도",
     "milestones": [
       {
         "id": "milestone-c5241d0c-333c-47ba-9e25-b48eb948f233",
-        "date": "2026-05-11",
-        "label": "시행령 개정 및 지침 제정 보도"
+        "date": "2026-03-01",
+        "label": "’27년 국가연구개발 투자방향 및 기준, 예산안 편성지침에  ‘투자형 R&D도입’ 반영"
+      },
+      {
+        "id": "milestone-424ab65b-326e-4ab1-917b-10029e587033",
+        "date": "2026-03-15",
+        "label": "투자형 R&D 근거 마련을 위한 법제도 연구용역 추진"
+      },
+      {
+        "id": "milestone-362302aa-4a60-474f-9c8e-3adf05d721b6",
+        "date": "2026-04-01",
+        "label": "R&D 사업화 시스템 고도화 방안 발표"
+      },
+      {
+        "id": "milestone-c5e09db3-1e8d-4282-b7fa-736ffa9f0bb9",
+        "date": "2026-04-15",
+        "label": "’27년 시범사업 기획(각 부처)"
+      },
+      {
+        "id": "milestone-50ceb469-faff-4445-b830-4e8db7db0eb8",
+        "date": "2026-05-01",
+        "label": "’27년 예산편성 세부지침에 연구개발 출자금(460-3) 비목 신설(기획처)"
       }
     ]
   },
@@ -431,11 +451,11 @@
     "id": "task-15-db2b369a-e3e1-483c-9309-56c6e415a554",
     "category": "budget-review",
     "order": 14,
-    "title": "R&D 예산심의 특화 AI 도입",
+    "title": "R&D 예산 심의 특화 AI 도입",
     "owner": "기계정보통신조정과",
-    "manager": "",
-    "start": "2026-04-29",
-    "end": "2026-05-10",
+    "manager": "김미미과장 허지수사무관",
+    "start": "2025-09-01",
+    "end": "2026-05-15",
     "visible": true,
     "complete": true,
     "tentative": false,
@@ -444,13 +464,33 @@
     "milestones": [
       {
         "id": "milestone-b3c5e402-cc86-4f86-ae64-29534ee02ff0",
-        "date": "2026-04-29",
-        "label": "본부장 대상 시연, 보도자료 미배포"
+        "date": "2025-12-01",
+        "label": "특화 AI 모델 개발 개시"
+      },
+      {
+        "id": "milestone-7514ad4d-85f9-455d-964a-5ac53bf0ce22",
+        "date": "2026-02-01",
+        "label": "예산 심의 관련 데이터 정제 완료"
+      },
+      {
+        "id": "milestone-0d2f6b3d-e30d-431b-887e-c02bbc5b7d11",
+        "date": "2026-03-01",
+        "label": "독파모 모델 결정 및 추가 학습"
+      },
+      {
+        "id": "milestone-f216a363-366c-4608-a9f4-ac36151ed3e5",
+        "date": "2026-04-01",
+        "label": "내부 시연(부총리, 본부장)"
+      },
+      {
+        "id": "milestone-b9caeb04-cab6-44fa-8d13-cfe1d8bdb194",
+        "date": "2026-05-11",
+        "label": "'27년 R&D 사업설명회 활용 개시(국과심 전문위원)"
       },
       {
         "id": "milestone-31b7ae12-8d8a-41e9-be92-db0c4d9a4c97",
-        "date": "2026-05-08",
-        "label": "5월초 보도"
+        "date": "2026-05-14",
+        "label": "특화 AI 모델 활용 언론 공개"
       }
     ]
   },
