@@ -609,6 +609,11 @@ button:disabled {
   opacity: 0.58;
 }
 
+.lane.is-incomplete {
+  opacity: 0.38;
+  filter: grayscale(0.6);
+}
+
 .category {
   display: inline-flex;
   align-items: center;

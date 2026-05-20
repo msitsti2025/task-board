@@ -342,6 +342,7 @@ const taskManager = document.querySelector("#taskManager");
 const taskStart = document.querySelector("#taskStart");
 const taskEnd = document.querySelector("#taskEnd");
 const taskTentative = document.querySelector("#taskTentative");
+const taskComplete = document.querySelector("#taskComplete");
 const taskContent = document.querySelector("#taskContent");
 const milestoneRows = document.querySelector("#milestoneRows");
 const newTaskButton = document.querySelector("#newTaskButton");
@@ -373,6 +374,7 @@ function normalizeItems(source) {
     start: item.start || "2026-05-01",
     end: item.end || item.start || "2026-05-01",
     visible: item.visible !== false,
+    complete: item.complete !== false,
     tentative: false,
     content: item.content || "",
     impact: item.impact || inferImpact(item),
@@ -439,7 +441,7 @@ async function loadItems() {
     const response = await fetch("tasks.json", { cache: "no-store" });
     if (response.ok) {
       const stored = await response.json();
-      if (Array.isArray(stored)) {
+      if (Array.isArray(stored) && stored.length > 0) {
         canWrite = isDirectFileHost || isLoopbackHost;
         if (canWrite) storageMode = "local";
         return normalizeItems(stored);
@@ -639,6 +641,7 @@ function emptyTask() {
     start: today,
     end: today,
     visible: true,
+    complete: true,
     tentative: false,
     content: "",
     impact: "",
@@ -669,6 +672,7 @@ function renderEditor(item = getSelectedItem()) {
   taskStart.value = current.start;
   taskEnd.value = current.end;
   taskTentative.checked = current.visible !== false;
+  taskComplete.checked = current.complete !== false;
   taskContent.value = current.content;
   taskImpact.value = current.impact || "";
   deleteButton.disabled = !current.id;
@@ -730,6 +734,7 @@ function readTaskFromForm() {
     start: taskStart.value,
     end: taskEnd.value,
     visible: taskTentative.checked,
+    complete: taskComplete.checked,
     tentative: false,
     content: taskContent.value.trim(),
     impact: taskImpact.value.trim(),
@@ -811,6 +816,68 @@ function duplicateSelectedTask() {
 }
 
 let taskDirHandle = null;
+let pendingDirHandle = null; // IndexedDB에서 복원했지만 아직 권한 승인 전인 핸들
+
+// ── IndexedDB 핸들 영속화 ─────────────────────────────────────────────────
+const HANDLE_DB_NAME = "osti-task-board";
+const HANDLE_DB_STORE = "handles";
+const HANDLE_DB_KEY = "taskDir";
+
+function openHandleDb() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(HANDLE_DB_NAME, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore(HANDLE_DB_STORE);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function saveHandleToDb(handle) {
+  try {
+    const db = await openHandleDb();
+    const tx = db.transaction(HANDLE_DB_STORE, "readwrite");
+    tx.objectStore(HANDLE_DB_STORE).put(handle, HANDLE_DB_KEY);
+    await new Promise((res, rej) => { tx.oncomplete = res; tx.onerror = () => rej(tx.error); });
+    db.close();
+  } catch (error) {
+    console.warn("폴더 핸들 저장 실패:", error);
+  }
+}
+
+async function loadHandleFromDb() {
+  try {
+    const db = await openHandleDb();
+    const tx = db.transaction(HANDLE_DB_STORE, "readonly");
+    const handle = await new Promise((res, rej) => {
+      const req = tx.objectStore(HANDLE_DB_STORE).get(HANDLE_DB_KEY);
+      req.onsuccess = () => res(req.result ?? null);
+      req.onerror = () => rej(req.error);
+    });
+    db.close();
+    return handle;
+  } catch {
+    return null;
+  }
+}
+
+// 앱 시작 시 이전 세션의 폴더 핸들을 복원.
+// 이미 권한이 있으면 taskDirHandle로 바로 설정, 승인이 필요하면 pendingDirHandle에 보관.
+async function restoreDirHandle() {
+  if (!window.showDirectoryPicker) return;
+  const handle = await loadHandleFromDb();
+  if (!handle) return;
+  try {
+    const perm = await handle.queryPermission({ mode: "readwrite" });
+    if (perm === "granted") {
+      taskDirHandle = handle;
+    } else if (perm === "prompt") {
+      pendingDirHandle = handle;
+    }
+  } catch {
+    // 핸들이 유효하지 않으면 무시
+  }
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 async function autoSaveToFile() {
   if (!taskDirHandle) return;
@@ -826,12 +893,30 @@ async function autoSaveToFile() {
   }
 }
 
-// 로컬 모드에서 최초 저장 시 폴더를 지정하고 이후 자동 저장.
-// taskDirHandle이 이미 설정된 경우 persistItems() → autoSaveToFile()이 처리하므로 여기선 최초 설정만 담당.
+// 로컬 모드 저장: 이전 세션 핸들 재사용 → 권한 재승인 → 새 폴더 선택 순으로 시도.
 async function saveToLocalFile() {
   if (!window.showDirectoryPicker || taskDirHandle) return;
+
+  // 이전 세션 핸들이 있으면 권한 재승인 시도 (저장 버튼 클릭 = user gesture 충족)
+  if (pendingDirHandle) {
+    try {
+      const perm = await pendingDirHandle.requestPermission({ mode: "readwrite" });
+      if (perm === "granted") {
+        taskDirHandle = pendingDirHandle;
+        pendingDirHandle = null;
+        await autoSaveToFile();
+        return;
+      }
+    } catch {
+      // 권한 거부 또는 핸들 만료 시 새로 선택
+    }
+    pendingDirHandle = null;
+  }
+
+  // 새 폴더 선택
   try {
     taskDirHandle = await window.showDirectoryPicker({ mode: "readwrite" });
+    await saveHandleToDb(taskDirHandle);
     await autoSaveToFile();
   } catch (error) {
     if (error.name !== "AbortError") console.error("폴더 선택 실패:", error);
@@ -950,7 +1035,7 @@ function renderLane(item, ticks) {
 
   return `
     <article
-      class="lane ${isStaff && item.id === selectedItemId ? "is-selected" : ""} ${item.visible === false ? "is-hidden-item" : ""}"
+      class="lane ${isStaff && item.id === selectedItemId ? "is-selected" : ""} ${item.visible === false ? "is-hidden-item" : ""} ${item.complete === false ? "is-incomplete" : ""}"
       style="color:${category.color}"
       data-id="${escapeHtml(item.id)}"
       draggable="${isStaff}"
@@ -1312,7 +1397,10 @@ timeline.addEventListener("click", (event) => {
 
 async function init() {
   items = await loadItems();
-  if (storageMode === "local" && canWrite) isStaff = true;
+  if (storageMode === "local" && canWrite) {
+    isStaff = true;
+    await restoreDirHandle();
+  }
   else await refreshStaffSession();
   selectedItemId = items[0]?.id ?? "";
   renderCategoryOptions();
