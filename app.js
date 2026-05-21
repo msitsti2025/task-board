@@ -8,6 +8,7 @@ const categories = [
 
 const categoryGroups = categories.filter((category) => category.id !== "all");
 const ownerOptions = [
+  "혁신본부",
   "과학기술정책과",
   "과학기술전략과",
   "과학기술정책조정과",
@@ -348,6 +349,8 @@ const milestoneRows = document.querySelector("#milestoneRows");
 const newTaskButton = document.querySelector("#newTaskButton");
 const duplicateButton = document.querySelector("#duplicateButton");
 const deleteButton = document.querySelector("#deleteButton");
+const downloadButton = document.querySelector("#downloadButton");
+const uploadButton = document.querySelector("#uploadButton");
 const editorPanel = document.querySelector("#editorPanel");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
@@ -1018,6 +1021,7 @@ function renderLane(item, ticks) {
   const todayPct = boundedPct(isoDate(new Date()));
   const width = Math.max(end - start, 0.8);
   const milestones = item.milestones
+    .filter((milestone) => milestone.date >= "2025-07-01")
     .map(
       (milestone) => `
         <button
@@ -1158,6 +1162,188 @@ taskForm.addEventListener("submit", saveTask);
 newTaskButton.addEventListener("click", startNewTask);
 deleteButton.addEventListener("click", deleteSelectedTask);
 duplicateButton.addEventListener("click", duplicateSelectedTask);
+function itemToMarkdown(item) {
+  const cat = categoryById[item.category]?.label || item.category;
+  const dateRange = item.start === item.end
+    ? item.start
+    : `${item.start} ~ ${item.end}`;
+  const lines = [
+    `# ${item.title}`,
+    ``,
+    `| 항목 | 내용 |`,
+    `|------|------|`,
+    `| 업무 그룹 | ${cat} |`,
+    `| 소관 | ${item.owner || "-"} |`,
+  ];
+  if (item.manager) lines.push(`| 담당자 | ${item.manager} |`);
+  lines.push(
+    `| 기간 | ${dateRange} |`,
+    `| 공개 여부 | ${item.visible !== false ? "공개" : "비공개"} |`,
+    `| 완료 여부 | ${item.complete !== false ? "완료" : "미완료"} |`,
+  );
+  if (item.content) {
+    lines.push(``, `## 업무 내용`, ``, item.content);
+  }
+  if (item.impact) {
+    lines.push(``, `## 추진 목표`, ``, item.impact);
+  }
+  if (item.milestones?.length) {
+    lines.push(``, `## 주요 일정`, ``);
+    item.milestones.forEach((ms) => {
+      lines.push(`- **${ms.date}** ${ms.label}`);
+    });
+  }
+  return lines.join("\n");
+}
+
+function downloadMarkdown(item) {
+  const md = itemToMarkdown(item);
+  const blob = new Blob([md], { type: "text/plain; charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  const safeName = (item.title || "task").replace(/[/\\?%*:|"<>]/g, "_");
+  a.download = `${safeName}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// 에디터 내려받기: 현재 선택된 업무를 마크다운으로 저장
+downloadButton.addEventListener("click", () => {
+  const item = getSelectedItem();
+  if (!item) return;
+  downloadMarkdown(item);
+});
+
+// ── 마크다운 업로드 ───────────────────────────────────────────────────────
+function parseMarkdownToForm(text) {
+  const lines = text.split("\n");
+  const result = {};
+
+  // # 제목
+  const titleLine = lines.find((l) => l.startsWith("# "));
+  if (titleLine) result.title = titleLine.slice(2).trim();
+
+  // 표 행 파싱
+  for (const line of lines) {
+    const m = line.match(/^\|\s*(.+?)\s*\|\s*(.+?)\s*\|/);
+    if (!m) continue;
+    const key = m[1].trim();
+    const val = m[2].trim();
+    if (key === "항목" || /^[-:]+$/.test(key)) continue;
+    switch (key) {
+      case "업무 그룹": {
+        const cat = categories.find((c) => c.label === val);
+        if (cat) result.category = cat.id;
+        break;
+      }
+      case "소관":
+        result.owner = val === "-" ? "" : val;
+        break;
+      case "담당자":
+        result.manager = val === "-" ? "" : val;
+        break;
+      case "기간": {
+        const parts = val.split("~").map((s) => s.trim());
+        if (parts[0]) result.start = parts[0];
+        result.end = parts[1] || parts[0] || result.start;
+        break;
+      }
+      case "공개 여부":
+        result.visible = val === "공개";
+        break;
+      case "완료 여부":
+        result.complete = val === "완료";
+        break;
+    }
+  }
+
+  // ## 섹션 파싱
+  let section = null;
+  const sectionLines = {};
+  const milestones = [];
+  for (const line of lines) {
+    if (line.startsWith("## ")) {
+      section = line.slice(3).trim();
+      sectionLines[section] = [];
+    } else if (section === "주요 일정") {
+      const ms = line.match(/^-\s+\*\*(.+?)\*\*\s*(.*)/);
+      if (ms) milestones.push({ id: createId("milestone"), date: ms[1], label: ms[2].trim() });
+    } else if (section) {
+      sectionLines[section].push(line);
+    }
+  }
+  if (sectionLines["업무 내용"] !== undefined)
+    result.content = sectionLines["업무 내용"].join("\n").trim();
+  if (sectionLines["추진 목표"] !== undefined)
+    result.impact = sectionLines["추진 목표"].join("\n").trim();
+  if (milestones.length) result.milestones = milestones;
+
+  return result;
+}
+
+function applyParsedToForm(parsed) {
+  if (parsed.title !== undefined) taskTitle.value = parsed.title;
+  if (parsed.category !== undefined) taskCategory.value = parsed.category;
+  if (parsed.owner !== undefined) renderOwnerOptions(parsed.owner);
+  if (parsed.manager !== undefined) taskManager.value = parsed.manager;
+  if (parsed.start !== undefined) taskStart.value = parsed.start;
+  if (parsed.end !== undefined) taskEnd.value = parsed.end;
+  if (parsed.visible !== undefined) taskTentative.checked = parsed.visible;
+  if (parsed.complete !== undefined) taskComplete.checked = parsed.complete;
+  if (parsed.content !== undefined) taskContent.value = parsed.content;
+  if (parsed.impact !== undefined) taskImpact.value = parsed.impact;
+  if (parsed.milestones !== undefined) renderMilestoneRows(parsed.milestones);
+}
+
+uploadButton.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".md,text/markdown,text/plain";
+  input.addEventListener("change", () => {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const parsed = parseMarkdownToForm(reader.result);
+      applyParsedToForm(parsed);
+    };
+    reader.readAsText(file, "utf-8");
+  });
+  input.click();
+});
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── 업무 상세 팝업 ────────────────────────────────────────────────────────
+const taskModal = document.querySelector("#taskModal");
+const taskModalTitle = document.querySelector("#taskModalTitle");
+const taskModalBody = document.querySelector("#taskModalBody");
+const taskModalClose = document.querySelector("#taskModalClose");
+const taskModalDownload = document.querySelector("#taskModalDownload");
+let modalItem = null;
+
+function openTaskModal(item) {
+  modalItem = item;
+  taskModalTitle.textContent = item.title;
+  taskModalBody.textContent = itemToMarkdown(item);
+  taskModal.hidden = false;
+  taskModalClose.focus();
+}
+
+function closeTaskModal() {
+  taskModal.hidden = true;
+  modalItem = null;
+}
+
+taskModalClose.addEventListener("click", closeTaskModal);
+taskModal.querySelector(".task-modal-backdrop").addEventListener("click", closeTaskModal);
+taskModalDownload.addEventListener("click", () => {
+  if (modalItem) downloadMarkdown(modalItem);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !taskModal.hidden) closeTaskModal();
+});
+// ─────────────────────────────────────────────────────────────────────────────
 
 staffLoginButton.addEventListener("click", () => {
   if (storageMode !== "api") return;
@@ -1374,6 +1560,17 @@ timeline.addEventListener("click", (event) => {
     return;
   }
   if (event.target.closest(".draggable-point")) return;
+
+  // 업무명(h2) 클릭 → 상세 팝업
+  const titleEl = event.target.closest(".lane-meta h2");
+  if (titleEl) {
+    const lane = titleEl.closest(".lane[data-id]");
+    if (lane) {
+      const item = items.find((candidate) => candidate.id === lane.dataset.id);
+      if (item) { openTaskModal(item); return; }
+    }
+  }
+
   const button = event.target.closest("[data-action]");
   if (button) {
     const id = button.dataset.id;

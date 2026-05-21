@@ -61,8 +61,10 @@
           <div class="editor-actions">
             <button type="button" class="secondary-button" id="newTaskButton">새 업무</button>
             <button type="button" class="secondary-button" id="duplicateButton">복제</button>
+            <button type="button" class="secondary-button" id="uploadButton">업로드</button>
             <button type="submit" class="secondary-button" form="taskForm">저장</button>
             <button type="button" class="secondary-button" id="deleteButton">삭제</button>
+            <button type="button" class="secondary-button" id="downloadButton">내려받기</button>
           </div>
         </div>
 
@@ -94,11 +96,11 @@
               <input id="taskEnd" type="date" required />
             </label>
             <label class="checkbox-field">
-              <span>공개여부</span>
+              <span>공개 여부</span>
               <input id="taskTentative" type="checkbox" />
             </label>
             <label class="checkbox-field">
-              <span>완료</span>
+              <span>완료 여부</span>
               <input id="taskComplete" type="checkbox" />
             </label>
             <label class="full-field">
@@ -125,6 +127,20 @@
         <div id="timelineScrollbarInner"></div>
       </div>
     </main>
+
+    <div class="task-modal" id="taskModal" hidden aria-modal="true" role="dialog" aria-labelledby="taskModalTitle">
+      <div class="task-modal-backdrop"></div>
+      <div class="task-modal-box">
+        <div class="task-modal-head">
+          <h2 id="taskModalTitle"></h2>
+          <div class="task-modal-actions">
+            <button type="button" class="secondary-button" id="taskModalDownload">내려받기</button>
+            <button type="button" class="secondary-button" id="taskModalClose">닫기</button>
+          </div>
+        </div>
+        <pre class="task-modal-body" id="taskModalBody"></pre>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>
