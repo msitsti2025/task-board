@@ -348,10 +348,13 @@ const taskContent = document.querySelector("#taskContent");
 const milestoneRows = document.querySelector("#milestoneRows");
 const newTaskButton = document.querySelector("#newTaskButton");
 const duplicateButton = document.querySelector("#duplicateButton");
+const saveButton = document.querySelector("#saveButton");
 const deleteButton = document.querySelector("#deleteButton");
 const downloadButton = document.querySelector("#downloadButton");
 const uploadButton = document.querySelector("#uploadButton");
 const editorPanel = document.querySelector("#editorPanel");
+const editorNotice = document.querySelector("#editorNotice");
+const editorKicker = document.querySelector("#editorKicker");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
 const loginPanel = document.querySelector("#loginPanel");
@@ -621,15 +624,23 @@ function renderOwnerOptions(selectedOwner = "") {
 }
 
 function renderAuthState() {
-  const editable = canWrite;
   const apiMode = storageMode === "api";
-  editorPanel.hidden = !editable || (apiMode && !isStaff);
-  staffLoginButton.hidden = !editable || !apiMode || isStaff;
-  staffLogoutButton.hidden = !editable || !apiMode || !isStaff;
-  if (!editable || !apiMode || isStaff) {
+  const readonlyMode = storageMode === "readonly";
+  // 에디터 패널: api 모드는 로그인 후, local·readonly 모드는 항상 표시
+  editorPanel.hidden = apiMode && !isStaff;
+  staffLoginButton.hidden = !apiMode || isStaff;
+  staffLogoutButton.hidden = !apiMode || !isStaff;
+  if (!apiMode || isStaff) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
+  // readonly 모드: 편집 전용 버튼 숨김, 안내 배너 표시
+  const writeOnly = [newTaskButton, duplicateButton, saveButton, deleteButton];
+  writeOnly.forEach((btn) => { btn.hidden = readonlyMode; });
+  uploadButton.hidden = false;
+  downloadButton.hidden = false;
+  editorNotice.hidden = !readonlyMode;
+  editorKicker.textContent = readonlyMode ? "검토 / 수정 제안" : "직원 입력 화면";
 }
 
 function emptyTask() {
@@ -666,7 +677,11 @@ function getSelectedItem() {
 
 function renderEditor(item = getSelectedItem()) {
   const current = item || emptyTask();
-  editorTitle.textContent = current.id ? "업무 수정" : "새 업무 추가";
+  if (storageMode === "readonly") {
+    editorTitle.textContent = current.id ? "업무 검토 및 수정 제안" : "업무를 선택하세요";
+  } else {
+    editorTitle.textContent = current.id ? "업무 수정" : "새 업무 추가";
+  }
   taskId.value = current.id;
   taskTitle.value = current.title;
   taskCategory.value = current.category;
@@ -746,7 +761,7 @@ function readTaskFromForm() {
 }
 
 function selectItem(id) {
-  if (!isStaff) return;
+  if (!isStaff && storageMode !== "readonly") return;
   selectedItemId = id;
   renderEditor();
   renderTimeline();
@@ -1561,13 +1576,23 @@ timeline.addEventListener("click", (event) => {
   }
   if (event.target.closest(".draggable-point")) return;
 
-  // 업무명(h2) 클릭 → 상세 팝업
+  // 업무명(h2) 클릭
   const titleEl = event.target.closest(".lane-meta h2");
   if (titleEl) {
     const lane = titleEl.closest(".lane[data-id]");
     if (lane) {
       const item = items.find((candidate) => candidate.id === lane.dataset.id);
-      if (item) { openTaskModal(item); return; }
+      if (item) {
+        if (storageMode === "readonly") {
+          // readonly: 에디터 패널에 불러오기
+          selectItem(item.id);
+          document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          // 편집 모드: 팝업
+          openTaskModal(item);
+        }
+        return;
+      }
     }
   }
 
@@ -1576,7 +1601,9 @@ timeline.addEventListener("click", (event) => {
     const id = button.dataset.id;
     if (button.dataset.action === "edit-task") {
       selectItem(id);
-      if (isStaff) document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+      if (isStaff || storageMode === "readonly") {
+        document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
     if (button.dataset.action === "delete-task") {
       selectedItemId = id;
@@ -1587,7 +1614,7 @@ timeline.addEventListener("click", (event) => {
   }
 
   const lane = event.target.closest(".lane[data-id]");
-  if (!lane || !isStaff) return;
+  if (!lane || (!isStaff && storageMode !== "readonly")) return;
   selectItem(lane.dataset.id);
   document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
 });

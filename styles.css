@@ -243,6 +243,21 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.editor-notice {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #fef9ec;
+  border: 1px solid #f5d87a;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7a5c00;
+}
+
+.editor-notice[hidden] {
+  display: none;
+}
+
 .editor-head,
 .milestone-head,
 .form-actions {

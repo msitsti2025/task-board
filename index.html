@@ -53,16 +53,19 @@
       </section>
 
       <section class="editor-panel" id="editorPanel" aria-label="직원 업무 입력" hidden>
+        <p class="editor-notice" id="editorNotice" hidden>
+          이 화면은 <strong>읽기 전용</strong>입니다. 내용을 수정한 뒤 <strong>내려받기</strong>로 저장하고, 담당자에게 전달하세요.
+        </p>
         <div class="editor-head">
           <div>
-            <p class="section-kicker">직원 입력 화면</p>
+            <p class="section-kicker" id="editorKicker">직원 입력 화면</p>
             <h2 id="editorTitle">새 업무 등록</h2>
           </div>
           <div class="editor-actions">
             <button type="button" class="secondary-button" id="newTaskButton">새 업무</button>
             <button type="button" class="secondary-button" id="duplicateButton">복제</button>
             <button type="button" class="secondary-button" id="uploadButton">업로드</button>
-            <button type="submit" class="secondary-button" form="taskForm">저장</button>
+            <button type="submit" class="secondary-button" id="saveButton" form="taskForm">저장</button>
             <button type="button" class="secondary-button" id="deleteButton">삭제</button>
             <button type="button" class="secondary-button" id="downloadButton">내려받기</button>
           </div>
