@@ -52,6 +52,7 @@
         </form>
       </section>
 
+      <div class="review-modal-backdrop" id="reviewModalBackdrop" hidden></div>
       <section class="editor-panel" id="editorPanel" aria-label="직원 업무 입력" hidden>
         <p class="editor-notice" id="editorNotice" hidden>
           이 화면은 <strong>읽기 전용</strong>입니다. 내용을 수정한 뒤 <strong>내려받기</strong>로 저장하고, 담당자에게 전달하세요.
@@ -68,6 +69,7 @@
             <button type="submit" class="secondary-button" id="saveButton" form="taskForm">저장</button>
             <button type="button" class="secondary-button" id="deleteButton">삭제</button>
             <button type="button" class="secondary-button" id="downloadButton">내려받기</button>
+            <button type="button" class="secondary-button" id="reviewCloseButton" hidden>닫기</button>
           </div>
         </div>
 

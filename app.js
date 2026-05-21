@@ -355,6 +355,8 @@ const uploadButton = document.querySelector("#uploadButton");
 const editorPanel = document.querySelector("#editorPanel");
 const editorNotice = document.querySelector("#editorNotice");
 const editorKicker = document.querySelector("#editorKicker");
+const reviewModalBackdrop = document.querySelector("#reviewModalBackdrop");
+const reviewCloseButton = document.querySelector("#reviewCloseButton");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
 const loginPanel = document.querySelector("#loginPanel");
@@ -634,11 +636,12 @@ function renderAuthState() {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
-  // readonly 모드: 편집 전용 버튼 숨김, 안내 배너 표시
+  // readonly 모드: 편집 전용 버튼 숨김, 닫기 버튼 표시, 안내 배너 표시
   const writeOnly = [newTaskButton, duplicateButton, saveButton, deleteButton];
   writeOnly.forEach((btn) => { btn.hidden = readonlyMode; });
   uploadButton.hidden = false;
   downloadButton.hidden = false;
+  reviewCloseButton.hidden = !readonlyMode;
   editorNotice.hidden = !readonlyMode;
   editorKicker.textContent = readonlyMode ? "검토 / 수정 제안" : "직원 입력 화면";
 }
@@ -760,11 +763,26 @@ function readTaskFromForm() {
   };
 }
 
+function openReviewModal() {
+  editorPanel.hidden = false;
+  editorPanel.classList.add("is-modal");
+  reviewModalBackdrop.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeReviewModal() {
+  editorPanel.hidden = true;
+  editorPanel.classList.remove("is-modal");
+  reviewModalBackdrop.hidden = true;
+  document.body.style.overflow = "";
+}
+
 function selectItem(id) {
   if (!isStaff && storageMode !== "readonly") return;
   selectedItemId = id;
   renderEditor();
   renderTimeline();
+  if (storageMode === "readonly") openReviewModal();
 }
 
 function startNewTask() {
@@ -1355,8 +1373,14 @@ taskModal.querySelector(".task-modal-backdrop").addEventListener("click", closeT
 taskModalDownload.addEventListener("click", () => {
   if (modalItem) downloadMarkdown(modalItem);
 });
+reviewCloseButton.addEventListener("click", closeReviewModal);
+reviewModalBackdrop.addEventListener("click", closeReviewModal);
+
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !taskModal.hidden) closeTaskModal();
+  if (event.key === "Escape") {
+    if (!taskModal.hidden) closeTaskModal();
+    else if (!reviewModalBackdrop.hidden) closeReviewModal();
+  }
 });
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1584,11 +1608,8 @@ timeline.addEventListener("click", (event) => {
       const item = items.find((candidate) => candidate.id === lane.dataset.id);
       if (item) {
         if (storageMode === "readonly") {
-          // readonly: 에디터 패널에 불러오기
           selectItem(item.id);
-          document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
-          // 편집 모드: 팝업
           openTaskModal(item);
         }
         return;
@@ -1601,9 +1622,7 @@ timeline.addEventListener("click", (event) => {
     const id = button.dataset.id;
     if (button.dataset.action === "edit-task") {
       selectItem(id);
-      if (isStaff || storageMode === "readonly") {
-        document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (isStaff) document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
     }
     if (button.dataset.action === "delete-task") {
       selectedItemId = id;
@@ -1616,7 +1635,7 @@ timeline.addEventListener("click", (event) => {
   const lane = event.target.closest(".lane[data-id]");
   if (!lane || (!isStaff && storageMode !== "readonly")) return;
   selectItem(lane.dataset.id);
-  document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (isStaff) document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 async function init() {
