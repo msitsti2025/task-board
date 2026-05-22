@@ -628,8 +628,8 @@ function renderOwnerOptions(selectedOwner = "") {
 function renderAuthState() {
   const apiMode = storageMode === "api";
   const readonlyMode = storageMode === "readonly";
-  // 에디터 패널: api 모드는 로그인 후, local·readonly 모드는 항상 표시
-  editorPanel.hidden = apiMode && !isStaff;
+  // 에디터 패널: api 모드는 로그인 후, local 모드는 항상 표시, readonly 모드는 팝업으로만 표시
+  editorPanel.hidden = (apiMode && !isStaff) || readonlyMode;
   staffLoginButton.hidden = !apiMode || isStaff;
   staffLogoutButton.hidden = !apiMode || !isStaff;
   if (!apiMode || isStaff) {
