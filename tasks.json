@@ -16,42 +16,50 @@
     "milestones": [
       {
         "id": "milestone-41d4ffb1-5fd6-4b87-a169-437647f4569f",
-        "date": "2025-05-29",
+        "startDate": "2025-05-29",
+        "endDate": "2025-05-29",
         "label": "국가전략기술 특위 의결"
       },
       {
         "id": "milestone-1a263add-aa1c-449b-931f-d22de661ce65",
-        "date": "2025-08-14",
+        "startDate": "2025-08-14",
+        "endDate": "2025-08-14",
         "label": "출연연 현장 간담회"
       },
       {
         "id": "milestone-5e68df06-9c47-4472-b5cb-1d75c8efbb80",
-        "date": "2025-09-12",
+        "startDate": "2025-09-12",
+        "endDate": "2025-09-12",
         "label": "산업계 오픈 포럼"
       },
       {
         "id": "milestone-2fcde159-15d2-40ae-bc6c-479fdd283b43",
-        "date": "2025-09-18",
+        "startDate": "2025-09-18",
+        "endDate": "2025-09-18",
         "label": "과학기술인 오픈포럼"
       },
       {
         "id": "milestone-6dae72d0-94af-4c08-b7b8-794dbb037c40",
-        "date": "2025-09-23",
+        "startDate": "2025-09-23",
+        "endDate": "2025-09-23",
         "label": "젊은 과학기술인 간담회"
       },
       {
         "id": "milestone-c01a9d7c-e5f1-42ea-98f7-462d060a1830",
-        "date": "2025-09-26",
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
         "label": "국가전략기술 특별위원회 간담회"
       },
       {
         "id": "milestone-1a65e8d2-5511-4a4a-b12a-7c8c1965df7f",
-        "date": "2026-03-11",
+        "startDate": "2026-03-11",
+        "endDate": "2026-03-11",
         "label": "과기장관회의 의결"
       },
       {
         "id": "milestone-67196e8e-4b7b-4100-9293-e810d747c1c4",
-        "date": "2026-04-27",
+        "startDate": "2026-04-27",
+        "endDate": "2026-04-27",
         "label": "국가과학기술자문회의 심의의결"
       }
     ]
@@ -73,22 +81,26 @@
     "milestones": [
       {
         "id": "milestone-f7b0f857-ef68-47f0-9141-dfd4c4eae305",
-        "date": "2026-04-15",
+        "startDate": "2026-04-15",
+        "endDate": "2026-04-15",
         "label": "국가전략기술 특위 의결"
       },
       {
         "id": "milestone-f77ee9da-6df8-4eb0-8c67-dfc570573a9b",
-        "date": "2026-04-30",
+        "startDate": "2026-04-30",
+        "endDate": "2026-04-30",
         "label": "과기관계장관회의 의결"
       },
       {
         "id": "milestone-3f6c0a49-4842-4e57-8832-3023f31b053f",
-        "date": "2026-06-01",
+        "startDate": "2026-06-01",
+        "endDate": "2026-06-01",
         "label": "NEXT 프로젝트 추진대회 개최"
       },
       {
         "id": "milestone-4b2dc070-3e7b-4c2a-8e03-c65a22aee2fa",
-        "date": "2026-06-15",
+        "startDate": "2026-06-15",
+        "endDate": "2026-06-15",
         "label": "NEXT 프로젝트 후보안 발표"
       }
     ]
@@ -99,19 +111,44 @@
     "order": 3,
     "title": "연구비 집행 자율성 확대",
     "owner": "연구제도혁신과",
-    "manager": "",
-    "start": "2026-04-28",
-    "end": "2026-04-28",
+    "manager": "김도경 과장, 서승호 사무관",
+    "start": "2025-11-07",
+    "end": "2026-05-06",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
-    "content": "자율사용 비목 신설, 간접비 네거티브 전환 등 연구비 사용 자율성을 강화하고 사용불가 항목 외 연구 관련 모든 항목을 허용하는 방향으로 전환.",
-    "impact": "연구비 집행 자율성 확대을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "연구비 집행 자율성 확대를 위해 연구자 자율비목 신설 및 간접비 네거티브 규제 전환 전환",
+    "impact": "자율사용 비목 신설, 간접비 네거티브 전환. 사용불가 항목 외 연구 관련 모든 항목을 허용.  연구 현장의 행정부담을 대폭 경감.",
     "milestones": [
       {
         "id": "milestone-710f9a08-8d33-4d2b-a9d9-fa29655b027c",
-        "date": "2026-04-28",
-        "label": "혁신법 시행령 개정 보도"
+        "startDate": "2025-11-07",
+        "endDate": "2025-11-07",
+        "label": "생태계 혁신방안 포함"
+      },
+      {
+        "id": "milestone-8ad3dcfb-6076-4021-931f-bb974055ced8",
+        "startDate": "2025-12-19",
+        "endDate": "2025-12-19",
+        "label": "연구비 집행 자율성 확대 방안 관련 산단장간담회개최"
+      },
+      {
+        "id": "milestone-a66e04dc-fd68-4b16-936d-f950fb7cb89c",
+        "startDate": "2025-12-31",
+        "endDate": "2025-12-31",
+        "label": "연구비 집행 자율성 확대 방안 마련"
+      },
+      {
+        "id": "milestone-d6efe170-a0c6-4ba5-9432-f44d9e81f7c5",
+        "startDate": "2026-04-28",
+        "endDate": "2026-04-28",
+        "label": "연구비 집행 자율성 확대 방안 반영한 국가연구개발혁신법 시행령 개정(국무회의 상정, 의결)"
+      },
+      {
+        "id": "milestone-289a9175-f936-467e-8dc9-137091466ce0",
+        "startDate": "2026-05-06",
+        "endDate": "2026-05-06",
+        "label": "혁신법 시행령 및 연구비 고시 시행"
       }
     ]
   },
@@ -132,42 +169,50 @@
     "milestones": [
       {
         "id": "milestone-6c1415cc-84d1-464c-bde4-6c906f2fcdb6",
-        "date": "2025-09-03",
+        "startDate": "2025-09-03",
+        "endDate": "2025-09-03",
         "label": "YTN 라디오 '슬기로운 라디오 생활' 출연"
       },
       {
         "id": "milestone-8a248040-4e98-48a0-a7f5-514c5558ec5e",
-        "date": "2025-11-25",
+        "startDate": "2025-11-25",
+        "endDate": "2025-11-25",
         "label": "2025 과학언론의 밤(한국과학기자협회)"
       },
       {
         "id": "milestone-49e433a6-9561-4d34-84c3-33dcb21569c4",
-        "date": "2025-11-26",
+        "startDate": "2025-11-26",
+        "endDate": "2025-11-26",
         "label": "서울퓨처포럼 축사(머니투데이방송)"
       },
       {
         "id": "milestone-7732ae85-7bcb-4f48-a1cf-642c12dc6fed",
-        "date": "2025-12-17",
+        "startDate": "2025-12-17",
+        "endDate": "2025-12-17",
         "label": "K-과학인재 아카데미 좌담회 패널참석 (서울신문)"
       },
       {
         "id": "milestone-d22e80c1-853b-4b13-a148-bdd672672b1b",
-        "date": "2026-03-12",
+        "startDate": "2026-03-12",
+        "endDate": "2026-03-12",
         "label": "과학기술혁신본부장 기자간담회"
       },
       {
         "id": "milestone-99fde4d2-ff4c-48bc-bebe-e379f7386409",
-        "date": "2026-03-26",
+        "startDate": "2026-03-26",
+        "endDate": "2026-03-26",
         "label": "K-과학인재 아카데미 비전선포식 축사 (서울신문 전자신문)"
       },
       {
         "id": "milestone-d4b1b70b-0764-41eb-b7b0-4ecef0038080",
-        "date": "2026-03-31",
+        "startDate": "2026-03-31",
+        "endDate": "2026-03-31",
         "label": "2026 매경 AX클럽 출범식 축사(매일경제)"
       },
       {
         "id": "milestone-8761dd53-67cf-48b9-9922-aea3a4226e1d",
-        "date": "2026-05-13",
+        "startDate": "2026-05-13",
+        "endDate": "2026-05-13",
         "label": "2026 아시아미래기업포럼 축사(아시아경제)"
       }
     ]
@@ -189,7 +234,8 @@
     "milestones": [
       {
         "id": "milestone-af3d8823-193a-49cf-836d-918f13f2bda4",
-        "date": "2026-05-08",
+        "startDate": "2026-05-08",
+        "endDate": "2026-05-08",
         "label": "GIST 타운홀미팅"
       }
     ]
@@ -211,27 +257,32 @@
     "milestones": [
       {
         "id": "milestone-c5241d0c-333c-47ba-9e25-b48eb948f233",
-        "date": "2026-03-01",
+        "startDate": "2026-03-01",
+        "endDate": "2026-03-01",
         "label": "’27년 국가연구개발 투자방향 및 기준, 예산안 편성지침에  ‘투자형 R&D도입’ 반영"
       },
       {
         "id": "milestone-424ab65b-326e-4ab1-917b-10029e587033",
-        "date": "2026-03-15",
+        "startDate": "2026-03-15",
+        "endDate": "2026-03-15",
         "label": "투자형 R&D 근거 마련을 위한 법제도 연구용역 추진"
       },
       {
         "id": "milestone-362302aa-4a60-474f-9c8e-3adf05d721b6",
-        "date": "2026-04-01",
+        "startDate": "2026-04-01",
+        "endDate": "2026-04-01",
         "label": "R&D 사업화 시스템 고도화 방안 발표"
       },
       {
         "id": "milestone-c5e09db3-1e8d-4282-b7fa-736ffa9f0bb9",
-        "date": "2026-04-15",
+        "startDate": "2026-04-15",
+        "endDate": "2026-04-15",
         "label": "’27년 시범사업 기획(각 부처)"
       },
       {
         "id": "milestone-50ceb469-faff-4445-b830-4e8db7db0eb8",
-        "date": "2026-05-01",
+        "startDate": "2026-05-01",
+        "endDate": "2026-05-01",
         "label": "’27년 예산편성 세부지침에 연구개발 출자금(460-3) 비목 신설(기획처)"
       }
     ]
@@ -253,22 +304,26 @@
     "milestones": [
       {
         "id": "milestone-ab076a33-2d3d-43fb-b043-3c4786d8123f",
-        "date": "2026-05-06",
+        "startDate": "2026-05-06",
+        "endDate": "2026-05-06",
         "label": "연구자 현장간담회 1차"
       },
       {
         "id": "milestone-5118d54b-0bba-49ed-b8b6-bebc2a303a4a",
-        "date": "2026-05-13",
+        "startDate": "2026-05-13",
+        "endDate": "2026-05-13",
         "label": "연구자 현장간담회 후속"
       },
       {
         "id": "milestone-ddd5af8e-0419-428f-9d02-73da9aa5c1a6",
-        "date": "2026-05-22",
+        "startDate": "2026-05-22",
+        "endDate": "2026-05-22",
         "label": "대국민 공청회, 5월중"
       },
       {
         "id": "milestone-5d492072-2fa0-4050-8b39-88f88d05aee0",
-        "date": "2026-06-15",
+        "startDate": "2026-06-15",
+        "endDate": "2026-06-15",
         "label": "기본계획 발표, 6월 잠정"
       }
     ]
@@ -290,37 +345,44 @@
     "milestones": [
       {
         "id": "milestone-57fa3ddb-3b06-4ab3-ac40-1275d5a83738",
-        "date": "2026-02-18",
+        "startDate": "2026-02-18",
+        "endDate": "2026-02-18",
         "label": "'우리의 과학' 정책 기획"
       },
       {
         "id": "milestone-3cba9a65-ad3a-4a35-a2e7-b2c85446bf3a",
-        "date": "2026-03-05",
+        "startDate": "2026-03-05",
+        "endDate": "2026-03-05",
         "label": "(실무회의) 관계 부처청에 정책 추진방향 공유 및 의견 수렴"
       },
       {
         "id": "milestone-afa43db5-bf36-4147-990b-1138f0322555",
-        "date": "2026-03-11",
+        "startDate": "2026-03-11",
+        "endDate": "2026-03-11",
         "label": "(수요조사) R&D 수행 전부처 대상 '우리의 과학' 프로젝트 수요 조사"
       },
       {
         "id": "milestone-bfa49c52-2e3c-4371-81df-ce4c47180d21",
-        "date": "2026-04-07",
+        "startDate": "2026-04-07",
+        "endDate": "2026-04-07",
         "label": "(아젠다랩) 1차 선별 프로젝트 내용 공유 및 개술개발, 문화확산 아이디어 등 논의"
       },
       {
         "id": "milestone-42ad7128-0ac1-431b-ae8f-bd3a91aa9f68",
-        "date": "2026-04-20",
+        "startDate": "2026-04-20",
+        "endDate": "2026-04-20",
         "label": "(전문가 검토) 후보 프로젝트 발굴을 위한 정성, 정량 검토 수행"
       },
       {
         "id": "milestone-51a7f461-39b7-4335-b393-23aca235fd81",
-        "date": "2026-05-28",
+        "startDate": "2026-05-28",
+        "endDate": "2026-05-28",
         "label": "(정책협의회) 후보 프로젝트 선정 및 향후 부처별 추진사항 등 논의, 대외 발표"
       },
       {
         "id": "milestone-d528872a-9faa-4583-9d4a-72d80c9167b8",
-        "date": "2026-05-28",
+        "startDate": "2026-05-28",
+        "endDate": "2026-05-28",
         "label": "새 일정"
       }
     ]
@@ -342,37 +404,44 @@
     "milestones": [
       {
         "id": "milestone-8131fe63-b4ad-48ed-96a0-da46d1b4c7a1",
-        "date": "2024-06-15",
+        "startDate": "2024-06-15",
+        "endDate": "2024-06-15",
         "label": "박충권 의원 대표발의"
       },
       {
         "id": "milestone-cadf032f-656e-4098-9ee1-cd0dbddfe449",
-        "date": "2024-09-15",
+        "startDate": "2024-09-15",
+        "endDate": "2024-09-15",
         "label": "국회 토론회 개최"
       },
       {
         "id": "milestone-f3433913-5c21-409f-8464-d9b55fe3ad64",
-        "date": "2026-02-01",
+        "startDate": "2026-02-01",
+        "endDate": "2026-02-01",
         "label": "조인철 의원 대표발의"
       },
       {
         "id": "milestone-e68788dd-2659-4da3-8297-e7793062b814",
-        "date": "2026-03-11",
+        "startDate": "2026-03-11",
+        "endDate": "2026-03-11",
         "label": "과방위 통과"
       },
       {
         "id": "milestone-8f1f37a6-8b88-42ec-858f-34a36416ee9d",
-        "date": "2026-04-22",
+        "startDate": "2026-04-22",
+        "endDate": "2026-04-22",
         "label": "법사위 통과"
       },
       {
         "id": "milestone-c5f731ff-a527-47b2-9f0b-38c22e58c2d2",
-        "date": "2026-04-23",
+        "startDate": "2026-04-23",
+        "endDate": "2026-04-23",
         "label": "본회의 통과(보도자료배포)"
       },
       {
         "id": "milestone-b0ca25e9-d388-4c0d-91ee-84c182a98b19",
-        "date": "2026-05-12",
+        "startDate": "2026-05-12",
+        "endDate": "2026-05-12",
         "label": "국무회의 상정 및 법률공포"
       }
     ]
@@ -394,17 +463,20 @@
     "milestones": [
       {
         "id": "milestone-a8c37405-536f-4ce8-916d-440c9b5fe3b2",
-        "date": "2026-04-14",
+        "startDate": "2026-04-14",
+        "endDate": "2026-04-14",
         "label": "공청회  개최 및 과학기술정보방송통신위원회 의결"
       },
       {
         "id": "milestone-25938422-d24e-4595-9168-d006ce71fa0c",
-        "date": "2026-05-06",
+        "startDate": "2026-05-06",
+        "endDate": "2026-05-06",
         "label": "법사위 의결"
       },
       {
         "id": "milestone-13f93251-8e04-4f6c-9f6b-fd7167cc12a2",
-        "date": "2026-05-07",
+        "startDate": "2026-05-07",
+        "endDate": "2026-05-07",
         "label": "본회의 의결 (언론 보도자료 배포)"
       }
     ]
@@ -426,27 +498,32 @@
     "milestones": [
       {
         "id": "milestone-6bc7bd34-f662-4b9f-a117-2d601fe7a773",
-        "date": "2025-12-08",
+        "startDate": "2025-12-08",
+        "endDate": "2025-12-08",
         "label": "대덕이노폴리스포럼 특별강연 (기초과학지원연구원)"
       },
       {
         "id": "milestone-256b1a67-c1b7-4670-b30f-a01bf754d46c",
-        "date": "2025-12-11",
+        "startDate": "2025-12-11",
+        "endDate": "2025-12-11",
         "label": "대한기계학회 창립 80주년 기념행사 특별강연 (하이원리조트)"
       },
       {
         "id": "milestone-b2aeafe8-9a2c-44d0-b0bf-cbb491b27f22",
-        "date": "2026-03-26",
+        "startDate": "2026-03-26",
+        "endDate": "2026-03-26",
         "label": "매경 i-Tax 최고경영자과정출범식 기조강연 (서울시립대)"
       },
       {
         "id": "milestone-f617d3f3-bf7f-4ff8-9e86-831fb98602d6",
-        "date": "2026-04-08",
+        "startDate": "2026-04-08",
+        "endDate": "2026-04-08",
         "label": "국가 과학기술 기관장 리더십 과정 강연 (NST)"
       },
       {
         "id": "milestone-19f2e6f9-01b9-40c2-91e1-5486977b844a",
-        "date": "2026-05-21",
+        "startDate": "2026-05-21",
+        "endDate": "2026-05-21",
         "label": "서강대 대학생 대상 강연 (서강대학교)"
       }
     ]
@@ -468,7 +545,8 @@
     "milestones": [
       {
         "id": "milestone-0bef012f-a2f5-4248-ad62-e8d4579eae47",
-        "date": "2026-05-15",
+        "startDate": "2026-05-15",
+        "endDate": "2026-05-15",
         "label": "기고"
       }
     ]
@@ -490,17 +568,20 @@
     "milestones": [
       {
         "id": "milestone-8c8dadee-d9fa-4352-b204-42c6a376e33c",
-        "date": "2026-05-11",
+        "startDate": "2026-05-11",
+        "endDate": "2026-05-11",
         "label": "국가연구개발사업 예산설명회"
       },
       {
         "id": "milestone-1bd4438c-19eb-490f-b2b9-fac9a5f91e67",
-        "date": "2026-06-30",
+        "startDate": "2026-06-30",
+        "endDate": "2026-06-30",
         "label": "주요 R&D 예산 배분·조정안 마련"
       },
       {
         "id": "milestone-3785270a-e280-4044-b945-c27d3aba0f69",
-        "date": "2026-09-30",
+        "startDate": "2026-09-30",
+        "endDate": "2026-09-30",
         "label": "정부 R&D 예산안 홍보, 하반기"
       }
     ]
@@ -511,19 +592,62 @@
     "order": 4,
     "title": "R&D 행정서식 간소화",
     "owner": "연구제도혁신과",
-    "manager": "",
-    "start": "2026-05-01",
-    "end": "2026-05-31",
+    "manager": "김도경 과정, 최원영 사무관",
+    "start": "2025-12-01",
+    "end": "2026-04-30",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
-    "content": "연구자 행정부담 완화를 위해 불요·중복 서식을 표준화하고 간소화.",
-    "impact": "R&D 행정서식 간소화을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "연구자가 행정부담 없이 연구에 전념할 수 있도록 국가R&D 행정서식을 대폭 간소화 함",
+    "impact": "불요·중복 R&D 행정서식을 표준화하고 간소화하여 연구 현장의 행정부담을 대폭 경감합니다.",
     "milestones": [
       {
         "id": "milestone-31af9d03-d87f-40b2-b46a-b24d9b11da85",
-        "date": "2026-05-15",
-        "label": "간소화 방안 보도"
+        "startDate": "2025-12-01",
+        "endDate": "2026-02-15",
+        "label": "(전수조사) 과기정통부·전문기관(27개)·KISTEP 협업으로 '국가R&D 행정서식 간소화 TF' 구성하여 현장회의 및 비표준서식 전수조사 진행"
+      },
+      {
+        "id": "milestone-ad07ad91-543d-428e-841e-6bc9f54ebb25",
+        "startDate": "2026-02-01",
+        "endDate": "2026-03-31",
+        "label": "(검토·분류) 산·학·연 연구현장 전문가로 구성된 검토 분과를 통해 간소화 진행"
+      },
+      {
+        "id": "milestone-c2006871-40ab-410e-841b-edcc8d8df197",
+        "startDate": "2026-02-25",
+        "endDate": "2026-02-25",
+        "label": "(전문기관 간담회) 행정서식 간소화 진행상황 공유 및 현장 의견 수렴"
+      },
+      {
+        "id": "milestone-123f499e-29f6-4682-b5d1-3270f9d2d91a",
+        "startDate": "2026-04-22",
+        "endDate": "2026-04-22",
+        "label": "(현장회람) 전문기관 대상 최종 정비안 현장 회람 및 추가 의견 수렴"
+      },
+      {
+        "id": "milestone-6b5e54f1-9537-4729-9195-0362be2ed41f",
+        "startDate": "2026-05-29",
+        "endDate": "2026-05-29",
+        "label": "(과기장관회의) 행정서식 간소화 결과를 제9회 과학기술관계장관회의 안건으로 상정"
+      },
+      {
+        "id": "milestone-242135c7-14f2-4d5b-997e-eb5d9f4fce38",
+        "startDate": "2026-07-01",
+        "endDate": "2026-07-31",
+        "label": "IRIS 시스템상 허용 목록 외 비표준서식 첨부 금지 실시"
+      },
+      {
+        "id": "milestone-cffe662a-98e3-40d1-aa95-a42f0321c869",
+        "startDate": "2026-08-01",
+        "endDate": "2026-12-31",
+        "label": "국가연구개발혁신법 시행령 및 하위 행정규칙 개정 추진"
+      },
+      {
+        "id": "milestone-49a9c6d2-e2b4-4448-a153-642929fb42c7",
+        "startDate": "2026-08-01",
+        "endDate": "2026-12-31",
+        "label": "IRIS와 타 기관 행정시스템 연계로 서식 자동 제출 구현"
       }
     ]
   },
@@ -544,32 +668,38 @@
     "milestones": [
       {
         "id": "milestone-b3c5e402-cc86-4f86-ae64-29534ee02ff0",
-        "date": "2025-12-01",
+        "startDate": "2025-12-01",
+        "endDate": "2025-12-01",
         "label": "특화 AI 모델 개발 개시"
       },
       {
         "id": "milestone-7514ad4d-85f9-455d-964a-5ac53bf0ce22",
-        "date": "2026-02-01",
+        "startDate": "2026-02-01",
+        "endDate": "2026-02-01",
         "label": "예산 심의 관련 데이터 정제 완료"
       },
       {
         "id": "milestone-0d2f6b3d-e30d-431b-887e-c02bbc5b7d11",
-        "date": "2026-03-01",
+        "startDate": "2026-03-01",
+        "endDate": "2026-03-01",
         "label": "독파모 모델 결정 및 추가 학습"
       },
       {
         "id": "milestone-f216a363-366c-4608-a9f4-ac36151ed3e5",
-        "date": "2026-04-01",
+        "startDate": "2026-04-01",
+        "endDate": "2026-04-01",
         "label": "내부 시연(부총리, 본부장)"
       },
       {
         "id": "milestone-b9caeb04-cab6-44fa-8d13-cfe1d8bdb194",
-        "date": "2026-05-11",
+        "startDate": "2026-05-11",
+        "endDate": "2026-05-11",
         "label": "'27년 R&D 사업설명회 활용 개시(국과심 전문위원)"
       },
       {
         "id": "milestone-31b7ae12-8d8a-41e9-be92-db0c4d9a4c97",
-        "date": "2026-05-14",
+        "startDate": "2026-05-14",
+        "endDate": "2026-05-14",
         "label": "특화 AI 모델 활용 언론 공개"
       }
     ]
@@ -591,22 +721,26 @@
     "milestones": [
       {
         "id": "milestone-2655ad3f-5b77-4195-a64f-36fe96d6040b",
-        "date": "2026-02-12",
+        "startDate": "2026-02-12",
+        "endDate": "2026-02-12",
         "label": "통합 로그인 구축 계획 수립"
       },
       {
         "id": "milestone-0639055a-4c09-46db-bc1e-6f5cdbd073e2",
-        "date": "2026-05-22",
+        "startDate": "2026-05-22",
+        "endDate": "2026-05-22",
         "label": "개발 완료"
       },
       {
         "id": "milestone-95f41503-5734-49c5-8b3c-4c5eb74c5694",
-        "date": "2026-06-01",
+        "startDate": "2026-06-01",
+        "endDate": "2026-06-01",
         "label": "\"연구24\" 시연회"
       },
       {
         "id": "milestone-827898a7-51e7-4126-bccc-54ead0a34cf0",
-        "date": "2026-06-15",
+        "startDate": "2026-06-15",
+        "endDate": "2026-06-15",
         "label": "\"연구24\" 사이트 오픈"
       }
     ]
@@ -628,7 +762,8 @@
     "milestones": [
       {
         "id": "milestone-1c423538-649c-4a37-92be-e46e25dc9381",
-        "date": "2026-06-15",
+        "startDate": "2026-06-15",
+        "endDate": "2026-06-15",
         "label": "STEPI 원장 기고"
       }
     ]
@@ -650,7 +785,8 @@
     "milestones": [
       {
         "id": "milestone-fa4f20ca-d8e6-487e-a243-348439adf138",
-        "date": "2026-06-30",
+        "startDate": "2026-06-30",
+        "endDate": "2026-06-30",
         "label": "6월말 검토"
       }
     ]
@@ -672,37 +808,44 @@
     "milestones": [
       {
         "id": "milestone-7185062e-864f-4021-addf-85c3ac608b95",
-        "date": "2025-09-09",
+        "startDate": "2025-09-09",
+        "endDate": "2025-09-09",
         "label": "대학 산단장 협의회 간담회"
       },
       {
         "id": "milestone-3770bb43-c8c0-4893-af72-5feaa1430731",
-        "date": "2025-12-18",
+        "startDate": "2025-12-18",
+        "endDate": "2025-12-18",
         "label": "연계모듈 베타버전 개발"
       },
       {
         "id": "milestone-26b56297-9b99-48c4-bcc3-f5bec3b12906",
-        "date": "2025-12-23",
+        "startDate": "2025-12-23",
+        "endDate": "2025-12-23",
         "label": "연계기능 테스트 완료"
       },
       {
         "id": "milestone-929ac5bd-b05e-44b4-ae63-bb425dfb09e2",
-        "date": "2026-01-22",
+        "startDate": "2026-01-22",
+        "endDate": "2026-01-22",
         "label": "연계 희망기관 조사"
       },
       {
         "id": "milestone-7648be83-3ea8-4c76-ba32-19b362fb4eee",
-        "date": "2026-02-25",
+        "startDate": "2026-02-25",
+        "endDate": "2026-02-25",
         "label": "기능개발 완료"
       },
       {
         "id": "milestone-f4188277-5f04-4986-8ce3-9cbee3ecd8f0",
-        "date": "2026-03-10",
+        "startDate": "2026-03-10",
+        "endDate": "2026-03-10",
         "label": "대학 참여 협조요청"
       },
       {
         "id": "milestone-91845f9d-150a-49e1-82c1-4e4c3896547c",
-        "date": "2026-04-08",
+        "startDate": "2026-04-08",
+        "endDate": "2026-04-08",
         "label": "출연연 참여 협조요청"
       }
     ]
@@ -724,42 +867,50 @@
     "milestones": [
       {
         "id": "milestone-38e05248-9043-470b-8e4b-b24e80b4a039",
-        "date": "2026-01-20",
+        "startDate": "2026-01-20",
+        "endDate": "2026-01-20",
         "label": "(제1차 총괄위) 총괄위원 위촉장 수여, 중장기 투자전략 수립방향 논의 및 일정 공유"
       },
       {
         "id": "milestone-f4275ed8-02f6-46a6-ab56-8c9be1f47d7d",
-        "date": "2026-02-15",
+        "startDate": "2026-02-15",
+        "endDate": "2026-02-15",
         "label": "(분과회의) 분야별 투자현황 분석·진단, 투자방향 및 투자전략 도출"
       },
       {
         "id": "milestone-48578573-f323-4518-9278-e17823d9cb32",
-        "date": "2026-04-02",
+        "startDate": "2026-04-02",
+        "endDate": "2026-04-02",
         "label": "(제2차 총괄위) 중점 기술/정책분야 및 투자방향/전략 검토"
       },
       {
         "id": "milestone-cbfac682-3bed-4ed5-af46-72e63ce41c6f",
-        "date": "2026-04-15",
+        "startDate": "2026-04-15",
+        "endDate": "2026-04-15",
         "label": "(분과회의) 분야별 투자방향 및 투자전략 수정 보완"
       },
       {
         "id": "milestone-51825da3-9c6d-4091-99a1-f4754d161bc9",
-        "date": "2026-05-06",
+        "startDate": "2026-05-06",
+        "endDate": "2026-05-06",
         "label": "(제3차 총괄위) 중점 기술/정책분야 확정 및 거시적 R&D예산 배분 방안 검토"
       },
       {
         "id": "milestone-51d91302-bcd9-4f55-a53a-425fd5480eaa",
-        "date": "2026-05-27",
+        "startDate": "2026-05-27",
+        "endDate": "2026-05-27",
         "label": "(분과회의/전문위 검토) 분야별 투자방향 및 투자전략 최종 점검새 일정"
       },
       {
         "id": "milestone-f8b69b7b-998f-4c45-a4b5-e068faf8520d",
-        "date": "2026-06-15",
+        "startDate": "2026-06-15",
+        "endDate": "2026-06-15",
         "label": "(공청회) 대국민 및 기술분야별 관계자 의견 수렴"
       },
       {
         "id": "milestone-cadcd602-f160-46cd-b4b6-f6d58b0ef841",
-        "date": "2026-06-26",
+        "startDate": "2026-06-26",
+        "endDate": "2026-06-26",
         "label": "(안건상정) 관계 부처 의견 회람 및 국과심 운영위 안건 상정 의결새 일정"
       }
     ]
@@ -781,7 +932,8 @@
     "milestones": [
       {
         "id": "milestone-87060800-bdbc-406c-b9ef-0c3b51365011",
-        "date": "2026-07-31",
+        "startDate": "2026-07-31",
+        "endDate": "2026-07-31",
         "label": "혁신법 및 시행령 개정 보도"
       }
     ]
@@ -803,7 +955,8 @@
     "milestones": [
       {
         "id": "milestone-85a94055-0f08-4044-ab2f-fbf7ece31d93",
-        "date": "2026-07-15",
+        "startDate": "2026-07-15",
+        "endDate": "2026-07-15",
         "label": "재도약 지원 검토"
       }
     ]
@@ -825,7 +978,8 @@
     "milestones": [
       {
         "id": "milestone-b984d303-0389-4aa7-ad96-ef2c10810f53",
-        "date": "2026-09-30",
+        "startDate": "2026-09-30",
+        "endDate": "2026-09-30",
         "label": "혁신법 개정 보도, 하반기"
       }
     ]
@@ -847,7 +1001,8 @@
     "milestones": [
       {
         "id": "milestone-41e87f7c-b2c8-4df3-bef5-e188b8f8a99e",
-        "date": "2026-09-30",
+        "startDate": "2026-09-30",
+        "endDate": "2026-09-30",
         "label": "정보연계 강화 검토"
       }
     ]
@@ -869,7 +1024,8 @@
     "milestones": [
       {
         "id": "milestone-dc2be348-fe42-4fc2-895a-845b413faa36",
-        "date": "2026-09-30",
+        "startDate": "2026-09-30",
+        "endDate": "2026-09-30",
         "label": "제도개선 검토"
       }
     ]
@@ -880,19 +1036,68 @@
     "order": 11,
     "title": "연구보안 체계 내실화",
     "owner": "연구윤리권익보호과",
-    "manager": "",
-    "start": "2026-07-01",
-    "end": "2026-09-30",
+    "manager": "유승후 과장, 옥영민 사무관",
+    "start": "2025-12-01",
+    "end": "2026-02-28",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
-    "content": "민감과제 신설, 보안대책 수립기관 확대 등을 통해 연구보안 체계를 강화.",
-    "impact": "연구보안 체계 내실화을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "과제보안등급을 세분화, 보안대책 수립기관 확대 등을 통해 연구보안 체계를 강화.",
+    "impact": "민감과제 신설, 범부처 보안지침 수립 등 국가연구개발혁신법령 개정을 통한 연구자산 보호체계 강화",
     "milestones": [
       {
         "id": "milestone-151920f5-1ced-4005-bead-801e756c2c78",
-        "date": "2026-09-30",
-        "label": "연구보안 체계 강화 검토"
+        "startDate": "2025-12-03",
+        "endDate": "2025-12-03",
+        "label": "대학 연구보안체계 내실화를 위한 현장 간담회 개최"
+      },
+      {
+        "id": "milestone-02585fab-bc63-4468-91f6-eea70ea91bf6",
+        "startDate": "2026-02-19",
+        "endDate": "2026-02-19",
+        "label": "국가연구개발혁신법 개정 공포"
+      },
+      {
+        "id": "milestone-51808aef-ac64-4400-98c6-4af2bbccbe06",
+        "startDate": "2026-03-02",
+        "endDate": "2026-03-27",
+        "label": "하위법령 개정안 현장의견 수렴"
+      },
+      {
+        "id": "milestone-597d03e3-5391-404b-9939-4158dadf27e7",
+        "startDate": "2026-07-01",
+        "endDate": "2026-07-31",
+        "label": "연구보안 제도개선 설명회 개최"
+      },
+      {
+        "id": "milestone-fe0927cd-5ca7-4bb0-a35d-05a7b5b0d7b0",
+        "startDate": "2026-07-01",
+        "endDate": "2026-12-31",
+        "label": "연구보안 제도 정착을 위한 컨설팅 및 교육"
+      },
+      {
+        "id": "milestone-90649c17-ae96-489f-a7d4-ee42aef80459",
+        "startDate": "2026-08-03",
+        "endDate": "2026-08-31",
+        "label": "혁신법 시행령, 시행규칙 개정"
+      },
+      {
+        "id": "milestone-78293db5-1b49-47a9-9737-6f9f189f8f03",
+        "startDate": "2026-09-01",
+        "endDate": "2026-09-30",
+        "label": "보안등급 분류 가이드라인 마련"
+      },
+      {
+        "id": "milestone-45953f3a-f602-4ba8-bad6-041941f3ebb9",
+        "startDate": "2026-10-05",
+        "endDate": "2026-10-30",
+        "label": "범부처 보안지침 마련"
+      },
+      {
+        "id": "milestone-c034ed63-33f2-47af-9c4f-0bcc552bbe5c",
+        "startDate": "2026-12-01",
+        "endDate": "2026-12-31",
+        "label": "연구보안 전담기관 지정, 연구보안 관련 실태조사 실시"
       }
     ]
   },
@@ -913,17 +1118,20 @@
     "milestones": [
       {
         "id": "milestone-8bc7fb2f-2759-4987-bb6a-91645e1b9c27",
-        "date": "2025-08-01",
+        "startDate": "2025-08-01",
+        "endDate": "2025-08-01",
         "label": "국가전략기술육성법 시행령 개정"
       },
       {
         "id": "milestone-4003bc47-868e-46cb-bb80-38411b5f1245",
-        "date": "2025-09-29",
+        "startDate": "2025-09-29",
+        "endDate": "2025-09-29",
         "label": "연구관리전문기관 설명회 개최"
       },
       {
         "id": "milestone-7cad786a-f6e1-4ac1-b71a-b1b604c75af6",
-        "date": "2025-12-15",
+        "startDate": "2025-12-15",
+        "endDate": "2025-12-15",
         "label": "국가전략기술 정보보호 가이드라인 배부"
       }
     ]
@@ -945,7 +1153,8 @@
     "milestones": [
       {
         "id": "milestone-2a459b6c-342f-48a1-9a31-20d6182600f7",
-        "date": "2025-08-22",
+        "startDate": "2025-08-22",
+        "endDate": "2025-08-22",
         "label": "국가과학기술자문위원회 전원회의, 심의안건 의결"
       }
     ]

@@ -395,7 +395,7 @@ h1 {
 
 .milestone-row {
   display: grid;
-  grid-template-columns: 170px 1fr auto auto;
+  grid-template-columns: 150px 150px 1fr auto auto;
   gap: 8px;
   align-items: end;
 }
@@ -704,6 +704,26 @@ button:disabled {
 }
 
 .endpoint,
+.ms-span {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: currentColor;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.ms-span.is-future {
+  background: repeating-linear-gradient(
+    to right,
+    currentColor 0,
+    currentColor 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
 .milestone {
   position: absolute;
   width: 20px;
@@ -904,7 +924,7 @@ body:has(.drag-date-tooltip.is-visible) .draggable-point,
   }
 
   .milestone-row {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr 1fr 1fr auto auto;
   }
 
   .editor-actions,

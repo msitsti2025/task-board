@@ -386,11 +386,15 @@ function normalizeItems(source) {
     tentative: false,
     content: item.content || "",
     impact: item.impact || inferImpact(item),
-    milestones: (item.milestones || []).map((milestone) => ({
-      id: milestone.id || createId("milestone"),
-      date: milestone.date || item.start || "2026-05-01",
-      label: milestone.label || "마일스톤",
-    })),
+    milestones: (item.milestones || []).map((milestone) => {
+      const fallback = milestone.date || item.start || "2026-05-01";
+      return {
+        id: milestone.id || createId("milestone"),
+        startDate: milestone.startDate || fallback,
+        endDate: milestone.endDate || milestone.startDate || fallback,
+        label: milestone.label || "마일스톤",
+      };
+    }),
   }));
 }
 
@@ -630,9 +634,9 @@ function renderAuthState() {
   const readonlyMode = storageMode === "readonly";
   // 에디터 패널: api 모드는 로그인 후, local 모드는 항상 표시, readonly 모드는 팝업으로만 표시
   editorPanel.hidden = (apiMode && !isStaff) || readonlyMode;
-  staffLoginButton.hidden = !apiMode || isStaff;
-  staffLogoutButton.hidden = !apiMode || !isStaff;
-  if (!apiMode || isStaff) {
+  staffLoginButton.hidden = (!apiMode && !readonlyMode) || isStaff;
+  staffLogoutButton.hidden = (!apiMode && !readonlyMode) || !isStaff;
+  if (isStaff) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
@@ -716,8 +720,12 @@ function renderMilestoneRows(milestones = []) {
       (milestone, index) => `
         <div class="milestone-row" data-milestone-id="${escapeHtml(milestone.id)}">
           <label>
-            ${index === 0 ? "<span>주요일정 일자</span>" : ""}
-            <input type="date" data-field="date" value="${escapeHtml(milestone.date)}" />
+            ${index === 0 ? "<span>시작일</span>" : ""}
+            <input type="date" data-field="startDate" value="${escapeHtml(milestone.startDate)}" />
+          </label>
+          <label>
+            ${index === 0 ? "<span>종료일</span>" : ""}
+            <input type="date" data-field="endDate" value="${escapeHtml(milestone.endDate)}" />
           </label>
           <label>
             ${index === 0 ? "<span>주요 일정 내용</span>" : ""}
@@ -733,13 +741,18 @@ function renderMilestoneRows(milestones = []) {
 
 function readMilestonesFromForm() {
   return [...milestoneRows.querySelectorAll(".milestone-row")]
-    .map((row) => ({
-      id: row.dataset.milestoneId || createId("milestone"),
-      date: row.querySelector('[data-field="date"]').value,
-      label: row.querySelector('[data-field="label"]').value.trim(),
-    }))
-    .filter((milestone) => milestone.date && milestone.label)
-    .sort((a, b) => dateValue(a.date) - dateValue(b.date));
+    .map((row) => {
+      const startDate = row.querySelector('[data-field="startDate"]').value;
+      const endDate = row.querySelector('[data-field="endDate"]').value || startDate;
+      return {
+        id: row.dataset.milestoneId || createId("milestone"),
+        startDate,
+        endDate,
+        label: row.querySelector('[data-field="label"]').value.trim(),
+      };
+    })
+    .filter((milestone) => milestone.startDate && milestone.label)
+    .sort((a, b) => dateValue(a.startDate) - dateValue(b.startDate));
 }
 
 function readTaskFromForm() {
@@ -778,7 +791,7 @@ function closeReviewModal() {
 }
 
 function selectItem(id) {
-  if (!isStaff && storageMode !== "readonly") return;
+  if (!isStaff) return;
   selectedItemId = id;
   renderEditor();
   renderTimeline();
@@ -975,7 +988,11 @@ function updateItemDateFromDrag(target, nextIsoDate) {
 
   if (target.dataset.dragKind === "milestone") {
     const milestone = item.milestones.find((candidate) => candidate.id === target.dataset.milestoneId);
-    if (milestone) milestone.date = nextIsoDate;
+    if (milestone) {
+      const diff = dateValue(milestone.endDate) - dateValue(milestone.startDate);
+      milestone.startDate = nextIsoDate;
+      milestone.endDate = isoDate(new Date(dateValue(nextIsoDate) + diff));
+    }
   }
 
   reindexGroup(item.category);
@@ -1053,21 +1070,40 @@ function renderLane(item, ticks) {
   const endOutside = pct(item.end) > 100;
   const todayPct = boundedPct(isoDate(new Date()));
   const width = Math.max(end - start, 0.8);
-  const milestones = item.milestones
-    .filter((milestone) => milestone.date >= "2025-07-01")
-    .map(
-      (milestone) => `
+  const today = isoDate(new Date());
+  const visibleMilestones = item.milestones.filter((ms) => ms.startDate >= "2025-07-01");
+
+  // 범위 선: bar 뒤에 렌더링하기 위해 분리
+  const milestoneSpans = visibleMilestones
+    .map((ms) => {
+      const mStart = boundedPct(ms.startDate);
+      const mEnd = boundedPct(ms.endDate);
+      const spanWidth = Math.max(mEnd - mStart, 0);
+      if (spanWidth < 0.05) return "";
+      const isFuture = ms.startDate > today;
+      return `<span class="ms-span${isFuture ? " is-future" : ""}" style="left:${mStart}%; width:${spanWidth}%" aria-hidden="true"></span>`;
+    })
+    .join("");
+
+  // 마커(원형) + 라벨: bar 위에 렌더링
+  const milestoneMarkers = visibleMilestones
+    .map((ms) => {
+      const mStart = boundedPct(ms.startDate);
+      const dateLabel = ms.endDate !== ms.startDate
+        ? `${formatDateLabel(ms.startDate)} ~ ${formatDateLabel(ms.endDate)}`
+        : formatDateLabel(ms.startDate);
+      return `
         <button
           class="milestone draggable-point"
-          style="left:${boundedPct(milestone.date)}%"
+          style="left:${mStart}%"
           data-drag-kind="milestone"
           data-id="${escapeHtml(item.id)}"
-          data-milestone-id="${escapeHtml(milestone.id)}"
-          aria-label="${escapeHtml(item.title)}: ${escapeHtml(milestone.label)}"
+          data-milestone-id="${escapeHtml(ms.id)}"
+          aria-label="${escapeHtml(item.title)}: ${escapeHtml(ms.label)}"
         ></button>
-        <span class="ms-label" style="left:${boundedPct(milestone.date)}%">${escapeHtml(formatDateLabel(milestone.date))} ${escapeHtml(milestone.label)}</span>
-      `,
-    )
+        <span class="ms-label" style="left:${mStart}%">${escapeHtml(dateLabel)} ${escapeHtml(ms.label)}</span>
+      `;
+    })
     .join("");
 
   return `
@@ -1084,6 +1120,7 @@ function renderLane(item, ticks) {
       <div class="lane-chart">
         ${ticks.map((tick) => `<span class="grid-line" style="left:${pct(tick)}%"></span>`).join("")}
         <span class="today-line" style="left:${todayPct}%"></span>
+        ${milestoneSpans}
         <span
           class="bar"
           style="left:${start}%; width:${width}%"
@@ -1103,7 +1140,7 @@ function renderLane(item, ticks) {
           data-id="${escapeHtml(item.id)}"
           aria-label="${escapeHtml(item.title)} 완료일 ${escapeHtml(formatDateLabel(item.end))}"
         ></span>
-        ${milestones}
+        ${milestoneMarkers}
         <p class="timeline-content" style="left:${start}%">${escapeHtml(item.content)}</p>
       </div>
     </article>
@@ -1223,7 +1260,10 @@ function itemToMarkdown(item) {
   if (item.milestones?.length) {
     lines.push(``, `## 주요 일정`, ``);
     item.milestones.forEach((ms) => {
-      lines.push(`- **${ms.date}** ${ms.label}`);
+      const dateRange = ms.endDate && ms.endDate !== ms.startDate
+        ? `**${ms.startDate}** ~ **${ms.endDate}**`
+        : `**${ms.startDate}**`;
+      lines.push(`- ${dateRange} ${ms.label}`);
     });
   }
   return lines.join("\n");
@@ -1300,8 +1340,8 @@ function parseMarkdownToForm(text) {
       section = line.slice(3).trim();
       sectionLines[section] = [];
     } else if (section === "주요 일정") {
-      const ms = line.match(/^-\s+\*\*(.+?)\*\*\s*(.*)/);
-      if (ms) milestones.push({ id: createId("milestone"), date: ms[1], label: ms[2].trim() });
+      const ms = line.match(/^-\s+\*\*(.+?)\*\*(?:\s*~\s*\*\*(.+?)\*\*)?\s*(.*)/);
+      if (ms) milestones.push({ id: createId("milestone"), startDate: ms[1], endDate: ms[2] || ms[1], label: ms[3].trim() });
     } else if (section) {
       sectionLines[section].push(line);
     }
@@ -1385,7 +1425,7 @@ document.addEventListener("keydown", (event) => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 staffLoginButton.addEventListener("click", () => {
-  if (storageMode !== "api") return;
+  if (storageMode !== "api" && storageMode !== "readonly") return;
   loginPanel.hidden = !loginPanel.hidden;
   if (!loginPanel.hidden) {
     if (!staffId.value.trim()) staffId.value = "admin";
@@ -1394,13 +1434,14 @@ staffLoginButton.addEventListener("click", () => {
 });
 
 staffLogoutButton.addEventListener("click", async () => {
-  if (storageMode !== "api") return;
-  await fetch("api/logout", {
-    method: "POST",
-    credentials: "same-origin",
-  }).catch((error) => {
-    console.error("로그아웃 요청을 처리하지 못했습니다.", error);
-  });
+  if (storageMode === "api") {
+    await fetch("api/logout", {
+      method: "POST",
+      credentials: "same-origin",
+    }).catch((error) => {
+      console.error("로그아웃 요청을 처리하지 못했습니다.", error);
+    });
+  }
   isStaff = false;
   selectedItemId = "";
   renderAuthState();
@@ -1409,6 +1450,22 @@ staffLogoutButton.addEventListener("click", async () => {
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  // readonly 모드: 클라이언트 사이드 인증
+  if (storageMode === "readonly") {
+    const ok = staffId.value.trim() === "admin" && staffPassword.value === "osti2026";
+    if (!ok) {
+      loginMessage.textContent = "직원 ID와 비밀번호를 확인하세요.";
+      return;
+    }
+    isStaff = true;
+    loginForm.reset();
+    loginPanel.hidden = true;
+    renderAuthState();
+    renderTimeline();
+    return;
+  }
+
   if (storageMode !== "api") return;
 
   try {
@@ -1433,7 +1490,6 @@ loginForm.addEventListener("submit", async (event) => {
     renderAuthState();
     renderEditor();
     renderTimeline();
-    return;
   } catch (error) {
     loginMessage.textContent = "로그인 서버에 연결하지 못했습니다.";
   }
@@ -1445,7 +1501,8 @@ milestoneRows.addEventListener("click", (event) => {
   if (!button) return;
 
   if (button.dataset.action === "add-milestone") {
-    const newMs = { id: createId("milestone"), date: taskStart.value || "2026-05-01", label: "새 일정" };
+    const d = taskStart.value || "2026-05-01";
+    const newMs = { id: createId("milestone"), startDate: d, endDate: d, label: "새 일정" };
     const milestones = readMilestonesFromForm();
     milestones.push(newMs);
     renderMilestoneRows(milestones);
@@ -1457,8 +1514,8 @@ milestoneRows.addEventListener("click", (event) => {
     const row = button.closest(".milestone-row");
     const milestones = readMilestonesFromForm();
     const idx = milestones.findIndex((m) => m.id === row.dataset.milestoneId);
-    const date = row.querySelector('[data-field="date"]').value || taskStart.value || "2026-05-01";
-    const newMs = { id: createId("milestone"), date, label: "새 일정" };
+    const d = row.querySelector('[data-field="startDate"]').value || taskStart.value || "2026-05-01";
+    const newMs = { id: createId("milestone"), startDate: d, endDate: d, label: "새 일정" };
     milestones.splice(idx === -1 ? milestones.length : idx + 1, 0, newMs);
     renderMilestoneRows(milestones);
     milestoneRows.querySelector(`[data-milestone-id="${newMs.id}"] [data-field="label"]`)?.focus();
@@ -1633,9 +1690,9 @@ timeline.addEventListener("click", (event) => {
   }
 
   const lane = event.target.closest(".lane[data-id]");
-  if (!lane || (!isStaff && storageMode !== "readonly")) return;
+  if (!lane || !isStaff) return;
   selectItem(lane.dataset.id);
-  if (isStaff) document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (storageMode !== "readonly") document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 async function init() {
