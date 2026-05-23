@@ -364,7 +364,6 @@ const loginForm = document.querySelector("#loginForm");
 const staffId = document.querySelector("#staffId");
 const staffPassword = document.querySelector("#staffPassword");
 const loginMessage = document.querySelector("#loginMessage");
-const taskImpact = document.querySelector("#taskImpact");
 
 function createId(prefix = "task") {
   if (globalThis.crypto?.randomUUID) return `${prefix}-${globalThis.crypto.randomUUID()}`;
@@ -384,8 +383,7 @@ function normalizeItems(source) {
     visible: item.visible !== false,
     complete: item.complete !== false,
     tentative: false,
-    content: item.content || "",
-    impact: item.impact || inferImpact(item),
+    content: item.content || item.impact || "",
     milestones: (item.milestones || []).map((milestone) => {
       const fallback = milestone.date || item.start || "2026-05-01";
       return {
@@ -398,14 +396,6 @@ function normalizeItems(source) {
   }));
 }
 
-function inferImpact(item) {
-  if (item.impact) return item.impact;
-  const title = item.title || "해당 업무";
-  const category = normalizeCategory(item);
-  if (category === "budget-review") return `${title}이 완료되면 국가 R&D 투자 우선순위가 명확해지고 예산 심의의 전문성과 예측 가능성이 높아집니다.`;
-  if (category === "rnd-management") return `${title}을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.`;
-  return `${title}이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.`;
-}
 
 function normalizeCategory(item) {
   if (categoryGroups.some((category) => category.id === item.category)) return item.category;
@@ -632,8 +622,10 @@ function renderOwnerOptions(selectedOwner = "") {
 function renderAuthState() {
   const apiMode = storageMode === "api";
   const readonlyMode = storageMode === "readonly";
-  // 에디터 패널: api 모드는 로그인 후, local 모드는 항상 표시, readonly 모드는 팝업으로만 표시
-  editorPanel.hidden = (apiMode && !isStaff) || readonlyMode;
+  // 에디터 패널: 모달로만 표시, 현재 모달 상태 유지
+  if (!editorPanel.classList.contains("is-modal")) {
+    editorPanel.hidden = true;
+  }
   staffLoginButton.hidden = (!apiMode && !readonlyMode) || isStaff;
   staffLogoutButton.hidden = (!apiMode && !readonlyMode) || !isStaff;
   if (isStaff) {
@@ -645,7 +637,7 @@ function renderAuthState() {
   writeOnly.forEach((btn) => { btn.hidden = readonlyMode; });
   uploadButton.hidden = false;
   downloadButton.hidden = false;
-  reviewCloseButton.hidden = !readonlyMode;
+  reviewCloseButton.hidden = false;
   editorNotice.hidden = !readonlyMode;
   editorKicker.textContent = readonlyMode ? "검토 / 수정 제안" : "직원 입력 화면";
 }
@@ -699,7 +691,6 @@ function renderEditor(item = getSelectedItem()) {
   taskTentative.checked = current.visible !== false;
   taskComplete.checked = current.complete !== false;
   taskContent.value = current.content;
-  taskImpact.value = current.impact || "";
   deleteButton.disabled = !current.id;
   duplicateButton.disabled = !current.id;
   renderMilestoneRows(current.milestones);
@@ -720,11 +711,11 @@ function renderMilestoneRows(milestones = []) {
       (milestone, index) => `
         <div class="milestone-row" data-milestone-id="${escapeHtml(milestone.id)}">
           <label>
-            ${index === 0 ? "<span>시작일</span>" : ""}
+            ${index === 0 ? "<span>일정 시작일</span>" : ""}
             <input type="date" data-field="startDate" value="${escapeHtml(milestone.startDate)}" />
           </label>
           <label>
-            ${index === 0 ? "<span>종료일</span>" : ""}
+            ${index === 0 ? "<span>일정 종료일</span>" : ""}
             <input type="date" data-field="endDate" value="${escapeHtml(milestone.endDate)}" />
           </label>
           <label>
@@ -771,12 +762,13 @@ function readTaskFromForm() {
     complete: taskComplete.checked,
     tentative: false,
     content: taskContent.value.trim(),
-    impact: taskImpact.value.trim(),
     milestones: readMilestonesFromForm(),
   };
 }
 
 function openReviewModal() {
+  editorPanel.style.width = "";
+  editorPanel.style.height = "";
   editorPanel.hidden = false;
   editorPanel.classList.add("is-modal");
   reviewModalBackdrop.hidden = false;
@@ -795,15 +787,16 @@ function selectItem(id) {
   selectedItemId = id;
   renderEditor();
   renderTimeline();
-  if (storageMode === "readonly") openReviewModal();
+  openReviewModal();
 }
 
 function startNewTask() {
   if (!isStaff) return;
   selectedItemId = "";
   renderEditor(null);
-  taskTitle.focus();
   renderTimeline();
+  openReviewModal();
+  taskTitle.focus();
 }
 
 function saveTask(event) {
@@ -994,6 +987,14 @@ function updateItemDateFromDrag(target, nextIsoDate) {
       milestone.endDate = isoDate(new Date(dateValue(nextIsoDate) + diff));
     }
   }
+  if (target.dataset.dragKind === "milestone-start") {
+    const milestone = item.milestones.find((candidate) => candidate.id === target.dataset.milestoneId);
+    if (milestone) milestone.startDate = nextIsoDate;
+  }
+  if (target.dataset.dragKind === "milestone-end") {
+    const milestone = item.milestones.find((candidate) => candidate.id === target.dataset.milestoneId);
+    if (milestone) milestone.endDate = nextIsoDate;
+  }
 
   reindexGroup(item.category);
   selectedItemId = item.id;
@@ -1043,7 +1044,6 @@ function filteredItems() {
       return [
         item.title,
         item.content,
-        item.impact,
         item.owner,
         item.manager,
         categoryById[item.category]?.label || "",
@@ -1073,25 +1073,36 @@ function renderLane(item, ticks) {
   const today = isoDate(new Date());
   const visibleMilestones = item.milestones.filter((ms) => ms.startDate >= "2025-07-01");
 
-  // 범위 선: bar 뒤에 렌더링하기 위해 분리
-  const milestoneSpans = visibleMilestones
-    .map((ms) => {
-      const mStart = boundedPct(ms.startDate);
-      const mEnd = boundedPct(ms.endDate);
-      const spanWidth = Math.max(mEnd - mStart, 0);
-      if (spanWidth < 0.05) return "";
-      const isFuture = ms.startDate > today;
-      return `<span class="ms-span${isFuture ? " is-future" : ""}" style="left:${mStart}%; width:${spanWidth}%" aria-hidden="true"></span>`;
-    })
-    .join("");
-
-  // 마커(원형) + 라벨: bar 위에 렌더링
+  // 마커: startDate===endDate → 원형 버튼, startDate≠endDate → 검은 실선(미래는 점선)
+  let lastAbovePct = -Infinity;
+  let lastBelowPct = -Infinity;
+  const minLabelSpacing = 8;
   const milestoneMarkers = visibleMilestones
-    .map((ms) => {
+    .map((ms, msIndex) => {
       const mStart = boundedPct(ms.startDate);
-      const dateLabel = ms.endDate !== ms.startDate
+      const isRange = ms.startDate !== ms.endDate;
+      const isFuture = ms.startDate > today;
+      const dateLabel = isRange
         ? `${formatDateLabel(ms.startDate)} ~ ${formatDateLabel(ms.endDate)}`
         : formatDateLabel(ms.startDate);
+      if (isRange) {
+        const mEnd = boundedPct(ms.endDate);
+        const spanWidth = Math.max(mEnd - mStart, 0);
+        if (spanWidth < 0.05) return "";
+        // 라벨을 span 바로 뒤에 배치해야 :hover + .ms-label CSS 셀렉터가 동작함
+        const rangeHandles = isStaff ? `<button class="ms-range-handle ms-range-handle-start draggable-point" style="left:${mStart}%" data-drag-kind="milestone-start" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}"></button><button class="ms-range-handle ms-range-handle-end draggable-point" style="left:${mEnd}%" data-drag-kind="milestone-end" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}"></button>` : "";
+        return `<span class="ms-span ms-span-range${isFuture ? " is-future" : ""}" style="left:${mStart}%; width:${spanWidth}%" data-drag-kind="milestone" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}" aria-label="${escapeHtml(item.title)}: ${escapeHtml(ms.label)}"></span><span class="ms-label" style="left:${mStart}%">${escapeHtml(dateLabel)} ${escapeHtml(ms.label)}</span>${rangeHandles}`;
+      }
+      // 로그아웃 상태: 짧은 라벨(≤10자), 간격이 충분한 것만 위아래 교대로 표시
+      let inlineLabel = "";
+      if (!isStaff && ms.label.length <= 10) {
+        const isBelow = msIndex % 2 === 1;
+        const lastPct = isBelow ? lastBelowPct : lastAbovePct;
+        if (mStart - lastPct >= minLabelSpacing) {
+          if (isBelow) lastBelowPct = mStart; else lastAbovePct = mStart;
+          inlineLabel = `<span class="ms-inline-label ${isBelow ? "ms-inline-label-below" : "ms-inline-label-above"}" style="left:${mStart}%">${escapeHtml(ms.label)}</span>`;
+        }
+      }
       return `
         <button
           class="milestone draggable-point"
@@ -1102,9 +1113,18 @@ function renderLane(item, ticks) {
           aria-label="${escapeHtml(item.title)}: ${escapeHtml(ms.label)}"
         ></button>
         <span class="ms-label" style="left:${mStart}%">${escapeHtml(dateLabel)} ${escapeHtml(ms.label)}</span>
+        ${inlineLabel}
       `;
     })
     .join("");
+
+  // 로그인 상태: 박스 위에 소관, 아래에 담당자
+  const ownerLabel = isStaff && item.owner
+    ? `<span class="bar-meta bar-meta-above" style="left:${start}%">${escapeHtml(item.owner)}</span>`
+    : "";
+  const managerLabel = isStaff && item.manager
+    ? `<span class="bar-meta bar-meta-below" style="left:${start}%">${escapeHtml(item.manager)}</span>`
+    : "";
 
   return `
     <article
@@ -1115,33 +1135,19 @@ function renderLane(item, ticks) {
     >
       <div class="lane-meta">
         <h2>${escapeHtml(item.title)}</h2>
-        <p class="lane-description">${escapeHtml(item.impact || inferImpact(item))}</p>
+        <p class="lane-description">${escapeHtml(item.content)}</p>
       </div>
       <div class="lane-chart">
         ${ticks.map((tick) => `<span class="grid-line" style="left:${pct(tick)}%"></span>`).join("")}
         <span class="today-line" style="left:${todayPct}%"></span>
-        ${milestoneSpans}
         <span
           class="bar"
           style="left:${start}%; width:${width}%"
           aria-hidden="true"
         ></span>
-        <span
-          class="endpoint start-point draggable-point${startOutside ? ' clipped' : ''}"
-          style="left:${start}%"
-          data-drag-kind="start"
-          data-id="${escapeHtml(item.id)}"
-          aria-label="${escapeHtml(item.title)} 시작일 ${escapeHtml(formatDateLabel(item.start))}"
-        ></span>
-        <span
-          class="endpoint end-point draggable-point${endOutside ? ' clipped' : ''}"
-          style="left:${end}%"
-          data-drag-kind="end"
-          data-id="${escapeHtml(item.id)}"
-          aria-label="${escapeHtml(item.title)} 완료일 ${escapeHtml(formatDateLabel(item.end))}"
-        ></span>
+        ${isStaff ? `<span class="endpoint start-point draggable-point${startOutside ? ' clipped' : ''}" style="left:${start}%" data-drag-kind="start" data-id="${escapeHtml(item.id)}"></span><span class="endpoint end-point draggable-point${endOutside ? ' clipped' : ''}" style="left:${end}%" data-drag-kind="end" data-id="${escapeHtml(item.id)}"></span>` : ""}
+        ${ownerLabel}${managerLabel}
         ${milestoneMarkers}
-        <p class="timeline-content" style="left:${start}%">${escapeHtml(item.content)}</p>
       </div>
     </article>
   `;
@@ -1254,9 +1260,6 @@ function itemToMarkdown(item) {
   if (item.content) {
     lines.push(``, `## 업무 내용`, ``, item.content);
   }
-  if (item.impact) {
-    lines.push(``, `## 추진 목표`, ``, item.impact);
-  }
   if (item.milestones?.length) {
     lines.push(``, `## 주요 일정`, ``);
     item.milestones.forEach((ms) => {
@@ -1349,7 +1352,6 @@ function parseMarkdownToForm(text) {
   if (sectionLines["업무 내용"] !== undefined)
     result.content = sectionLines["업무 내용"].join("\n").trim();
   if (sectionLines["추진 목표"] !== undefined)
-    result.impact = sectionLines["추진 목표"].join("\n").trim();
   if (milestones.length) result.milestones = milestones;
 
   return result;
@@ -1365,7 +1367,6 @@ function applyParsedToForm(parsed) {
   if (parsed.visible !== undefined) taskTentative.checked = parsed.visible;
   if (parsed.complete !== undefined) taskComplete.checked = parsed.complete;
   if (parsed.content !== undefined) taskContent.value = parsed.content;
-  if (parsed.impact !== undefined) taskImpact.value = parsed.impact;
   if (parsed.milestones !== undefined) renderMilestoneRows(parsed.milestones);
 }
 
@@ -1495,6 +1496,22 @@ loginForm.addEventListener("submit", async (event) => {
   }
 });
 
+milestoneRows.addEventListener("focus", (event) => {
+  const input = event.target.closest('[data-field="startDate"]');
+  if (input) input.dataset.prevValue = input.value;
+}, true);
+
+milestoneRows.addEventListener("change", (event) => {
+  const input = event.target.closest('[data-field="startDate"]');
+  if (!input) return;
+  const row = input.closest(".milestone-row");
+  if (!row) return;
+  const endInput = row.querySelector('[data-field="endDate"]');
+  if (!endInput.value || endInput.value === (input.dataset.prevValue ?? "")) {
+    endInput.value = input.value;
+  }
+});
+
 milestoneRows.addEventListener("click", (event) => {
   if (!isStaff) return;
   const button = event.target.closest("[data-action]");
@@ -1551,6 +1568,18 @@ function moveDragPoint(event) {
     const bar = dragState.chart.querySelector(".bar");
     bar.style.left = `${Math.min(startPct, endPct)}%`;
     bar.style.width = `${Math.max(Math.abs(endPct - startPct), 0.8)}%`;
+  }
+  if (dragState.target.dataset.dragKind === "milestone-start" || dragState.target.dataset.dragKind === "milestone-end") {
+    const msId = dragState.target.dataset.milestoneId;
+    const span = dragState.chart.querySelector(`.ms-span-range[data-milestone-id="${msId}"]`);
+    const startHandle = dragState.chart.querySelector(`.ms-range-handle-start[data-milestone-id="${msId}"]`);
+    const endHandle = dragState.chart.querySelector(`.ms-range-handle-end[data-milestone-id="${msId}"]`);
+    if (span && startHandle && endHandle) {
+      const sPct = parseFloat(startHandle.style.left) || 0;
+      const ePct = parseFloat(endHandle.style.left) || 0;
+      span.style.left = `${Math.min(sPct, ePct)}%`;
+      span.style.width = `${Math.max(Math.abs(ePct - sPct), 0.1)}%`;
+    }
   }
   dragDateTooltip.textContent = formatDateLabel(nextIsoDate);
   dragDateTooltip.style.left = `${event.clientX}px`;
@@ -1664,35 +1693,12 @@ timeline.addEventListener("click", (event) => {
     if (lane) {
       const item = items.find((candidate) => candidate.id === lane.dataset.id);
       if (item) {
-        if (storageMode === "readonly") {
-          selectItem(item.id);
-        } else {
-          openTaskModal(item);
-        }
+        selectItem(item.id);
         return;
       }
     }
   }
 
-  const button = event.target.closest("[data-action]");
-  if (button) {
-    const id = button.dataset.id;
-    if (button.dataset.action === "edit-task") {
-      selectItem(id);
-      if (isStaff) document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-    if (button.dataset.action === "delete-task") {
-      selectedItemId = id;
-      renderEditor();
-      deleteSelectedTask();
-    }
-    return;
-  }
-
-  const lane = event.target.closest(".lane[data-id]");
-  if (!lane || !isStaff) return;
-  selectItem(lane.dataset.id);
-  if (storageMode !== "readonly") document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 async function init() {

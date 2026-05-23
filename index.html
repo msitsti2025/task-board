@@ -23,7 +23,7 @@
           <div class="segmented" id="categoryFilters"></div>
           <label class="search-box">
             <span>검색</span>
-            <input id="searchInput" type="search" placeholder="업무명, 업무 내용, 추진 목표, 소관 검색" />
+            <input id="searchInput" type="search" placeholder="업무명, 업무 내용, 소관 검색" />
           </label>
         </div>
       </header>
@@ -93,11 +93,11 @@
               <input id="taskManager" placeholder="내부 담당자" />
             </label>
             <label>
-              <span>시작일</span>
+              <span>업무 시작일</span>
               <input id="taskStart" type="date" required />
             </label>
             <label>
-              <span>완료일</span>
+              <span>업무 종료일</span>
               <input id="taskEnd" type="date" required />
             </label>
             <label class="checkbox-field">
@@ -110,11 +110,7 @@
             </label>
             <label class="full-field">
               <span>업무 내용</span>
-              <textarea id="taskContent" rows="1" placeholder="무엇을 추진하는 업무인지 입력하세요"></textarea>
-            </label>
-            <label class="full-field">
-              <span>추진 목표</span>
-              <textarea id="taskImpact" rows="1" placeholder="이 업무를 통해 달성하려는 목표를 입력하세요"></textarea>
+              <textarea id="taskContent" rows="1" placeholder="업무 내용 및 추진 목표를 입력하세요"></textarea>
             </label>
           </div>
 
