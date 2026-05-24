@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>과학기술혁신본부 업무 타임라인 대시보드</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <div class="page-topbar">
+        <button type="button" class="login-corner-btn" id="staffLoginButton">로그인</button>
+        <button type="button" class="login-corner-btn" id="staffLogoutButton" hidden>로그아웃</button>
+      </div>
+      <header class="hero">
+        <div class="hero-main">
+          <div class="hero-copy">
+            <p class="eyebrow">과학기술정보통신부 · 과학기술혁신본부</p>
+            <h1>한눈에 보는 과학기술혁신본부 업무 추진 현황</h1>
+          </div>
+          <div class="hero-actions">
+            <button type="button" class="primary-button" id="printButton">인쇄</button>
+          </div>
+        </div>
+        <div class="controls" aria-label="대시보드 필터">
+          <div class="segmented" id="categoryFilters"></div>
+          <label class="search-box">
+            <span>검색</span>
+            <input id="searchInput" type="search" placeholder="업무명, 업무 내용, 소관 검색" />
+          </label>
+        </div>
+      </header>
+
+      <section class="login-panel" id="loginPanel" hidden aria-label="직원 로그인" aria-modal="true" role="dialog">
+        <div class="login-modal-box">
+          <div class="login-modal-head">
+            <h3 class="login-modal-title">직원 로그인</h3>
+            <button type="button" class="login-close-btn" id="loginCloseButton" aria-label="닫기">✕</button>
+          </div>
+          <form id="loginForm" class="login-form">
+            <label>
+              <span id="staffPasswordLabel">비밀번호</span>
+              <input
+                id="staffPassword"
+                type="password"
+                autocomplete="current-password"
+                inputmode="latin"
+                lang="en"
+                autocapitalize="none"
+                spellcheck="false"
+                required
+              />
+            </label>
+            <button type="submit" class="primary-button">로그인</button>
+            <p id="loginMessage" class="login-message" role="status"></p>
+          </form>
+        </div>
+      </section>
+
+      <div class="review-modal-backdrop" id="reviewModalBackdrop" hidden></div>
+      <section class="editor-panel" id="editorPanel" aria-label="직원 업무 입력" hidden>
+        <p class="editor-notice" id="editorNotice" hidden>
+          이 화면의 수정사항은 서버에 곧바로 반영되지 않습니다. 내용을 수정한 뒤 <strong>내려받기</strong>로 저장하고, 담당자에게 전달하세요.
+        </p>
+        <div class="editor-head">
+          <div>
+            <p class="section-kicker" id="editorKicker">직원 입력 화면</p>
+            <h2 id="editorTitle">새 업무 등록</h2>
+          </div>
+          <div class="editor-actions">
+            <button type="button" class="secondary-button" id="newTaskButton">새 업무</button>
+            <button type="button" class="secondary-button" id="duplicateButton">복제</button>
+            <button type="button" class="secondary-button" id="uploadButton">업로드</button>
+            <button type="submit" class="secondary-button" id="saveButton" form="taskForm">저장</button>
+            <button type="button" class="secondary-button" id="deleteButton">삭제</button>
+            <button type="button" class="secondary-button" id="downloadButton">내려받기</button>
+            <button type="button" class="secondary-button" id="reviewCloseButton" hidden>닫기</button>
+          </div>
+        </div>
+
+        <form id="taskForm" class="task-form">
+          <input type="hidden" id="taskId" />
+          <div class="form-grid">
+            <label>
+              <span>업무명</span>
+              <input id="taskTitle" required placeholder="업무명을 입력하세요" />
+            </label>
+            <label>
+              <span>업무 그룹</span>
+              <select id="taskCategory" required></select>
+            </label>
+            <label>
+              <span>소관</span>
+              <select id="taskOwner"></select>
+            </label>
+            <label>
+              <span>담당자</span>
+              <input id="taskManager" placeholder="내부 담당자" />
+            </label>
+            <label>
+              <span>업무 시작일</span>
+              <input id="taskStart" type="date" required />
+            </label>
+            <label>
+              <span>업무 종료일</span>
+              <input id="taskEnd" type="date" required />
+            </label>
+            <label class="checkbox-field">
+              <span>공개 여부</span>
+              <input id="taskTentative" type="checkbox" />
+            </label>
+            <label class="checkbox-field">
+              <span>완료 여부</span>
+              <input id="taskComplete" type="checkbox" />
+            </label>
+            <label class="full-field">
+              <span>업무 내용</span>
+              <textarea id="taskContent" rows="1" placeholder="업무 내용 및 추진 목표를 입력하세요"></textarea>
+            </label>
+          </div>
+
+          <div class="full-field milestone-inline">
+            <div id="milestoneRows" class="milestone-rows"></div>
+          </div>
+
+        </form>
+      </section>
+
+      <section class="timeline-panel">
+        <div class="timeline" id="timeline" aria-live="polite"></div>
+      </section>
+      <div class="timeline-scrollbar" id="timelineScrollbar" aria-hidden="true">
+        <div id="timelineScrollbarInner"></div>
+      </div>
+    </main>
+
+    <div class="task-modal" id="taskModal" hidden aria-modal="true" role="dialog" aria-labelledby="taskModalTitle">
+      <div class="task-modal-backdrop"></div>
+      <div class="task-modal-box">
+        <div class="task-modal-head">
+          <h2 id="taskModalTitle"></h2>
+          <div class="task-modal-actions">
+            <button type="button" class="secondary-button" id="taskModalDownload">내려받기</button>
+            <button type="button" class="secondary-button" id="taskModalClose">닫기</button>
+          </div>
+        </div>
+        <pre class="task-modal-body" id="taskModalBody"></pre>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
