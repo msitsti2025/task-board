@@ -10,6 +10,7 @@
     <main class="app-shell">
       <div class="page-topbar">
         <button type="button" class="login-corner-btn" id="staffLoginButton">로그인</button>
+        <button type="button" class="login-corner-btn" id="staffLogoutButton" hidden>로그아웃</button>
       </div>
       <header class="hero">
         <div class="hero-main">
@@ -19,7 +20,6 @@
           </div>
           <div class="hero-actions">
             <button type="button" class="primary-button" id="printButton">인쇄</button>
-            <button type="button" class="secondary-button" id="staffLogoutButton" hidden>로그아웃</button>
           </div>
         </div>
         <div class="controls" aria-label="대시보드 필터">
@@ -58,7 +58,7 @@
       <div class="review-modal-backdrop" id="reviewModalBackdrop" hidden></div>
       <section class="editor-panel" id="editorPanel" aria-label="직원 업무 입력" hidden>
         <p class="editor-notice" id="editorNotice" hidden>
-          이 화면은 <strong>읽기 전용</strong>입니다. 내용을 수정한 뒤 <strong>내려받기</strong>로 저장하고, 담당자에게 전달하세요.
+          이 화면의 수정사항은 서버에 곧바로 반영되지 않습니다. 내용을 수정한 뒤 <strong>내려받기</strong>로 저장하고, 담당자에게 전달하세요.
         </p>
         <div class="editor-head">
           <div>

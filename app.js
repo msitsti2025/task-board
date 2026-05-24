@@ -322,11 +322,17 @@ const legacyStorageKey = "osti-task-board-items-v1";
 const isDirectFileHost = isLocalEditableHost();
 const isLoopbackHost = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
 let activeCategory = "all";
+// GitHub Pages 편집 모드: 저장소 경로를 설정하면 PAT 로그인으로 직접 저장 가능
+// 예: "username/osti-task-board" — 비워두면 readonly 모드로 동작
+const GITHUB_REPO = "msitsti2025/task-board";
+
 let items = [];
 let selectedItemId = "";
 let storageMode = "readonly";
 let isStaff = false;
 let canWrite = false;
+let githubToken = "";
+let githubFileSha = "";
 
 const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
 const categoryFilters = document.querySelector("#categoryFilters");
@@ -442,6 +448,28 @@ async function loadItems() {
     }
   }
 
+  if (GITHUB_REPO) {
+    storageMode = "github";
+    const savedToken = sessionStorage.getItem("github_token");
+    if (savedToken) githubToken = savedToken;
+    try {
+      const headers = { Accept: "application/vnd.github.v3+json" };
+      if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/tasks.json`,
+        { headers }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        githubFileSha = data.sha;
+        const text = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ""))));
+        return normalizeItems(JSON.parse(text));
+      }
+    } catch (e) {
+      console.warn("GitHub API로 데이터를 불러오지 못했습니다. tasks.json으로 대체합니다.", e);
+    }
+  }
+
   try {
     const response = await fetch("tasks.json", { cache: "no-store" });
     if (response.ok) {
@@ -478,12 +506,66 @@ async function apiPost(body) {
   alert(`데이터 저장에 실패했습니다 (오류 ${response.status}).\n${text || "서버 오류가 발생했습니다."}`);
 }
 
+async function persistItemsToGithub() {
+  try {
+    if (!githubFileSha) {
+      const r = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/tasks.json`,
+        { headers: { Authorization: `Bearer ${githubToken}`, Accept: "application/vnd.github.v3+json" } }
+      );
+      if (r.ok) githubFileSha = (await r.json()).sha;
+    }
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(items, null, 2) + "\n")));
+    const res = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/contents/tasks.json`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `업무 데이터 업데이트 (${new Date().toLocaleString("ko-KR")})`,
+          content,
+          sha: githubFileSha,
+        }),
+      }
+    );
+    if (!res.ok) {
+      if (res.status === 409) {
+        alert("저장 충돌: 다른 사람이 동시에 수정했습니다. 페이지를 새로고침한 뒤 다시 저장해 주세요.");
+        return;
+      }
+      if (res.status === 401) {
+        githubToken = "";
+        githubFileSha = "";
+        sessionStorage.removeItem("github_token");
+        isStaff = false;
+        renderAuthState();
+        alert("토큰이 만료되었습니다. 다시 로그인해 주세요.");
+        return;
+      }
+      alert(`GitHub 저장 실패 (오류 ${res.status}).`);
+      return;
+    }
+    githubFileSha = (await res.json()).content.sha;
+  } catch (e) {
+    console.error("GitHub에 저장하지 못했습니다.", e);
+    alert("GitHub에 연결하지 못했습니다. 인터넷 연결을 확인해 주세요.");
+  }
+}
+
 function persistItems() {
   if (storageMode === "api" && canWrite && isStaff) {
     return apiPost(JSON.stringify(items, null, 2)).catch((error) => {
       console.error("데이터를 저장하지 못했습니다. node server.js로 실행했는지 확인하세요.", error);
       alert("서버에 연결하지 못했습니다. node server.js가 실행 중인지 확인해 주세요.");
     });
+  }
+
+  if (storageMode === "github" && isStaff && githubToken) {
+    return persistItemsToGithub();
   }
 
   if (storageMode === "local") {
@@ -623,20 +705,21 @@ function renderOwnerOptions(selectedOwner = "") {
 }
 
 function renderAuthState() {
-  const apiMode = storageMode === "api";
-  const readonlyMode = storageMode === "readonly";
+  const githubMode = storageMode === "github";
+  // readonly: 실제 readonly 모드이거나, github 모드에서 로그인 전
+  const readonlyMode = storageMode === "readonly" || (githubMode && !isStaff);
   // 에디터 패널: 모달로만 표시, 현재 모달 상태 유지
   if (!editorPanel.classList.contains("is-modal")) {
     editorPanel.hidden = true;
   }
-  staffLoginButton.hidden = (!apiMode && !readonlyMode) || isStaff;
-  staffLogoutButton.hidden = (!apiMode && !readonlyMode) || !isStaff;
+  // local 모드는 로그인 불필요; 나머지 모드에서 로그인/로그아웃 버튼 표시
+  staffLoginButton.hidden = storageMode === "local" || isStaff;
+  staffLogoutButton.hidden = storageMode === "local" || !isStaff;
   printButton.hidden = false;
   if (isStaff) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
   }
-  // readonly 모드: 편집 전용 버튼 숨김, 닫기 버튼 표시, 안내 배너 표시
   const writeOnly = [newTaskButton, duplicateButton, saveButton, deleteButton];
   writeOnly.forEach((btn) => { btn.hidden = readonlyMode; });
   uploadButton.hidden = false;
@@ -680,7 +763,7 @@ function getSelectedItem() {
 
 function renderEditor(item = getSelectedItem()) {
   const current = item || emptyTask();
-  if (storageMode === "readonly") {
+  if (storageMode === "readonly" || (storageMode === "github" && !isStaff)) {
     editorTitle.textContent = current.id ? "업무 검토 및 수정 제안" : "업무를 선택하세요";
   } else {
     editorTitle.textContent = current.id ? "업무 수정" : "새 업무 추가";
@@ -1477,10 +1560,21 @@ document.addEventListener("keydown", (event) => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 staffLoginButton.addEventListener("click", () => {
-  if (storageMode !== "api" && storageMode !== "readonly") return;
+  if (storageMode === "local") return;
   loginPanel.hidden = !loginPanel.hidden;
   if (!loginPanel.hidden) {
-    if (!staffId.value.trim()) staffId.value = "admin";
+    if (storageMode === "github") {
+      staffId.closest("label").hidden = true;
+      staffId.required = false;
+      staffPassword.closest("label").querySelector("span").textContent = "GitHub Access Token";
+      staffPassword.placeholder = "github_pat_...";
+    } else {
+      staffId.closest("label").hidden = false;
+      staffId.required = true;
+      staffPassword.closest("label").querySelector("span").textContent = "비밀번호";
+      staffPassword.placeholder = "";
+      if (!staffId.value.trim()) staffId.value = "admin";
+    }
     staffPassword.focus();
   }
 });
@@ -1494,6 +1588,11 @@ staffLogoutButton.addEventListener("click", async () => {
       console.error("로그아웃 요청을 처리하지 못했습니다.", error);
     });
   }
+  if (storageMode === "github") {
+    githubToken = "";
+    githubFileSha = "";
+    sessionStorage.removeItem("github_token");
+  }
   isStaff = false;
   selectedItemId = "";
   renderAuthState();
@@ -1502,6 +1601,53 @@ staffLogoutButton.addEventListener("click", async () => {
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  // github 모드: PAT를 GitHub API로 검증 후 저장
+  if (storageMode === "github") {
+    const token = staffPassword.value.trim();
+    if (!token) {
+      loginMessage.textContent = "GitHub Access Token을 입력해 주세요.";
+      return;
+    }
+    loginMessage.textContent = "토큰 확인 중...";
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/tasks.json`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github.v3+json",
+          },
+        }
+      );
+      if (!res.ok) {
+        loginMessage.textContent =
+          res.status === 401 ? "토큰이 유효하지 않습니다." :
+          res.status === 403 ? "이 저장소에 쓰기 권한이 없습니다." :
+          `인증 실패 (오류 ${res.status})`;
+        return;
+      }
+      const data = await res.json();
+      githubFileSha = data.sha;
+      githubToken = token;
+      sessionStorage.setItem("github_token", token);
+      isStaff = true;
+      loginForm.reset();
+      loginPanel.hidden = true;
+      loginMessage.textContent = "";
+      // 폼 원래 상태로 복원
+      staffId.closest("label").hidden = false;
+      staffId.required = true;
+      staffPassword.closest("label").querySelector("span").textContent = "비밀번호";
+      staffPassword.placeholder = "";
+      renderAuthState();
+      renderEditor();
+      renderTimeline();
+    } catch (e) {
+      loginMessage.textContent = "GitHub API에 연결하지 못했습니다.";
+    }
+    return;
+  }
 
   // readonly 모드: 클라이언트 사이드 인증
   if (storageMode === "readonly") {
@@ -1906,8 +2052,11 @@ async function init() {
   if (storageMode === "local" && canWrite) {
     isStaff = true;
     await restoreDirHandle();
+  } else if (storageMode === "github") {
+    if (githubToken) isStaff = true; // sessionStorage에서 복원된 토큰이 있으면 로그인 유지
+  } else {
+    await refreshStaffSession();
   }
-  else await refreshStaffSession();
   selectedItemId = items[0]?.id ?? "";
   renderCategoryOptions();
   renderOwnerOptions();
