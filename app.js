@@ -362,7 +362,6 @@ const downloadButton = document.querySelector("#downloadButton");
 const uploadButton = document.querySelector("#uploadButton");
 const editorPanel = document.querySelector("#editorPanel");
 const editorNotice = document.querySelector("#editorNotice");
-const editorKicker = document.querySelector("#editorKicker");
 const reviewModalBackdrop = document.querySelector("#reviewModalBackdrop");
 const reviewCloseButton = document.querySelector("#reviewCloseButton");
 const staffLoginButton = document.querySelector("#staffLoginButton");
@@ -727,7 +726,6 @@ function renderAuthState() {
   downloadButton.hidden = false;
   reviewCloseButton.hidden = false;
   editorNotice.hidden = !readonlyMode;
-  editorKicker.textContent = readonlyMode ? "검토 / 수정 제안" : "직원 입력 화면";
 }
 
 function emptyTask() {
@@ -1211,7 +1209,7 @@ function renderLane(item, ticks) {
         const spanWidth = Math.max(mEnd - mStart, 0);
         if (spanWidth < 0.05) return "";
         const topStyle = rangeTopLevels[rangeIndex % rangeTopLevels.length];
-        const isRangeBelow = rangeIndex % 2 === 1;
+        const isRangeBelow = !topStyle.includes("-");
         rangeIndex++;
         // 라벨을 span 바로 뒤에 배치해야 :hover + .ms-label CSS 셀렉터가 동작함
         const futureClass = isFuture ? " is-future" : "";
@@ -1230,7 +1228,7 @@ function renderLane(item, ticks) {
       // 로그아웃 상태: 위아래 교대로 표시, 겹치면 점진 축약해서 표시
       let inlineLabel = "";
       if (!isStaff && ms.label) {
-        const isBelow = msIndex % 2 === 1;
+        const isBelow = msIndex % 2 === 0;
         const lastRightPct = isBelow ? lastBelowRightPct : lastAboveRightPct;
         const fit = fitInlineLabel(ms.label, mStart, lastRightPct);
         if (fit) {
