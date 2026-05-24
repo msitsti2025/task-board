@@ -1083,7 +1083,7 @@
     "start": "2026-07-01",
     "end": "2026-07-31",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "도전적 목표를 미달성한 과제도 우수성 평가를 통해 재도약을 지원하는 제도 개선 검토.",
     "milestones": [
