@@ -31,28 +31,30 @@
         </div>
       </header>
 
-      <section class="login-panel" id="loginPanel" hidden aria-label="직원 로그인">
-        <form id="loginForm" class="login-form">
-          <label>
-            <span>직원 ID</span>
-            <input id="staffId" autocomplete="username" placeholder="admin" required />
-          </label>
-          <label>
-            <span>비밀번호</span>
-            <input
-              id="staffPassword"
-              type="password"
-              autocomplete="current-password"
-              inputmode="latin"
-              lang="en"
-              autocapitalize="none"
-              spellcheck="false"
-              required
-            />
-          </label>
-          <button type="submit" class="primary-button">로그인</button>
-          <p id="loginMessage" class="login-message" role="status"></p>
-        </form>
+      <section class="login-panel" id="loginPanel" hidden aria-label="직원 로그인" aria-modal="true" role="dialog">
+        <div class="login-modal-box">
+          <div class="login-modal-head">
+            <h3 class="login-modal-title">직원 로그인</h3>
+            <button type="button" class="login-close-btn" id="loginCloseButton" aria-label="닫기">✕</button>
+          </div>
+          <form id="loginForm" class="login-form">
+            <label>
+              <span id="staffPasswordLabel">비밀번호</span>
+              <input
+                id="staffPassword"
+                type="password"
+                autocomplete="current-password"
+                inputmode="latin"
+                lang="en"
+                autocapitalize="none"
+                spellcheck="false"
+                required
+              />
+            </label>
+            <button type="submit" class="primary-button">로그인</button>
+            <p id="loginMessage" class="login-message" role="status"></p>
+          </form>
+        </div>
       </section>
 
       <div class="review-modal-backdrop" id="reviewModalBackdrop" hidden></div>

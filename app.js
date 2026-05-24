@@ -367,10 +367,11 @@ const reviewModalBackdrop = document.querySelector("#reviewModalBackdrop");
 const reviewCloseButton = document.querySelector("#reviewCloseButton");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
+const loginCloseButton = document.querySelector("#loginCloseButton");
+const staffPasswordLabel = document.querySelector("#staffPasswordLabel");
 const printButton = document.querySelector("#printButton");
 const loginPanel = document.querySelector("#loginPanel");
 const loginForm = document.querySelector("#loginForm");
-const staffId = document.querySelector("#staffId");
 const staffPassword = document.querySelector("#staffPassword");
 const loginMessage = document.querySelector("#loginMessage");
 
@@ -1559,24 +1560,28 @@ document.addEventListener("keydown", (event) => {
 });
 // ─────────────────────────────────────────────────────────────────────────────
 
+function openLoginPanel() {
+  if (storageMode === "github") {
+    staffPasswordLabel.textContent = "GitHub Access Token";
+    staffPassword.placeholder = "github_pat_...";
+  } else {
+    staffPasswordLabel.textContent = "비밀번호";
+    staffPassword.placeholder = "";
+  }
+  loginMessage.textContent = "";
+  loginPanel.hidden = false;
+  staffPassword.focus();
+}
+
 staffLoginButton.addEventListener("click", () => {
   if (storageMode === "local") return;
-  loginPanel.hidden = !loginPanel.hidden;
-  if (!loginPanel.hidden) {
-    if (storageMode === "github") {
-      staffId.closest("label").hidden = true;
-      staffId.required = false;
-      staffPassword.closest("label").querySelector("span").textContent = "GitHub Access Token";
-      staffPassword.placeholder = "github_pat_...";
-    } else {
-      staffId.closest("label").hidden = false;
-      staffId.required = true;
-      staffPassword.closest("label").querySelector("span").textContent = "비밀번호";
-      staffPassword.placeholder = "";
-      if (!staffId.value.trim()) staffId.value = "admin";
-    }
-    staffPassword.focus();
-  }
+  openLoginPanel();
+});
+
+loginCloseButton.addEventListener("click", () => {
+  loginPanel.hidden = true;
+  loginForm.reset();
+  loginMessage.textContent = "";
 });
 
 staffLogoutButton.addEventListener("click", async () => {
@@ -1635,11 +1640,6 @@ loginForm.addEventListener("submit", async (event) => {
       loginForm.reset();
       loginPanel.hidden = true;
       loginMessage.textContent = "";
-      // 폼 원래 상태로 복원
-      staffId.closest("label").hidden = false;
-      staffId.required = true;
-      staffPassword.closest("label").querySelector("span").textContent = "비밀번호";
-      staffPassword.placeholder = "";
       renderAuthState();
       renderEditor();
       renderTimeline();
@@ -1651,7 +1651,7 @@ loginForm.addEventListener("submit", async (event) => {
 
   // readonly 모드: 클라이언트 사이드 인증
   if (storageMode === "readonly") {
-    const ok = staffId.value.trim() === "admin" && staffPassword.value === "osti2026";
+    const ok = staffPassword.value === "osti2026";
     if (!ok) {
       loginMessage.textContent = "직원 ID와 비밀번호를 확인하세요.";
       return;
@@ -1672,7 +1672,7 @@ loginForm.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       credentials: "same-origin",
       body: JSON.stringify({
-        user: staffId.value.trim(),
+        user: "admin",
         password: staffPassword.value,
       }),
     });
@@ -1685,6 +1685,8 @@ loginForm.addEventListener("submit", async (event) => {
 
     isStaff = true;
     loginForm.reset();
+    loginPanel.hidden = true;
+    loginMessage.textContent = "";
     renderAuthState();
     renderEditor();
     renderTimeline();

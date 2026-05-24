@@ -153,18 +153,59 @@ h1 {
 }
 
 .login-panel {
-  margin-bottom: 18px;
-  padding: 16px;
-  border: 1px solid #c7d7e7;
-  border-radius: 8px;
-  background: #f7fbff;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+}
+.login-panel[hidden] { display: none; }
+
+.login-modal-box {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 28px 32px;
+  width: min(400px, 90vw);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+}
+
+.login-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.login-modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.login-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 18px;
+  padding: 2px 8px;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+.login-close-btn:hover {
+  color: var(--ink);
+  background: var(--soft);
 }
 
 .login-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 10px;
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .login-form label {
@@ -190,7 +231,6 @@ h1 {
 }
 
 .login-message {
-  grid-column: 1 / -1;
   margin: 0;
   color: #b42318;
   font-size: 13px;
@@ -992,7 +1032,6 @@ body:has(.drag-date-tooltip.is-visible) .draggable-point,
   .hero,
   .hero-main,
   .controls,
-  .login-form,
   .editor-head {
     align-items: stretch;
     flex-direction: column;
@@ -1014,9 +1053,6 @@ body:has(.drag-date-tooltip.is-visible) .draggable-point,
     text-align: left;
   }
 
-  .login-form {
-    display: flex;
-  }
 
   .category-section-title h3 {
     font-size: 16px;
