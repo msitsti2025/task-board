@@ -609,7 +609,7 @@
     "start": "2026-05-11",
     "end": "2026-09-30",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "국가연구개발사업 예산설명회를 시작으로 주요 R&D 예산 배분·조정안을 마련하고 정부 R&D 예산안을 간담회 등으로 홍보.",
     "milestones": [
