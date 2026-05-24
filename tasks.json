@@ -106,7 +106,7 @@
   {
     "id": "task-3-5dec3c8d-4a3d-4284-bdbd-a04782749ec2",
     "category": "rnd-management",
-    "order": 3,
+    "order": 5,
     "title": "연구비 집행 자율성 확대",
     "owner": "연구제도혁신과",
     "manager": "김도경, 서승호",
@@ -238,7 +238,7 @@
   {
     "id": "task-6-338a61de-e25a-448c-9554-8f81a237b60d",
     "category": "science-policy",
-    "order": 5,
+    "order": 10,
     "title": "투자형 R&D 사업 신규 도입",
     "owner": "연구개발타당성심사팀",
     "manager": "김주연",
@@ -284,7 +284,7 @@
   {
     "id": "task-7-c6807e7d-c844-438c-a0ed-3f47ead950db",
     "category": "science-policy",
-    "order": 6,
+    "order": 11,
     "title": "제6차 과학기술기본계획 수립",
     "owner": "과학기술정책과",
     "manager": "",
@@ -324,7 +324,7 @@
   {
     "id": "task-8-94bfb498-e583-44e5-830b-b3ab1c81b4ab",
     "category": "science-policy",
-    "order": 4,
+    "order": 9,
     "title": "우리의 과학(K-Science) 정책 추진",
     "owner": "과학기술전략과",
     "manager": "이종우",
@@ -434,13 +434,31 @@
         "startDate": "2026-05-12",
         "endDate": "2026-05-12",
         "label": "국무회의 상정 및 법률공포"
+      },
+      {
+        "id": "milestone-4b02f40c-a21f-41c7-a1b8-7c20afaabfde",
+        "startDate": "2026-07-30",
+        "endDate": "2026-07-30",
+        "label": "지역과학기술진흥협의회"
+      },
+      {
+        "id": "milestone-875f4225-4719-4902-917c-c80f6ec1e0a2",
+        "startDate": "2026-11-30",
+        "endDate": "2026-11-30",
+        "label": "시행령 제정 완료"
+      },
+      {
+        "id": "milestone-f3ec00a2-1cb3-4800-96b6-ac6263c33609",
+        "startDate": "2027-01-01",
+        "endDate": "2027-01-01",
+        "label": "법 시행"
       }
     ]
   },
   {
     "id": "task-10-7247a5e5-6bd4-4a77-913b-6254f24ea948",
     "category": "rnd-management",
-    "order": 0,
+    "order": 1,
     "title": "국가연구데이터법 제정",
     "owner": "성과평가정책과",
     "manager": "신유진, 정용찬",
@@ -520,7 +538,7 @@
   {
     "id": "task-12-13ba4693-4866-415f-a38f-d9d794df9a7d",
     "category": "rnd-management",
-    "order": 1,
+    "order": 2,
     "title": "R&D 예타 폐지 및 대형 R&D투자•관리 시스템 전면 개편",
     "owner": "연구개발타당성심사팀",
     "manager": "송호준, 김홍주",
@@ -618,7 +636,7 @@
   {
     "id": "task-14-7ea5c356-4d87-4995-9f33-8a40b7360320",
     "category": "rnd-management",
-    "order": 5,
+    "order": 7,
     "title": "R&D 행정서식 간소화",
     "owner": "연구제도혁신과",
     "manager": "김도경, 최원영",
@@ -734,7 +752,7 @@
   {
     "id": "task-16-b633771f-96af-45ca-9858-834e04f6fbd5",
     "category": "rnd-management",
-    "order": 8,
+    "order": 11,
     "title": "국가 R&D 서비스 통합 로그인 \"연구24\" 구축",
     "owner": "과학기술정보분석과",
     "manager": "조시훈, 원성호",
@@ -774,29 +792,71 @@
   {
     "id": "task-17-207548ce-d280-47b0-a4db-208ceb00c32b",
     "category": "rnd-management",
-    "order": 9,
-    "title": "R&D 사업화 시스템 고도화 전략",
-    "owner": "과학기술혁신지원팀",
-    "manager": "",
-    "start": "2026-06-01",
-    "end": "2026-06-30",
+    "order": 4,
+    "title": "비영리기관 기술료 제도개선",
+    "owner": "성과평가정책과",
+    "manager": "박진희, 김진현",
+    "start": "2025-10-01",
+    "end": "2026-07-31",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
-    "content": "R&D 성과확산 고속도로 구축, 연구성과 창업 활성화, 투자형 R&D 도입 등 성과확산 체계 개편.",
+    "content": "핵심 주체에 대한 보상 및 기술사업화 체계 강화 등을 위한 비영리기관 기술료 제도 개선",
     "milestones": [
       {
         "id": "milestone-1c423538-649c-4a37-92be-e46e25dc9381",
-        "startDate": "2026-06-15",
-        "endDate": "2026-06-15",
-        "label": "STEPI 원장 기고"
+        "startDate": "2025-04-16",
+        "endDate": "2025-08-13",
+        "label": "기술료 제도개선을 위한 워킹그룹(산학연 전문가 참여) 운영 및 개선방안 도출"
+      },
+      {
+        "id": "milestone-6b3c17d0-5909-4cca-886b-9ab370c9a430",
+        "startDate": "2025-10-15",
+        "endDate": "2025-10-15",
+        "label": "제5차 연구성과관리활용 기본계획 수립(기술료 제도 개선 방향 발표)"
+      },
+      {
+        "id": "milestone-e6d52d15-f403-4ef4-8c43-a136bf3970a1",
+        "startDate": "2025-12-10",
+        "endDate": "2025-12-17",
+        "label": "혁신법(과기정통부의 비영리기관 기술료 사용현황 조사 근거 마련) 및 동법 시행령(기관의 기술료 사용 자율성 및 사업화 기반 강화) 개정안 마련"
+      },
+      {
+        "id": "milestone-f3e52667-b12a-45ed-996c-acf2d62fe488",
+        "startDate": "2025-12-24",
+        "endDate": "2026-02-18",
+        "label": "혁신법 및 동법 시행령 개정안 연구현장 의견수렴(수도권, 지역 대학 산단 및 연구특성(기초중심, 개발중심)별 공공연 TLO 등)"
+      },
+      {
+        "id": "milestone-f09bb2b8-618a-4f46-a5fa-a63c07ebfb22",
+        "startDate": "2026-02-18",
+        "endDate": "2026-02-18",
+        "label": "혁신법 개정안 발의"
+      },
+      {
+        "id": "milestone-65f00430-2e45-49e5-b9e7-33897d7f0d19",
+        "startDate": "2026-05-13",
+        "endDate": "2026-05-13",
+        "label": "혁신법 개정안 과방위 통과, 혁신법 시행령 개정안 입법예고"
+      },
+      {
+        "id": "milestone-d2fce468-43fb-4f2b-b2be-b00c58719744",
+        "startDate": "2026-05-18",
+        "endDate": "2026-07-31",
+        "label": "혁신법 및 동법 시행령 개정 완료"
+      },
+      {
+        "id": "milestone-05891858-db68-4182-80aa-46767d8de036",
+        "startDate": "2027-01-01",
+        "endDate": "2027-01-01",
+        "label": "개선된 제도 시행"
       }
     ]
   },
   {
     "id": "task-18-7668ad25-65b8-43e5-874d-ec194911e6f5",
     "category": "rnd-management",
-    "order": 7,
+    "order": 10,
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "심혜영, 이정희",
@@ -842,7 +902,7 @@
   {
     "id": "task-19-43354570-21af-4cc6-8a1f-22633e4cfc68",
     "category": "rnd-management",
-    "order": 2,
+    "order": 3,
     "title": "IRIS-연구개발기관 자체시스템(MIS) 연계",
     "owner": "과학기술정보분석과",
     "manager": "장호원",
@@ -964,7 +1024,7 @@
   {
     "id": "task-21-22316204-76e2-44ff-b281-9fb566c0541d",
     "category": "rnd-management",
-    "order": 6,
+    "order": 9,
     "title": "도전적 R&D 연구환경 조성",
     "owner": "연구평가혁신과",
     "manager": "심혜영, 강지희",
@@ -1016,7 +1076,7 @@
   {
     "id": "task-22-90fe4701-0887-452a-a658-0557afb7181f",
     "category": "rnd-management",
-    "order": 10,
+    "order": 12,
     "title": "도전적 목표 미달성 과제 재도약 지원",
     "owner": "연구평가혁신과",
     "manager": "",
@@ -1038,7 +1098,7 @@
   {
     "id": "task-23-97a64b38-2e26-49af-8eb6-19bf3745cab5",
     "category": "rnd-management",
-    "order": 12,
+    "order": 14,
     "title": "연구비 부정사용 제재처분 강화",
     "owner": "연구윤리권익보호과",
     "manager": "",
@@ -1060,29 +1120,59 @@
   {
     "id": "task-24-d83e97a0-ed14-46ac-aa6c-6a5bb37105a3",
     "category": "rnd-management",
-    "order": 13,
-    "title": "연구자 중복정보입력 최소화",
-    "owner": "과학기술정보분석과",
-    "manager": "",
-    "start": "2026-07-01",
-    "end": "2026-09-30",
+    "order": 0,
+    "title": "과학기술혁신펀드 신설",
+    "owner": "성과평가정책과",
+    "manager": "박진희, 신유진, 정용찬",
+    "start": "2025-02-03",
+    "end": "2026-02-27",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
-    "content": "IRIS와 기관 자체 시스템 간 정보연계를 강화해 연구자 중복정보 입력을 최소화.",
+    "content": "정부 R&D 자금 예치 은행과 민간 투자 매칭을 통해 AI, 바이오, 양자 등 주요 전략기술에 투자하는 과학기술혁신펀드 신설 및 운영",
     "milestones": [
       {
-        "id": "milestone-41e87f7c-b2c8-4df3-bef5-e188b8f8a99e",
-        "startDate": "2026-09-30",
-        "endDate": "2026-09-30",
-        "label": "정보연계 강화 검토"
+        "id": "milestone-cc5f8d61-e0af-4050-b6f4-345da6958ddc",
+        "startDate": "2025-02-12",
+        "endDate": "2025-02-12",
+        "label": "우리부와 R&D 자금 관리 은행(신한•IBK•우리)간 MOU 체결 : 은행들이 4년간 총 4,940억원을 출자하여 1조원 이상의 펀드 조성 목표"
+      },
+      {
+        "id": "milestone-473c8ed2-318b-4ddd-81da-a2e395599bb3",
+        "startDate": "2025-04-16",
+        "endDate": "2025-04-16",
+        "label": "제1호 펀드 주목적 투자 분야 결정(반도체•디스플레이, AI, 첨단바이오, 첨단모빌리티, 양자)"
+      },
+      {
+        "id": "milestone-b66237c2-89dd-4494-8917-5c21e88cd466",
+        "startDate": "2025-06-18",
+        "endDate": "2025-06-18",
+        "label": "모펀드 운용사로 신한자산운용 선정"
+      },
+      {
+        "id": "milestone-1744209a-a587-4bf2-a428-dd59ee8e9bfc",
+        "startDate": "2026-02-18",
+        "endDate": "2026-02-18",
+        "label": "제1호 펀드 결성 완료('25.12월, 7,362억원) 기념 부총리 참석 결성식 개최"
+      },
+      {
+        "id": "milestone-9c787e5b-3d51-4ce9-a6d9-1bedaf816131",
+        "startDate": "2026-06-03",
+        "endDate": "2026-06-23",
+        "label": "제2호 펀드 주목적 투자 분야 결정 예정"
+      },
+      {
+        "id": "milestone-70e72bf0-64ec-4354-844e-a30c15aaa789",
+        "startDate": "2026-12-09",
+        "endDate": "2026-12-23",
+        "label": "제2호 펀드 결성 예정"
       }
     ]
   },
   {
     "id": "task-25-9a30af8f-fe3f-4e84-a3d7-735df1f0f455",
     "category": "rnd-management",
-    "order": 11,
+    "order": 13,
     "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     "owner": "성과평가정책과 · 연구제도혁신과",
     "manager": "",
@@ -1104,7 +1194,7 @@
   {
     "id": "task-26-b85a81f2-4e2c-4842-9d3f-e39685cd6397",
     "category": "rnd-management",
-    "order": 4,
+    "order": 6,
     "title": "연구보안 체계 내실화",
     "owner": "연구윤리권익보호과",
     "manager": "유승후, 옥영민",
@@ -1209,21 +1299,361 @@
     "id": "task-1b7854c1-83db-4e70-8485-c927ab876aa8",
     "category": "budget-review",
     "order": 0,
-    "title": "26년도 국가연구개발사업 예산배분안",
+    "title": "26년도 국가연구개발사업 예산 배분조정안 마련",
     "owner": "연구예산총괄과",
-    "manager": "",
-    "start": "2025-06-01",
+    "manager": "박상민, 윤상훈 외 투자국 전 직원",
+    "start": "2025-05-01",
     "end": "2025-08-29",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "부처별 R&D 사업요구서를 받아 주요 R&D 예산 배분·조정안을 마련하여 정부 예산에 반영한다. 26년도 국가연구개발사업 예산배분 조정을 하여 기재부와 국회로 제출",
+    "content": "매년 각 부처에서 R&D사업 예산요구서를 제출 받아,  주요R&D 예산 배분·조정안을 마련하고, 6월말까지 국가과학기술자문회의의 심의/의결을 받아 기획처로 송부하고 정부 예산에 반영. 26년도 국가연구개발사업(주요R&D) 예산을 배분, 조정하여 기획처를 거쳐 국회로 제출.",
     "milestones": [
+      {
+        "id": "milestone-11828693-e733-43e0-98f1-aec86c792a2c",
+        "startDate": "2025-05-12",
+        "endDate": "2025-05-15",
+        "label": "R&D사업설명회 개최"
+      },
+      {
+        "id": "milestone-2bf18b44-e0a1-4092-953a-5ae8e9273e3a",
+        "startDate": "2025-06-30",
+        "endDate": "2025-06-30",
+        "label": "자문회의 심의회의에 잠정안 상정 및 확정"
+      },
+      {
+        "id": "milestone-a8f087b8-2491-4fda-9bae-b4b22d736fce",
+        "startDate": "2025-08-07",
+        "endDate": "2025-08-07",
+        "label": "배분조정안 자문회의 운영위원회 상정"
+      },
       {
         "id": "milestone-2a459b6c-342f-48a1-9a31-20d6182600f7",
         "startDate": "2025-08-22",
         "endDate": "2025-08-22",
-        "label": "국가과학기술자문위원회 전원회의, 심의안건 의결"
+        "label": "배분조정안 자문회의 전원회의 상정 및 확정(대통령주재), 주요R&D 30.1조원(전체 35.3조원)"
+      },
+      {
+        "id": "milestone-b1b5e7e3-13be-4a8f-bd45-f02fbdbac2cc",
+        "startDate": "2025-09-01",
+        "endDate": "2025-09-01",
+        "label": "정부예산안 국회 제출"
+      },
+      {
+        "id": "milestone-fecce698-6bce-4014-a7bb-3d56bb12fe3d",
+        "startDate": "2025-09-10",
+        "endDate": "2025-09-17",
+        "label": "역대최대 규모 R&D예산안 홍보(기고, TV/라디오, 4개 지역 설명회 등)"
+      }
+    ]
+  },
+  {
+    "id": "task-0265a2a8-9e4e-46f9-bb0a-cd84888fa30b",
+    "category": "rnd-management",
+    "order": 8,
+    "title": "국가연구개발 AI 연구윤리 가이드 마련",
+    "owner": "연구윤리권익보호과",
+    "manager": "유승후, 김진우, 이사름",
+    "start": "2025-12-01",
+    "end": "2026-07-31",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "국가연구개발활동에서 윤리적으로 AI 도구를 활용할수 있도록 윤리원칙, 권고사항 등을 제시하는 가이드 마련",
+    "milestones": [
+      {
+        "id": "milestone-5daeb96d-888c-4938-93bf-0987ec661402",
+        "startDate": "2025-12-17",
+        "endDate": "2025-12-17",
+        "label": "연구자권익보호회의 안건 의결"
+      },
+      {
+        "id": "milestone-d2146f74-5be5-4c8c-9c7b-6ff98ff3c7b1",
+        "startDate": "2026-02-18",
+        "endDate": "2026-02-18",
+        "label": "AI 연구윤리 가이드 기획회의"
+      },
+      {
+        "id": "milestone-e07e43e6-5afc-4683-9279-6004f62bb260",
+        "startDate": "2026-03-18",
+        "endDate": "2026-03-18",
+        "label": "편집위원회 킥오프회의 개최"
+      },
+      {
+        "id": "milestone-1d652171-f975-485f-a41e-26b8ddd2c4eb",
+        "startDate": "2026-04-15",
+        "endDate": "2026-04-15",
+        "label": "전문가 자문회의 개최 (1차)"
+      },
+      {
+        "id": "milestone-2f23abf2-578c-4ad0-a0a2-578ba809b8dc",
+        "startDate": "2026-05-13",
+        "endDate": "2026-05-13",
+        "label": "전문가 자문회의 개최 (2차)"
+      },
+      {
+        "id": "milestone-89d3755f-0850-42ea-9adf-43b8583fdcae",
+        "startDate": "2026-05-20",
+        "endDate": "2026-05-27",
+        "label": "AI 가이드 관련 교육부 협의"
+      },
+      {
+        "id": "milestone-72fe5866-d6de-413a-bfbf-5c6bf683106f",
+        "startDate": "2026-06-10",
+        "endDate": "2026-06-17",
+        "label": "연구자 등 현장의견 수렴 간담회"
+      },
+      {
+        "id": "milestone-816d9c40-aa47-420d-bcf8-53e51b445b85",
+        "startDate": "2026-07-08",
+        "endDate": "2026-07-22",
+        "label": "AI 연구윤리 가이드 마련 및 배포"
+      }
+    ]
+  },
+  {
+    "id": "task-73e27614-849b-49fd-9b4e-1a608283c9ce",
+    "category": "science-policy",
+    "order": 7,
+    "title": "탄소중립 기술혁신 종합로드맵 마련",
+    "owner": "과학기술전략과",
+    "manager": "이종우, 박정순",
+    "start": "2025-12-01",
+    "end": "2026-05-31",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "｢탄소중립 기술혁신 종합 로드맵｣을 통해 온실가스 감축 17개 분야의 기술 현황과 개발 방향을 종합하여 체계적인 탄소중립 R&D 수행",
+    "milestones": [
+      {
+        "id": "milestone-a9247c95-3554-4248-8946-d9e37b6661fd",
+        "startDate": "2025-12-10",
+        "endDate": "2026-03-18",
+        "label": "(안건회람) 관계부처•탄녹위•탄소특위 안건회람 및 의견반영, 정책 정합성 검토 수행"
+      },
+      {
+        "id": "milestone-1e7ffb94-c893-45ce-b464-071d8d27ef1d",
+        "startDate": "2026-04-02",
+        "endDate": "2026-04-02",
+        "label": "(탄소특위, 서면) 탄소중립 10대 유망기술 지원확산 전략(안), 탄소중립 기술혁신 전략 로드맵간 정합성 검토결과Ⅱ(안) 심의"
+      },
+      {
+        "id": "milestone-5f394e37-5fdb-480b-b261-a5577692a717",
+        "startDate": "2026-04-27",
+        "endDate": "2026-04-27",
+        "label": "(국가과학기술자문회의 심의회의) 탄소중립 10대 유망기술 지원 확산 전략 보고"
+      },
+      {
+        "id": "milestone-485da128-c115-46c7-8f87-04fc1150f493",
+        "startDate": "2026-06-24",
+        "endDate": "2026-06-24",
+        "label": "(재경부, 기후부 주관) K-GX 전략 발표"
+      },
+      {
+        "id": "milestone-67322c6c-9efc-4555-b1c4-c1aa9bded77e",
+        "startDate": "2026-09-09",
+        "endDate": "2026-09-23",
+        "label": "(탄소특위) 탄소중립 기술혁신 종합로드맵 마련"
+      },
+      {
+        "id": "milestone-36ecbc24-bf3f-4329-b0ad-9f1f28c5e76d",
+        "startDate": "2026-09-09",
+        "endDate": "2026-09-09",
+        "label": "새 일정"
+      }
+    ]
+  },
+  {
+    "id": "task-568c1bb1-a0a5-4d96-b498-786eaecfd8ab",
+    "category": "science-policy",
+    "order": 5,
+    "title": "데이터 기반 국가전략기술 인재 분석",
+    "owner": "과학기술혁신지원팀",
+    "manager": "김주연, 지현진",
+    "start": "2025-10-06",
+    "end": "2026-12-25",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "국가전략기술 분야별 국내외 핵심 연구인력 데이터 구축 등을 통해 데이터 기반의 전략적 인재 정책 수립 토대 마련",
+    "milestones": [
+      {
+        "id": "milestone-5914afbf-3b00-4e53-999d-cc4187d30a63",
+        "startDate": "2025-10-15",
+        "endDate": "2025-10-15",
+        "label": "국가전략기술 글로벌 인력지도(양자분야[논문]) 분석 결과(공개),  국가전략기술 인재 산업수요 분석(인공지능 분야) 결과 도출"
+      }
+    ]
+  },
+  {
+    "id": "task-feecfd3a-f4f1-44aa-a80c-96ec25eb7156",
+    "category": "science-policy",
+    "order": 8,
+    "title": "범부처 현장수요 신속대응 연구개발 지원",
+    "owner": "과학기술정책조정과",
+    "manager": "이국화, 이성하",
+    "start": "2026-01-02",
+    "end": "2026-11-30",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "급변하는 글로벌 과학 기술 환경변화, 국가적 위기 등에 신속 대응하기 위해, 국가 긴급현안 발생 시 신속한 예산 배분 통해 적시 연구개발 추진 지원. 국가적 긴급현안 발생 시 신속한 국가 R&D 수행으로 연구개발 성과물을 통한 긴급 국가 현안 해결에 기여.",
+    "milestones": [
+      {
+        "id": "milestone-de68d082-3af3-4454-8554-d546bd98db5f",
+        "startDate": "2026-03-31",
+        "endDate": "2026-03-31",
+        "label": "사업 설명회 개최"
+      },
+      {
+        "id": "milestone-449c64f2-f10e-41ce-8d56-a5feaf91e542",
+        "startDate": "2026-04-30",
+        "endDate": "2026-04-30",
+        "label": "신속대응위원회 출범 간담회 개최"
+      },
+      {
+        "id": "milestone-8640ddb7-461c-460c-9129-d0dd0e2995b0",
+        "startDate": "2026-05-12",
+        "endDate": "2026-05-12",
+        "label": "사업 설명회 온라인 개최"
+      },
+      {
+        "id": "milestone-d2af5e37-44a1-4294-9b60-e9cd166b1ca5",
+        "startDate": "2026-05-18",
+        "endDate": "2026-05-15",
+        "label": "각 부처 대상 수요과제 제안서 접수"
+      },
+      {
+        "id": "milestone-870275e1-53f9-4564-9686-bd1220239bd5",
+        "startDate": "2026-06-01",
+        "endDate": "2026-11-27",
+        "label": "지원과제 선정 및 과제 착수"
+      }
+    ]
+  },
+  {
+    "id": "task-29fad90c-efd0-4db1-9e35-1fde9e1dace5",
+    "category": "science-policy",
+    "order": 12,
+    "title": "제4차 과학기술기반 사회문제해결 종합계획 수립",
+    "owner": "과학기술정책조정과",
+    "manager": "이국화, 이성하",
+    "start": "2026-04-03",
+    "end": "2026-11-30",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "복합화 다양화되는 미래 사회•민생 문제에 대한 선제 대응 및 국가 차원의 협력적 사회문제 해결을 위한 과학기술 역할 고도화 수립. 과학기술의 사회문제 해결력 강화 및 국민 체감 성과 창출을 통한 국민 모두가 행복한 과학기술 기반 사회실현.",
+    "milestones": [
+      {
+        "id": "milestone-4729a209-e7ac-4e21-9fa2-57d65ec0cff7",
+        "startDate": "2026-04-24",
+        "endDate": "2026-04-24",
+        "label": "제3차 사회문제해결 종합계획(‘23~’27) 2026년도 시행계획 수립"
+      },
+      {
+        "id": "milestone-203ecf34-ec72-4381-b2bc-4eb5430fbddd",
+        "startDate": "2026-06-01",
+        "endDate": "2026-06-30",
+        "label": "제3차 종합계획 성과분석 및 주요 사회문제 추진 과제(안) 도출"
+      },
+      {
+        "id": "milestone-e0e902bf-8e84-4051-9998-c36873c296ee",
+        "startDate": "2026-07-01",
+        "endDate": "2026-08-31",
+        "label": "제4차 종합계획 초안 마련"
+      }
+    ]
+  },
+  {
+    "id": "task-8ff79071-9803-4097-9480-ca09481085df",
+    "category": "science-policy",
+    "order": 4,
+    "title": "심의회의 산하 회의체 운영 및 범부처 정책 조정",
+    "owner": "과학기술정책조정과",
+    "manager": "이국화, 이성하",
+    "start": "2025-06-02",
+    "end": "2026-12-31",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "21개부처와 민간전문가가 참여하는 과기자문회의 심의회의 산하 회의체 운영을 통해 범부처 과학기술 중장기계획 사전검토 및 이견 조정/심의. 선제적 이견조정등 범부처 과학기술정책 콘트럴타워 기능 강화로 정책 추진동력 확보",
+    "milestones": [
+      {
+        "id": "milestone-0d1fc3d2-d552-40ab-a2c5-b83bc7012283",
+        "startDate": "2025-06-26",
+        "endDate": "2025-12-26",
+        "label": "국가과학기술자문회의 심의회의 제73~78회 운영위원회 개최"
+      },
+      {
+        "id": "milestone-4c3542c9-74f1-4baa-bbf6-24c8a41eacc6",
+        "startDate": "2026-02-19",
+        "endDate": "2026-04-24",
+        "label": "국가과학기술자문회의 심의회의 제79 ~ 83회 운영위원회 개최"
+      },
+      {
+        "id": "milestone-7235018d-1670-4f17-9ac2-7c822034edf8",
+        "startDate": "2026-05-22",
+        "endDate": "2026-05-29",
+        "label": "국가과학기술자문회의 심의회의 제84회 운영위원회 개최"
+      },
+      {
+        "id": "milestone-e2aae17c-8696-4305-82c2-a406b9baa79c",
+        "startDate": "2026-06-24",
+        "endDate": "2026-12-30",
+        "label": "국가과학기술자문회의 심의회의 제85 ~ 89회 운영위원회 개최 예정"
+      }
+    ]
+  },
+  {
+    "id": "task-a73fc0c0-88f2-4f19-b008-d755b7101cad",
+    "category": "science-policy",
+    "order": 6,
+    "title": "혁신도전형 R&D 사업군 제도개선",
+    "owner": "과학기술정책조정과",
+    "manager": "이국화, 조영찬",
+    "start": "2025-10-31",
+    "end": "2026-11-30",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "세계 최초•최고 수준의 R&D 성과를 목표로 하는 혁신도전형 R&D의 유연한 연구현장 관리 및 사업성공률 제고를 위한 제도개선. 과학기술 5개 강국 실현을 위한 혁신적•도전적 연구환경 조성 달성을 위하여 혁신도전형 R&D를 차별화된 시스템으로 육성",
+    "milestones": [
+      {
+        "id": "milestone-def84771-cb79-4688-8141-361dfd189c8a",
+        "startDate": "2025-06-25",
+        "endDate": "2025-06-25",
+        "label": "국가과학기술자문회의 제3회 혁신도전추진특별위원회 개최"
+      },
+      {
+        "id": "milestone-d30322c3-2f3b-4c52-a899-c26bb9596a74",
+        "startDate": "2025-12-22",
+        "endDate": "2025-12-26",
+        "label": "국가과학기술자문회의 제4회 혁신도전추진특별위원회 개최"
+      },
+      {
+        "id": "milestone-0418147b-3a28-4623-82ca-5fe5a69b0dbc",
+        "startDate": "2026-02-02",
+        "endDate": "2026-06-30",
+        "label": "2026년도 혁신도전형 R&D 사업군 지정 추진"
+      },
+      {
+        "id": "milestone-d8431ca4-882e-4071-a19c-0847044cd52e",
+        "startDate": "2026-06-01",
+        "endDate": "2026-06-30",
+        "label": "국가과학기술자문회의 제5회 혁신도전추진특별위원회 개최"
+      },
+      {
+        "id": "milestone-ab6622b1-0898-4420-83ae-cfe97165e943",
+        "startDate": "2026-06-01",
+        "endDate": "2026-12-31",
+        "label": "DARPA형 기관 운영 및 총괄관리자 중심 자율적 연구관리 지원을 위한 국가연구개발혁신법 개정 추진"
+      },
+      {
+        "id": "milestone-30f343d7-1621-4435-a766-c8aaeec50d58",
+        "startDate": "2026-07-01",
+        "endDate": "2026-07-29",
+        "label": "2기 혁신도전추진 특별위원회 구성•운영"
       }
     ]
   }

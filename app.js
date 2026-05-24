@@ -10,11 +10,13 @@ const categoryGroups = categories.filter((category) => category.id !== "all");
 const ownerOptions = [
   "혁신본부",
   "과학기술정책과",
+  "과학기술혁신지원팀",
   "과학기술전략과",
   "과학기술정책조정과",
   "전략기술육성과",
   "연구예산총괄과",
   "연구개발투자기획과",
+  "국방연구기획투자기획팀",
   "공공에너지조정과",
   "기계정보통신조정과",
   "생명기초조정과",
@@ -359,6 +361,7 @@ const reviewModalBackdrop = document.querySelector("#reviewModalBackdrop");
 const reviewCloseButton = document.querySelector("#reviewCloseButton");
 const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
+const printButton = document.querySelector("#printButton");
 const loginPanel = document.querySelector("#loginPanel");
 const loginForm = document.querySelector("#loginForm");
 const staffId = document.querySelector("#staffId");
@@ -390,7 +393,7 @@ function normalizeItems(source) {
         id: milestone.id || createId("milestone"),
         startDate: milestone.startDate || fallback,
         endDate: milestone.endDate || milestone.startDate || fallback,
-        label: milestone.label || "마일스톤",
+        label: milestone.label || "",
       };
     }),
   }));
@@ -628,6 +631,7 @@ function renderAuthState() {
   }
   staffLoginButton.hidden = (!apiMode && !readonlyMode) || isStaff;
   staffLogoutButton.hidden = (!apiMode && !readonlyMode) || !isStaff;
+  printButton.hidden = false;
   if (isStaff) {
     loginPanel.hidden = true;
     loginMessage.textContent = "";
@@ -802,6 +806,7 @@ function startNewTask() {
 function saveTask(event) {
   event.preventDefault();
   if (!isStaff) return;
+  const isNew = !taskId.value;
   const nextTask = readTaskFromForm();
   if (dateValue(nextTask.end) < dateValue(nextTask.start)) {
     taskEnd.setCustomValidity("완료일은 시작일보다 빠를 수 없습니다.");
@@ -819,6 +824,18 @@ function saveTask(event) {
   selectedItemId = nextTask.id;
   persistItems();
   if (storageMode === "local") saveToLocalFile();
+
+  // 새 업무 저장 시 필터/검색이 가려서 화면에 안 보이는 문제 방지
+  if (isNew) {
+    if (activeCategory !== "all" && activeCategory !== nextTask.category) {
+      activeCategory = "all";
+      renderFilters();
+    }
+    if (searchInput.value.trim()) {
+      searchInput.value = "";
+    }
+  }
+
   renderEditor();
   renderTimeline();
 }
@@ -1074,9 +1091,29 @@ function renderLane(item, ticks) {
   const visibleMilestones = item.milestones.filter((ms) => ms.startDate >= "2025-07-01");
 
   // 마커: startDate===endDate → 원형 버튼, startDate≠endDate → 검은 실선(미래는 점선)
-  let lastAbovePct = -Infinity;
-  let lastBelowPct = -Infinity;
-  const minLabelSpacing = 8;
+  // 우변 추적: 마지막으로 배치된 라벨의 오른쪽 끝 위치(%) 추적
+  let lastAboveRightPct = -Infinity;
+  let lastBelowRightPct = -Infinity;
+  // 10px bold 한글 1자 ≈ 9px, 차트폭 ~900px → 1자 ≈ 1%; 보수적으로 1.1 사용
+  const CHAR_PCT = 1.1;
+  const MAX_LABEL_HALF_W = 6.5; // CSS max-width 120px의 절반 (900px 기준)
+  function labelHalfW(text) {
+    return Math.min(text.length * CHAR_PCT / 2, MAX_LABEL_HALF_W);
+  }
+  // 라벨이 lastRightPct 이후에 겹치지 않게 들어갈 수 있는 최장 텍스트 반환
+  function fitInlineLabel(text, pos, lastRightPct) {
+    for (let len = text.length; len >= 3; len--) {
+      const candidate = len === text.length ? text : text.slice(0, len) + "…";
+      const hw = labelHalfW(candidate);
+      if (pos - hw >= lastRightPct + 0.5) {
+        return { text: candidate, rightEdge: pos + hw };
+      }
+    }
+    return null;
+  }
+  // 기간 일정 수직 위치: 중앙 → 위 → 아래 순서로 교차
+  const rangeTopLevels = ["50%", "calc(50% - 6px)", "calc(50% + 6px)"];
+  let rangeIndex = 0;
   const milestoneMarkers = visibleMilestones
     .map((ms, msIndex) => {
       const mStart = boundedPct(ms.startDate);
@@ -1089,18 +1126,32 @@ function renderLane(item, ticks) {
         const mEnd = boundedPct(ms.endDate);
         const spanWidth = Math.max(mEnd - mStart, 0);
         if (spanWidth < 0.05) return "";
+        const topStyle = rangeTopLevels[rangeIndex % rangeTopLevels.length];
+        const isRangeBelow = rangeIndex % 2 === 1;
+        rangeIndex++;
         // 라벨을 span 바로 뒤에 배치해야 :hover + .ms-label CSS 셀렉터가 동작함
-        const rangeHandles = isStaff ? `<button class="ms-range-handle ms-range-handle-start draggable-point" style="left:${mStart}%" data-drag-kind="milestone-start" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}"></button><button class="ms-range-handle ms-range-handle-end draggable-point" style="left:${mEnd}%" data-drag-kind="milestone-end" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}"></button>` : "";
-        return `<span class="ms-span ms-span-range${isFuture ? " is-future" : ""}" style="left:${mStart}%; width:${spanWidth}%" data-drag-kind="milestone" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}" aria-label="${escapeHtml(item.title)}: ${escapeHtml(ms.label)}"></span><span class="ms-label" style="left:${mStart}%">${escapeHtml(dateLabel)} ${escapeHtml(ms.label)}</span>${rangeHandles}`;
+        const futureClass = isFuture ? " is-future" : "";
+        const rangeHandles = `<button class="ms-range-handle ms-range-handle-start draggable-point${futureClass}" style="left:${mStart}%; top:${topStyle}" data-drag-kind="milestone-start" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}"></button><button class="ms-range-handle ms-range-handle-end draggable-point${futureClass}" style="left:${mEnd}%; top:${topStyle}" data-drag-kind="milestone-end" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}"></button>`;
+        let rangeInlineLabel = "";
+        if (ms.label) {
+          const lastRightPct = isRangeBelow ? lastBelowRightPct : lastAboveRightPct;
+          const fit = fitInlineLabel(ms.label, mStart, lastRightPct);
+          if (fit) {
+            if (isRangeBelow) lastBelowRightPct = fit.rightEdge; else lastAboveRightPct = fit.rightEdge;
+            rangeInlineLabel = `<span class="ms-inline-label ${isRangeBelow ? "ms-inline-label-below" : "ms-inline-label-above"}" style="left:${mStart}%">${escapeHtml(fit.text)}</span>`;
+          }
+        }
+        return `<span class="ms-span ms-span-range${isFuture ? " is-future" : ""}" style="left:${mStart}%; width:${spanWidth}%; top:${topStyle}" data-drag-kind="milestone" data-id="${escapeHtml(item.id)}" data-milestone-id="${escapeHtml(ms.id)}" aria-label="${escapeHtml(item.title)}: ${escapeHtml(ms.label)}"></span><span class="ms-label" style="left:${mStart}%">${escapeHtml(dateLabel)} ${escapeHtml(ms.label)}</span>${rangeHandles}${rangeInlineLabel}`;
       }
-      // 로그아웃 상태: 짧은 라벨(≤10자), 간격이 충분한 것만 위아래 교대로 표시
+      // 로그아웃 상태: 위아래 교대로 표시, 겹치면 점진 축약해서 표시
       let inlineLabel = "";
-      if (!isStaff && ms.label.length <= 10) {
+      if (!isStaff && ms.label) {
         const isBelow = msIndex % 2 === 1;
-        const lastPct = isBelow ? lastBelowPct : lastAbovePct;
-        if (mStart - lastPct >= minLabelSpacing) {
-          if (isBelow) lastBelowPct = mStart; else lastAbovePct = mStart;
-          inlineLabel = `<span class="ms-inline-label ${isBelow ? "ms-inline-label-below" : "ms-inline-label-above"}" style="left:${mStart}%">${escapeHtml(ms.label)}</span>`;
+        const lastRightPct = isBelow ? lastBelowRightPct : lastAboveRightPct;
+        const fit = fitInlineLabel(ms.label, mStart, lastRightPct);
+        if (fit) {
+          if (isBelow) lastBelowRightPct = fit.rightEdge; else lastAboveRightPct = fit.rightEdge;
+          inlineLabel = `<span class="ms-inline-label ${isBelow ? "ms-inline-label-below" : "ms-inline-label-above"}" style="left:${mStart}%">${escapeHtml(fit.text)}</span>`;
         }
       }
       return `
@@ -1145,7 +1196,8 @@ function renderLane(item, ticks) {
           style="left:${start}%; width:${width}%"
           aria-hidden="true"
         ></span>
-        ${isStaff ? `<span class="endpoint start-point draggable-point${startOutside ? ' clipped' : ''}" style="left:${start}%" data-drag-kind="start" data-id="${escapeHtml(item.id)}"></span><span class="endpoint end-point draggable-point${endOutside ? ' clipped' : ''}" style="left:${end}%" data-drag-kind="end" data-id="${escapeHtml(item.id)}"></span>` : ""}
+        <span class="endpoint start-point draggable-point${startOutside ? ' clipped' : ''}" style="left:${start}%" data-drag-kind="start" data-id="${escapeHtml(item.id)}"></span>
+        <span class="endpoint end-point draggable-point${endOutside ? ' clipped' : ''}" style="left:${end}%" data-drag-kind="end" data-id="${escapeHtml(item.id)}"></span>
         ${ownerLabel}${managerLabel}
         ${milestoneMarkers}
       </div>
@@ -1351,7 +1403,6 @@ function parseMarkdownToForm(text) {
   }
   if (sectionLines["업무 내용"] !== undefined)
     result.content = sectionLines["업무 내용"].join("\n").trim();
-  if (sectionLines["추진 목표"] !== undefined)
   if (milestones.length) result.milestones = milestones;
 
   return result;
@@ -1519,7 +1570,7 @@ milestoneRows.addEventListener("click", (event) => {
 
   if (button.dataset.action === "add-milestone") {
     const d = taskStart.value || "2026-05-01";
-    const newMs = { id: createId("milestone"), startDate: d, endDate: d, label: "새 일정" };
+    const newMs = { id: createId("milestone"), startDate: d, endDate: d, label: "" };
     const milestones = readMilestonesFromForm();
     milestones.push(newMs);
     renderMilestoneRows(milestones);
@@ -1532,7 +1583,7 @@ milestoneRows.addEventListener("click", (event) => {
     const milestones = readMilestonesFromForm();
     const idx = milestones.findIndex((m) => m.id === row.dataset.milestoneId);
     const d = row.querySelector('[data-field="startDate"]').value || taskStart.value || "2026-05-01";
-    const newMs = { id: createId("milestone"), startDate: d, endDate: d, label: "새 일정" };
+    const newMs = { id: createId("milestone"), startDate: d, endDate: d, label: "" };
     milestones.splice(idx === -1 ? milestones.length : idx + 1, 0, newMs);
     renderMilestoneRows(milestones);
     milestoneRows.querySelector(`[data-milestone-id="${newMs.id}"] [data-field="label"]`)?.focus();
@@ -1700,6 +1751,155 @@ timeline.addEventListener("click", (event) => {
   }
 
 });
+
+function printTasks() {
+  function esc(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+  function fmtDate(d) {
+    return d ? formatDateLabel(d) : "";
+  }
+
+  const printableItems = items
+    .filter((item) => item.visible !== false)
+    .sort((a, b) => {
+      const diff = dateValue(a.start) - dateValue(b.start);
+      return diff !== 0 ? diff : a.title.localeCompare(b.title, "ko");
+    });
+
+  const groups = categoryGroups
+    .map((cat) => ({
+      ...cat,
+      tasks: printableItems.filter((item) => item.category === cat.id),
+    }))
+    .filter((g) => g.tasks.length > 0);
+
+  const today = new Date().toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" });
+
+  const tocHtml = `<section class="toc">
+    <h2 class="toc-heading">목 차</h2>
+    <div class="toc-body">
+      ${groups
+        .map((group, gi) => `
+          <div class="toc-chapter">
+            <div class="toc-chapter-title" style="--cat:${group.color}">
+              <span class="toc-num">${gi + 1}장</span>
+              <span class="toc-label">${esc(group.label)}</span>
+            </div>
+            <ol class="toc-tasks">
+              ${group.tasks.map((task) => `<li>${esc(task.title)}</li>`).join("")}
+            </ol>
+          </div>
+        `)
+        .join("")}
+    </div>
+  </section>`;
+
+  const chaptersHtml = groups
+    .map((group, gi) => {
+      const tasksHtml = group.tasks
+        .map((task) => {
+          const msHtml = task.milestones.length
+            ? `<div class="ms-section">
+                <div class="ms-title">주요 일정</div>
+                ${task.milestones
+                  .map((ms) => {
+                    const dateStr =
+                      ms.startDate === ms.endDate
+                        ? fmtDate(ms.startDate)
+                        : `${fmtDate(ms.startDate)} ~ ${fmtDate(ms.endDate)}`;
+                    return `<div class="ms-item"><span class="ms-date">${esc(dateStr)}</span><span>${esc(ms.label)}</span></div>`;
+                  })
+                  .join("")}
+              </div>`
+            : "";
+          return `<div class="task">
+            <div class="task-title">${esc(task.title)}</div>
+            <div class="task-meta">
+              ${task.owner ? `<span>소관: ${esc(task.owner)}</span>` : ""}
+              ${task.manager ? `<span>담당자: ${esc(task.manager)}</span>` : ""}
+              <span>기간: ${fmtDate(task.start)} ~ ${fmtDate(task.end)}</span>
+            </div>
+            ${task.content ? `<div class="task-content">${esc(task.content).replace(/\n/g, "<br>")}</div>` : ""}
+            ${msHtml}
+          </div>`;
+        })
+        .join("");
+
+      return `<section class="chapter" style="--cat:${group.color}">
+        <div class="chapter-heading">
+          <span class="chapter-num">${gi + 1}장</span>
+          <span class="chapter-label">${esc(group.label)}</span>
+        </div>
+        ${tasksHtml}
+      </section>`;
+    })
+    .join("");
+
+  const html = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>과학기술혁신본부 업무 추진 현황</title>
+<style>
+  @page { size: A4 portrait; margin: 20mm 18mm 18mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif; color: #1d2633; font-size: 13px; line-height: 1.6; margin: 0; }
+  .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 80vh; text-align: center; page-break-after: always; }
+  .cover-org { font-size: 13px; color: #667085; margin-bottom: 20px; }
+  .cover h1 { font-size: 28px; font-weight: 900; margin: 0 0 16px; line-height: 1.35; color: #1a2f4e; }
+  .cover-date { font-size: 12px; color: #aaa; margin-top: 32px; }
+  .chapter { page-break-before: always; }
+  .chapter-heading { display: flex; align-items: baseline; gap: 12px; border-bottom: 3px solid var(--cat); padding-bottom: 10px; margin-bottom: 22px; }
+  .chapter-num { font-size: 12px; font-weight: 700; color: var(--cat); opacity: 0.65; }
+  .chapter-label { font-size: 20px; font-weight: 900; color: var(--cat); }
+  .task { margin-bottom: 16px; padding: 13px 16px; border: 1px solid #e7ebf0; border-left: 4px solid var(--cat); border-radius: 6px; page-break-inside: avoid; }
+  .task-title { font-size: 14px; font-weight: 800; color: var(--cat); margin-bottom: 6px; }
+  .task-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 11px; color: #667085; margin-bottom: 7px; }
+  .task-content { font-size: 12px; color: #333; white-space: pre-wrap; }
+  .ms-section { margin-top: 10px; border-top: 1px solid #f0f0f0; padding-top: 8px; }
+  .ms-title { font-size: 10px; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+  .ms-item { display: flex; gap: 12px; font-size: 11px; padding: 3px 0; border-bottom: 1px dashed #f0f0f0; }
+  .ms-date { color: #667085; min-width: 140px; flex-shrink: 0; }
+  .toc { page-break-after: always; padding-top: 20px; }
+  .toc-heading { font-size: 24px; font-weight: 900; color: #1a2f4e; border-bottom: 2px solid #1a2f4e; padding-bottom: 10px; margin-bottom: 28px; letter-spacing: 0.1em; }
+  .toc-body { display: flex; flex-direction: column; gap: 20px; }
+  .toc-chapter { page-break-inside: avoid; }
+  .toc-chapter-title { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .toc-num { font-size: 12px; font-weight: 700; color: var(--cat); opacity: 0.7; min-width: 28px; }
+  .toc-label { font-size: 16px; font-weight: 900; color: var(--cat); }
+  .toc-tasks { margin: 0; padding-left: 42px; list-style: none; }
+  .toc-tasks li { font-size: 12px; color: #444; padding: 3px 0; border-bottom: 1px dotted #e7ebf0; }
+  .toc-tasks li::before { content: "· "; color: #aaa; }
+  @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="cover">
+  <p class="cover-org">과학기술정보통신부 · 과학기술혁신본부</p>
+  <h1>한눈에 보는<br>과학기술혁신본부<br>업무 추진 현황</h1>
+  <p class="cover-date">인쇄일: ${today}</p>
+</div>
+${tocHtml}
+${chaptersHtml}
+</body>
+</html>`;
+
+  const win = window.open("", "_blank", "width=960,height=720");
+  if (!win) {
+    alert("팝업이 차단되어 있습니다. 팝업 허용 후 다시 시도해 주세요.");
+    return;
+  }
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(() => win.print(), 600);
+}
+
+printButton.addEventListener("click", printTasks);
 
 async function init() {
   items = await loadItems();

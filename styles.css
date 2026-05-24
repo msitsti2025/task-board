@@ -13,7 +13,7 @@
   --shadow: 0 16px 36px rgba(29, 38, 51, 0.08);
   --axis-label: 440px;
   --timeline-min: 980px;
-  --lane-min: 82px;
+  --lane-min: 100px;
 }
 
 * {
@@ -93,6 +93,30 @@ body {
 
 .hero .search-box input::placeholder {
   color: rgba(255, 255, 255, 0.4);
+}
+
+.page-topbar {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 6px;
+}
+
+.login-corner-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-style: dotted;
+}
+
+.login-corner-btn:hover {
+  color: var(--ink);
 }
 
 .hero-main {
@@ -637,7 +661,7 @@ button:disabled {
 .lane-meta {
   position: sticky;
   left: 0;
-  z-index: 2;
+  z-index: 15;
   padding: 7px 14px;
   border-right: 1px solid var(--faint);
   background: var(--panel);
@@ -712,8 +736,8 @@ button:disabled {
   text-overflow: ellipsis;
   max-width: 50%;
   pointer-events: none;
-  color: currentColor;
-  opacity: 0.8;
+  color: var(--ink);
+  opacity: 0.75;
 }
 
 .bar-meta-above {
@@ -730,9 +754,12 @@ button:disabled {
   font-size: 10px;
   font-weight: 600;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   pointer-events: none;
   color: currentColor;
   opacity: 0.85;
+  max-width: 120px;
 }
 
 .ms-inline-label-above {
@@ -766,22 +793,20 @@ button:disabled {
 .ms-span.ms-span-range {
   background: #222;
   opacity: 0.8;
-  height: 5px;
-  border-radius: 3px;
+  height: 2px;
+  border-radius: 1px;
   pointer-events: auto;
   cursor: default;
 }
 
 .ms-span.ms-span-range.is-future {
-  background: repeating-linear-gradient(
-    to right,
-    #222 0,
-    #222 4px,
-    transparent 4px,
-    transparent 8px
-  );
-  opacity: 0.55;
-  border-radius: 0;
+  background: #222;
+  opacity: 0.3;
+}
+
+.ms-range-handle.is-future {
+  background: #888;
+  opacity: 0.45;
 }
 
 .ms-span.ms-span-range:hover + .ms-label {
@@ -803,7 +828,7 @@ button:disabled {
   border-radius: 3px;
   background: currentColor;
   opacity: 0.85;
-  cursor: ew-resize;
+  cursor: pointer;
   z-index: 2;
 }
 
@@ -815,15 +840,14 @@ button:disabled {
 
 .ms-range-handle {
   position: absolute;
-  top: 50%;
-  width: 2px;
-  height: 13px;
+  width: 8px;
+  height: 8px;
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 1px;
   background: #111;
   border: none;
   padding: 0;
-  cursor: ew-resize;
+  border-radius: 50%;
+  cursor: pointer;
   z-index: 2;
 }
 
@@ -893,7 +917,7 @@ button:disabled {
 
 body:has(.drag-date-tooltip.is-visible) .draggable-point,
 .draggable-point:hover {
-  cursor: grab;
+  cursor: pointer;
 }
 
 .drag-date-tooltip {
