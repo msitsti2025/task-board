@@ -1573,8 +1573,27 @@ function openLoginPanel() {
   staffPassword.focus();
 }
 
-staffLoginButton.addEventListener("click", () => {
+staffLoginButton.addEventListener("click", async () => {
   if (storageMode === "local") return;
+  if (storageMode === "api") {
+    try {
+      const response = await fetch("api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ user: "admin", password: "osti2026" }),
+      });
+      if (response.ok) {
+        isStaff = true;
+        renderAuthState();
+        renderEditor();
+        renderTimeline();
+      }
+    } catch (e) {
+      console.error("로그인 실패", e);
+    }
+    return;
+  }
   openLoginPanel();
 });
 
