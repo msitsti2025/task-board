@@ -1671,7 +1671,7 @@
     "owner": "혁신본부",
     "manager": "조시훈, 임완택",
     "start": "2025-12-30",
-    "end": "2028-12-29",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
@@ -1723,19 +1723,7 @@
         "id": "milestone-326ecb16-96bd-4741-bd88-27a97f871005",
         "startDate": "2026-12-30",
         "endDate": "2026-12-30",
-        "label": "AI 서비스 오픈"
-      },
-      {
-        "id": "milestone-7c46463a-bc23-4460-99b9-8d558b7062bd",
-        "startDate": "2027-12-30",
-        "endDate": "2027-12-30",
-        "label": "보고서 생성, 과제 차별성 검토 등 AI 서비스 개발"
-      },
-      {
-        "id": "milestone-9a8c71e3-a735-472b-9525-f99537a581f3",
-        "startDate": "2028-12-30",
-        "endDate": "2028-12-30",
-        "label": "연구동향 분석, 논문특허 지원 등 의사결정 지원을 위한 AI서비스 개발"
+        "label": "1차년도 AI 서비스 오픈"
       }
     ]
   }
