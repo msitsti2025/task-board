@@ -1656,5 +1656,81 @@
         "label": "2기 혁신도전추진 특별위원회 구성•운영"
       }
     ]
+  },
+  {
+    "id": "task-ff312b75-592f-4ee9-90ad-8140453415bc",
+    "category": "rnd-management",
+    "order": 15,
+    "title": "IRIS 내 연구행정 AI 서비스 도입",
+    "owner": "혁신본부",
+    "manager": "조시훈, 임완택",
+    "start": "2025-12-30",
+    "end": "2028-12-29",
+    "visible": true,
+    "complete": false,
+    "tentative": false,
+    "content": "연구 현장의 수요와 파급효과를 고려해 기술적 범용성이 높고 현장 적용이 용이한 우선순위 과제를 선정하여 IRIS에 AI 도입\n추진목표: AI 기반 연구행정 혁신으로 행정부담 완화 및 연구 몰입 환경 조성",
+    "milestones": [
+      {
+        "id": "milestone-ca58f917-389f-46b6-8f79-1e45c4a85fe5",
+        "startDate": "2025-12-30",
+        "endDate": "2025-12-30",
+        "label": "AI학습용 데이터 전처리 착수"
+      },
+      {
+        "id": "milestone-4e042642-1e0d-4065-8dcd-9b40a7359e7d",
+        "startDate": "2026-02-26",
+        "endDate": "2026-03-13",
+        "label": "IRIS사용자 대상 AI 도입 설문조사"
+      },
+      {
+        "id": "milestone-5c978d16-66c3-40a8-b51c-fff88937695b",
+        "startDate": "2026-03-11",
+        "endDate": "2026-03-11",
+        "label": "AI 평가위원 추천 서비스 개보위 사전적정성 검토 의결"
+      },
+      {
+        "id": "milestone-7e0d4ff5-9fa6-4a96-84b0-e0e08690bcc8",
+        "startDate": "2026-04-01",
+        "endDate": "2026-04-01",
+        "label": "AI 개발 및 데이터 구축 사업 RFP 확정"
+      },
+      {
+        "id": "milestone-484a9620-6d1a-4bb4-8f91-22f6e070da9f",
+        "startDate": "2026-05-14",
+        "endDate": "2026-05-14",
+        "label": "AI 개발 및 데이터 구축 사업 상세 기획을 위한 기업 자문회의"
+      },
+      {
+        "id": "milestone-6f15da0b-b700-45f0-961f-3746dd7ba17e",
+        "startDate": "2026-07-13",
+        "endDate": "2026-07-13",
+        "label": "AI 개발 및 데이터 구축 사업 착수"
+      },
+      {
+        "id": "milestone-051eacf0-5665-4795-abe3-b19d9b2c1f2d",
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-09",
+        "label": "AI 서비스 시연"
+      },
+      {
+        "id": "milestone-326ecb16-96bd-4741-bd88-27a97f871005",
+        "startDate": "2026-12-30",
+        "endDate": "2026-12-30",
+        "label": "AI 서비스 오픈"
+      },
+      {
+        "id": "milestone-7c46463a-bc23-4460-99b9-8d558b7062bd",
+        "startDate": "2027-12-30",
+        "endDate": "2027-12-30",
+        "label": "보고서 생성, 과제 차별성 검토 등 AI 서비스 개발"
+      },
+      {
+        "id": "milestone-9a8c71e3-a735-472b-9525-f99537a581f3",
+        "startDate": "2028-12-30",
+        "endDate": "2028-12-30",
+        "label": "연구동향 분석, 논문특허 지원 등 의사결정 지원을 위한 AI서비스 개발"
+      }
+    ]
   }
 ]
