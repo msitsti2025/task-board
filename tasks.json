@@ -905,9 +905,9 @@
     "order": 3,
     "title": "IRIS-연구개발기관 자체시스템(MIS) 연계",
     "owner": "과학기술정보분석과",
-    "manager": "장호원",
+    "manager": "조시훈, 장호원",
     "start": "2025-07-29",
-    "end": "2026-06-30",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
@@ -954,6 +954,12 @@
         "startDate": "2026-04-08",
         "endDate": "2026-04-08",
         "label": "출연연 참여 협조요청"
+      },
+      {
+        "id": "milestone-d0a8d50d-34fb-4943-b7af-134648cf22e8",
+        "startDate": "2026-12-31",
+        "endDate": "2026-12-31",
+        "label": "1차년도 연계 완료"
       }
     ]
   },
