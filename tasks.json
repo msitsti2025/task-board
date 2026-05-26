@@ -1784,5 +1784,69 @@
         "label": "UI/UX 반영 완료"
       }
     ]
+  },
+  {
+    "id": "task-c3bd98e5-da28-4590-88a7-0adf9c0ce0a9",
+    "category": "rnd-management",
+    "order": 17,
+    "title": "4대 연구지원시스템 일원화",
+    "owner": "혁신본부",
+    "manager": "조시훈, 장호원, 원성",
+    "start": "2025-10-22",
+    "end": "2027-01-04",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "IRIS + Ezbaro + RCMS + NTIS 등을 IRIS 중심으로 일원화\n추진목표 : 연구자 입장에서 연구지원시스템 일원화를 통해 시스템 분리 운영으로 인한 업무 혼란 및 중복 정보입력 등 연구자 행정부담 완화",
+    "milestones": [
+      {
+        "id": "milestone-39cfa5a7-3081-41d0-a1dd-b5fd5e926fc7",
+        "startDate": "2025-10-22",
+        "endDate": "2025-10-22",
+        "label": "ISMP(정보시스템마스터플랜) 수립 및 DB 재설계 착수"
+      },
+      {
+        "id": "milestone-f79a7120-d5c7-46ac-a2b8-81515f2133bb",
+        "startDate": "2025-11-24",
+        "endDate": "2025-11-24",
+        "label": "연구지원시스템 통합 방향 발표(연구개발 생태계 혁신방안 /과학기술관계장관회의)"
+      },
+      {
+        "id": "milestone-1b60270d-6def-4cee-811c-6467ae806b94",
+        "startDate": "2026-03-04",
+        "endDate": "2026-03-04",
+        "label": "4대 연구지원시스템별 DB 현황 분석 완료"
+      },
+      {
+        "id": "milestone-faab7bc2-e4b7-47c2-a4a1-6e36d6889474",
+        "startDate": "2026-03-21",
+        "endDate": "2026-03-21",
+        "label": "ISMP 수립 완료"
+      },
+      {
+        "id": "milestone-99a2507c-314f-4989-833b-fa7663c217f9",
+        "startDate": "2026-05-07",
+        "endDate": "2026-05-07",
+        "label": "ISMP 결과, 기획예산처 검토 요청"
+      },
+      {
+        "id": "milestone-66923c0e-a823-4fb0-93e2-9372a79e6bd6",
+        "startDate": "2026-05-29",
+        "endDate": "2026-05-29",
+        "label": "IRIS 중심의 연구지원시스템 개편 방향 발표(과기관계장관회의)"
+      },
+      {
+        "id": "milestone-81d120fa-991f-4068-9f03-f88dd535d8ce",
+        "startDate": "2026-12-30",
+        "endDate": "2026-12-30",
+        "label": "통합 연구지원시스템 DB 구축 완료"
+      },
+      {
+        "id": "milestone-d91b277d-d403-40be-ac0f-9f5c21033e04",
+        "startDate": "2027-01-04",
+        "endDate": "2027-01-04",
+        "label": "통합 연구지원시스템 개발 착수"
+      }
+    ]
   }
 ]
