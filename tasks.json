@@ -1667,7 +1667,7 @@
     "start": "2025-12-30",
     "end": "2028-12-29",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "연구 현장의 수요와 파급효과를 고려해 기술적 범용성이 높고 현장 적용이 용이한 우선순위 과제를 선정하여 IRIS에 AI 도입\n추진목표: AI 기반 연구행정 혁신으로 행정부담 완화 및 연구 몰입 환경 조성",
     "milestones": [
