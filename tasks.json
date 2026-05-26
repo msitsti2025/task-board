@@ -218,7 +218,7 @@
     "category": "outreach",
     "order": 2,
     "title": "현장 소통 간담회",
-    "owner": "과학기술정책과",
+    "owner": "혁신본부",
     "manager": "",
     "start": "2025-07-15",
     "end": "2026-12-31",
@@ -228,10 +228,178 @@
     "content": "연구소, 대학, 기업 등 연구 현장을 방문하여 타운홀 형식의 소통의 장을 마련함. 정부의 과학기술 정책, 제도, 전략 등을 현장 방문을 통해 직접 소통",
     "milestones": [
       {
-        "id": "milestone-af3d8823-193a-49cf-836d-918f13f2bda4",
+        "id": "milestone-c58d9ecb-f022-4302-b91d-b64ff86e0981",
+        "startDate": "2025-05-14",
+        "endDate": "2025-05-14",
+        "label": "(KIST) R&D혁신을 위한 연구현장 간담회"
+      },
+      {
+        "id": "milestone-c0a1be26-edd5-495f-9b97-41d9c18b0fc2",
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "label": "(연세대) 연구자 중심의 IRIS 개선을 위한 현장 간담회"
+      },
+      {
+        "id": "milestone-17598a66-ac7a-4d2b-8c81-b33e62363252",
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "label": "(KBSI) 한국형 Snowmass 도입을 위한 전문가 간담회"
+      },
+      {
+        "id": "milestone-a2196a1d-5dc1-4545-ae7d-a8eb08a1a1bc",
+        "startDate": "2025-09-04",
+        "endDate": "2025-09-04",
+        "label": "(산기협) R&D 혁신방안 산업계 간담회"
+      },
+      {
+        "id": "milestone-afd4c658-20d3-45ec-b1fc-9ba59d953a2a",
+        "startDate": "2025-09-12",
+        "endDate": "2025-09-12",
+        "label": "기초연구 R&D 예산배분조정안 간담회"
+      },
+      {
+        "id": "milestone-267fb11c-9bb5-4f2f-84e5-3b0e6e8b4c67",
+        "startDate": "2025-09-17",
+        "endDate": "2025-09-17",
+        "label": "AX를 통한 지역 혁신방안 간담회(전북)"
+      },
+      {
+        "id": "milestone-04921882-536f-4a2e-b011-1fa257b7f4a9",
+        "startDate": "2025-09-18",
+        "endDate": "2025-09-18",
+        "label": "민간R&D협의체 간담회 (산기협)"
+      },
+      {
+        "id": "milestone-88b7e121-fd16-47b7-8a8d-99f1fb4badd8",
+        "startDate": "2025-09-23",
+        "endDate": "2025-09-23",
+        "label": "차세대과학기술한림원(Y-KAST) 간담회"
+      },
+      {
+        "id": "milestone-5c7e235e-f37e-4471-9dac-31ad8842b99a",
+        "startDate": "2025-09-24",
+        "endDate": "2025-09-24",
+        "label": "(에너지기술연구원) 현장방문 간담회"
+      },
+      {
+        "id": "milestone-a16bf136-5818-42bf-85a5-3105353f4bc7",
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
+        "label": "(기상청) 현장방문 간담회"
+      },
+      {
+        "id": "milestone-9678a0d0-f0db-408f-acdb-86c344db3086",
+        "startDate": "2025-12-03",
+        "endDate": "2025-12-03",
+        "label": "대학 연구보안 간담회"
+      },
+      {
+        "id": "milestone-50fb0b64-acea-4636-912e-f1b7c18fb35c",
+        "startDate": "2025-12-19",
+        "endDate": "2025-12-19",
+        "label": "대학 산학협력단장 간담회"
+      },
+      {
+        "id": "milestone-b90ca8fd-723c-4221-a09e-a110f3394114",
+        "startDate": "2026-01-22",
+        "endDate": "2026-01-22",
+        "label": "(국립중앙박물관) 문화R&D 투자방향 간담회"
+      },
+      {
+        "id": "milestone-7d37bca3-5b22-46cd-bc67-c686420e7c73",
+        "startDate": "2026-01-22",
+        "endDate": "2026-01-22",
+        "label": "(중소기업중앙회) 중소기업 R&D 소통회의"
+      },
+      {
+        "id": "milestone-f3334a94-e1c1-4ffc-adb3-5bd3e203107d",
+        "startDate": "2026-02-19",
+        "endDate": "2026-02-19",
+        "label": "3책 5공 제도개선을 위한 연구현장 간담회"
+      },
+      {
+        "id": "milestone-d25a99c9-3782-44df-8a56-5ad392fb4602",
+        "startDate": "2026-02-26",
+        "endDate": "2026-02-26",
+        "label": "2027년 정부 연구개발 투자방향 수립을 위한 릴레이 산·학·연 간담회 (연구계-NST)"
+      },
+      {
+        "id": "milestone-abcabf40-214c-46ad-8c22-c41d73732b46",
+        "startDate": "2026-02-27",
+        "endDate": "2026-02-27",
+        "label": "2027년 정부 연구개발 투자방향 수립을 위한 릴레이 산·학·연 간담회 (산업계-산기협)"
+      },
+      {
+        "id": "milestone-8d4c24a1-e8c0-4e11-a908-2940bd45ced7",
+        "startDate": "2026-03-04",
+        "endDate": "2026-03-04",
+        "label": "KISTEP 현장방문 및 점검"
+      },
+      {
+        "id": "milestone-b16d8ae1-7cc7-4de5-8269-191c5da35f18",
+        "startDate": "2026-03-05",
+        "endDate": "2026-03-05",
+        "label": "2027년 정부 연구개발 투자방향 수립을 위한 릴레이 산·학·연 간담회 (학계)"
+      },
+      {
+        "id": "milestone-68f35a5c-d379-460a-8ecd-46d9f8976e53",
+        "startDate": "2026-03-25",
+        "endDate": "2026-03-25",
+        "label": "(전북대) 전북대 피지컬AI PoC 현장방문"
+      },
+      {
+        "id": "milestone-af739c08-6364-47c0-a3e9-774370737c4c",
+        "startDate": "2026-04-07",
+        "endDate": "2026-04-07",
+        "label": "K-사이언스 어젠다랩 회의"
+      },
+      {
+        "id": "milestone-8ba4cace-1ed3-4f9c-b085-5c6ef4616781",
+        "startDate": "2026-04-09",
+        "endDate": "2026-04-09",
+        "label": "구축형 R&D 심사제도 학회 설명회 (물리/생명과학 분야)"
+      },
+      {
+        "id": "milestone-35bf904c-2dc3-4fdd-80bc-e153de661afa",
+        "startDate": "2026-04-24",
+        "endDate": "2026-04-24",
+        "label": "국가AI전략위-과기혁신본부 간담회"
+      },
+      {
+        "id": "milestone-8f969ced-55a6-420a-aa31-d7e022327b68",
+        "startDate": "2026-04-30",
+        "endDate": "2026-04-30",
+        "label": "'27년도 R&D 예산전략회의"
+      },
+      {
+        "id": "milestone-120ff775-3a09-4199-9542-97f6a40afdbd",
+        "startDate": "2026-05-07",
+        "endDate": "2026-05-07",
+        "label": "과학기술기본계획 간담회"
+      },
+      {
+        "id": "milestone-c0ce612c-5718-451c-b602-cecfa893ed77",
         "startDate": "2026-05-08",
         "endDate": "2026-05-08",
-        "label": "GIST 타운홀미팅"
+        "label": "(GIST) 주요 R&D 정책 간담회"
+      },
+      {
+        "id": "milestone-a696df1a-9cd0-440c-a354-98bd543273bb",
+        "startDate": "2026-05-12",
+        "endDate": "2026-05-12",
+        "label": "구축형 R&D 심사제도 학회 설명회 (전 분야)"
+      },
+      {
+        "id": "milestone-9100f108-5745-46a3-890f-27384a73acc9",
+        "startDate": "2026-05-15",
+        "endDate": "2026-05-15",
+        "label": "(핵융합연구원) 혁신본부장-기획처 장관 연구현장 방문•간담회"
+      },
+      {
+        "id": "milestone-be279ad1-fc76-4edc-ab3c-c37802fd7204",
+        "startDate": "2026-05-26",
+        "endDate": "2026-05-26",
+        "label": "과학기술기본계획 수립위원 간담회"
       }
     ]
   },
