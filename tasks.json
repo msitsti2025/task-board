@@ -2028,5 +2028,20 @@
         "label": "통합 연구지원시스템 개발 착수"
       }
     ]
+  },
+  {
+    "id": "task-4fd1ed47-c8c6-4d1b-ab54-9e2a6bc4c854",
+    "category": "outreach",
+    "order": 3,
+    "title": "국가과학기술자문회의 위원회 활동",
+    "owner": "혁신본부",
+    "manager": "",
+    "start": "2025-07-15",
+    "end": "2026-12-31",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "국가과학기술자문회의 심의회의 산하 위원회 개최. 운영위원회, 전문분과 특별위원회 좌장 활동",
+    "milestones": []
   }
 ]
