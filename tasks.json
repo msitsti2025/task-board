@@ -1134,6 +1134,12 @@
         "startDate": "2026-12-31",
         "endDate": "2026-12-31",
         "label": "1차년도 연계 완료"
+      },
+      {
+        "id": "milestone-a0cddeba-6af0-409b-99cf-1c0762bc8d57",
+        "startDate": "2027-01-04",
+        "endDate": "2027-06-30",
+        "label": "상반기 시스템 연계 완료"
       }
     ]
   },
