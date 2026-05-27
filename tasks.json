@@ -2042,6 +2042,13 @@
     "complete": true,
     "tentative": false,
     "content": "국가과학기술자문회의 심의회의 산하 위원회 개최. 운영위원회, 전문분과 특별위원회 좌장 활동",
-    "milestones": []
+    "milestones": [
+      {
+        "id": "milestone-b5cd649f-4351-4d02-9775-e101c5f81973",
+        "startDate": "2025-08-07",
+        "endDate": "2025-08-07",
+        "label": "제 74회 운영위원회"
+      }
+    ]
   }
 ]
