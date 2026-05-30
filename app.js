@@ -1,12 +1,22 @@
-const categories = [
-  { id: "all", label: "전체", color: "#1d2633" },
-  { id: "science-policy", label: "기획/정책/전략수립 업무", color: "#2563eb" },
-  { id: "budget-review", label: "예산/투자/심의조정 업무", color: "#0f766e" },
-  { id: "rnd-management", label: "평가/제도/정보분석 업무", color: "#b45309" },
-  { id: "outreach", label: "대외/홍보/현장소통 업무", color: "#7c3aed" },
-];
+const DEFAULT_SETTINGS = {
+  ministry: "과학기술정보통신부",
+  organization: "과학기술혁신본부",
+  dashboardTitle: "한눈에 보는 과학기술혁신본부 업무 추진 현황",
+  categories: [
+    { id: "science-policy", label: "기획/정책/전략수립 업무", color: "#2563eb" },
+    { id: "budget-review", label: "예산/투자/심의조정 업무", color: "#0f766e" },
+    { id: "rnd-management", label: "평가/제도/정보분석 업무", color: "#b45309" },
+    { id: "outreach", label: "대외/홍보/현장소통 업무", color: "#7c3aed" },
+  ],
+};
+let appSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+let settingsFileSha = "";
 
-const categoryGroups = categories.filter((category) => category.id !== "all");
+let categories = [
+  { id: "all", label: "전체", color: "#1d2633" },
+  ...DEFAULT_SETTINGS.categories,
+];
+let categoryGroups = categories.filter((category) => category.id !== "all");
 const ownerOptions = [
   "혁신본부",
   "과학기술정책과",
@@ -334,7 +344,7 @@ let canWrite = false;
 let githubToken = "";
 let githubFileSha = "";
 
-const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
+let categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
 const categoryFilters = document.querySelector("#categoryFilters");
 const searchInput = document.querySelector("#searchInput");
 const timeline = document.querySelector("#timeline");
@@ -368,6 +378,16 @@ const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
 const loginCloseButton = document.querySelector("#loginCloseButton");
 const staffPasswordLabel = document.querySelector("#staffPasswordLabel");
+const settingsButton = document.querySelector("#settingsButton");
+const settingsPanel = document.querySelector("#settingsPanel");
+const settingsForm = document.querySelector("#settingsForm");
+const settingsMinistry = document.querySelector("#settingsMinistry");
+const settingsOrganization = document.querySelector("#settingsOrganization");
+const settingsDashboardTitle = document.querySelector("#settingsDashboardTitle");
+const settingsCategoryRows = document.querySelector("#settingsCategoryRows");
+const settingsAddCategory = document.querySelector("#settingsAddCategory");
+const settingsCloseButton = document.querySelector("#settingsCloseButton");
+const settingsCancelButton = document.querySelector("#settingsCancelButton");
 const printButton = document.querySelector("#printButton");
 const loginPanel = document.querySelector("#loginPanel");
 const loginForm = document.querySelector("#loginForm");
@@ -410,11 +430,11 @@ function normalizeCategory(item) {
   if (categoryGroups.some((category) => category.id === item.category)) return item.category;
 
   const text = [item.title, item.owner, item.content].join(" ");
-  if (/예산|투자|심의|타당성|구축형 R&D|전문위/.test(text)) return "budget-review";
+  if (/예산|투자|심의|타당성|구축형 R&D|전문위/.test(text)) return categoryGroups[1]?.id || categoryGroups[0]?.id || "science-policy";
   if (/성과|평가|제도|연구비|데이터|IRIS|장비|로그인|보안|부정사용|혁신법|시행령|행정서식|연구24/.test(text)) {
-    return "rnd-management";
+    return categoryGroups[2]?.id || categoryGroups[0]?.id || "science-policy";
   }
-  return "science-policy";
+  return categoryGroups[0]?.id || "science-policy";
 }
 
 function isLocalEditableHost() {
@@ -714,6 +734,7 @@ function renderAuthState() {
   }
   // local 모드는 로그인 불필요; 나머지 모드에서 로그인/로그아웃 버튼 표시
   staffLoginButton.hidden = storageMode === "local" || isStaff;
+  settingsButton.hidden = !isStaff;
   staffLogoutButton.hidden = storageMode === "local" || !isStaff;
   printButton.hidden = false;
   if (isStaff) {
@@ -2008,7 +2029,7 @@ function printTasks() {
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>과학기술혁신본부 업무 추진 현황</title>
+<title>${escapeHtml(appSettings.organization)} 업무 추진 현황</title>
 <style>
   @page { size: A4 portrait; margin: 20mm 18mm 18mm; }
   * { box-sizing: border-box; }
@@ -2044,8 +2065,8 @@ function printTasks() {
 </head>
 <body>
 <div class="cover">
-  <p class="cover-org">과학기술정보통신부 · 과학기술혁신본부</p>
-  <h1>한눈에 보는<br>과학기술혁신본부<br>업무 추진 현황</h1>
+  <p class="cover-org">${escapeHtml(appSettings.ministry)} · ${escapeHtml(appSettings.organization)}</p>
+  <h1>${escapeHtml(appSettings.dashboardTitle).replace(/\s/g, "<br>")}</h1>
   <p class="cover-date">인쇄일: ${today}</p>
 </div>
 ${tocHtml}
@@ -2066,13 +2087,167 @@ ${chaptersHtml}
 
 printButton.addEventListener("click", printTasks);
 
+// ── 설정 ──────────────────────────────────────────────────────────────────────
+
+function applySettings(s) {
+  appSettings = { ...DEFAULT_SETTINGS, ...s };
+  if (Array.isArray(s.categories) && s.categories.length > 0) {
+    categories = [{ id: "all", label: "전체", color: "#1d2633" }, ...s.categories];
+    categoryGroups = categories.filter((c) => c.id !== "all");
+    categoryById = Object.fromEntries(categories.map((c) => [c.id, c]));
+  }
+  const eyebrow = document.querySelector("#eyebrowText");
+  if (eyebrow) eyebrow.textContent = `${appSettings.ministry} · ${appSettings.organization}`;
+  const heroTitle = document.querySelector("#heroTitle");
+  if (heroTitle) heroTitle.textContent = appSettings.dashboardTitle;
+  document.title = `${appSettings.organization} 업무 타임라인 대시보드`;
+}
+
+async function loadSettings() {
+  try {
+    if (storageMode === "api") {
+      const res = await fetch("api/settings", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Object.keys(data).length > 0) applySettings(data);
+      }
+    } else if (storageMode === "github") {
+      const headers = { Accept: "application/vnd.github.v3+json" };
+      if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/settings.json`,
+        { headers }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        settingsFileSha = data.sha;
+        const text = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ""))));
+        applySettings(JSON.parse(text));
+      }
+    } else {
+      const saved = localStorage.getItem("osti_settings");
+      if (saved) applySettings(JSON.parse(saved));
+    }
+  } catch (e) {
+    console.warn("설정을 불러오지 못했습니다.", e);
+  }
+}
+
+async function persistSettings(s) {
+  try {
+    if (storageMode === "api") {
+      await fetch("api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify(s),
+      });
+    } else if (storageMode === "github" && githubToken) {
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(s, null, 2) + "\n")));
+      const body = { message: "설정 업데이트", content };
+      if (settingsFileSha) body.sha = settingsFileSha;
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/settings.json`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${githubToken}`,
+            Accept: "application/vnd.github.v3+json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+      if (res.ok) settingsFileSha = (await res.json()).content.sha;
+    } else {
+      localStorage.setItem("osti_settings", JSON.stringify(s));
+    }
+  } catch (e) {
+    console.error("설정을 저장하지 못했습니다.", e);
+  }
+}
+
+function readCategoryRowValues() {
+  return [...settingsCategoryRows.querySelectorAll(".settings-cat-row")].map((row, i) => ({
+    id: row.dataset.id || createId("cat"),
+    label: row.querySelector("input[type='text']").value.trim(),
+    color: row.querySelector("input[type='color']").value,
+  }));
+}
+
+function renderSettingsCategoryRows(cats) {
+  settingsCategoryRows.innerHTML = cats
+    .map(
+      (cat) => `
+    <div class="settings-cat-row" data-id="${escapeHtml(cat.id)}">
+      <input type="text" value="${escapeHtml(cat.label)}" placeholder="그룹명" />
+      <input type="color" value="${escapeHtml(cat.color)}" />
+      <button type="button" class="secondary-button settings-cat-delete-btn">삭제</button>
+    </div>`
+    )
+    .join("");
+}
+
+function openSettingsPanel() {
+  settingsMinistry.value = appSettings.ministry;
+  settingsOrganization.value = appSettings.organization;
+  settingsDashboardTitle.value = appSettings.dashboardTitle;
+  renderSettingsCategoryRows(appSettings.categories);
+  settingsPanel.hidden = false;
+}
+
+settingsButton.addEventListener("click", openSettingsPanel);
+
+settingsCloseButton.addEventListener("click", () => { settingsPanel.hidden = true; });
+settingsCancelButton.addEventListener("click", () => { settingsPanel.hidden = true; });
+
+settingsAddCategory.addEventListener("click", () => {
+  const current = readCategoryRowValues();
+  renderSettingsCategoryRows([
+    ...current,
+    { id: createId("cat"), label: "", color: "#2563eb" },
+  ]);
+});
+
+settingsCategoryRows.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("settings-cat-delete-btn")) return;
+  const row = e.target.closest(".settings-cat-row");
+  if (!row) return;
+  const current = readCategoryRowValues();
+  const idx = [...settingsCategoryRows.querySelectorAll(".settings-cat-row")].indexOf(row);
+  current.splice(idx, 1);
+  renderSettingsCategoryRows(current);
+});
+
+settingsForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const newSettings = {
+    ministry: settingsMinistry.value.trim() || DEFAULT_SETTINGS.ministry,
+    organization: settingsOrganization.value.trim() || DEFAULT_SETTINGS.organization,
+    dashboardTitle: settingsDashboardTitle.value.trim() || DEFAULT_SETTINGS.dashboardTitle,
+    categories: readCategoryRowValues().filter((c) => c.label),
+  };
+  if (newSettings.categories.length === 0) {
+    newSettings.categories = JSON.parse(JSON.stringify(DEFAULT_SETTINGS.categories));
+  }
+  applySettings(newSettings);
+  await persistSettings(newSettings);
+  settingsPanel.hidden = true;
+  renderCategoryOptions();
+  renderFilters();
+  renderTimeline();
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 async function init() {
   items = await loadItems();
+  await loadSettings();
   if (storageMode === "local" && canWrite) {
     isStaff = true;
     await restoreDirHandle();
   } else if (storageMode === "github") {
-    if (githubToken) isStaff = true; // sessionStorage에서 복원된 토큰이 있으면 로그인 유지
+    if (githubToken) isStaff = true;
   } else {
     await refreshStaffSession();
   }
