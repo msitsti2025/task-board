@@ -156,13 +156,15 @@ function normalizeItems(source) {
 
 function normalizeCategory(item) {
   if (categoryGroups.some((category) => category.id === item.category)) return item.category;
+  // 현재 목록에 없더라도 유효한 ID면 보존 (settings 로드 후 올바르게 표시됨)
+  if (item.category && typeof item.category === "string" && item.category.trim()) return item.category;
 
   const text = [item.title, item.owner, item.content].join(" ");
-  if (/예산|투자|심의|타당성|구축형 R&D|전문위/.test(text)) return categoryGroups[1]?.id || categoryGroups[0]?.id || "science-policy";
+  if (/예산|투자|심의|타당성|구축형 R&D|전문위/.test(text)) return categoryGroups[1]?.id || categoryGroups[0]?.id || "group-1";
   if (/성과|평가|제도|연구비|데이터|IRIS|장비|로그인|보안|부정사용|혁신법|시행령|행정서식|연구24/.test(text)) {
-    return categoryGroups[2]?.id || categoryGroups[0]?.id || "science-policy";
+    return categoryGroups[2]?.id || categoryGroups[0]?.id || "group-1";
   }
-  return categoryGroups[0]?.id || "science-policy";
+  return categoryGroups[0]?.id || "group-1";
 }
 
 function isLocalEditableHost() {
