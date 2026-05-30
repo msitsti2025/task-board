@@ -2109,8 +2109,14 @@ async function loadSettings() {
       const res = await fetch("api/settings", { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        if (data && Object.keys(data).length > 0) applySettings(data);
+        if (data && Object.keys(data).length > 0) {
+          applySettings(data);
+          return;
+        }
       }
+      // 서버 설정이 없으면 localStorage 폴백
+      const saved = localStorage.getItem("osti_settings");
+      if (saved) applySettings(JSON.parse(saved));
     } else if (storageMode === "github") {
       const headers = { Accept: "application/vnd.github.v3+json" };
       if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
@@ -2136,12 +2142,18 @@ async function loadSettings() {
 async function persistSettings(s) {
   try {
     if (storageMode === "api") {
-      await fetch("api/settings", {
+      // localStorage에 항상 먼저 저장 (서버 실패 시 폴백)
+      localStorage.setItem("osti_settings", JSON.stringify(s));
+      const res = await fetch("api/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "same-origin",
         body: JSON.stringify(s),
       });
+      if (res.ok) {
+        // 서버 저장 성공 시 localStorage 제거 (서버가 정식 저장소)
+        localStorage.removeItem("osti_settings");
+      }
     } else if (storageMode === "github" && githubToken) {
       const content = btoa(unescape(encodeURIComponent(JSON.stringify(s, null, 2) + "\n")));
       const body = { message: "설정 업데이트", content };
