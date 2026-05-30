@@ -106,7 +106,7 @@
   {
     "id": "task-3-5dec3c8d-4a3d-4284-bdbd-a04782749ec2",
     "category": "rnd-management",
-    "order": 5,
+    "order": 6,
     "title": "연구비 집행 자율성 확대",
     "owner": "연구제도혁신과",
     "manager": "김도경, 서승호",
@@ -218,7 +218,7 @@
     "category": "outreach",
     "order": 2,
     "title": "현장 소통 간담회",
-    "owner": "과학기술정책과",
+    "owner": "혁신본부",
     "manager": "",
     "start": "2025-07-15",
     "end": "2026-12-31",
@@ -228,10 +228,178 @@
     "content": "연구소, 대학, 기업 등 연구 현장을 방문하여 타운홀 형식의 소통의 장을 마련함. 정부의 과학기술 정책, 제도, 전략 등을 현장 방문을 통해 직접 소통",
     "milestones": [
       {
-        "id": "milestone-af3d8823-193a-49cf-836d-918f13f2bda4",
+        "id": "milestone-c0a1be26-edd5-495f-9b97-41d9c18b0fc2",
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "label": "(연세대) 연구자 중심의 IRIS 개선을 위한 현장 간담회"
+      },
+      {
+        "id": "milestone-17598a66-ac7a-4d2b-8c81-b33e62363252",
+        "startDate": "2025-08-13",
+        "endDate": "2025-08-13",
+        "label": "(KBSI) 한국형 Snowmass 도입을 위한 전문가 간담회"
+      },
+      {
+        "id": "milestone-c58d9ecb-f022-4302-b91d-b64ff86e0981",
+        "startDate": "2025-08-14",
+        "endDate": "2025-08-14",
+        "label": "(KIST) R&D혁신을 위한 연구현장 간담회"
+      },
+      {
+        "id": "milestone-a2196a1d-5dc1-4545-ae7d-a8eb08a1a1bc",
+        "startDate": "2025-09-04",
+        "endDate": "2025-09-04",
+        "label": "(산기협) R&D 혁신방안 산업계 간담회"
+      },
+      {
+        "id": "milestone-afd4c658-20d3-45ec-b1fc-9ba59d953a2a",
+        "startDate": "2025-09-12",
+        "endDate": "2025-09-12",
+        "label": "기초연구 R&D 예산배분조정안 간담회"
+      },
+      {
+        "id": "milestone-267fb11c-9bb5-4f2f-84e5-3b0e6e8b4c67",
+        "startDate": "2025-09-17",
+        "endDate": "2025-09-17",
+        "label": "AX를 통한 지역 혁신방안 간담회(전북)"
+      },
+      {
+        "id": "milestone-04921882-536f-4a2e-b011-1fa257b7f4a9",
+        "startDate": "2025-09-18",
+        "endDate": "2025-09-18",
+        "label": "민간R&D협의체 간담회 (산기협)"
+      },
+      {
+        "id": "milestone-88b7e121-fd16-47b7-8a8d-99f1fb4badd8",
+        "startDate": "2025-09-23",
+        "endDate": "2025-09-23",
+        "label": "차세대과학기술한림원(Y-KAST) 간담회"
+      },
+      {
+        "id": "milestone-5c7e235e-f37e-4471-9dac-31ad8842b99a",
+        "startDate": "2025-09-24",
+        "endDate": "2025-09-24",
+        "label": "(에너지기술연구원) 현장방문 간담회"
+      },
+      {
+        "id": "milestone-a16bf136-5818-42bf-85a5-3105353f4bc7",
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
+        "label": "(기상청) 현장방문 간담회"
+      },
+      {
+        "id": "milestone-9678a0d0-f0db-408f-acdb-86c344db3086",
+        "startDate": "2025-12-03",
+        "endDate": "2025-12-03",
+        "label": "대학 연구보안 간담회"
+      },
+      {
+        "id": "milestone-50fb0b64-acea-4636-912e-f1b7c18fb35c",
+        "startDate": "2025-12-19",
+        "endDate": "2025-12-19",
+        "label": "대학 산학협력단장 간담회"
+      },
+      {
+        "id": "milestone-b90ca8fd-723c-4221-a09e-a110f3394114",
+        "startDate": "2026-01-22",
+        "endDate": "2026-01-22",
+        "label": "(국립중앙박물관) 문화R&D 투자방향 간담회"
+      },
+      {
+        "id": "milestone-7d37bca3-5b22-46cd-bc67-c686420e7c73",
+        "startDate": "2026-01-22",
+        "endDate": "2026-01-22",
+        "label": "(중소기업중앙회) 중소기업 R&D 소통회의"
+      },
+      {
+        "id": "milestone-f3334a94-e1c1-4ffc-adb3-5bd3e203107d",
+        "startDate": "2026-02-19",
+        "endDate": "2026-02-19",
+        "label": "3책 5공 제도개선을 위한 연구현장 간담회"
+      },
+      {
+        "id": "milestone-d25a99c9-3782-44df-8a56-5ad392fb4602",
+        "startDate": "2026-02-26",
+        "endDate": "2026-02-26",
+        "label": "2027년 정부 연구개발 투자방향 수립을 위한 릴레이 산·학·연 간담회 (연구계-NST)"
+      },
+      {
+        "id": "milestone-abcabf40-214c-46ad-8c22-c41d73732b46",
+        "startDate": "2026-02-27",
+        "endDate": "2026-02-27",
+        "label": "2027년 정부 연구개발 투자방향 수립을 위한 릴레이 산·학·연 간담회 (산업계-산기협)"
+      },
+      {
+        "id": "milestone-8d4c24a1-e8c0-4e11-a908-2940bd45ced7",
+        "startDate": "2026-03-04",
+        "endDate": "2026-03-04",
+        "label": "KISTEP 현장방문 및 점검"
+      },
+      {
+        "id": "milestone-b16d8ae1-7cc7-4de5-8269-191c5da35f18",
+        "startDate": "2026-03-05",
+        "endDate": "2026-03-05",
+        "label": "2027년 정부 연구개발 투자방향 수립을 위한 릴레이 산·학·연 간담회 (학계)"
+      },
+      {
+        "id": "milestone-68f35a5c-d379-460a-8ecd-46d9f8976e53",
+        "startDate": "2026-03-25",
+        "endDate": "2026-03-25",
+        "label": "(전북대) 전북대 피지컬AI PoC 현장방문"
+      },
+      {
+        "id": "milestone-af739c08-6364-47c0-a3e9-774370737c4c",
+        "startDate": "2026-04-07",
+        "endDate": "2026-04-07",
+        "label": "K-사이언스 어젠다랩 회의"
+      },
+      {
+        "id": "milestone-8ba4cace-1ed3-4f9c-b085-5c6ef4616781",
+        "startDate": "2026-04-09",
+        "endDate": "2026-04-09",
+        "label": "구축형 R&D 심사제도 학회 설명회 (물리/생명과학 분야)"
+      },
+      {
+        "id": "milestone-35bf904c-2dc3-4fdd-80bc-e153de661afa",
+        "startDate": "2026-04-24",
+        "endDate": "2026-04-24",
+        "label": "국가AI전략위-과기혁신본부 간담회"
+      },
+      {
+        "id": "milestone-8f969ced-55a6-420a-aa31-d7e022327b68",
+        "startDate": "2026-04-30",
+        "endDate": "2026-04-30",
+        "label": "'27년도 R&D 예산전략회의"
+      },
+      {
+        "id": "milestone-120ff775-3a09-4199-9542-97f6a40afdbd",
+        "startDate": "2026-05-07",
+        "endDate": "2026-05-07",
+        "label": "과학기술기본계획 간담회"
+      },
+      {
+        "id": "milestone-c0ce612c-5718-451c-b602-cecfa893ed77",
         "startDate": "2026-05-08",
         "endDate": "2026-05-08",
-        "label": "GIST 타운홀미팅"
+        "label": "(GIST) 주요 R&D 정책 간담회"
+      },
+      {
+        "id": "milestone-a696df1a-9cd0-440c-a354-98bd543273bb",
+        "startDate": "2026-05-12",
+        "endDate": "2026-05-12",
+        "label": "구축형 R&D 심사제도 학회 설명회 (전 분야)"
+      },
+      {
+        "id": "milestone-9100f108-5745-46a3-890f-27384a73acc9",
+        "startDate": "2026-05-15",
+        "endDate": "2026-05-15",
+        "label": "(핵융합연구원) 혁신본부장-기획처 장관 연구현장 방문•간담회"
+      },
+      {
+        "id": "milestone-be279ad1-fc76-4edc-ab3c-c37802fd7204",
+        "startDate": "2026-05-26",
+        "endDate": "2026-05-26",
+        "label": "과학기술기본계획 수립위원 간담회"
       }
     ]
   },
@@ -315,8 +483,8 @@
       },
       {
         "id": "milestone-5d492072-2fa0-4050-8b39-88f88d05aee0",
-        "startDate": "2026-06-19",
-        "endDate": "2026-06-19",
+        "startDate": "2026-04-08",
+        "endDate": "2026-04-08",
         "label": "기본계획 발표, 6월 잠정"
       }
     ]
@@ -636,7 +804,7 @@
   {
     "id": "task-14-7ea5c356-4d87-4995-9f33-8a40b7360320",
     "category": "rnd-management",
-    "order": 7,
+    "order": 8,
     "title": "R&D 행정서식 간소화",
     "owner": "연구제도혁신과",
     "manager": "김도경, 최원영",
@@ -752,7 +920,7 @@
   {
     "id": "task-16-b633771f-96af-45ca-9858-834e04f6fbd5",
     "category": "rnd-management",
-    "order": 11,
+    "order": 13,
     "title": "국가 R&D 서비스 통합 로그인 \"연구24\" 구축",
     "owner": "과학기술정보분석과",
     "manager": "조시훈, 원성호",
@@ -856,7 +1024,7 @@
   {
     "id": "task-18-7668ad25-65b8-43e5-874d-ec194911e6f5",
     "category": "rnd-management",
-    "order": 10,
+    "order": 12,
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "심혜영, 이정희",
@@ -905,9 +1073,9 @@
     "order": 3,
     "title": "IRIS-연구개발기관 자체시스템(MIS) 연계",
     "owner": "과학기술정보분석과",
-    "manager": "장호원",
+    "manager": "조시훈, 장호원",
     "start": "2025-07-29",
-    "end": "2026-06-30",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
@@ -954,6 +1122,12 @@
         "startDate": "2026-04-08",
         "endDate": "2026-04-08",
         "label": "출연연 참여 협조요청"
+      },
+      {
+        "id": "milestone-d0a8d50d-34fb-4943-b7af-134648cf22e8",
+        "startDate": "2026-12-31",
+        "endDate": "2026-12-31",
+        "label": "1차년도 연계 완료"
       }
     ]
   },
@@ -1024,7 +1198,7 @@
   {
     "id": "task-21-22316204-76e2-44ff-b281-9fb566c0541d",
     "category": "rnd-management",
-    "order": 9,
+    "order": 10,
     "title": "도전적 R&D 연구환경 조성",
     "owner": "연구평가혁신과",
     "manager": "심혜영, 강지희",
@@ -1076,7 +1250,7 @@
   {
     "id": "task-22-90fe4701-0887-452a-a658-0557afb7181f",
     "category": "rnd-management",
-    "order": 12,
+    "order": 15,
     "title": "도전적 목표 미달성 과제 재도약 지원",
     "owner": "연구평가혁신과",
     "manager": "",
@@ -1098,7 +1272,7 @@
   {
     "id": "task-23-97a64b38-2e26-49af-8eb6-19bf3745cab5",
     "category": "rnd-management",
-    "order": 14,
+    "order": 17,
     "title": "연구비 부정사용 제재처분 강화",
     "owner": "연구윤리권익보호과",
     "manager": "",
@@ -1172,7 +1346,7 @@
   {
     "id": "task-25-9a30af8f-fe3f-4e84-a3d7-735df1f0f455",
     "category": "rnd-management",
-    "order": 13,
+    "order": 16,
     "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     "owner": "성과평가정책과 · 연구제도혁신과",
     "manager": "",
@@ -1194,7 +1368,7 @@
   {
     "id": "task-26-b85a81f2-4e2c-4842-9d3f-e39685cd6397",
     "category": "rnd-management",
-    "order": 6,
+    "order": 7,
     "title": "연구보안 체계 내실화",
     "owner": "연구윤리권익보호과",
     "manager": "유승후, 옥영민",
@@ -1350,7 +1524,7 @@
   {
     "id": "task-0265a2a8-9e4e-46f9-bb0a-cd84888fa30b",
     "category": "rnd-management",
-    "order": 8,
+    "order": 9,
     "title": "국가연구개발 AI 연구윤리 가이드 마련",
     "owner": "연구윤리권익보호과",
     "manager": "유승후, 김진우, 이사름",
@@ -1515,7 +1689,7 @@
         "id": "milestone-8640ddb7-461c-460c-9129-d0dd0e2995b0",
         "startDate": "2026-05-12",
         "endDate": "2026-05-12",
-        "label": "사업 설명회 온라인 개최"
+        "label": "사업 ���명회 온라인 개최"
       },
       {
         "id": "milestone-d2af5e37-44a1-4294-9b60-e9cd166b1ca5",
@@ -1656,5 +1830,222 @@
         "label": "2기 혁신도전추진 특별위원회 구성•운영"
       }
     ]
+  },
+  {
+    "id": "task-ff312b75-592f-4ee9-90ad-8140453415bc",
+    "category": "rnd-management",
+    "order": 11,
+    "title": "IRIS 내 연구행정 AI 서비스 도입",
+    "owner": "과학기술정보분석과",
+    "manager": "조시훈, 임완택",
+    "start": "2025-12-30",
+    "end": "2026-12-31",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "연구 현장의 수요와 파급효과를 고려해 기술적 범용성이 높고 현장 적용이 용이한 우선순위 과제를 선정하여 IRIS에 AI 도입,  AI 기반 연구행정 혁신으로 행정부담 완화 및 연구 몰입 환경 조성",
+    "milestones": [
+      {
+        "id": "milestone-ca58f917-389f-46b6-8f79-1e45c4a85fe5",
+        "startDate": "2025-12-30",
+        "endDate": "2025-12-30",
+        "label": "AI학습용 데이터 전처리 착수"
+      },
+      {
+        "id": "milestone-4e042642-1e0d-4065-8dcd-9b40a7359e7d",
+        "startDate": "2026-02-26",
+        "endDate": "2026-03-13",
+        "label": "IRIS사용자 대상 AI 도입 설문조사"
+      },
+      {
+        "id": "milestone-5c978d16-66c3-40a8-b51c-fff88937695b",
+        "startDate": "2026-03-11",
+        "endDate": "2026-03-11",
+        "label": "AI 평가위원 추천 서비스 개보위 사전적정성 검토 의결"
+      },
+      {
+        "id": "milestone-7e0d4ff5-9fa6-4a96-84b0-e0e08690bcc8",
+        "startDate": "2026-04-01",
+        "endDate": "2026-04-01",
+        "label": "AI 개발 및 데이터 구축 사업 RFP 확정"
+      },
+      {
+        "id": "milestone-484a9620-6d1a-4bb4-8f91-22f6e070da9f",
+        "startDate": "2026-05-14",
+        "endDate": "2026-05-14",
+        "label": "AI 개발 및 데이터 구축 사업 상세 기획을 위한 기업 자문회의"
+      },
+      {
+        "id": "milestone-6f15da0b-b700-45f0-961f-3746dd7ba17e",
+        "startDate": "2026-07-13",
+        "endDate": "2026-07-13",
+        "label": "AI 개발 및 데이터 구축 사업 착수"
+      },
+      {
+        "id": "milestone-051eacf0-5665-4795-abe3-b19d9b2c1f2d",
+        "startDate": "2026-11-09",
+        "endDate": "2026-11-09",
+        "label": "AI 서비스 시연"
+      },
+      {
+        "id": "milestone-326ecb16-96bd-4741-bd88-27a97f871005",
+        "startDate": "2026-12-30",
+        "endDate": "2026-12-30",
+        "label": "1차년도 AI 서비스 오픈"
+      }
+    ]
+  },
+  {
+    "id": "task-75d234d1-9642-4ea0-a4e7-472b9e32216f",
+    "category": "rnd-management",
+    "order": 14,
+    "title": "과제접수, 성과등록 등 IRIS UI/UX 개선",
+    "owner": "과학기술정보분석과",
+    "manager": "조시훈, 장호원",
+    "start": "2026-02-02",
+    "end": "2026-12-30",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "IRIS 전주기 UI/UX 편의성 개선, 연구자 입장에서 UI/UX 개선을 통한 IRIS 이용 편의성 개선 및 업무 효율성 제고",
+    "milestones": [
+      {
+        "id": "milestone-c4eb11a9-04c4-4db9-834a-fe997cd60b4c",
+        "startDate": "2026-02-02",
+        "endDate": "2026-02-02",
+        "label": "UI/UX 개편을 위한 위탁연구 착수"
+      },
+      {
+        "id": "milestone-7c84b39b-fb49-4895-8383-dee431a0bdb8",
+        "startDate": "2026-02-23",
+        "endDate": "2026-02-23",
+        "label": "Web of Science DB 이용계약 협의"
+      },
+      {
+        "id": "milestone-196bb758-2796-4340-b546-00619d688113",
+        "startDate": "2026-03-18",
+        "endDate": "2026-03-18",
+        "label": "출연연, 대학 등 사용성 평가 및 인터뷰"
+      },
+      {
+        "id": "milestone-c9bbb6c1-bece-4e3d-b3ab-26a97771c23f",
+        "startDate": "2026-04-10",
+        "endDate": "2026-04-10",
+        "label": "연구관리 전주기 UI/UX 개편 방향 설정"
+      },
+      {
+        "id": "milestone-334922a9-f06b-493d-818c-e2bf6186c4bf",
+        "startDate": "2026-04-16",
+        "endDate": "2026-04-16",
+        "label": "Web of Science DB를 이용한 논문 등록 편의기능 개발 착수"
+      },
+      {
+        "id": "milestone-a692624f-4350-471f-972f-27a988439fb1",
+        "startDate": "2026-05-20",
+        "endDate": "2026-05-20",
+        "label": "UI/UX 개편 컨셉 확정"
+      },
+      {
+        "id": "milestone-6155c792-7a78-408a-a772-d7ab374f957f",
+        "startDate": "2026-12-30",
+        "endDate": "2026-12-30",
+        "label": "UI/UX 반영 완료"
+      }
+    ]
+  },
+  {
+    "id": "task-c3bd98e5-da28-4590-88a7-0adf9c0ce0a9",
+    "category": "rnd-management",
+    "order": 5,
+    "title": "4대 연구지원시스템 일원화",
+    "owner": "과학기술정보분석과",
+    "manager": "조시훈, 장호원, 원성호",
+    "start": "2025-10-22",
+    "end": "2027-01-04",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "IRIS + Ezbaro + RCMS + NTIS 등을 IRIS 중심으로 일원화,\n연구자 입장에서 연구지원시스템 일원화를 통해 시스템 분리 운영으로 인한 업무 혼란 및 중복 정보입력 등 연구자 행정부담 완화",
+    "milestones": [
+      {
+        "id": "milestone-39cfa5a7-3081-41d0-a1dd-b5fd5e926fc7",
+        "startDate": "2025-10-22",
+        "endDate": "2025-10-22",
+        "label": "ISMP(정보시스템마스터플랜) 수립 및 DB 재설계 착수"
+      },
+      {
+        "id": "milestone-f79a7120-d5c7-46ac-a2b8-81515f2133bb",
+        "startDate": "2025-11-24",
+        "endDate": "2025-11-24",
+        "label": "연구지원시스템 통합 방향 발표(연구개발 생태계 혁신방안 /과학기술관계장관회의)"
+      },
+      {
+        "id": "milestone-1b60270d-6def-4cee-811c-6467ae806b94",
+        "startDate": "2026-03-04",
+        "endDate": "2026-03-04",
+        "label": "4대 연구지원시스템별 DB 현황 분석 완료"
+      },
+      {
+        "id": "milestone-faab7bc2-e4b7-47c2-a4a1-6e36d6889474",
+        "startDate": "2026-03-21",
+        "endDate": "2026-03-21",
+        "label": "ISMP 수립 완료"
+      },
+      {
+        "id": "milestone-99a2507c-314f-4989-833b-fa7663c217f9",
+        "startDate": "2026-05-07",
+        "endDate": "2026-05-07",
+        "label": "ISMP 결과, 기획예산처 검토 요청"
+      },
+      {
+        "id": "milestone-66923c0e-a823-4fb0-93e2-9372a79e6bd6",
+        "startDate": "2026-05-29",
+        "endDate": "2026-05-29",
+        "label": "IRIS 중심의 연구지원시스템 개편 방향 발표(과기관계장관회의)"
+      },
+      {
+        "id": "milestone-81d120fa-991f-4068-9f03-f88dd535d8ce",
+        "startDate": "2026-12-30",
+        "endDate": "2026-12-30",
+        "label": "통합 연구지원시스템 DB 구축 완료"
+      },
+      {
+        "id": "milestone-d91b277d-d403-40be-ac0f-9f5c21033e04",
+        "startDate": "2027-01-04",
+        "endDate": "2027-01-04",
+        "label": "통합 연구지원시스템 개발 착수"
+      }
+    ]
+  },
+  {
+    "id": "task-2c78e0cb-9def-4021-a9d3-8e91701f0e13",
+    "category": "science-policy",
+    "order": 0,
+    "title": "새 업무",
+    "owner": "혁신본부",
+    "manager": "",
+    "start": "2026-05-30",
+    "end": "2026-05-30",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "새로운 업무",
+    "milestones": []
+  },
+  {
+    "id": "task-14dcec24-1d1f-4acc-a9c1-2f2b463b8936",
+    "category": "cat-ea109892-d23c-4111-b702-1b332b856cf2",
+    "order": 39,
+    "title": "테스트 신규 업무",
+    "owner": "혁신본부",
+    "manager": "",
+    "start": "2026-05-30",
+    "end": "2026-12-31",
+    "visible": true,
+    "complete": false,
+    "tentative": false,
+    "content": "",
+    "impact": "",
+    "milestones": []
   }
 ]
