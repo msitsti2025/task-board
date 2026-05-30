@@ -2242,8 +2242,35 @@ settingsForm.addEventListener("submit", async (e) => {
   if (newSettings.categories.length === 0) {
     newSettings.categories = JSON.parse(JSON.stringify(DEFAULT_SETTINGS.categories));
   }
+
+  // 기존에 없던 새 카테고리마다 기본 업무 1개 자동 생성
+  const existingCatIds = new Set(appSettings.categories.map((c) => c.id));
+  const today = new Date().toLocaleDateString("sv");
+  const endOfYear = `${today.slice(0, 4)}-12-31`;
+  newSettings.categories
+    .filter((c) => !existingCatIds.has(c.id))
+    .forEach((c) => {
+      items.push({
+        id: createId("task"),
+        category: c.id,
+        order: items.length,
+        title: `${c.label} 신규 업무`,
+        owner: ownerOptions[0],
+        manager: "",
+        start: today,
+        end: endOfYear,
+        visible: true,
+        complete: false,
+        tentative: false,
+        content: "",
+        impact: "",
+        milestones: [],
+      });
+    });
+
   applySettings(newSettings);
   await persistSettings(newSettings);
+  await persistItems();
   settingsPanel.hidden = true;
   renderCategoryOptions();
   renderFilters();
