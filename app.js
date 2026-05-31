@@ -118,6 +118,7 @@ const settingsTimelineStart = document.querySelector("#settingsTimelineStart");
 const settingsTimelineEnd = document.querySelector("#settingsTimelineEnd");
 const settingsCategoryRows = document.querySelector("#settingsCategoryRows");
 const settingsAddCategory = document.querySelector("#settingsAddCategory");
+const settingsResetButton = document.querySelector("#settingsResetButton");
 const settingsCloseButton = document.querySelector("#settingsCloseButton");
 const settingsCancelButton = document.querySelector("#settingsCancelButton");
 const printButton = document.querySelector("#printButton");
@@ -2010,6 +2011,57 @@ settingsForm.addEventListener("submit", async (e) => {
 
   applySettings(newSettings);
   await persistSettings(newSettings);
+  await persistItems();
+  settingsPanel.hidden = true;
+  renderCategoryOptions();
+  renderFilters();
+  renderTimeline();
+});
+
+function getInitialSettings() {
+  const today = new Date();
+  const start = new Date(today);
+  start.setMonth(start.getMonth() - 6);
+  const end = new Date(today);
+  end.setFullYear(end.getFullYear() + 1);
+  const fmt = (d) => d.toLocaleDateString("sv");
+  const catId = createId("cat");
+  return {
+    settings: {
+      ministry: "우리회사",
+      organization: "우리부서",
+      dashboardTitle: "한 눈에 보는 우리부서 업무 현황",
+      timelineStart: fmt(start),
+      timelineEnd: fmt(end),
+      categories: [{ id: catId, label: "업무그룹 1", color: "#2563eb" }],
+    },
+    catId,
+  };
+}
+
+settingsResetButton.addEventListener("click", async () => {
+  if (!confirm("모든 설정과 업무 데이터를 초기화합니다. 계속하시겠습니까?")) return;
+  const { settings: freshSettings, catId } = getInitialSettings();
+  const today = freshSettings.timelineStart.slice(0, 10);
+  const end = freshSettings.timelineEnd.slice(0, 10);
+  const freshItems = [{
+    id: createId("task"),
+    category: catId,
+    order: 0,
+    title: "업무 1",
+    owner: "",
+    manager: "",
+    start: today,
+    end,
+    visible: true,
+    complete: false,
+    tentative: false,
+    content: "",
+    milestones: [],
+  }];
+  items = freshItems;
+  applySettings(freshSettings);
+  await persistSettings(freshSettings);
   await persistItems();
   settingsPanel.hidden = true;
   renderCategoryOptions();
