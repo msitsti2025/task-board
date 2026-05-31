@@ -1,5 +1,5 @@
 const DEFAULT_SETTINGS = {
-  ministry: "부처명(회사명)",
+  company: "부처명(회사명)",
   organization: "조직명",
   dashboardTitle: "현황판명",
   timelineStart: "2025-07-01",
@@ -111,7 +111,7 @@ const staffPasswordLabel = document.querySelector("#staffPasswordLabel");
 const settingsButton = document.querySelector("#settingsButton");
 const settingsPanel = document.querySelector("#settingsPanel");
 const settingsForm = document.querySelector("#settingsForm");
-const settingsMinistry = document.querySelector("#settingsMinistry");
+const settingsCompany = document.querySelector("#settingsCompany");
 const settingsOrganization = document.querySelector("#settingsOrganization");
 const settingsDashboardTitle = document.querySelector("#settingsDashboardTitle");
 const settingsTimelineStart = document.querySelector("#settingsTimelineStart");
@@ -1800,7 +1800,7 @@ function printTasks() {
 </head>
 <body>
 <div class="cover">
-  <p class="cover-org">${escapeHtml(appSettings.ministry)} · ${escapeHtml(appSettings.organization)}</p>
+  <p class="cover-org">${escapeHtml(appSettings.company)} · ${escapeHtml(appSettings.organization)}</p>
   <h1>${escapeHtml(appSettings.dashboardTitle).replace(/\s/g, "<br>")}</h1>
   <p class="cover-date">인쇄일: ${today}</p>
 </div>
@@ -1825,6 +1825,7 @@ printButton.addEventListener("click", printTasks);
 // ── 설정 ──────────────────────────────────────────────────────────────────────
 
 function applySettings(s) {
+  if (s.ministry && !s.company) s = { ...s, company: s.ministry };
   appSettings = { ...DEFAULT_SETTINGS, ...s };
   if (Array.isArray(s.categories) && s.categories.length > 0) {
     categories = [{ id: "all", label: "전체", color: "#1d2633" }, ...s.categories];
@@ -1834,7 +1835,7 @@ function applySettings(s) {
   if (appSettings.timelineStart) timelineStart = new Date(appSettings.timelineStart + "T00:00:00");
   if (appSettings.timelineEnd) timelineEnd = new Date(appSettings.timelineEnd + "T00:00:00");
   const eyebrow = document.querySelector("#eyebrowText");
-  if (eyebrow) eyebrow.textContent = `${appSettings.ministry} · ${appSettings.organization}`;
+  if (eyebrow) eyebrow.textContent = `${appSettings.company} · ${appSettings.organization}`;
   const heroTitle = document.querySelector("#heroTitle");
   if (heroTitle) heroTitle.textContent = appSettings.dashboardTitle;
   document.title = `${appSettings.organization} 업무 타임라인 대시보드`;
@@ -1938,7 +1939,7 @@ function renderSettingsCategoryRows(cats) {
 }
 
 function openSettingsPanel() {
-  settingsMinistry.value = appSettings.ministry;
+  settingsCompany.value = appSettings.company;
   settingsOrganization.value = appSettings.organization;
   settingsDashboardTitle.value = appSettings.dashboardTitle;
   settingsTimelineStart.value = appSettings.timelineStart || DEFAULT_SETTINGS.timelineStart;
@@ -1973,7 +1974,7 @@ settingsCategoryRows.addEventListener("click", (e) => {
 settingsForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const newSettings = {
-    ministry: settingsMinistry.value.trim() || DEFAULT_SETTINGS.ministry,
+    company: settingsCompany.value.trim() || DEFAULT_SETTINGS.company,
     organization: settingsOrganization.value.trim() || DEFAULT_SETTINGS.organization,
     dashboardTitle: settingsDashboardTitle.value.trim() || DEFAULT_SETTINGS.dashboardTitle,
     timelineStart: settingsTimelineStart.value || DEFAULT_SETTINGS.timelineStart,
@@ -2028,7 +2029,7 @@ function getInitialSettings() {
   const catId = createId("cat");
   return {
     settings: {
-      ministry: "우리회사",
+      company: "우리회사",
       organization: "우리부서",
       dashboardTitle: "한 눈에 보는 우리부서 업무 현황",
       timelineStart: fmt(start),
