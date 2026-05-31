@@ -1,12 +1,21 @@
-const categories = [
-  { id: "all", label: "전체", color: "#1d2633" },
-  { id: "science-policy", label: "기획/정책/전략수립 업무", color: "#2563eb" },
-  { id: "budget-review", label: "예산/투자/심의조정 업무", color: "#0f766e" },
-  { id: "rnd-management", label: "평가/제도/정보분석 업무", color: "#b45309" },
-  { id: "outreach", label: "대외/홍보/현장소통 업무", color: "#7c3aed" },
-];
+const DEFAULT_SETTINGS = {
+  ministry: "부처명(회사명)",
+  organization: "조직명",
+  dashboardTitle: "현황판명",
+  timelineStart: "2025-07-01",
+  timelineEnd: "2027-06-30",
+  categories: [
+    { id: "group-1", label: "업무그룹 1", color: "#2563eb" },
+  ],
+};
+let appSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+let settingsFileSha = "";
 
-const categoryGroups = categories.filter((category) => category.id !== "all");
+let categories = [
+  { id: "all", label: "전체", color: "#1d2633" },
+  ...DEFAULT_SETTINGS.categories,
+];
+let categoryGroups = categories.filter((category) => category.id !== "all");
 const ownerOptions = [
   "혁신본부",
   "과학기술정책과",
@@ -30,294 +39,25 @@ const ownerOptions = [
 
 const defaultItems = [
   {
-    category: "science-policy",
-    title: "국가전략기술 체계 고도화 방향 발표",
-    owner: "전략기술육성과",
-    start: "2026-04-27",
-    end: "2026-04-27",
-    content: "기존 국가전략기술 체계를 국가임무, 범부처 협업 중심으로 재편.",
-    milestones: [{ date: "2026-04-27", label: "고도화 방향 발표" }],
-  },
-  {
-    category: "science-policy",
-    title: "국가전략기술 선도 NEXT 프로젝트",
-    owner: "전략기술육성과",
-    start: "2026-04-30",
-    end: "2026-04-30",
-    content: "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축.",
-    milestones: [{ date: "2026-04-30", label: "NEXT 프로젝트 보도" }],
-  },
-  {
-    category: "rnd-management",
-    title: "연구비 집행 자율성 확대",
-    owner: "연구제도혁신과",
-    start: "2026-04-28",
-    end: "2026-04-28",
-    content:
-      "자율사용 비목 신설, 간접비 네거티브 전환 등 연구비 사용 자율성을 강화하고 사용불가 항목 외 연구 관련 모든 항목을 허용하는 방향으로 전환.",
-    milestones: [{ date: "2026-04-28", label: "혁신법 시행령 개정 보도" }],
-  },
-  {
-    category: "outreach",
-    title: "R&D-IP 정책 협의회 개최",
-    owner: "과학기술조정과",
-    start: "2026-05-07",
-    end: "2026-05-07",
-    content: "R&D 및 연구성과 간 연계 전략 고도화를 위한 R&D-IP 총괄 부처 간 정책 협의.",
-    milestones: [{ date: "2026-05-07", label: "정책 협의회" }],
-  },
-  {
-    category: "outreach",
-    title: "권역별 주요 R&D 정책간담회",
-    owner: "과학기술정책과",
-    start: "2026-05-08",
-    end: "2026-05-08",
-    content: "호남권 GIST 타운홀미팅을 통해 연구 현장과 직접 소통하고 주요 R&D 정책 방향 공유.",
-    milestones: [{ date: "2026-05-08", label: "GIST 타운홀미팅" }],
-  },
-  {
-    category: "rnd-management",
-    title: "구축형 R&D 심사 시행 관련 시행령·세부지침",
-    owner: "연구개발타당성심사팀",
-    start: "2026-05-11",
-    end: "2026-05-11",
-    content: "예타폐지 후속 조치를 위한 과학기술기본법 시행령 개정 및 운용지침 제정.",
-    milestones: [{ date: "2026-05-11", label: "시행령 개정 및 지침 제정 보도" }],
-  },
-  {
-    category: "science-policy",
-    title: "제6차 과학기술기본계획 수립",
-    owner: "과학기술정책과",
-    start: "2026-05-06",
-    end: "2026-06-15",
-    tentative: true,
-    content:
-      "연구자 현장간담회와 대국민 공청회를 거쳐 제6차 과학기술기본계획을 수립하고 자문회의 심의의결을 통해 발표.",
-    milestones: [
-      { date: "2026-05-06", label: "연구자 현장간담회 1차" },
-      { date: "2026-05-13", label: "연구자 현장간담회 후속" },
-      { date: "2026-05-22", label: "대국민 공청회, 5월중" },
-      { date: "2026-06-15", label: "기본계획 발표, 6월 잠정" },
-    ],
-  },
-  {
-    category: "science-policy",
-    title: "「K-Science」 추진 방안",
-    owner: "과학기술전략과",
-    start: "2026-05-01",
-    end: "2026-05-31",
-    tentative: true,
-    content:
-      "K-Science 추진배경, 정책추진 방향, 대표 프로젝트 내용 예시를 소개하고 후속 홍보를 검토.",
-    milestones: [
-      { date: "2026-05-15", label: "추진 방안 보도·기고" },
-      { date: "2026-05-31", label: "후속 홍보 검토" },
-    ],
-  },
-  {
-    category: "science-policy",
-    title: "지역 과학기술 혁신법 제정",
-    owner: "과학기술전략과",
-    start: "2026-04-23",
-    end: "2026-05-31",
-    tentative: true,
-    content:
-      "지역의 과학기술역량을 확충하고 지역기업·산업 경쟁력을 강화할 수 있는 종합 지원체계 마련.",
-    milestones: [
-      { date: "2026-04-23", label: "법 제정 통과" },
-      { date: "2026-05-15", label: "보도·기고" },
-    ],
-  },
-  {
-    category: "rnd-management",
-    title: "국가연구데이터법 제정",
-    owner: "성과평가정책과",
-    start: "2026-05-01",
-    end: "2026-06-30",
-    tentative: true,
-    content:
-      "국가R&D 과제로 생산된 데이터를 국가연구데이터통합플랫폼에 표준화해 연계하고 공개 원칙으로 연구데이터 활용을 촉진.",
-    milestones: [
-      { date: "2026-05-15", label: "국회 통과 예상 구간" },
-      { date: "2026-06-30", label: "보도·기고, 통과시" },
-    ],
-  },
-  {
-    category: "outreach",
-    title: "구축형 R&D 심사제도 설명회",
-    owner: "연구개발타당성심사팀",
-    start: "2026-05-12",
-    end: "2026-05-12",
-    content: "과학기술분야 학회를 대상으로 구축형 R&D 심사제도를 설명하고 현장 이해도를 높임.",
-    milestones: [{ date: "2026-05-12", label: "심사제도 설명회" }],
-  },
-  {
-    category: "outreach",
-    title: "구축형 R&D 심사제도 시행",
-    owner: "연구개발타당성심사팀",
-    start: "2026-05-15",
-    end: "2026-05-15",
-    content: "연구 현장의 수요를 반영한 구축형 R&D 기획 및 심사제도 운영에 대한 현장 반응과 환영 메시지 확산.",
-    milestones: [{ date: "2026-05-15", label: "기고" }],
-  },
-  {
-    category: "budget-review",
-    title: "27년도 국가연구개발사업 예산배분 조정(안)",
-    owner: "연구예산총괄과",
-    start: "2026-05-11",
-    end: "2026-09-30",
-    tentative: true,
-    content:
-      "국가연구개발사업 예산설명회를 시작으로 주요 R&D 예산 배분·조정안을 마련하고 정부 R&D 예산안을 간담회 등으로 홍보.",
-    milestones: [
-      { date: "2026-05-11", label: "국가연구개발사업 예산설명회" },
-      { date: "2026-06-30", label: "주요 R&D 예산 배분·조정안 마련" },
-      { date: "2026-09-30", label: "정부 R&D 예산안 홍보, 하반기" },
-    ],
-  },
-  {
-    category: "rnd-management",
-    title: "R&D 행정서식 간소화",
-    owner: "연구제도혁신과",
-    start: "2026-05-01",
-    end: "2026-05-31",
-    tentative: true,
-    content: "연구자 행정부담 완화를 위해 불요·중복 서식을 표준화하고 간소화.",
-    milestones: [{ date: "2026-05-15", label: "간소화 방안 보도" }],
-  },
-  {
-    category: "budget-review",
-    title: "R&D 예산심의 특화 AI 도입",
-    owner: "기계정보통신조정과",
-    start: "2026-04-29",
-    end: "2026-05-10",
-    tentative: true,
-    content:
-      "예산심의 특화 AI를 전문위 예산설명회부터 혁신본부 예산심의 전 단계에 본격 도입.",
-    milestones: [
-      { date: "2026-04-29", label: "본부장 대상 시연, 보도자료 미배포" },
-      { date: "2026-05-08", label: "5월초 보도" },
-    ],
-  },
-  {
-    category: "rnd-management",
-    title: "가칭 연구24 통합로그인체계 구축",
-    owner: "과학기술정보분석과",
-    start: "2026-06-01",
-    end: "2026-06-10",
-    tentative: true,
-    content: "주요 국가 R&D 시스템들의 로그인 창구를 단일화하는 연구24 구축.",
-    milestones: [{ date: "2026-06-05", label: "통합로그인체계 구축 보도" }],
-  },
-  {
-    category: "science-policy",
-    title: "R&D 사업화 시스템 고도화 전략",
-    owner: "과학기술혁신지원팀",
-    start: "2026-06-01",
-    end: "2026-06-30",
-    tentative: true,
-    content:
-      "R&D 성과확산 고속도로 구축, 연구성과 창업 활성화, 투자형 R&D 도입 등 성과확산 체계 개편.",
-    milestones: [{ date: "2026-06-15", label: "STEPI 원장 기고" }],
-  },
-  {
-    category: "rnd-management",
-    title: "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
-    owner: "연구평가혁신과",
-    start: "2026-06-01",
-    end: "2026-06-30",
-    tentative: true,
-    content: "AI 기반 장비검색시스템을 도입해 연구자들이 공공장비를 더 쉽게 활용하도록 제공.",
-    milestones: [{ date: "2026-06-30", label: "6월말 검토" }],
-  },
-  {
-    category: "rnd-management",
-    title: "IRIS 운영 전담조직 개편",
-    owner: "과학기술정보분석과",
-    start: "2026-06-01",
-    end: "2026-06-30",
-    tentative: true,
-    content:
-      "4대 연구지원시스템 통합에 따른 운영 전담조직을 개편하고 연구자 중심의 IRIS 역량강화 방안을 발표.",
-    milestones: [{ date: "2026-06-30", label: "운영 전담조직 개편방안 발표" }],
-  },
-  {
-    category: "budget-review",
-    title: "제2차 국가연구개발 중장기 투자전략 수립",
-    owner: "연구개발투자기획과",
-    start: "2026-07-01",
-    end: "2026-07-31",
-    tentative: true,
-    content:
-      "향후 5년간 R&D 투자의 목표와 방향을 제시하는 정부의 R&D 최상위 전략 수립. 산·학·연 의견수렴 및 공청회 검토.",
-    milestones: [{ date: "2026-07-15", label: "중장기 투자전략 보도" }],
-  },
-  {
-    category: "rnd-management",
-    title: "도전적 R&D 연구환경 조성",
-    owner: "연구평가혁신과",
-    start: "2026-07-01",
-    end: "2026-07-31",
-    tentative: true,
-    content:
-      "혁신법 및 시행령 개정으로 평가기준에 목표 혁신성을 추가하고 우수 과제 후속과제 지정근거, 과제평가 등급 폐지, 최종평가 방식 다양화, 비영리기관 기술료 사용 자율성 확대 등을 추진.",
-    milestones: [{ date: "2026-07-31", label: "혁신법 및 시행령 개정 보도" }],
-  },
-  {
-    category: "rnd-management",
-    title: "도전적 목표 미달성 과제 재도약 지원",
-    owner: "연구평가혁신과",
-    start: "2026-07-01",
-    end: "2026-07-31",
-    tentative: true,
-    content: "도전적 목표를 미달성한 과제도 우수성 평가를 통해 재도약을 지원하는 제도 개선 검토.",
-    milestones: [{ date: "2026-07-15", label: "재도약 지원 검토" }],
-  },
-  {
-    category: "rnd-management",
-    title: "연구비 부정사용 제재처분 강화",
-    owner: "연구윤리권익보호과",
-    start: "2026-07-01",
-    end: "2026-09-30",
-    tentative: true,
-    content:
-      "부정사용 근절을 위해 제재부가금 최대한도를 기지급 연구개발비의 5배에서 30배로, 참여제한 최대기간을 10년에서 20년으로 강화.",
-    milestones: [{ date: "2026-09-30", label: "혁신법 개정 보도, 하반기" }],
-  },
-  {
-    category: "rnd-management",
-    title: "연구자 중복정보입력 최소화",
-    owner: "과학기술정보분석과",
-    start: "2026-07-01",
-    end: "2026-09-30",
-    tentative: true,
-    content: "IRIS와 기관 자체 시스템 간 정보연계를 강화해 연구자 중복정보 입력을 최소화.",
-    milestones: [{ date: "2026-09-30", label: "정보연계 강화 검토" }],
-  },
-  {
-    category: "rnd-management",
-    title: "국제공동연구 연구비 관리 및 IP 확보 제도개선",
-    owner: "성과평가정책과 · 연구제도혁신과",
-    start: "2026-07-01",
-    end: "2026-09-30",
-    tentative: true,
-    content: "국제공동연구 연구비 관리 강화와 IP 확보를 위한 제도개선 검토.",
-    milestones: [{ date: "2026-09-30", label: "제도개선 검토" }],
-  },
-  {
-    category: "rnd-management",
-    title: "연구보안 체계 내실화",
-    owner: "연구윤리권익보호과",
-    start: "2026-07-01",
-    end: "2026-09-30",
-    tentative: true,
-    content: "민감과제 신설, 보안대책 수립기관 확대 등을 통해 연구보안 체계를 강화.",
-    milestones: [{ date: "2026-09-30", label: "연구보안 체계 강화 검토" }],
+    id: "task-default-1",
+    category: "group-1",
+    order: 0,
+    title: "업무 1",
+    owner: "",
+    manager: "",
+    start: "2026-01-01",
+    end: "2026-12-31",
+    visible: true,
+    complete: false,
+    tentative: false,
+    content: "",
+    impact: "",
+    milestones: [],
   },
 ];
 
-const timelineStart = new Date("2025-06-15T00:00:00");
-const timelineEnd = new Date("2027-06-30T00:00:00");
+let timelineStart = new Date(DEFAULT_SETTINGS.timelineStart + "T00:00:00");
+let timelineEnd = new Date(DEFAULT_SETTINGS.timelineEnd + "T00:00:00");
 const legacyStorageKey = "osti-task-board-items-v1";
 const isDirectFileHost = isLocalEditableHost();
 const isLoopbackHost = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
@@ -334,7 +74,7 @@ let canWrite = false;
 let githubToken = "";
 let githubFileSha = "";
 
-const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
+let categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
 const categoryFilters = document.querySelector("#categoryFilters");
 const searchInput = document.querySelector("#searchInput");
 const timeline = document.querySelector("#timeline");
@@ -368,6 +108,18 @@ const staffLoginButton = document.querySelector("#staffLoginButton");
 const staffLogoutButton = document.querySelector("#staffLogoutButton");
 const loginCloseButton = document.querySelector("#loginCloseButton");
 const staffPasswordLabel = document.querySelector("#staffPasswordLabel");
+const settingsButton = document.querySelector("#settingsButton");
+const settingsPanel = document.querySelector("#settingsPanel");
+const settingsForm = document.querySelector("#settingsForm");
+const settingsMinistry = document.querySelector("#settingsMinistry");
+const settingsOrganization = document.querySelector("#settingsOrganization");
+const settingsDashboardTitle = document.querySelector("#settingsDashboardTitle");
+const settingsTimelineStart = document.querySelector("#settingsTimelineStart");
+const settingsTimelineEnd = document.querySelector("#settingsTimelineEnd");
+const settingsCategoryRows = document.querySelector("#settingsCategoryRows");
+const settingsAddCategory = document.querySelector("#settingsAddCategory");
+const settingsCloseButton = document.querySelector("#settingsCloseButton");
+const settingsCancelButton = document.querySelector("#settingsCancelButton");
 const printButton = document.querySelector("#printButton");
 const loginPanel = document.querySelector("#loginPanel");
 const loginForm = document.querySelector("#loginForm");
@@ -408,13 +160,15 @@ function normalizeItems(source) {
 
 function normalizeCategory(item) {
   if (categoryGroups.some((category) => category.id === item.category)) return item.category;
+  // 현재 목록에 없더라도 유효한 ID면 보존 (settings 로드 후 올바르게 표시됨)
+  if (item.category && typeof item.category === "string" && item.category.trim()) return item.category;
 
   const text = [item.title, item.owner, item.content].join(" ");
-  if (/예산|투자|심의|타당성|구축형 R&D|전문위/.test(text)) return "budget-review";
+  if (/예산|투자|심의|타당성|구축형 R&D|전문위/.test(text)) return categoryGroups[1]?.id || categoryGroups[0]?.id || "group-1";
   if (/성과|평가|제도|연구비|데이터|IRIS|장비|로그인|보안|부정사용|혁신법|시행령|행정서식|연구24/.test(text)) {
-    return "rnd-management";
+    return categoryGroups[2]?.id || categoryGroups[0]?.id || "group-1";
   }
-  return "science-policy";
+  return categoryGroups[0]?.id || "group-1";
 }
 
 function isLocalEditableHost() {
@@ -714,6 +468,7 @@ function renderAuthState() {
   }
   // local 모드는 로그인 불필요; 나머지 모드에서 로그인/로그아웃 버튼 표시
   staffLoginButton.hidden = storageMode === "local" || isStaff;
+  settingsButton.hidden = !isStaff;
   staffLogoutButton.hidden = storageMode === "local" || !isStaff;
   printButton.hidden = false;
   if (isStaff) {
@@ -2008,7 +1763,7 @@ function printTasks() {
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>과학기술혁신본부 업무 추진 현황</title>
+<title>${escapeHtml(appSettings.organization)} 업무 추진 현황</title>
 <style>
   @page { size: A4 portrait; margin: 20mm 18mm 18mm; }
   * { box-sizing: border-box; }
@@ -2044,8 +1799,8 @@ function printTasks() {
 </head>
 <body>
 <div class="cover">
-  <p class="cover-org">과학기술정보통신부 · 과학기술혁신본부</p>
-  <h1>한눈에 보는<br>과학기술혁신본부<br>업무 추진 현황</h1>
+  <p class="cover-org">${escapeHtml(appSettings.ministry)} · ${escapeHtml(appSettings.organization)}</p>
+  <h1>${escapeHtml(appSettings.dashboardTitle).replace(/\s/g, "<br>")}</h1>
   <p class="cover-date">인쇄일: ${today}</p>
 </div>
 ${tocHtml}
@@ -2066,13 +1821,212 @@ ${chaptersHtml}
 
 printButton.addEventListener("click", printTasks);
 
+// ── 설정 ──────────────────────────────────────────────────────────────────────
+
+function applySettings(s) {
+  appSettings = { ...DEFAULT_SETTINGS, ...s };
+  if (Array.isArray(s.categories) && s.categories.length > 0) {
+    categories = [{ id: "all", label: "전체", color: "#1d2633" }, ...s.categories];
+    categoryGroups = categories.filter((c) => c.id !== "all");
+    categoryById = Object.fromEntries(categories.map((c) => [c.id, c]));
+  }
+  if (appSettings.timelineStart) timelineStart = new Date(appSettings.timelineStart + "T00:00:00");
+  if (appSettings.timelineEnd) timelineEnd = new Date(appSettings.timelineEnd + "T00:00:00");
+  const eyebrow = document.querySelector("#eyebrowText");
+  if (eyebrow) eyebrow.textContent = `${appSettings.ministry} · ${appSettings.organization}`;
+  const heroTitle = document.querySelector("#heroTitle");
+  if (heroTitle) heroTitle.textContent = appSettings.dashboardTitle;
+  document.title = `${appSettings.organization} 업무 타임라인 대시보드`;
+}
+
+async function loadSettings() {
+  try {
+    if (storageMode === "api") {
+      const res = await fetch("api/settings", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Object.keys(data).length > 0) {
+          applySettings(data);
+          return;
+        }
+      }
+      // 서버 설정이 없으면 localStorage 폴백
+      const saved = localStorage.getItem("osti_settings");
+      if (saved) applySettings(JSON.parse(saved));
+    } else if (storageMode === "github") {
+      const headers = { Accept: "application/vnd.github.v3+json" };
+      if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/settings.json`,
+        { headers }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        settingsFileSha = data.sha;
+        const text = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ""))));
+        applySettings(JSON.parse(text));
+      }
+    } else {
+      const saved = localStorage.getItem("osti_settings");
+      if (saved) applySettings(JSON.parse(saved));
+    }
+  } catch (e) {
+    console.warn("설정을 불러오지 못했습니다.", e);
+  }
+}
+
+async function persistSettings(s) {
+  try {
+    if (storageMode === "api") {
+      // localStorage에 항상 먼저 저장 (서버 실패 시 폴백)
+      localStorage.setItem("osti_settings", JSON.stringify(s));
+      const res = await fetch("api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify(s),
+      });
+      if (res.ok) {
+        // 서버 저장 성공 시 localStorage 제거 (서버가 정식 저장소)
+        localStorage.removeItem("osti_settings");
+      }
+    } else if (storageMode === "github" && githubToken) {
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(s, null, 2) + "\n")));
+      const body = { message: "설정 업데이트", content };
+      if (settingsFileSha) body.sha = settingsFileSha;
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/settings.json`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${githubToken}`,
+            Accept: "application/vnd.github.v3+json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+      if (res.ok) settingsFileSha = (await res.json()).content.sha;
+    } else {
+      localStorage.setItem("osti_settings", JSON.stringify(s));
+    }
+  } catch (e) {
+    console.error("설정을 저장하지 못했습니다.", e);
+  }
+}
+
+function readCategoryRowValues() {
+  return [...settingsCategoryRows.querySelectorAll(".settings-cat-row")].map((row, i) => ({
+    id: row.dataset.id || createId("cat"),
+    label: row.querySelector("input[type='text']").value.trim(),
+    color: row.querySelector("input[type='color']").value,
+  }));
+}
+
+function renderSettingsCategoryRows(cats) {
+  settingsCategoryRows.innerHTML = cats
+    .map(
+      (cat) => `
+    <div class="settings-cat-row" data-id="${escapeHtml(cat.id)}">
+      <input type="text" value="${escapeHtml(cat.label)}" placeholder="그룹명" />
+      <input type="color" value="${escapeHtml(cat.color)}" />
+      <button type="button" class="secondary-button settings-cat-delete-btn">삭제</button>
+    </div>`
+    )
+    .join("");
+}
+
+function openSettingsPanel() {
+  settingsMinistry.value = appSettings.ministry;
+  settingsOrganization.value = appSettings.organization;
+  settingsDashboardTitle.value = appSettings.dashboardTitle;
+  settingsTimelineStart.value = appSettings.timelineStart || DEFAULT_SETTINGS.timelineStart;
+  settingsTimelineEnd.value = appSettings.timelineEnd || DEFAULT_SETTINGS.timelineEnd;
+  renderSettingsCategoryRows(appSettings.categories);
+  settingsPanel.hidden = false;
+}
+
+settingsButton.addEventListener("click", openSettingsPanel);
+
+settingsCloseButton.addEventListener("click", () => { settingsPanel.hidden = true; });
+settingsCancelButton.addEventListener("click", () => { settingsPanel.hidden = true; });
+
+settingsAddCategory.addEventListener("click", () => {
+  const current = readCategoryRowValues();
+  renderSettingsCategoryRows([
+    ...current,
+    { id: createId("cat"), label: "", color: "#2563eb" },
+  ]);
+});
+
+settingsCategoryRows.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("settings-cat-delete-btn")) return;
+  const row = e.target.closest(".settings-cat-row");
+  if (!row) return;
+  const current = readCategoryRowValues();
+  const idx = [...settingsCategoryRows.querySelectorAll(".settings-cat-row")].indexOf(row);
+  current.splice(idx, 1);
+  renderSettingsCategoryRows(current);
+});
+
+settingsForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const newSettings = {
+    ministry: settingsMinistry.value.trim() || DEFAULT_SETTINGS.ministry,
+    organization: settingsOrganization.value.trim() || DEFAULT_SETTINGS.organization,
+    dashboardTitle: settingsDashboardTitle.value.trim() || DEFAULT_SETTINGS.dashboardTitle,
+    timelineStart: settingsTimelineStart.value || DEFAULT_SETTINGS.timelineStart,
+    timelineEnd: settingsTimelineEnd.value || DEFAULT_SETTINGS.timelineEnd,
+    categories: readCategoryRowValues().filter((c) => c.label),
+  };
+  if (newSettings.categories.length === 0) {
+    newSettings.categories = JSON.parse(JSON.stringify(DEFAULT_SETTINGS.categories));
+  }
+
+  // 기존에 없던 새 카테고리마다 기본 업무 1개 자동 생성
+  const existingCatIds = new Set(appSettings.categories.map((c) => c.id));
+  const today = new Date().toLocaleDateString("sv");
+  const endOfYear = `${today.slice(0, 4)}-12-31`;
+  newSettings.categories
+    .filter((c) => !existingCatIds.has(c.id))
+    .forEach((c) => {
+      items.push({
+        id: createId("task"),
+        category: c.id,
+        order: items.length,
+        title: `${c.label} 신규 업무`,
+        owner: ownerOptions[0],
+        manager: "",
+        start: today,
+        end: endOfYear,
+        visible: true,
+        complete: false,
+        tentative: false,
+        content: "",
+        impact: "",
+        milestones: [],
+      });
+    });
+
+  applySettings(newSettings);
+  await persistSettings(newSettings);
+  await persistItems();
+  settingsPanel.hidden = true;
+  renderCategoryOptions();
+  renderFilters();
+  renderTimeline();
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 async function init() {
   items = await loadItems();
+  await loadSettings();
   if (storageMode === "local" && canWrite) {
     isStaff = true;
     await restoreDirHandle();
   } else if (storageMode === "github") {
-    if (githubToken) isStaff = true; // sessionStorage에서 복원된 토큰이 있으면 로그인 유지
+    if (githubToken) isStaff = true;
   } else {
     await refreshStaffSession();
   }
