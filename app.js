@@ -468,7 +468,7 @@ function renderAuthState() {
   }
   // local 모드는 로그인 불필요; 나머지 모드에서 로그인/로그아웃 버튼 표시
   staffLoginButton.hidden = storageMode === "local" || isStaff;
-  settingsButton.hidden = !isStaff;
+  settingsButton.hidden = !(isStaff && storageMode === "api");
   staffLogoutButton.hidden = storageMode === "local" || !isStaff;
   printButton.hidden = false;
   if (isStaff) {
