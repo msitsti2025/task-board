@@ -1,12 +1,13 @@
 const DEFAULT_SETTINGS = {
-  company: "부처명(회사명)",
+  company: "회사명",
   organization: "조직명",
   dashboardTitle: "현황판명",
-  timelineStart: "2025-07-01",
-  timelineEnd: "2027-06-30",
+  timelineStart: "2025-06-16",
+  timelineEnd: "2027-06-15",
   categories: [
     { id: "group-1", label: "업무그룹 1", color: "#2563eb" },
   ],
+  owners: ["부서 1"],
 };
 let appSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
 let settingsFileSha = "";
@@ -16,26 +17,7 @@ let categories = [
   ...DEFAULT_SETTINGS.categories,
 ];
 let categoryGroups = categories.filter((category) => category.id !== "all");
-const ownerOptions = [
-  "혁신본부",
-  "과학기술정책과",
-  "과학기술혁신지원팀",
-  "과학기술전략과",
-  "과학기술정책조정과",
-  "전략기술육성과",
-  "연구예산총괄과",
-  "연구개발투자기획과",
-  "국방연구기획투자기획팀",
-  "공공에너지조정과",
-  "기계정보통신조정과",
-  "생명기초조정과",
-  "성과평가정책과",
-  "연구평가혁신과",
-  "연구제도혁신과",
-  "연구윤리권익보호과",
-  "과학기술정보분석과",
-  "연구개발타당성심사팀",
-];
+let ownerOptions = [...DEFAULT_SETTINGS.owners];
 
 const defaultItems = [
   {
@@ -118,6 +100,8 @@ const settingsTimelineStart = document.querySelector("#settingsTimelineStart");
 const settingsTimelineEnd = document.querySelector("#settingsTimelineEnd");
 const settingsCategoryRows = document.querySelector("#settingsCategoryRows");
 const settingsAddCategory = document.querySelector("#settingsAddCategory");
+const settingsOwnerRows = document.querySelector("#settingsOwnerRows");
+const settingsAddOwner = document.querySelector("#settingsAddOwner");
 const settingsResetButton = document.querySelector("#settingsResetButton");
 const settingsCloseButton = document.querySelector("#settingsCloseButton");
 const settingsCancelButton = document.querySelector("#settingsCancelButton");
@@ -1834,6 +1818,7 @@ function applySettings(s) {
   }
   if (appSettings.timelineStart) timelineStart = new Date(appSettings.timelineStart + "T00:00:00");
   if (appSettings.timelineEnd) timelineEnd = new Date(appSettings.timelineEnd + "T00:00:00");
+  if (Array.isArray(appSettings.owners) && appSettings.owners.length > 0) ownerOptions = appSettings.owners;
   const eyebrow = document.querySelector("#eyebrowText");
   if (eyebrow) eyebrow.textContent = `${appSettings.company} · ${appSettings.organization}`;
   const heroTitle = document.querySelector("#heroTitle");
@@ -1917,6 +1902,22 @@ async function persistSettings(s) {
   }
 }
 
+function readOwnerRowValues() {
+  return [...settingsOwnerRows.querySelectorAll(".settings-owner-row input")].map((input) => input.value.trim());
+}
+
+function renderSettingsOwnerRows(owners) {
+  settingsOwnerRows.innerHTML = owners
+    .map(
+      (owner) => `
+    <div class="settings-owner-row">
+      <input type="text" value="${escapeHtml(owner)}" placeholder="부서명" />
+      <button type="button" class="secondary-button settings-owner-delete-btn">삭제</button>
+    </div>`
+    )
+    .join("");
+}
+
 function readCategoryRowValues() {
   return [...settingsCategoryRows.querySelectorAll(".settings-cat-row")].map((row, i) => ({
     id: row.dataset.id || createId("cat"),
@@ -1945,6 +1946,7 @@ function openSettingsPanel() {
   settingsTimelineStart.value = appSettings.timelineStart || DEFAULT_SETTINGS.timelineStart;
   settingsTimelineEnd.value = appSettings.timelineEnd || DEFAULT_SETTINGS.timelineEnd;
   renderSettingsCategoryRows(appSettings.categories);
+  renderSettingsOwnerRows(appSettings.owners || DEFAULT_SETTINGS.owners);
   settingsPanel.hidden = false;
 }
 
@@ -1952,6 +1954,21 @@ settingsButton.addEventListener("click", openSettingsPanel);
 
 settingsCloseButton.addEventListener("click", () => { settingsPanel.hidden = true; });
 settingsCancelButton.addEventListener("click", () => { settingsPanel.hidden = true; });
+
+settingsAddOwner.addEventListener("click", () => {
+  renderSettingsOwnerRows([...readOwnerRowValues(), ""]);
+  settingsOwnerRows.querySelector(".settings-owner-row:last-child input")?.focus();
+});
+
+settingsOwnerRows.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("settings-owner-delete-btn")) return;
+  const row = e.target.closest(".settings-owner-row");
+  if (!row) return;
+  const current = readOwnerRowValues();
+  const idx = [...settingsOwnerRows.querySelectorAll(".settings-owner-row")].indexOf(row);
+  current.splice(idx, 1);
+  renderSettingsOwnerRows(current);
+});
 
 settingsAddCategory.addEventListener("click", () => {
   const current = readCategoryRowValues();
@@ -1980,9 +1997,13 @@ settingsForm.addEventListener("submit", async (e) => {
     timelineStart: settingsTimelineStart.value || DEFAULT_SETTINGS.timelineStart,
     timelineEnd: settingsTimelineEnd.value || DEFAULT_SETTINGS.timelineEnd,
     categories: readCategoryRowValues().filter((c) => c.label),
+    owners: readOwnerRowValues().filter((o) => o),
   };
   if (newSettings.categories.length === 0) {
     newSettings.categories = JSON.parse(JSON.stringify(DEFAULT_SETTINGS.categories));
+  }
+  if (newSettings.owners.length === 0) {
+    newSettings.owners = [...DEFAULT_SETTINGS.owners];
   }
 
   // 기존에 없던 새 카테고리마다 기본 업무 1개 자동 생성
@@ -2035,6 +2056,7 @@ function getInitialSettings() {
       timelineStart: fmt(start),
       timelineEnd: fmt(end),
       categories: [{ id: catId, label: "업무그룹 1", color: "#2563eb" }],
+      owners: ["부서 1"],
     },
     catId,
   };
