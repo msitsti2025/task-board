@@ -309,9 +309,10 @@ h1 {
   color: var(--ink);
 }
 .settings-form-actions {
-  display: flex; gap: 10px; justify-content: flex-end;
+  display: flex; gap: 10px; align-items: center;
   padding-top: 8px; border-top: 1px solid var(--border);
 }
+.settings-form-actions .danger-button { margin-left: auto; }
 
 .controls {
   display: flex;
