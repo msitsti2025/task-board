@@ -2,6 +2,8 @@ const DEFAULT_SETTINGS = {
   ministry: "부처명(회사명)",
   organization: "조직명",
   dashboardTitle: "현황판명",
+  timelineStart: "2025-07-01",
+  timelineEnd: "2027-06-30",
   categories: [
     { id: "group-1", label: "업무그룹 1", color: "#2563eb" },
   ],
@@ -54,8 +56,8 @@ const defaultItems = [
   },
 ];
 
-const timelineStart = new Date("2025-06-15T00:00:00");
-const timelineEnd = new Date("2027-06-30T00:00:00");
+let timelineStart = new Date(DEFAULT_SETTINGS.timelineStart + "T00:00:00");
+let timelineEnd = new Date(DEFAULT_SETTINGS.timelineEnd + "T00:00:00");
 const legacyStorageKey = "osti-task-board-items-v1";
 const isDirectFileHost = isLocalEditableHost();
 const isLoopbackHost = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
@@ -112,6 +114,8 @@ const settingsForm = document.querySelector("#settingsForm");
 const settingsMinistry = document.querySelector("#settingsMinistry");
 const settingsOrganization = document.querySelector("#settingsOrganization");
 const settingsDashboardTitle = document.querySelector("#settingsDashboardTitle");
+const settingsTimelineStart = document.querySelector("#settingsTimelineStart");
+const settingsTimelineEnd = document.querySelector("#settingsTimelineEnd");
 const settingsCategoryRows = document.querySelector("#settingsCategoryRows");
 const settingsAddCategory = document.querySelector("#settingsAddCategory");
 const settingsCloseButton = document.querySelector("#settingsCloseButton");
@@ -1826,6 +1830,8 @@ function applySettings(s) {
     categoryGroups = categories.filter((c) => c.id !== "all");
     categoryById = Object.fromEntries(categories.map((c) => [c.id, c]));
   }
+  if (appSettings.timelineStart) timelineStart = new Date(appSettings.timelineStart + "T00:00:00");
+  if (appSettings.timelineEnd) timelineEnd = new Date(appSettings.timelineEnd + "T00:00:00");
   const eyebrow = document.querySelector("#eyebrowText");
   if (eyebrow) eyebrow.textContent = `${appSettings.ministry} · ${appSettings.organization}`;
   const heroTitle = document.querySelector("#heroTitle");
@@ -1934,6 +1940,8 @@ function openSettingsPanel() {
   settingsMinistry.value = appSettings.ministry;
   settingsOrganization.value = appSettings.organization;
   settingsDashboardTitle.value = appSettings.dashboardTitle;
+  settingsTimelineStart.value = appSettings.timelineStart || DEFAULT_SETTINGS.timelineStart;
+  settingsTimelineEnd.value = appSettings.timelineEnd || DEFAULT_SETTINGS.timelineEnd;
   renderSettingsCategoryRows(appSettings.categories);
   settingsPanel.hidden = false;
 }
@@ -1967,6 +1975,8 @@ settingsForm.addEventListener("submit", async (e) => {
     ministry: settingsMinistry.value.trim() || DEFAULT_SETTINGS.ministry,
     organization: settingsOrganization.value.trim() || DEFAULT_SETTINGS.organization,
     dashboardTitle: settingsDashboardTitle.value.trim() || DEFAULT_SETTINGS.dashboardTitle,
+    timelineStart: settingsTimelineStart.value || DEFAULT_SETTINGS.timelineStart,
+    timelineEnd: settingsTimelineEnd.value || DEFAULT_SETTINGS.timelineEnd,
     categories: readCategoryRowValues().filter((c) => c.label),
   };
   if (newSettings.categories.length === 0) {
