@@ -887,8 +887,8 @@
       },
       {
         "id": "milestone-7514ad4d-85f9-455d-964a-5ac53bf0ce22",
-        "startDate": "2026-02-01",
-        "endDate": "2026-02-01",
+        "startDate": "2026-02-03",
+        "endDate": "NaN-NaN-NaN",
         "label": "예산 심의 관련 데이터 정제 완료"
       },
       {
@@ -954,6 +954,12 @@
         "startDate": "2026-06-15",
         "endDate": "2026-06-15",
         "label": "\"연구24\" 사이트 오픈"
+      },
+      {
+        "id": "milestone-d513a26a-aea4-450b-94bc-0f80fd339cd4",
+        "startDate": "2026-07-01",
+        "endDate": "2026-12-30",
+        "label": "연결 시스템 추가 발굴"
       }
     ]
   },
@@ -1128,6 +1134,12 @@
         "startDate": "2026-12-31",
         "endDate": "2026-12-31",
         "label": "1차년도 연계 완료"
+      },
+      {
+        "id": "milestone-a0cddeba-6af0-409b-99cf-1c0762bc8d57",
+        "startDate": "2027-01-04",
+        "endDate": "2027-06-30",
+        "label": "상반기 시스템 연계 완료"
       }
     ]
   },
@@ -1689,7 +1701,7 @@
         "id": "milestone-8640ddb7-461c-460c-9129-d0dd0e2995b0",
         "startDate": "2026-05-12",
         "endDate": "2026-05-12",
-        "label": "사업 ���명회 온라인 개최"
+        "label": "사업 설명회 온라인 개최"
       },
       {
         "id": "milestone-d2af5e37-44a1-4294-9b60-e9cd166b1ca5",
@@ -1892,6 +1904,12 @@
         "startDate": "2026-12-30",
         "endDate": "2026-12-30",
         "label": "1차년도 AI 서비스 오픈"
+      },
+      {
+        "id": "milestone-86d63a0f-e6d0-45c6-9713-0736dccb3d89",
+        "startDate": "2027-01-04",
+        "endDate": "2027-06-30",
+        "label": "2차년도 AI 서비스 개발 착수"
       }
     ]
   },
@@ -2018,34 +2036,133 @@
     ]
   },
   {
-    "id": "task-2c78e0cb-9def-4021-a9d3-8e91701f0e13",
-    "category": "science-policy",
-    "order": 0,
-    "title": "새 업무",
+    "id": "task-4fd1ed47-c8c6-4d1b-ab54-9e2a6bc4c854",
+    "category": "outreach",
+    "order": 3,
+    "title": "국가과학기술자문회의 위원회 활동",
     "owner": "혁신본부",
     "manager": "",
-    "start": "2026-05-30",
-    "end": "2026-05-30",
+    "start": "2025-07-15",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "새로운 업무",
-    "milestones": []
-  },
-  {
-    "id": "task-14dcec24-1d1f-4acc-a9c1-2f2b463b8936",
-    "category": "cat-ea109892-d23c-4111-b702-1b332b856cf2",
-    "order": 39,
-    "title": "테스트 신규 업무",
-    "owner": "혁신본부",
-    "manager": "",
-    "start": "2026-05-30",
-    "end": "2026-12-31",
-    "visible": true,
-    "complete": false,
-    "tentative": false,
-    "content": "",
-    "impact": "",
-    "milestones": []
+    "content": "국가과학기술자문회의 심의회의 산하 위원회 개최. 운영위원회, 전문분과 특별위원회 좌장 활동",
+    "milestones": [
+      {
+        "id": "milestone-f2fa019c-912b-4558-b723-34c2b5a72897",
+        "startDate": "2025-08-07",
+        "endDate": "2025-08-07",
+        "label": "제74회 운영위원회"
+      },
+      {
+        "id": "milestone-35df4f02-3a62-446e-b227-486e5764b07f",
+        "startDate": "2025-10-22",
+        "endDate": "2025-10-22",
+        "label": "제75회 운영위원회"
+      },
+      {
+        "id": "milestone-3ad9a067-30de-4caf-9e4d-c856fe937c77",
+        "startDate": "2025-10-30",
+        "endDate": "2025-10-30",
+        "label": "제22회 미래인재특별위원회"
+      },
+      {
+        "id": "milestone-6294c868-9cf8-42f9-afbb-e187afd0e6b0",
+        "startDate": "2025-11-20",
+        "endDate": "2025-11-20",
+        "label": "제76회 운영위원회"
+      },
+      {
+        "id": "milestone-1f042cbe-8dd8-4677-bd45-1104bcafb725",
+        "startDate": "2025-12-22",
+        "endDate": "2025-12-26",
+        "label": "제78회 운영위원회"
+      },
+      {
+        "id": "milestone-2873b884-a2ab-426b-800d-a1c1275cc405",
+        "startDate": "2025-12-22",
+        "endDate": "2025-12-29",
+        "label": "제12회 국가전략기술 특별위원회"
+      },
+      {
+        "id": "milestone-37c2ca54-7b91-40de-bb4f-4d9ad7c6aa9e",
+        "startDate": "2025-12-22",
+        "endDate": "2025-12-26",
+        "label": "제4회 혁신도전추진특별위원회"
+      },
+      {
+        "id": "milestone-41e41d5f-388c-4644-9d4b-18259e0379b7",
+        "startDate": "2025-12-23",
+        "endDate": "2025-12-23",
+        "label": "제77회 운영위원회"
+      },
+      {
+        "id": "milestone-1ebe88ad-d538-435a-9092-1a9fe61bc41e",
+        "startDate": "2026-02-19",
+        "endDate": "2026-02-25",
+        "label": "제79회 운영위원회"
+      },
+      {
+        "id": "milestone-3d81fe1f-7aef-4f75-98e3-049c8e4ce7bc",
+        "startDate": "2026-03-12",
+        "endDate": "2026-03-12",
+        "label": "제80회 운영위원회"
+      },
+      {
+        "id": "milestone-96cdbe1e-5818-4701-9aa8-b022daea68da",
+        "startDate": "2026-03-13",
+        "endDate": "2026-03-13",
+        "label": "제13회 국가전략기술 특별위원회"
+      },
+      {
+        "id": "milestone-fb05c8c8-836e-43c4-81a5-31a965e041c3",
+        "startDate": "2026-03-23",
+        "endDate": "2026-03-27",
+        "label": "제81회 운영위원회"
+      },
+      {
+        "id": "milestone-c7f97330-41a9-4b77-9dc5-2d9f56250c44",
+        "startDate": "2026-03-25",
+        "endDate": "2026-03-25",
+        "label": "제8회 지방과학기술진흥협의회"
+      },
+      {
+        "id": "milestone-8179e2e6-b375-4b43-8de4-051a6bfc68df",
+        "startDate": "2026-03-31",
+        "endDate": "2026-04-02",
+        "label": "제10회 탄소중립기술특별위원회"
+      },
+      {
+        "id": "milestone-1dc7b11f-8d12-40c6-bed9-15c94f660210",
+        "startDate": "2026-04-15",
+        "endDate": "2026-04-15",
+        "label": "제14회 국가전략기술 특별위원회"
+      },
+      {
+        "id": "milestone-1ccf758d-c368-41aa-b350-2ba76336d278",
+        "startDate": "2026-04-16",
+        "endDate": "2026-04-16",
+        "label": "제82회 운영위원회"
+      },
+      {
+        "id": "milestone-2a62459c-bd5b-43ed-894a-5caf12c011d3",
+        "startDate": "2026-04-20",
+        "endDate": "2026-04-24",
+        "label": "제83회 운영위원회"
+      },
+      {
+        "id": "milestone-1450a72b-314f-464e-ae4a-d00282b3d87c",
+        "startDate": "2026-04-28",
+        "endDate": "2026-04-28",
+        "label": "제23회 미래인재특별위원회"
+      },
+      {
+        "id": "milestone-95e18552-4261-4f81-ad02-a424824d814c",
+        "startDate": "2026-05-22",
+        "endDate": "2026-05-29",
+        "label": "제84회 운영위원회"
+      }
+    ]
   }
 ]
