@@ -196,6 +196,26 @@
       </div>
     </div>
 
+    <div class="snake-modal" id="snakeModal" hidden aria-modal="true" role="dialog" aria-labelledby="snakeTaskTitle">
+      <div class="snake-modal-backdrop"></div>
+      <div class="snake-modal-box">
+        <div class="snake-modal-head">
+          <div class="snake-task-info">
+            <h2 id="snakeTaskTitle"></h2>
+            <p class="snake-task-meta" id="snakeTaskMeta"></p>
+            <p class="snake-task-content" id="snakeTaskContent"></p>
+          </div>
+          <div class="snake-modal-actions">
+            <button type="button" class="secondary-button" id="snakeCapture">SVG 저장</button>
+            <button type="button" class="secondary-button" id="snakeClose">닫기</button>
+          </div>
+        </div>
+        <div class="snake-modal-body">
+          <svg id="snakeSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
