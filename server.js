@@ -5,6 +5,7 @@ const path = require("path");
 
 const root = __dirname;
 const dataFile = process.env.DATA_FILE || path.join(root, "tasks.json");
+const settingsFile = process.env.SETTINGS_FILE || path.join(root, "settings.json");
 let port = Number(process.env.PORT || 4173);
 const staffUser = process.env.STAFF_USER || "admin";
 const staffPassword = process.env.STAFF_PASSWORD || "osti2026";
@@ -145,12 +146,43 @@ function handleSession(request, response) {
   return true;
 }
 
+async function handleSettings(request, response) {
+  if (request.method === "GET") {
+    try {
+      const data = await fs.promises.readFile(settingsFile, "utf8");
+      send(response, 200, data, "application/json; charset=utf-8");
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        send(response, 200, "{}", "application/json; charset=utf-8");
+        return true;
+      }
+      send(response, 500, "설정 파일을 읽지 못했습니다.");
+    }
+    return true;
+  }
+  if (request.method === "POST") {
+    if (!requireSession(request, response)) return true;
+    try {
+      const body = await readBody(request);
+      const parsed = JSON.parse(body);
+      await fs.promises.writeFile(settingsFile, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
+      json(response, 200, { ok: true });
+    } catch (error) {
+      send(response, 500, `설정 파일을 저장하지 못했습니다: ${error.message}`);
+    }
+    return true;
+  }
+  send(response, 405, "Method not allowed");
+  return true;
+}
+
 async function handleApi(request, response) {
   const url = new URL(request.url, `http://${request.headers.host}`);
 
   if (url.pathname === "/api/login") return handleLogin(request, response);
   if (url.pathname === "/api/logout") return handleLogout(request, response);
   if (url.pathname === "/api/session") return handleSession(request, response);
+  if (url.pathname === "/api/settings") return handleSettings(request, response);
   if (url.pathname !== "/api/items") return false;
 
   if (request.method === "GET") {

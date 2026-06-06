@@ -1292,7 +1292,8 @@ reviewModalBackdrop.addEventListener("click", closeReviewModal);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    if (!taskModal.hidden) closeTaskModal();
+    if (!snakeModal.hidden) closeSnakeModal();
+    else if (!taskModal.hidden) closeTaskModal();
     else if (!reviewModalBackdrop.hidden) closeReviewModal();
   }
 });
@@ -1649,7 +1650,11 @@ timeline.addEventListener("click", (event) => {
     if (lane) {
       const item = items.find((candidate) => candidate.id === lane.dataset.id);
       if (item) {
-        selectItem(item.id);
+        if (isStaff) {
+          selectItem(item.id);
+        } else {
+          openSnakeModal(item);
+        }
         return;
       }
     }
@@ -2112,6 +2117,270 @@ async function init() {
   renderAuthState();
   renderEditor();
   renderTimeline();
+}
+
+// ─── Snake Timeline Modal ──────────────────────────────────────────────────────
+
+const snakeModal = document.querySelector("#snakeModal");
+const snakeClose = document.querySelector("#snakeClose");
+const snakeCaptureBtn = document.querySelector("#snakeCapture");
+const snakeSvgEl = document.querySelector("#snakeSvg");
+const snakeTaskTitle = document.querySelector("#snakeTaskTitle");
+const snakeTaskMeta = document.querySelector("#snakeTaskMeta");
+const snakeTaskContent = document.querySelector("#snakeTaskContent");
+
+function openSnakeModal(item) {
+  snakeTaskTitle.textContent = item.title;
+
+  const cat = categoryGroups.find((c) => c.id === item.category);
+  const parts = [];
+  if (cat) parts.push(cat.label);
+  if (item.owner) parts.push(`소관: ${item.owner}`);
+  if (item.manager) parts.push(`담당자: ${item.manager}`);
+  if (item.start && item.end) parts.push(`${formatDateLabel(item.start)} ~ ${formatDateLabel(item.end)}`);
+  snakeTaskMeta.textContent = parts.join(" · ");
+  snakeTaskContent.textContent = item.content || "";
+
+  drawSnakeTimeline(snakeSvgEl, item);
+  snakeModal.hidden = false;
+  snakeClose.focus();
+}
+
+function closeSnakeModal() {
+  snakeModal.hidden = true;
+}
+
+snakeClose.addEventListener("click", closeSnakeModal);
+snakeModal.querySelector(".snake-modal-backdrop").addEventListener("click", closeSnakeModal);
+
+snakeCaptureBtn.addEventListener("click", () => {
+  const title = snakeTaskTitle.textContent || "timeline";
+  const svgStr = new XMLSerializer().serializeToString(snakeSvgEl);
+  const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${title}.svg`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+function drawSnakeTimeline(svg, item) {
+  svg.innerHTML = "";
+
+  const NS = "http://www.w3.org/2000/svg";
+  function mk(tag, attrs) {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, String(v)));
+    return el;
+  }
+  function add(tag, attrs) { const el = mk(tag, attrs); svg.appendChild(el); return el; }
+  function txt(text, attrs) { const el = mk("text", attrs); el.textContent = text; svg.appendChild(el); return el; }
+
+  const startDate = dateValue(item.start);
+  const endDate = dateValue(item.end);
+  if (isNaN(startDate) || isNaN(endDate) || endDate <= startDate) {
+    txt("날짜 정보가 없습니다.", { x: 20, y: 40, "font-size": 14, fill: "#888", "font-family": "sans-serif" });
+    svg.setAttribute("viewBox", "0 0 400 80");
+    return;
+  }
+
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const totalMs = endDate - startDate;
+  const totalMonths = totalMs / (30.44 * 86400000);
+
+  let numRows;
+  if (totalMonths <= 5)       numRows = 3;
+  else if (totalMonths <= 10) numRows = 4;
+  else if (totalMonths <= 20) numRows = 5;
+  else                        numRows = Math.min(7, Math.ceil(totalMonths / 5));
+
+  const W = 800;
+  const ROW_H = 110;
+  const LINE_Y = ROW_H / 2;   // 55 — must equal ROW_H/2 for semicircle arc
+  const ARC_R = LINE_Y;
+  const LX = 72, RX = 728, BAR_W = RX - LX;
+
+  // Label geometry constants
+  const FONT_SZ = 11;
+  const CHAR_W = FONT_SZ * 0.62;  // approx per-char width
+  const FONT_H = FONT_SZ * 1.3;   // approx text height
+  const BASE_ABOVE = 24;           // baseline distance above line, level 0
+  const BASE_BELOW = 32;           // baseline distance below line, level 0
+  const LANE_STEP = FONT_H + 6;    // ~20px between lanes
+
+  // ── PASS 1: collect milestone data + assign label lanes (collision detection)
+
+  const milestones = item.milestones || [];
+
+  // Compute x on snake without knowing PAD_T yet (relY = row * ROW_H + LINE_Y)
+  function relPosOf(date) {
+    const t = Math.max(0, Math.min(1, (date - startDate) / totalMs));
+    const sp = t * numRows;
+    const row = Math.min(Math.floor(sp), numRows - 1);
+    const frac = Math.min(sp - row, 1);
+    const x = row % 2 === 0 ? LX + frac * BAR_W : RX - frac * BAR_W;
+    return { x, row };
+  }
+
+  const msData = milestones.map((ms, i) => {
+    if (!ms.startDate) return null;
+    const msS = dateValue(ms.startDate);
+    if (isNaN(msS)) return null;
+    const msE = ms.endDate && ms.endDate !== ms.startDate ? dateValue(ms.endDate) : null;
+    const isPoint = !msE || isNaN(msE);
+    const raw = (ms.label || "").trim();
+    const label = raw.length > 24 ? raw.slice(0, 23) + "…" : raw;
+    const labelW = label.length * CHAR_W + 10;
+    const above = i % 2 === 0;
+    const rS = relPosOf(msS);
+    return { ms, msS, msE, isPoint, label, labelW, above, isFuture: msS > today, rS };
+  }).filter(Boolean);
+
+  // Greedy lane assignment: sort by (row, x), assign the first non-conflicting lane
+  const occMap = new Map(); // `${row}-${above}` → [{lane, x1, x2}]
+  [...msData]
+    .sort((a, b) => a.rS.row !== b.rS.row ? a.rS.row - b.rS.row : a.rS.x - b.rS.x)
+    .forEach(info => {
+      if (!info.label) { info.lane = 0; return; }
+      const key = `${info.rS.row}-${info.above}`;
+      if (!occMap.has(key)) occMap.set(key, []);
+      const occ = occMap.get(key);
+      const pad = 6;
+      const x1 = info.rS.x - info.labelW / 2 - pad;
+      const x2 = info.rS.x + info.labelW / 2 + pad;
+      let lane = 0;
+      while (occ.some(o => o.lane === lane && o.x1 < x2 && o.x2 > x1)) lane++;
+      occ.push({ lane, x1, x2 });
+      info.lane = lane;
+    });
+
+  // ── PASS 1b: dynamic padding based on max lanes used
+  function maxLaneFor(row, above, base) {
+    return msData
+      .filter(d => d.rS.row === row && d.above === above && d.label)
+      .reduce((m, d) => Math.max(m, base + (d.lane || 0) * LANE_STEP), base);
+  }
+  const PAD_T = Math.max(58, maxLaneFor(0, true, BASE_ABOVE) + 22);
+  const PAD_B = Math.max(46, maxLaneFor(numRows - 1, false, BASE_BELOW) + 18);
+  const H = PAD_T + numRows * ROW_H + PAD_B;
+
+  // ── PASS 2: drawing
+
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("width", W);
+  svg.setAttribute("height", H);
+
+  const cat = categoryGroups.find((c) => c.id === item.category);
+  const COLOR = cat ? cat.color : "#2563eb";
+
+  function rowY(n) { return PAD_T + n * ROW_H + LINE_Y; }
+
+  function xyOf(date) {
+    const t = Math.max(0, Math.min(1, (date - startDate) / totalMs));
+    const sp = t * numRows;
+    const row = Math.min(Math.floor(sp), numRows - 1);
+    const frac = Math.min(sp - row, 1);
+    const y = rowY(row);
+    const x = row % 2 === 0 ? LX + frac * BAR_W : RX - frac * BAR_W;
+    return { x, y, row };
+  }
+
+  // Snake path
+  let d = `M ${LX},${rowY(0)}`;
+  for (let r = 0; r < numRows; r++) {
+    const ry = rowY(r);
+    if (r % 2 === 0) {
+      d += ` L ${RX},${ry}`;
+      if (r < numRows - 1) d += ` A ${ARC_R} ${ARC_R} 0 0 1 ${RX},${rowY(r + 1)}`;
+    } else {
+      d += ` L ${LX},${ry}`;
+      if (r < numRows - 1) d += ` A ${ARC_R} ${ARC_R} 0 0 0 ${LX},${rowY(r + 1)}`;
+    }
+  }
+  add("path", { d, fill: "none", stroke: COLOR + "22", "stroke-width": 20, "stroke-linecap": "round", "stroke-linejoin": "round" });
+  add("path", { d, fill: "none", stroke: COLOR, "stroke-width": 3.5, "stroke-linecap": "round", "stroke-linejoin": "round" });
+
+  // Month ticks
+  const tc = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
+  if (tc < startDate) tc.setMonth(tc.getMonth() + 1);
+  const showEvery = totalMonths / numRows <= 5;
+  while (tc <= endDate) {
+    const p = xyOf(tc);
+    const isYr = tc.getMonth() === 0;
+    const mo = tc.getMonth() + 1;
+    const tkLen = isYr ? 14 : 8;
+    add("line", { x1: p.x, y1: p.y - tkLen, x2: p.x, y2: p.y + tkLen, stroke: isYr ? "#666" : "#d0d0d0", "stroke-width": isYr ? 1.8 : 1 });
+    if (isYr) txt(`${tc.getFullYear()}년`, { x: p.x, y: p.y - 19, "text-anchor": "middle", "font-size": 11, "font-weight": 600, fill: "#555", "font-family": "sans-serif" });
+    if (showEvery || mo % 3 === 0 || isYr) txt(`${mo}월`, { x: p.x, y: p.y + 23, "text-anchor": "middle", "font-size": 9.5, fill: "#c0c0c0", "font-family": "sans-serif" });
+    tc.setMonth(tc.getMonth() + 1);
+  }
+
+  // Today
+  if (today > startDate && today < endDate) {
+    const tp = xyOf(today);
+    add("line", { x1: tp.x, y1: tp.y - 25, x2: tp.x, y2: tp.y + 25, stroke: "#ef4444", "stroke-width": 2, "stroke-dasharray": "4,3" });
+    txt("오늘", { x: tp.x, y: tp.y - 30, "text-anchor": "middle", "font-size": 10, "font-weight": 700, fill: "#ef4444", "font-family": "sans-serif" });
+  }
+
+  // Start / end markers
+  const sp = xyOf(startDate);
+  add("circle", { cx: sp.x, cy: sp.y, r: 7, fill: COLOR, stroke: "white", "stroke-width": 2 });
+  txt(formatDateLabel(item.start), { x: sp.x + 10, y: sp.y - 10, "text-anchor": "start", "font-size": 10.5, fill: "#555", "font-family": "sans-serif" });
+
+  const ep = xyOf(endDate);
+  const isDone = item.complete === true;
+  add("circle", { cx: ep.x, cy: ep.y, r: 7, fill: isDone ? COLOR : "white", stroke: COLOR, "stroke-width": 2.5 });
+  if (isDone) txt("✓", { x: ep.x, y: ep.y + 4, "text-anchor": "middle", "font-size": 9, fill: "white", "font-family": "sans-serif" });
+  txt(formatDateLabel(item.end), {
+    x: ep.x + (ep.row % 2 === 0 ? -10 : 10), y: ep.y - 10,
+    "text-anchor": ep.row % 2 === 0 ? "end" : "start",
+    "font-size": 10.5, fill: "#555", "font-family": "sans-serif",
+  });
+
+  // ── Milestone markers (drawn before labels so labels sit on top)
+  msData.forEach(({ msS, msE, isPoint, isFuture }) => {
+    const pS = xyOf(msS);
+    const opacity = isFuture ? 0.35 : 1;
+    const r = 6;
+    if (isPoint) {
+      add("polygon", {
+        points: `${pS.x},${pS.y - r} ${pS.x + r},${pS.y} ${pS.x},${pS.y + r} ${pS.x - r},${pS.y}`,
+        fill: COLOR, opacity,
+      });
+    } else {
+      const pE = xyOf(msE);
+      if (pS.row === pE.row) {
+        add("line", { x1: pS.x, y1: pS.y, x2: pE.x, y2: pE.y, stroke: COLOR, "stroke-width": 9, "stroke-linecap": "round", opacity: isFuture ? 0.22 : 0.42 });
+      }
+      add("circle", { cx: pS.x, cy: pS.y, r: 4, fill: COLOR, opacity });
+      add("circle", { cx: pE.x, cy: pE.y, r: 4, fill: COLOR, opacity });
+    }
+  });
+
+  // ── Milestone labels with stagger + connector lines
+  msData.forEach(({ msS, label, above, isFuture, lane }) => {
+    if (!label) return;
+    const p = xyOf(msS);
+    const offset = (above ? BASE_ABOVE : BASE_BELOW) + (lane || 0) * LANE_STEP;
+    const labelY = above ? p.y - offset : p.y + offset;
+    const labelColor = isFuture ? "#aaa" : "#333";
+
+    // Connector line when staggered (lane > 0) — thin dashed line from marker to label
+    if (lane > 0) {
+      const markerEdge = above ? p.y - 8 : p.y + 8;
+      const labelEdge = above ? labelY + FONT_H * 0.3 : labelY - FONT_H * 0.9;
+      add("line", {
+        x1: p.x, y1: markerEdge, x2: p.x, y2: labelEdge,
+        stroke: isFuture ? "#ddd" : "#bbb", "stroke-width": 0.9, "stroke-dasharray": "3,2",
+      });
+    }
+
+    txt(label, {
+      x: p.x, y: labelY,
+      "text-anchor": "middle", "font-size": FONT_SZ, fill: labelColor, "font-family": "sans-serif",
+    });
+  });
 }
 
 init();
