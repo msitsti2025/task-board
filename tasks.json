@@ -639,9 +639,21 @@
     "milestones": [
       {
         "id": "milestone-a8c37405-536f-4ce8-916d-440c9b5fe3b2",
+        "startDate": "2024-07-02",
+        "endDate": "2024-09-03",
+        "label": "법안 발의"
+      },
+      {
+        "id": "milestone-238c3558-5a0b-43fe-8785-8267f319f4a9",
+        "startDate": "2025-11-28",
+        "endDate": "2025-11-28",
+        "label": "과방위 법안소위 심의"
+      },
+      {
+        "id": "milestone-824e4e94-c5ca-4c1a-8753-7f8d51658d8d",
         "startDate": "2026-04-14",
         "endDate": "2026-04-14",
-        "label": "공청회  개최 및 과학기술정보방송통신위원회 의결"
+        "label": "공청회 개최(법안소위) 및 과학기술정보방송통신위원회 의결"
       },
       {
         "id": "milestone-25938422-d24e-4595-9168-d006ce71fa0c",
@@ -654,6 +666,18 @@
         "startDate": "2026-05-07",
         "endDate": "2026-05-07",
         "label": "본회의 의결 (언론 보도자료 배포)"
+      },
+      {
+        "id": "milestone-aca648c8-08b4-4380-a9db-fd7d6d61b0eb",
+        "startDate": "2026-06-09",
+        "endDate": "2026-06-09",
+        "label": "법률안 공포(’27.6.10. 부터 시행)"
+      },
+      {
+        "id": "milestone-396a6d86-9a92-489a-ab53-c85faedc1dec",
+        "startDate": "2026-06-11",
+        "endDate": "2026-06-11",
+        "label": "기고문 게재(과학기술혁신본부장, 아주경제)"
       }
     ]
   },
