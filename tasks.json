@@ -652,7 +652,7 @@
       {
         "id": "milestone-824e4e94-c5ca-4c1a-8753-7f8d51658d8d",
         "startDate": "2026-04-14",
-        "endDate": "NaN-NaN-NaN",
+        "endDate": "2026-04-14",
         "label": "공청회 개최(법안소위) 및 과학기술정보방송통신위원회 의결"
       },
       {
@@ -678,6 +678,18 @@
         "startDate": "2026-06-11",
         "endDate": "2026-06-11",
         "label": "기고문 게재(과학기술혁신본부장, 아주경제)"
+      },
+      {
+        "id": "milestone-15c63b29-cced-401d-acff-4df61e55c319",
+        "startDate": "2027-01-01",
+        "endDate": "2027-01-31",
+        "label": "국가연구데이터센터, 분야별 전문센터 지정"
+      },
+      {
+        "id": "milestone-fbbc2506-dfb0-46dc-b3ce-8c8b6d34b96a",
+        "startDate": "2027-06-10",
+        "endDate": "2027-06-10",
+        "label": "국가연구데이터법 시행(하위 법령 제정 완료)"
       }
     ]
   },
