@@ -1135,7 +1135,13 @@
         "id": "milestone-cd5848e4-8bf3-4709-be3f-fa2a141585ac",
         "startDate": "2026-07-01",
         "endDate": "2026-12-30",
-        "label": "장비등록, 심의 지원 기능 서비스 개발"
+        "label": "기능개선, 장비등록, 심의 지원 기능 서비스 개발"
+      },
+      {
+        "id": "milestone-1ac99146-97de-4f3b-ad24-1dfcaf4082d1",
+        "startDate": "2027-01-01",
+        "endDate": "2027-01-01",
+        "label": "통합 서비스 개시"
       }
     ]
   },
