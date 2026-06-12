@@ -952,12 +952,6 @@
         "label": "예산 심의 데이터 수집 및 정제"
       },
       {
-        "id": "milestone-0d2f6b3d-e30d-431b-887e-c02bbc5b7d11",
-        "startDate": "2026-02-01",
-        "endDate": "2026-02-28",
-        "label": "파운데이션 모델 검토"
-      },
-      {
         "id": "milestone-29ea697f-9275-4690-89b4-02b9d99a3313",
         "startDate": "2026-02-04",
         "endDate": "2026-03-31",
@@ -976,16 +970,16 @@
         "label": "'27년 R&D 사업설명회 활용 개시(국과심 전문위원)"
       },
       {
-        "id": "milestone-695a170a-a56c-462e-8c49-b51f22b6c824",
-        "startDate": "2026-05-11",
-        "endDate": "2026-06-30",
-        "label": "'27년년도 예산배분조정에 활용"
-      },
-      {
         "id": "milestone-31b7ae12-8d8a-41e9-be92-db0c4d9a4c97",
         "startDate": "2026-05-14",
         "endDate": "2026-05-14",
         "label": "특화 AI 모델 활용 언론 공개"
+      },
+      {
+        "id": "milestone-695a170a-a56c-462e-8c49-b51f22b6c824",
+        "startDate": "2026-05-15",
+        "endDate": "2026-06-30",
+        "label": "'27년년도 예산배분조정에 활용"
       }
     ]
   },
