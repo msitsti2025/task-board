@@ -974,6 +974,12 @@
         "startDate": "2026-05-14",
         "endDate": "2026-05-14",
         "label": "특화 AI 모델 활용 언론 공개"
+      },
+      {
+        "id": "milestone-cf5cf95b-78f9-494f-b51e-6de4f26b3b77",
+        "startDate": "2026-05-15",
+        "endDate": "2026-06-30",
+        "label": "특화 AI 모델 활용(투자국 직원)"
       }
     ]
   },
