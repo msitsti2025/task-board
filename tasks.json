@@ -946,16 +946,16 @@
         "label": "특화 AI 모델 개발 개시"
       },
       {
-        "id": "milestone-7514ad4d-85f9-455d-964a-5ac53bf0ce22",
-        "startDate": "2026-02-03",
-        "endDate": "2026-02-03",
-        "label": "예산 심의 관련 데이터 정제 완료"
+        "id": "milestone-0d2f6b3d-e30d-431b-887e-c02bbc5b7d11",
+        "startDate": "2026-02-01",
+        "endDate": "2026-02-28",
+        "label": "파운데이션 모델 선정"
       },
       {
-        "id": "milestone-0d2f6b3d-e30d-431b-887e-c02bbc5b7d11",
+        "id": "milestone-7514ad4d-85f9-455d-964a-5ac53bf0ce22",
         "startDate": "2026-03-01",
-        "endDate": "2026-03-01",
-        "label": "독파모 모델 결정 및 추가 학습"
+        "endDate": "2026-03-31",
+        "label": "AI 모델 추가학습"
       },
       {
         "id": "milestone-f216a363-366c-4608-a9f4-ac36151ed3e5",
