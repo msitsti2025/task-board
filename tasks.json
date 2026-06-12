@@ -71,11 +71,11 @@
     "owner": "전략기술육성과",
     "manager": "신소영, 신현중",
     "start": "2025-06-01",
-    "end": "2026-04-30",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축. 국가전략기술 선도 NEXT 프로젝트이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
+    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축. 국가전략기술 선도 NEXT 프로젝트가 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
         "id": "milestone-f7b0f857-ef68-47f0-9141-dfd4c4eae305",
@@ -91,14 +91,14 @@
       },
       {
         "id": "milestone-3f6c0a49-4842-4e57-8832-3023f31b053f",
-        "startDate": "2026-06-01",
-        "endDate": "2026-06-01",
-        "label": "NEXT 프로젝트 추진대회 개최"
+        "startDate": "2026-06-18",
+        "endDate": "2026-06-18",
+        "label": "국가전략기술 선도 NEXT 프로젝트 추진대회 개최"
       },
       {
         "id": "milestone-4b2dc070-3e7b-4c2a-8e03-c65a22aee2fa",
-        "startDate": "2026-06-15",
-        "endDate": "2026-06-15",
+        "startDate": "2026-06-18",
+        "endDate": "2026-06-18",
         "label": "NEXT 프로젝트 후보안 발표"
       }
     ]
