@@ -412,7 +412,7 @@
     "manager": "김주연",
     "start": "2026-02-01",
     "end": "2026-08-31",
-    "visible": true,
+    "visible": false,
     "complete": true,
     "tentative": false,
     "content": "기업 R&D 지원의 효율성을 제고하기 위해 성과 회수•재투자가 가능한 투자(출자) 방식의 R&D 지원체계 도입. ‘출연’ 중심의 R&D 지원 방식을 R&D 지출을 전제로 하는 ‘출자’ 지원 방식을 신설하여 투자 방식의 다양화 유도",
