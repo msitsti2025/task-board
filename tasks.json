@@ -830,12 +830,6 @@
         "label": "국가연구개발사업 예산설명회"
       },
       {
-        "id": "milestone-1bd4438c-19eb-490f-b2b9-fac9a5f91e67",
-        "startDate": "2026-05-16",
-        "endDate": "2026-06-23",
-        "label": "주요 R&D 예산 배분·조정안 마련"
-      },
-      {
         "id": "milestone-39783c63-1feb-4b6b-828f-dcc84938c9f7",
         "startDate": "2026-06-24",
         "endDate": "2026-06-24",
@@ -855,8 +849,8 @@
       },
       {
         "id": "milestone-3785270a-e280-4044-b945-c27d3aba0f69",
-        "startDate": "2026-09-15",
-        "endDate": "2026-09-15",
+        "startDate": "2026-09-07",
+        "endDate": "2026-09-30",
         "label": "정부 R&D 예산안 홍보, 하반기"
       }
     ]
