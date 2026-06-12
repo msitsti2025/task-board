@@ -1566,7 +1566,7 @@
     "manager": "유승후, 김진우, 이사름",
     "start": "2025-12-01",
     "end": "2026-07-31",
-    "visible": true,
+    "visible": false,
     "complete": true,
     "tentative": false,
     "content": "국가연구개발활동에서 윤리적으로 AI 도구를 활용할수 있도록 윤리원칙, 권고사항 등을 제시하는 가이드 마련",
