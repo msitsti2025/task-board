@@ -1339,15 +1339,15 @@
     "id": "task-24-d83e97a0-ed14-46ac-aa6c-6a5bb37105a3",
     "category": "rnd-management",
     "order": 0,
-    "title": "과학기술혁신펀드 신설",
+    "title": "과학기술혁신펀드 운용",
     "owner": "성과평가정책과",
-    "manager": "박진희, 신유진, 정용찬",
+    "manager": "심혜영, 박지영, 정용찬",
     "start": "2025-02-03",
     "end": "2026-02-27",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "정부 R&D 자금 예치 은행과 민간 투자 매칭을 통해 AI, 바이오, 양자 등 주요 전략기술에 투자하는 과학기술혁신펀드 신설 및 운영",
+    "content": "정부 R&D 자금 예치 은행과 민간 투자 매칭을 통해 AI, 바이오, 양자 등 주요 전략기술에 투자하는 과학기술혁신펀드 운용",
     "milestones": [
       {
         "id": "milestone-cc5f8d61-e0af-4050-b6f4-345da6958ddc",
@@ -1370,20 +1370,26 @@
       {
         "id": "milestone-1744209a-a587-4bf2-a428-dd59ee8e9bfc",
         "startDate": "2026-02-10",
-        "endDate": "NaN-NaN-NaN",
+        "endDate": "2026-02-10",
         "label": "제1호 펀드 결성 완료('25.12월, 7,362억원) 기념 부총리 참석 결성식 개최"
       },
       {
         "id": "milestone-9c787e5b-3d51-4ce9-a6d9-1bedaf816131",
-        "startDate": "2026-06-03",
-        "endDate": "2026-06-23",
-        "label": "제2호 펀드 주목적 투자 분야 결정 예정"
+        "startDate": "2026-03-02",
+        "endDate": "2026-06-10",
+        "label": "제2호 펀드 주목적 투자 분야 결정"
       },
       {
         "id": "milestone-70e72bf0-64ec-4354-844e-a30c15aaa789",
-        "startDate": "2026-12-09",
-        "endDate": "2026-12-23",
-        "label": "제2호 펀드 결성 예정"
+        "startDate": "2026-07-01",
+        "endDate": "2026-12-31",
+        "label": "제2호 자펀드 결성"
+      },
+      {
+        "id": "milestone-dc3d91d6-2d55-46d7-937a-5b4678cd0e55",
+        "startDate": "2027-02-01",
+        "endDate": "2027-02-26",
+        "label": "제2호 자펀드 결성식 개최"
       }
     ]
   },
