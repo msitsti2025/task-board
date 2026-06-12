@@ -1570,28 +1570,22 @@
         "label": "주요 R&D 예산 배분·조정잠정안 과학기술자문회의 심의회의 심의"
       },
       {
-        "id": "milestone-a8f087b8-2491-4fda-9bae-b4b22d736fce",
-        "startDate": "2025-08-07",
-        "endDate": "2025-08-07",
-        "label": "주요 R&D 예산 배분·조정안 과학기술자문회의 운영위원회 심의"
-      },
-      {
         "id": "milestone-2a459b6c-342f-48a1-9a31-20d6182600f7",
         "startDate": "2025-08-22",
         "endDate": "2025-08-22",
         "label": "주요 R&D 예산 배분·조정안 과학기술자문회의 전원회의 상정 및 확정(대통령주재), 주요R&D 30.1조원(전체 35.3조원)"
       },
       {
+        "id": "milestone-fecce698-6bce-4014-a7bb-3d56bb12fe3d",
+        "startDate": "2025-08-22",
+        "endDate": "2025-09-25",
+        "label": "역대최대 규모 R&D예산안 홍보(브리핑, 기고, TV/라디오, 4개 지역 설명회, 분야별 간담회 등)"
+      },
+      {
         "id": "milestone-b1b5e7e3-13be-4a8f-bd45-f02fbdbac2cc",
         "startDate": "2025-09-03",
         "endDate": "2025-09-03",
         "label": "정부예산안 국회 제출(기재부)"
-      },
-      {
-        "id": "milestone-fecce698-6bce-4014-a7bb-3d56bb12fe3d",
-        "startDate": "2025-09-12",
-        "endDate": "2025-09-25",
-        "label": "역대최대 규모 R&D예산안 홍보(기고, TV/라디오, 4개 지역 설명회 등)"
       }
     ]
   },
