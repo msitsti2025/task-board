@@ -601,13 +601,25 @@
         "id": "milestone-b0ca25e9-d388-4c0d-91ee-84c182a98b19",
         "startDate": "2026-05-12",
         "endDate": "2026-05-12",
-        "label": "국무회의 상정 및 법률공포"
+        "label": "국무회의 의결"
+      },
+      {
+        "id": "milestone-636d9630-6ebc-4407-ada7-e272528ead2c",
+        "startDate": "2026-05-19",
+        "endDate": "2026-05-19",
+        "label": "법률공포"
       },
       {
         "id": "milestone-4b02f40c-a21f-41c7-a1b8-7c20afaabfde",
         "startDate": "2026-07-30",
         "endDate": "2026-07-30",
-        "label": "지역과학기술진흥협의회"
+        "label": "법률 시행령 초안 마련"
+      },
+      {
+        "id": "milestone-f4df93f7-7b93-45fe-9086-2a5a71817fbe",
+        "startDate": "2026-09-01",
+        "endDate": "2026-10-30",
+        "label": "지역별 설명회"
       },
       {
         "id": "milestone-875f4225-4719-4902-917c-c80f6ec1e0a2",
