@@ -1094,7 +1094,7 @@
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "조시훈, 이정희",
-    "start": "2025-05-01",
+    "start": "2025-12-01",
     "end": "2026-06-30",
     "visible": true,
     "complete": true,
@@ -1103,9 +1103,9 @@
     "milestones": [
       {
         "id": "milestone-fa4f20ca-d8e6-487e-a243-348439adf138",
-        "startDate": "2025-05-01",
+        "startDate": "2025-12-01",
         "endDate": "2026-02-27",
-        "label": "서비스 구조 설계"
+        "label": "서비스 구조 설계, 데이터 학습"
       },
       {
         "id": "milestone-28e165d6-4977-41b3-9c7a-469f60c3605f",
