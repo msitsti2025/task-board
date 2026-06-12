@@ -627,7 +627,7 @@
     "id": "task-10-7247a5e5-6bd4-4a77-913b-6254f24ea948",
     "category": "rnd-management",
     "order": 1,
-    "title": "국가연구데이터법 제정 및 시행",
+    "title": "국가연구데이터법 제정",
     "owner": "성과평가정책과",
     "manager": "신유진, 정용찬",
     "start": "2025-07-01",
@@ -678,18 +678,6 @@
         "startDate": "2026-06-11",
         "endDate": "2026-06-11",
         "label": "기고문 게재(과학기술혁신본부장, 아주경제)"
-      },
-      {
-        "id": "milestone-15c63b29-cced-401d-acff-4df61e55c319",
-        "startDate": "2027-01-01",
-        "endDate": "2027-01-31",
-        "label": "국가연구데이터센터, 분야별 전문센터 지정"
-      },
-      {
-        "id": "milestone-fbbc2506-dfb0-46dc-b3ce-8c8b6d34b96a",
-        "startDate": "2027-06-10",
-        "endDate": "2027-06-10",
-        "label": "국가연구데이터법 시행(하위 법령 제정 완료)"
       }
     ]
   },
@@ -858,7 +846,7 @@
   {
     "id": "task-14-7ea5c356-4d87-4995-9f33-8a40b7360320",
     "category": "rnd-management",
-    "order": 7,
+    "order": 8,
     "title": "R&D 행정서식 간소화",
     "owner": "연구제도혁신과",
     "manager": "김도경, 최원영",
@@ -1087,13 +1075,13 @@
     "order": 12,
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
-    "manager": "조시훈, 이정희",
+    "manager": "심혜영, 이정희",
     "start": "2026-01-01",
-    "end": "2026-12-31",
+    "end": "2026-06-30",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "연구자들이 연구시설장비를 자유롭고 편리하게 공동활용 할 수 있도록, 기존의 장비활용종합포털(ZEUS 2.0)에 <AI기반 연구장비 검색시스템>을 추가하고 이용자 편의성을 개선한 ZEUS 3.0 시스템 구축 추진",
+    "content": "연구장비공동활용시스템(ZEUS)을 쉽게 사용할 수 있는 AI기반 검색시스템 구축방안 마련. AI 기반 장비검색시스템(ZEUS 3.0) 구축을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
     "milestones": [
       {
         "id": "milestone-fa4f20ca-d8e6-487e-a243-348439adf138",
@@ -1121,21 +1109,9 @@
       },
       {
         "id": "milestone-31e81cb2-fb6b-4bf6-9d29-065c37b427d4",
-        "startDate": "2026-06-30",
+        "startDate": "2026-06-01",
         "endDate": "2026-06-30",
-        "label": "대국민 시범서비스(공개 베타테스트) 개시"
-      },
-      {
-        "id": "milestone-67cb61d4-c599-4304-8749-e67db96a0011",
-        "startDate": "2026-07-01",
-        "endDate": "2026-12-30",
-        "label": "실 사용을 통한 개선•수정사항 발굴 및 버그픽스"
-      },
-      {
-        "id": "milestone-10f130b3-f998-4ca2-9d2b-c610a389a558",
-        "startDate": "2026-12-31",
-        "endDate": "2026-12-31",
-        "label": "ZEUS 3.0 정식 서비스 개시"
+        "label": "대국민 시범서비스 개시"
       }
     ]
   },
@@ -1276,7 +1252,7 @@
   {
     "id": "task-21-22316204-76e2-44ff-b281-9fb566c0541d",
     "category": "rnd-management",
-    "order": 9,
+    "order": 10,
     "title": "도전적 R&D 연구환경 조성",
     "owner": "연구평가혁신과",
     "manager": "조시훈, 강지희",
@@ -1315,20 +1291,20 @@
         "id": "milestone-86c1738b-9f94-4a26-99b1-b68a6771c023",
         "startDate": "2026-06-10",
         "endDate": "2026-12-31",
-        "label": "실패의 자산화 전용신규사업 추진"
+        "label": "실패의 자산화 전용 신규 사업 추진(예산 반영 요구)"
       },
       {
         "id": "milestone-99658ae3-0258-4641-b888-82ae408761a1",
         "startDate": "2026-07-08",
         "endDate": "2026-07-29",
-        "label": "시행령 및 과제평가 표준지침 개정 완료( 실패의자산화 과제 선정 기준안 마련)"
+        "label": "시행령 및 과제평가 표준지침 개정 완료( 실패의 자산화 과제 선정 기준안 마련)"
       }
     ]
   },
   {
     "id": "task-23-97a64b38-2e26-49af-8eb6-19bf3745cab5",
     "category": "rnd-management",
-    "order": 16,
+    "order": 17,
     "title": "연구비 부정사용 제재처분 강화",
     "owner": "연구윤리권익보호과",
     "manager": "",
@@ -1402,7 +1378,7 @@
   {
     "id": "task-25-9a30af8f-fe3f-4e84-a3d7-735df1f0f455",
     "category": "rnd-management",
-    "order": 15,
+    "order": 16,
     "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     "owner": "성과평가정책과 · 연구제도혁신과",
     "manager": "",
@@ -1424,7 +1400,7 @@
   {
     "id": "task-26-b85a81f2-4e2c-4842-9d3f-e39685cd6397",
     "category": "rnd-management",
-    "order": 10,
+    "order": 7,
     "title": "연구보안 체계 내실화",
     "owner": "연구윤리권익보호과",
     "manager": "최부용, 옥영민",
@@ -1580,7 +1556,7 @@
   {
     "id": "task-0265a2a8-9e4e-46f9-bb0a-cd84888fa30b",
     "category": "rnd-management",
-    "order": 8,
+    "order": 9,
     "title": "국가연구개발 AI 연구윤리 가이드 마련",
     "owner": "연구윤리권익보호과",
     "manager": "유승후, 김진우, 이사름",
