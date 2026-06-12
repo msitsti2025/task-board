@@ -1094,7 +1094,7 @@
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "조시훈, 이정희",
-    "start": "2026-01-01",
+    "start": "2025-05-01",
     "end": "2026-06-30",
     "visible": true,
     "complete": true,
@@ -1103,15 +1103,15 @@
     "milestones": [
       {
         "id": "milestone-fa4f20ca-d8e6-487e-a243-348439adf138",
-        "startDate": "2026-01-01",
+        "startDate": "2025-05-01",
         "endDate": "2026-02-27",
-        "label": "서비스 파악 워크플로우 구조 설계"
+        "label": "서비스 구조 설계"
       },
       {
         "id": "milestone-28e165d6-4977-41b3-9c7a-469f60c3605f",
         "startDate": "2026-03-02",
         "endDate": "2026-03-31",
-        "label": "작업 실증 테스트, 튜닝, 증강 검색 구현"
+        "label": "튜닝, 증강 검색 구현"
       },
       {
         "id": "milestone-669fcf77-cdb1-4f38-9195-6772337e7a4d",
@@ -1122,12 +1122,12 @@
       {
         "id": "milestone-d6c0b49c-e7d1-4eca-9e19-74b67b3f5662",
         "startDate": "2026-05-01",
-        "endDate": "2026-05-29",
-        "label": "폐쇄형 베타테스트(CBT)새 일정"
+        "endDate": "2026-06-29",
+        "label": "폐쇄형 베타테스트(CBT)"
       },
       {
         "id": "milestone-31e81cb2-fb6b-4bf6-9d29-065c37b427d4",
-        "startDate": "2026-06-01",
+        "startDate": "2026-06-30",
         "endDate": "2026-06-30",
         "label": "대국민 시범서비스 개시"
       }
