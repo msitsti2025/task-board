@@ -471,8 +471,8 @@
       },
       {
         "id": "milestone-5118d54b-0bba-49ed-b8b6-bebc2a303a4a",
-        "startDate": "2026-02-28",
-        "endDate": "2026-02-28",
+        "startDate": "2026-05-13",
+        "endDate": "2026-05-13",
         "label": "연구자 현장간담회 후속"
       },
       {
@@ -1298,28 +1298,6 @@
         "startDate": "2026-07-08",
         "endDate": "2026-07-29",
         "label": "시행령 및 과제평가 표준지침 개정 완료( 실패의자산화 과제 선정 기준안 마련)"
-      }
-    ]
-  },
-  {
-    "id": "task-22-90fe4701-0887-452a-a658-0557afb7181f",
-    "category": "rnd-management",
-    "order": 15,
-    "title": "도전적 목표 미달성 과제 재도약 지원",
-    "owner": "연구평가혁신과",
-    "manager": "",
-    "start": "2026-07-01",
-    "end": "2026-07-31",
-    "visible": true,
-    "complete": true,
-    "tentative": false,
-    "content": "도전적 목표를 미달성한 과제도 우수성 평가를 통해 재도약을 지원하는 제도 개선 검토.",
-    "milestones": [
-      {
-        "id": "milestone-85a94055-0f08-4044-ab2f-fbf7ece31d93",
-        "startDate": "2026-07-15",
-        "endDate": "2026-07-15",
-        "label": "재도약 지원 검토"
       }
     ]
   },
