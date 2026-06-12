@@ -11,7 +11,7 @@
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "기존 국가전략기술 체계를 국가임무, 범부처 협업 중심으로 재편. 국가전략기술 체계 고도화 방향 발표이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
+    "content": "기존 국가전략기술 체계를 국가임무, 범부처 협업 중심으로 재편. 국가전략기술 체계 고도화 방향 발표가 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
         "id": "milestone-41d4ffb1-5fd6-4b87-a169-437647f4569f",
@@ -71,11 +71,11 @@
     "owner": "전략기술육성과",
     "manager": "신소영, 신현중",
     "start": "2025-06-01",
-    "end": "2026-04-30",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축. 국가전략기술 선도 NEXT 프로젝트이 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
+    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축. 국가전략기술 선도 NEXT 프로젝트가 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
     "milestones": [
       {
         "id": "milestone-f7b0f857-ef68-47f0-9141-dfd4c4eae305",
@@ -91,14 +91,14 @@
       },
       {
         "id": "milestone-3f6c0a49-4842-4e57-8832-3023f31b053f",
-        "startDate": "2026-06-01",
-        "endDate": "2026-06-01",
-        "label": "NEXT 프로젝트 추진대회 개최"
+        "startDate": "2026-06-18",
+        "endDate": "2026-06-18",
+        "label": "국가전략기술 선도 NEXT 프로젝트 추진대회 개최"
       },
       {
         "id": "milestone-4b2dc070-3e7b-4c2a-8e03-c65a22aee2fa",
-        "startDate": "2026-06-15",
-        "endDate": "2026-06-15",
+        "startDate": "2026-06-18",
+        "endDate": "2026-06-18",
         "label": "NEXT 프로젝트 후보안 발표"
       }
     ]
@@ -1094,24 +1094,24 @@
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "조시훈, 이정희",
-    "start": "2026-01-01",
+    "start": "2025-12-01",
     "end": "2026-06-30",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "연구장비공동활용시스템(ZEUS)을 쉽게 사용할 수 있는 AI기반 검색시스템 구축방안 마련. AI 기반 장비검색시스템(ZEUS 3.0) 구축을 통해 연구 현장의 행정부담을 줄이고 성과관리와 제도 운영의 신뢰도를 높입니다.",
+    "content": "연구자들이 연구시설장비를 자유롭고 쉽게 공동 활용할 수 있도록 기존 연구장비공동활용시스템(ZEUS 2.0)에 AI기반의 연구장비 검색기능을 추가하고 이용자 편의성을 개선한 ZEUS 3.0을 구축운영합니다.",
     "milestones": [
       {
         "id": "milestone-fa4f20ca-d8e6-487e-a243-348439adf138",
-        "startDate": "2026-01-01",
+        "startDate": "2025-12-01",
         "endDate": "2026-02-27",
-        "label": "서비스 파악 워크플로우 구조 설계"
+        "label": "서비스 구조 설계, 데이터 학습"
       },
       {
         "id": "milestone-28e165d6-4977-41b3-9c7a-469f60c3605f",
         "startDate": "2026-03-02",
         "endDate": "2026-03-31",
-        "label": "작업 실증 테스트, 튜닝, 증강 검색 구현"
+        "label": "튜닝, 증강 검색 구현"
       },
       {
         "id": "milestone-669fcf77-cdb1-4f38-9195-6772337e7a4d",
@@ -1122,14 +1122,26 @@
       {
         "id": "milestone-d6c0b49c-e7d1-4eca-9e19-74b67b3f5662",
         "startDate": "2026-05-01",
-        "endDate": "2026-05-29",
-        "label": "폐쇄형 베타테스트(CBT)새 일정"
+        "endDate": "2026-06-29",
+        "label": "폐쇄형 베타테스트"
       },
       {
         "id": "milestone-31e81cb2-fb6b-4bf6-9d29-065c37b427d4",
-        "startDate": "2026-06-01",
+        "startDate": "2026-06-30",
         "endDate": "2026-06-30",
         "label": "대국민 시범서비스 개시"
+      },
+      {
+        "id": "milestone-cd5848e4-8bf3-4709-be3f-fa2a141585ac",
+        "startDate": "2026-07-01",
+        "endDate": "2026-12-30",
+        "label": "기능개선, 장비등록, 심의 지원 기능 서비스 개발"
+      },
+      {
+        "id": "milestone-1ac99146-97de-4f3b-ad24-1dfcaf4082d1",
+        "startDate": "2027-01-01",
+        "endDate": "2027-01-01",
+        "label": "통합 서비스 개시"
       }
     ]
   },
@@ -1431,7 +1443,7 @@
     "start": "2025-12-01",
     "end": "2026-12-31",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "과제보안등급을 세분화, 보안대책 수립기관 확대 등을 통해 연구보안 체계를 강화. 민감과제 신설, 범부처 보안지침 수립 등 국가연구개발혁신법령 개정을 통한 연구자산 보호체계 강화",
     "milestones": [
@@ -1454,46 +1466,40 @@
         "label": "하위법령 개정안 현장의견 수렴"
       },
       {
+        "id": "milestone-597d03e3-5391-404b-9939-4158dadf27e7",
+        "startDate": "2026-07-01",
+        "endDate": "2026-08-20",
+        "label": "연구보안 제도개선 설명회 개최"
+      },
+      {
         "id": "milestone-fe0927cd-5ca7-4bb0-a35d-05a7b5b0d7b0",
         "startDate": "2026-07-01",
         "endDate": "2026-11-30",
         "label": "연구보안 제도 정착을 위한 컨설팅 및 교육"
       },
       {
-        "id": "milestone-597d03e3-5391-404b-9939-4158dadf27e7",
-        "startDate": "2026-08-01",
-        "endDate": "2026-08-20",
-        "label": "연구보안 제도개선 설명회 개최"
-      },
-      {
         "id": "milestone-90649c17-ae96-489f-a7d4-ee42aef80459",
-        "startDate": "2026-08-20",
+        "startDate": "2026-08-09",
         "endDate": "2026-08-20",
         "label": "혁신법 시행령, 시행규칙 개정"
       },
       {
         "id": "milestone-78293db5-1b49-47a9-9737-6f9f189f8f03",
-        "startDate": "2026-08-20",
-        "endDate": "2026-08-20",
+        "startDate": "2026-09-01",
+        "endDate": "2026-08-31",
         "label": "보안등급 분류 가이드라인 마련"
       },
       {
         "id": "milestone-45953f3a-f602-4ba8-bad6-041941f3ebb9",
-        "startDate": "2026-08-20",
-        "endDate": "2026-10-31",
+        "startDate": "2026-10-11",
+        "endDate": "2026-10-30",
         "label": "범부처 보안지침 마련"
       },
       {
         "id": "milestone-c034ed63-33f2-47af-9c4f-0bcc552bbe5c",
-        "startDate": "2026-08-20",
+        "startDate": "2026-12-01",
         "endDate": "2026-12-31",
-        "label": "연구보안 전담기관 지정"
-      },
-      {
-        "id": "milestone-3d84e744-b69e-4bac-a538-571cf8dd37e6",
-        "startDate": "2026-11-01",
-        "endDate": "2026-11-01",
-        "label": "연구보안 관련 실태조사 실시"
+        "label": "연구보안 전담기관 지정, 연구보안 관련 실태조사 실시"
       }
     ]
   },
@@ -1543,7 +1549,7 @@
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "매년 각 부처에서 R&D사업 예산요구서를 제출 받아,  주요R&D 예산 배분·조정안을 마련하고, 6월말까지 국가과학기술자문회의의 심의/의결을 받아 기획처로 송부하고 정부 예산에 반영. 26년도 국가연구개발사업(주요R&D) 예산을 배분, 조정하여 기재부를 거쳐 국회로 제출.",
+    "content": "매년 각 부처에서 R&D사업 예산요구서를 제출 받아,  주요R&D 예산 배분·조정안을 마련하고, 6월말까지 국가과학기술자문회의의 심의/의결을 받아 기획처로 송부하고 정부 예산에 반영. 26년도 국가연구개발사업(주요R&D) 예산을 배분, 조정하여 기획처를 거쳐 국회로 제출.",
     "milestones": [
       {
         "id": "milestone-11828693-e733-43e0-98f1-aec86c792a2c",
