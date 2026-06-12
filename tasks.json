@@ -704,14 +704,14 @@
     "category": "outreach",
     "order": 0,
     "title": "강연 및 기고",
-    "owner": "연구개발타당성심사팀",
+    "owner": "혁신본부",
     "manager": "",
     "start": "2025-07-15",
     "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "대학, 연구소, 기업 방문 강연 행사, 정책 관련 언론 기고 등. 국가의 과학기술 투자 전략에 대한 강연, 신규 정책 및 제도에 대한 언론 기고",
+    "content": "대학, 연구소, 기업 등 대상으로 과학기술혁신정책 강연 및 신규 정책·제도에 대한 언론 기고",
     "milestones": [
       {
         "id": "milestone-6bc7bd34-f662-4b9f-a117-2d601fe7a773",
