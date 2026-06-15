@@ -797,33 +797,33 @@
     "milestones": [
       {
         "id": "milestone-0bef012f-a2f5-4248-ad62-e8d4579eae47",
-        "startDate": "2025-07-15",
-        "endDate": "2025-07-15",
+        "startDate": "2025-07-07",
+        "endDate": "2025-07-07",
         "label": "과학기술기본법 과방위 통과"
       },
       {
         "id": "milestone-c4bc523d-7110-43b6-8944-d59c45c2182f",
         "startDate": "2025-09-15",
-        "endDate": "2025-09-15",
+        "endDate": "2025-09-25",
         "label": "국가재정법 재정위 통과"
       },
       {
         "id": "milestone-cd4d7a71-23ca-4e41-98c3-8fbfc42e63ce",
         "startDate": "2025-11-12",
         "endDate": "2025-11-12",
-        "label": "기본법, 재정법 법사위 통과"
+        "label": "과학기술기본법, 국가재정법 법사위 통과"
       },
       {
         "id": "milestone-ee25bf4d-72a1-4569-9473-9679b5e9cd05",
         "startDate": "2026-01-14",
-        "endDate": "2026-01-14",
-        "label": "기본법, 재정법 국회 본회의 통과"
+        "endDate": "2026-01-29",
+        "label": "과학기술기본법, 국가재정법 국회 본회의 통과"
       },
       {
         "id": "milestone-d161606f-f478-41a0-a435-1d1acfd97189",
         "startDate": "2026-02-11",
-        "endDate": "2026-02-11",
-        "label": "대형 R&D 사전점검체계 전면 개편 방안 발표(자문회의 심의회)"
+        "endDate": "2026-02-12",
+        "label": "대형 연구개발사업 사전점검체계 전면 개편 방안 발표(국가과학기술자문회의 심의회의)"
       },
       {
         "id": "milestone-11843bed-4be7-4a9e-be23-0ec25fdb9483",
