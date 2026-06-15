@@ -788,12 +788,12 @@
     "title": "R&D 예타 폐지 및 대형 R&D 투자•관리 시스템 전면 개편",
     "owner": "연구개발타당성심사팀",
     "manager": "송호준, 김홍주",
-    "start": "2025-07-01",
+    "start": "2024-12-01",
     "end": "2026-06-30",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "연구 현장의 수요를 반영한 구축형 R&D 기획 및 심사제도 운영에 대한 현장 반응과 환영 메시지 확산.",
+    "content": "대형 R&D는 예타에서 맞춤형 사전점검체계로 전환하여 신속성, 적시성 및 투자 효율성을 제고하고 연구자가 원하는 R&D를 추진하겠습니다.",
     "milestones": [
       {
         "id": "milestone-0bef012f-a2f5-4248-ad62-e8d4579eae47",
