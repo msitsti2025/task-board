@@ -2309,9 +2309,33 @@
       },
       {
         "id": "milestone-4b04bc12-edce-41a2-89bf-91fab5c43773",
-        "startDate": "2026-01-08",
-        "endDate": "2026-01-08",
+        "startDate": "2026-01-26",
+        "endDate": "2026-02-05",
         "label": "기술분야별 워킹그룹 운영 및 공통기술분야 현황맵 도출"
+      },
+      {
+        "id": "milestone-1a8cc686-db0a-4c8e-81c5-902d889b4581",
+        "startDate": "2026-03-11",
+        "endDate": "2026-03-11",
+        "label": "'범부처 기술관리체계 정비 및 협업 강화 방향' 과기장관회의 의결"
+      },
+      {
+        "id": "milestone-6ebfbba4-830b-421d-bf95-c1a1dad87016",
+        "startDate": "2026-03-12",
+        "endDate": "2026-03-12",
+        "label": "온라인 현황맵 초기 구축"
+      },
+      {
+        "id": "milestone-c46bea53-d7a1-4689-9828-ccf8497ede98",
+        "startDate": "2026-04-08",
+        "endDate": "2026-04-08",
+        "label": "국가 기술관리체계 제1차 상설협의체"
+      },
+      {
+        "id": "milestone-8298146a-93e3-4e9c-988a-4c2710b57341",
+        "startDate": "2026-06-30",
+        "endDate": "2026-06-30",
+        "label": "(예정) 제2차 상설협의체 개최"
       }
     ]
   }
