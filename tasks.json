@@ -1497,7 +1497,7 @@
     "start": "2025-12-01",
     "end": "2026-12-31",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "보안등급 세분화(민감과제 신설), 범부처 보안지침 수립, 보안대책 수립기관 확대 등 국가연구개발혁신법 및 시행령, 시행규칙 개정을 통해 연구자산 보호체계를 강화하겠습니다.",
     "milestones": [
