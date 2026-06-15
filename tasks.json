@@ -2350,5 +2350,20 @@
         "label": "(예정) 제2차 상설협의체 개최"
       }
     ]
+  },
+  {
+    "id": "task-36214bbc-e68a-4e86-98aa-e59c26a0aedd",
+    "category": "science-policy",
+    "order": 14,
+    "title": "R&D 사업화 시스템 고도화",
+    "owner": "과학기술혁신지원팀",
+    "manager": "김주연",
+    "start": "2026-06-16",
+    "end": "2026-06-16",
+    "visible": true,
+    "complete": true,
+    "tentative": false,
+    "content": "",
+    "milestones": []
   }
 ]
