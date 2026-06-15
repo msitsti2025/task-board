@@ -2280,5 +2280,27 @@
         "label": "제84회 운영위원회"
       }
     ]
+  },
+  {
+    "id": "task-5e56f373-096d-4f14-bd0d-e98c77629a8e",
+    "category": "science-policy",
+    "order": 13,
+    "title": "범부처 기술관리체계 정비 및 협업",
+    "owner": "혁신본부",
+    "manager": "신소영, 송영훈",
+    "start": "2026-06-15",
+    "end": "2026-06-15",
+    "visible": true,
+    "complete": false,
+    "tentative": false,
+    "content": "범부처가 전략기술의 육성·보호 체계와 관련한 선정·개발·활용 분야의 협업을 강화하여 기술관리체계와 투자간 연계를 높이고 기술관리체계에 대한 대국민 접근성을 향상하고자 합니다.",
+    "milestones": [
+      {
+        "id": "milestone-276f84ea-1a8c-44b0-add6-523a1e224d60",
+        "startDate": "2025-09-01",
+        "endDate": "2025-09-01",
+        "label": "범부처 기술관리체계 정비 및 협업방안 검토 및 관계부처 협의 추진"
+      }
+    ]
   }
 ]
