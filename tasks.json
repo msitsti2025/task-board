@@ -1840,40 +1840,6 @@
     ]
   },
   {
-    "id": "task-29fad90c-efd0-4db1-9e35-1fde9e1dace5",
-    "category": "science-policy",
-    "order": 12,
-    "title": "제4차 과학기술기반 사회문제해결 종합계획 수립",
-    "owner": "과학기술정책조정과",
-    "manager": "이국화, 이성하",
-    "start": "2026-04-03",
-    "end": "2026-11-30",
-    "visible": false,
-    "complete": false,
-    "tentative": false,
-    "content": "복합화 다양화되는 미래 사회•민생 문제에 대한 선제 대응 및 국가 차원의 협력적 사회문제 해결을 위한 과학기술 역할 고도화 수립. 과학기술의 사회문제 해결력 강화 및 국민 체감 성과 창출을 통한 국민 모두가 행복한 과학기술 기반 사회실현.",
-    "milestones": [
-      {
-        "id": "milestone-4729a209-e7ac-4e21-9fa2-57d65ec0cff7",
-        "startDate": "2026-04-24",
-        "endDate": "2026-04-24",
-        "label": "제3차 사회문제해결 종합계획(‘23~’27) 2026년도 시행계획 수립"
-      },
-      {
-        "id": "milestone-203ecf34-ec72-4381-b2bc-4eb5430fbddd",
-        "startDate": "2026-06-01",
-        "endDate": "2026-06-30",
-        "label": "제3차 종합계획 성과분석 및 주요 사회문제 추진 과제(안) 도출"
-      },
-      {
-        "id": "milestone-e0e902bf-8e84-4051-9998-c36873c296ee",
-        "startDate": "2026-07-01",
-        "endDate": "2026-08-31",
-        "label": "제4차 종합계획 초안 마련"
-      }
-    ]
-  },
-  {
     "id": "task-8ff79071-9803-4097-9480-ca09481085df",
     "category": "science-policy",
     "order": 4,
