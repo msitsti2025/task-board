@@ -894,7 +894,7 @@
   {
     "id": "task-14-7ea5c356-4d87-4995-9f33-8a40b7360320",
     "category": "rnd-management",
-    "order": 8,
+    "order": 7,
     "title": "R&D 행정서식 간소화",
     "owner": "연구제도혁신과",
     "manager": "김도경, 최원영",
@@ -1126,7 +1126,7 @@
   {
     "id": "task-18-7668ad25-65b8-43e5-874d-ec194911e6f5",
     "category": "rnd-management",
-    "order": 12,
+    "order": 11,
     "title": "AI 기반 장비검색시스템(ZEUS 3.0) 구축",
     "owner": "연구평가혁신과",
     "manager": "조시훈, 이정희",
@@ -1336,7 +1336,7 @@
   {
     "id": "task-21-22316204-76e2-44ff-b281-9fb566c0541d",
     "category": "rnd-management",
-    "order": 10,
+    "order": 9,
     "title": "도전적 R&D 연구환경 조성",
     "owner": "연구평가혁신과",
     "manager": "조시훈, 강지희",
@@ -1388,7 +1388,7 @@
   {
     "id": "task-23-97a64b38-2e26-49af-8eb6-19bf3745cab5",
     "category": "rnd-management",
-    "order": 17,
+    "order": 16,
     "title": "연구비 부정사용 제재처분 강화",
     "owner": "연구윤리권익보호과",
     "manager": "",
@@ -1468,7 +1468,7 @@
   {
     "id": "task-25-9a30af8f-fe3f-4e84-a3d7-735df1f0f455",
     "category": "rnd-management",
-    "order": 16,
+    "order": 15,
     "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     "owner": "성과평가정책과 · 연구제도혁신과",
     "manager": "",
@@ -1490,7 +1490,7 @@
   {
     "id": "task-26-b85a81f2-4e2c-4842-9d3f-e39685cd6397",
     "category": "rnd-management",
-    "order": 7,
+    "order": 10,
     "title": "연구보안 체계 내실화",
     "owner": "연구윤리권익보호과",
     "manager": "최부용, 옥영민",
@@ -1640,7 +1640,7 @@
   {
     "id": "task-0265a2a8-9e4e-46f9-bb0a-cd84888fa30b",
     "category": "rnd-management",
-    "order": 9,
+    "order": 8,
     "title": "국가연구개발 AI 연구윤리 가이드 마련",
     "owner": "연구윤리권익보호과",
     "manager": "유승후, 김진우, 이사름",
@@ -1962,7 +1962,7 @@
   {
     "id": "task-ff312b75-592f-4ee9-90ad-8140453415bc",
     "category": "rnd-management",
-    "order": 11,
+    "order": 12,
     "title": "IRIS 내 연구행정 AI 서비스 도입",
     "owner": "과학기술정보분석과",
     "manager": "정지수, 임완택",
