@@ -1717,7 +1717,7 @@
     "start": "2025-10-06",
     "end": "2026-12-31",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "국가전략기술 분야별 국내외 핵심 연구인력 데이터 구축 등을 통해 전략적 인재 정책의 기반을 마련하겠습니다.",
     "milestones": [
