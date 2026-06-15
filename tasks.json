@@ -66,7 +66,7 @@
   {
     "id": "task-2-9c36f625-aa1d-4cc7-914c-44407d5544b7",
     "category": "science-policy",
-    "order": 2,
+    "order": 3,
     "title": "국가전략기술 선도 NEXT 프로젝트",
     "owner": "전략기술육성과",
     "manager": "신소영, 신현중",
@@ -1518,7 +1518,7 @@
   {
     "id": "task-3ae1be86-412b-48a5-9a73-81965c07c85c",
     "category": "science-policy",
-    "order": 3,
+    "order": 2,
     "title": "국가전략기술 정보 보호 강화",
     "owner": "전략기술육성과",
     "manager": "신소영",
@@ -1693,8 +1693,8 @@
       },
       {
         "id": "milestone-485da128-c115-46c7-8f87-04fc1150f493",
-        "startDate": "2026-07-17",
-        "endDate": "2026-07-17",
+        "startDate": "2026-07-15",
+        "endDate": "2026-07-15",
         "label": "(재경부, 기후부 주관) K-GX 전략 발표"
       },
       {
