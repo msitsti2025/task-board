@@ -2297,9 +2297,21 @@
     "milestones": [
       {
         "id": "milestone-276f84ea-1a8c-44b0-add6-523a1e224d60",
-        "startDate": "2025-09-01",
-        "endDate": "2025-09-01",
+        "startDate": "2025-09-26",
+        "endDate": "2025-09-26",
         "label": "범부처 기술관리체계 정비 및 협업방안 검토 및 관계부처 협의 추진"
+      },
+      {
+        "id": "milestone-b5126847-b1f0-4f41-bd4c-08ae44572ddf",
+        "startDate": "2026-01-08",
+        "endDate": "2026-01-08",
+        "label": "범부처 회의 개최"
+      },
+      {
+        "id": "milestone-4b04bc12-edce-41a2-89bf-91fab5c43773",
+        "startDate": "2026-01-08",
+        "endDate": "2026-01-08",
+        "label": "기술분야별 워킹그룹 운영 및 공통기술분야 현황맵 도출"
       }
     ]
   }
