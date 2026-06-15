@@ -455,37 +455,61 @@
     "order": 11,
     "title": "제6차 과학기술기본계획 수립",
     "owner": "과학기술정책과",
-    "manager": "",
+    "manager": "정건영, 노명종",
     "start": "2026-03-13",
     "end": "2026-07-10",
-    "visible": false,
+    "visible": true,
     "complete": false,
     "tentative": false,
-    "content": "연구자 현장간담회와 대국민 공청회를 거쳐 제6차 과학기술기본계획을 수립하고 자문회의 심의의결을 통해 발표.",
+    "content": "자율, 신뢰, 협업을 기반으로 과학기술혁신체계, AI대전환, 기술주도 성장, 모두의 성장 등을 담은 국민주권정부 5년간의 과학기술 정책 최상위 계획을 마련하겠습니다.",
     "milestones": [
       {
+        "id": "milestone-5d492072-2fa0-4050-8b39-88f88d05aee0",
+        "startDate": "2025-11-01",
+        "endDate": "2025-11-30",
+        "label": "연구개발 생태계 혁신방안 수립"
+      },
+      {
+        "id": "milestone-278bc294-c2b1-4668-86fb-661b05c0f29f",
+        "startDate": "2026-01-20",
+        "endDate": "2026-01-20",
+        "label": "기본계획 수립위원회 출범"
+      },
+      {
         "id": "milestone-ab076a33-2d3d-43fb-b043-3c4786d8123f",
-        "startDate": "2026-05-06",
-        "endDate": "2026-05-06",
-        "label": "연구자 현장간담회 1차"
+        "startDate": "2026-02-01",
+        "endDate": "2026-04-30",
+        "label": "기본계획 수립위 운영(총괄위 및 8개 분과)"
       },
       {
         "id": "milestone-5118d54b-0bba-49ed-b8b6-bebc2a303a4a",
-        "startDate": "2026-05-13",
-        "endDate": "2026-05-13",
-        "label": "연구자 현장간담회 후속"
+        "startDate": "2026-05-01",
+        "endDate": "2026-05-31",
+        "label": "핵심전략별 릴레이 현장 간담회"
       },
       {
         "id": "milestone-ddd5af8e-0419-428f-9d02-73da9aa5c1a6",
-        "startDate": "2026-05-22",
-        "endDate": "2026-05-22",
-        "label": "대국민 공청회, 5월중"
+        "startDate": "2026-05-28",
+        "endDate": "2026-05-28",
+        "label": "대국민 공청회"
       },
       {
-        "id": "milestone-5d492072-2fa0-4050-8b39-88f88d05aee0",
-        "startDate": "2026-04-08",
-        "endDate": "2026-04-08",
-        "label": "기본계획 발표, 6월 잠정"
+        "id": "milestone-8a8b3d1e-5529-4152-a028-bd1a86f26500",
+        "startDate": "2026-06-26",
+        "endDate": "2026-06-26",
+        "label": "국가과학기술자문회의 심의/확정"
+      },
+      {
+        "id": "milestone-e6f62e18-81ca-4a8f-bd7e-e5eaabd5b0d8",
+        "startDate": "2026-07-01",
+        "endDate": "2026-07-31",
+        "label": "과기기본계획 현장 홍보"
+      },
+      {
+        "id": "milestone-ae0215a2-3eba-4de2-a139-09204d0607ed",
+        "startDate": "2026-08-01",
+        "endDate": "2026-08-31",
+        "label": "26년 연간 시행계획 수립"
       }
     ]
   },
