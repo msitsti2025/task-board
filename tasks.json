@@ -1649,7 +1649,7 @@
     "order": 8,
     "title": "국가연구개발 AI 연구윤리 가이드 마련",
     "owner": "연구윤리권익보호과",
-    "manager": "유승후, 김진우, 이사름",
+    "manager": "최부용, 김진우, 이사름",
     "start": "2025-12-01",
     "end": "2026-07-31",
     "visible": false,
@@ -1688,12 +1688,6 @@
         "label": "전문가 자문회의 개최 (2차)"
       },
       {
-        "id": "milestone-89d3755f-0850-42ea-9adf-43b8583fdcae",
-        "startDate": "2026-05-20",
-        "endDate": "2026-05-27",
-        "label": "AI 가이드 관련 교육부 협의"
-      },
-      {
         "id": "milestone-72fe5866-d6de-413a-bfbf-5c6bf683106f",
         "startDate": "2026-06-10",
         "endDate": "2026-06-17",
@@ -1701,9 +1695,15 @@
       },
       {
         "id": "milestone-816d9c40-aa47-420d-bcf8-53e51b445b85",
-        "startDate": "2026-07-08",
-        "endDate": "2026-07-22",
-        "label": "AI 연구윤리 가이드 마련 및 배포"
+        "startDate": "2026-08-03",
+        "endDate": "2026-08-14",
+        "label": "AI 연구윤리 가이드 마련 및 현장간담회를 통한 발표"
+      },
+      {
+        "id": "milestone-5d6a4806-7a83-49ad-a0a1-0a508dff1711",
+        "startDate": "2026-08-17",
+        "endDate": "2026-12-31",
+        "label": "연구현장 설명 및 홍보"
       }
     ]
   },
