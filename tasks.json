@@ -406,7 +406,7 @@
   {
     "id": "task-6-338a61de-e25a-448c-9554-8f81a237b60d",
     "category": "science-policy",
-    "order": 10,
+    "order": 11,
     "title": "투자형 R&D 사업 신규 도입",
     "owner": "연구개발타당성심사팀",
     "manager": "김주연",
@@ -452,7 +452,7 @@
   {
     "id": "task-7-c6807e7d-c844-438c-a0ed-3f47ead950db",
     "category": "science-policy",
-    "order": 11,
+    "order": 7,
     "title": "제6차 과학기술기본계획 수립",
     "owner": "과학기술정책과",
     "manager": "정건영, 노명종",
@@ -516,7 +516,7 @@
   {
     "id": "task-8-94bfb498-e583-44e5-830b-b3ab1c81b4ab",
     "category": "science-policy",
-    "order": 9,
+    "order": 10,
     "title": "우리의 과학(K-Science) 정책 추진",
     "owner": "과학기술전략과",
     "manager": "이종우, 김홍석",
@@ -1692,7 +1692,7 @@
   {
     "id": "task-73e27614-849b-49fd-9b4e-1a608283c9ce",
     "category": "science-policy",
-    "order": 7,
+    "order": 8,
     "title": "탄소중립 기술혁신 종합로드맵 마련",
     "owner": "과학기술전략과",
     "manager": "이종우, 박정순",
@@ -1751,8 +1751,8 @@
     "milestones": [
       {
         "id": "milestone-5914afbf-3b00-4e53-999d-cc4187d30a63",
-        "startDate": "2025-10-30",
-        "endDate": "2025-10-30",
+        "startDate": "2025-11-01",
+        "endDate": "2025-11-01",
         "label": "글로벌 인력지도(양자분야[논문]) 분석결과(공개)/국가전략기술 인재 산업 수요 분석(인공지능 분야)결과 도출(미래인재특위)"
       },
       {
@@ -1772,7 +1772,7 @@
   {
     "id": "task-feecfd3a-f4f1-44aa-a80c-96ec25eb7156",
     "category": "science-policy",
-    "order": 8,
+    "order": 9,
     "title": "범부처 현장수요 신속대응 연구개발 지원",
     "owner": "과학기술정책조정과",
     "manager": "이국화, 이성하",
