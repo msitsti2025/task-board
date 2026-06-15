@@ -1848,8 +1848,8 @@
     "manager": "이국화, 이성하",
     "start": "2026-04-03",
     "end": "2026-11-30",
-    "visible": true,
-    "complete": true,
+    "visible": false,
+    "complete": false,
     "tentative": false,
     "content": "복합화 다양화되는 미래 사회•민생 문제에 대한 선제 대응 및 국가 차원의 협력적 사회문제 해결을 위한 과학기술 역할 고도화 수립. 과학기술의 사회문제 해결력 강화 및 국민 체감 성과 창출을 통한 국민 모두가 행복한 과학기술 기반 사회실현.",
     "milestones": [
