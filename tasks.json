@@ -75,13 +75,25 @@
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축. 국가전략기술 선도 NEXT 프로젝트가 완료되면 국가 R&D 정책 방향을 구체화하고 관련 기관의 실행력을 높입니다.",
+    "content": "국가전략기술 육성을 위한 핵심사업 집중 지원 및 민관 얼라이언스 구축을 통해 국가전략기술 R&D 정책 방향을 구체화하고, 관련 기관의 실행력을 높입니다.",
     "milestones": [
+      {
+        "id": "milestone-192a6612-e91b-4ef2-b02b-d045819480ea",
+        "startDate": "2025-12-18",
+        "endDate": "2025-12-18",
+        "label": "국가전략기술 서밋 개최"
+      },
       {
         "id": "milestone-f7b0f857-ef68-47f0-9141-dfd4c4eae305",
         "startDate": "2026-04-15",
         "endDate": "2026-04-15",
         "label": "국가전략기술 특위 의결"
+      },
+      {
+        "id": "milestone-df84b4dc-e090-4f2d-abda-bf6ab637e9ff",
+        "startDate": "2026-04-21",
+        "endDate": "2026-05-08",
+        "label": "국가전략기술 선도 NEXT 프로젝트 제안사업 접수"
       },
       {
         "id": "milestone-f77ee9da-6df8-4eb0-8c67-dfc570573a9b",
