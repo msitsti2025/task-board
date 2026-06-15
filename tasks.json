@@ -828,20 +828,20 @@
       {
         "id": "milestone-11843bed-4be7-4a9e-be23-0ec25fdb9483",
         "startDate": "2026-05-13",
-        "endDate": "2026-05-13",
+        "endDate": "2026-05-08",
         "label": "과기기본법 시행령 개정 및 구축형 R&D 심사 운영지침 제정"
       },
       {
-        "id": "milestone-ad89cbbd-b310-482f-b042-1c2e9f9c35e0",
-        "startDate": "2026-05-20",
-        "endDate": "2026-05-20",
-        "label": "심사위원회 구성 등 심사제도 운영체계 완비"
+        "id": "milestone-0ed1a8f0-a0c6-4969-9ac9-bbd024c5da5f",
+        "startDate": "2026-05-13",
+        "endDate": "2026-06-15",
+        "label": "구축형 R&D 심사 접수"
       },
       {
-        "id": "milestone-0ed1a8f0-a0c6-4969-9ac9-bbd024c5da5f",
-        "startDate": "2026-06-08",
-        "endDate": "2026-06-12",
-        "label": "구축형 R&D 심사 접수 및 시행"
+        "id": "milestone-ad89cbbd-b310-482f-b042-1c2e9f9c35e0",
+        "startDate": "2026-05-28",
+        "endDate": "2026-05-28",
+        "label": "구축형 연구개발사업 심사위원회 구성"
       }
     ]
   },
