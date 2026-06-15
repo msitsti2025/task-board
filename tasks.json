@@ -1152,20 +1152,26 @@
       {
         "id": "milestone-31e81cb2-fb6b-4bf6-9d29-065c37b427d4",
         "startDate": "2026-06-30",
-        "endDate": "2026-06-30",
-        "label": "대국민 시범서비스 개시"
-      },
-      {
-        "id": "milestone-cd5848e4-8bf3-4709-be3f-fa2a141585ac",
-        "startDate": "2026-07-01",
         "endDate": "2026-12-30",
-        "label": "기능개선, 장비등록, 심의 지원 기능 서비스 개발"
+        "label": "대국민 시범서비스(공개 베타테스트) 운영"
       },
       {
-        "id": "milestone-1ac99146-97de-4f3b-ad24-1dfcaf4082d1",
-        "startDate": "2027-01-01",
-        "endDate": "2027-01-01",
-        "label": "통합 서비스 개시"
+        "id": "milestone-4cc5a945-4156-4e20-837c-486c8de153ce",
+        "startDate": "2026-06-30",
+        "endDate": "2026-12-30",
+        "label": "유저경험 바탕의 수정사항 발굴 및 개선과 버그픽스"
+      },
+      {
+        "id": "milestone-8637baa3-c90b-48ab-b32c-d23662017be9",
+        "startDate": "2026-06-30",
+        "endDate": "2026-12-30",
+        "label": "기능개선, 심의지원기능 서비스 개발"
+      },
+      {
+        "id": "milestone-b43cbb9b-6dfb-4841-a6e8-9b7a0cefc483",
+        "startDate": "2026-12-31",
+        "endDate": "2026-12-31",
+        "label": "ZEUS 3.0 정식서비스 개시"
       }
     ]
   },
