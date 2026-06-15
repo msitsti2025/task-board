@@ -2357,13 +2357,50 @@
     "order": 14,
     "title": "R&D 사업화 시스템 고도화",
     "owner": "과학기술혁신지원팀",
-    "manager": "김주연",
-    "start": "2026-06-16",
-    "end": "2026-06-16",
+    "manager": "김주연, 지현진",
+    "start": "2025-12-01",
+    "end": "2026-12-31",
     "visible": true,
     "complete": true,
     "tentative": false,
-    "content": "",
-    "milestones": []
+    "content": "정부 R&D 투자가 국민 체감 성과로 이어지고, 기술 주도 성장에 기여할 수 있도록 R&D 성과확산 고속도로 구축, 연구성과 창업 촉진 등 범부처 R&D 성과확산 체계를 구축하겠습니다.",
+    "milestones": [
+      {
+        "id": "milestone-ba4c5802-52a7-4542-a1c0-53ec42372340",
+        "startDate": "2025-12-01",
+        "endDate": "2025-12-31",
+        "label": "연구성과 확산 간담회"
+      },
+      {
+        "id": "milestone-41327bca-f0ed-497f-bbc8-0b26d6087648",
+        "startDate": "2026-01-01",
+        "endDate": "2026-01-31",
+        "label": "금융·투자 전문가 간담회"
+      },
+      {
+        "id": "milestone-25b5d948-64d9-4496-bda2-11e9b498f9e2",
+        "startDate": "2026-02-01",
+        "endDate": "2026-02-28",
+        "label": "연구성과 확산 정책 추진(안) 검토회의"
+      },
+      {
+        "id": "milestone-f7389815-3aba-4236-800a-1ea6de6815d6",
+        "startDate": "2026-04-16",
+        "endDate": "2026-04-16",
+        "label": "“R&D 사업화 시스템 고도화 전략” 발표"
+      },
+      {
+        "id": "milestone-5683e78c-4369-4390-b03e-74f4033ce86b",
+        "startDate": "2026-04-16",
+        "endDate": "2026-12-31",
+        "label": "법·제도 정비"
+      },
+      {
+        "id": "milestone-476a8340-51af-4ba2-b6d0-3ef6153a5921",
+        "startDate": "2026-04-16",
+        "endDate": "2026-12-31",
+        "label": "R&D 성과확산 고속도로 추진계획(안) 마련"
+      }
+    ]
   }
 ]
