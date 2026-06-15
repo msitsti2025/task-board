@@ -2291,7 +2291,7 @@
     "start": "2026-06-15",
     "end": "2026-06-15",
     "visible": true,
-    "complete": false,
+    "complete": true,
     "tentative": false,
     "content": "범부처가 전략기술의 육성·보호 체계와 관련한 선정·개발·활용 분야의 협업을 강화하여 기술관리체계와 투자간 연계를 높이고 기술관리체계에 대한 대국민 접근성을 향상하고자 합니다.",
     "milestones": [
