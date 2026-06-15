@@ -416,52 +416,6 @@
     ]
   },
   {
-    "id": "task-6-338a61de-e25a-448c-9554-8f81a237b60d",
-    "category": "science-policy",
-    "order": 11,
-    "title": "투자형 R&D 사업 신규 도입",
-    "owner": "연구개발타당성심사팀",
-    "manager": "김주연",
-    "start": "2026-02-01",
-    "end": "2026-08-31",
-    "visible": false,
-    "complete": true,
-    "tentative": false,
-    "content": "기업 R&D 지원의 효율성을 제고하기 위해 성과 회수•재투자가 가능한 투자(출자) 방식의 R&D 지원체계 도입. ‘출연’ 중심의 R&D 지원 방식을 R&D 지출을 전제로 하는 ‘출자’ 지원 방식을 신설하여 투자 방식의 다양화 유도",
-    "milestones": [
-      {
-        "id": "milestone-c5241d0c-333c-47ba-9e25-b48eb948f233",
-        "startDate": "2026-03-01",
-        "endDate": "2026-03-01",
-        "label": "’27년 국가연구개발 투자방향 및 기준, 예산안 편성지침에  ‘투자형 R&D도입’ 반영"
-      },
-      {
-        "id": "milestone-424ab65b-326e-4ab1-917b-10029e587033",
-        "startDate": "2026-03-15",
-        "endDate": "2026-03-15",
-        "label": "투자형 R&D 근거 마련을 위한 법제도 연구용역 추진"
-      },
-      {
-        "id": "milestone-362302aa-4a60-474f-9c8e-3adf05d721b6",
-        "startDate": "2026-04-01",
-        "endDate": "2026-04-01",
-        "label": "R&D 사업화 시스템 고도화 방안 발표"
-      },
-      {
-        "id": "milestone-c5e09db3-1e8d-4282-b7fa-736ffa9f0bb9",
-        "startDate": "2026-04-15",
-        "endDate": "2026-04-15",
-        "label": "’27년 시범사업 기획(각 부처)"
-      },
-      {
-        "id": "milestone-50ceb469-faff-4445-b830-4e8db7db0eb8",
-        "startDate": "2026-05-01",
-        "endDate": "2026-05-01",
-        "label": "’27년 예산편성 세부지침에 연구개발 출자금(460-3) 비목 신설(기획처)"
-      }
-    ]
-  },
-  {
     "id": "task-7-c6807e7d-c844-438c-a0ed-3f47ead950db",
     "category": "science-policy",
     "order": 7,
