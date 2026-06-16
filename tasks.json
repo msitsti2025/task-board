@@ -1751,8 +1751,8 @@
     "milestones": [
       {
         "id": "milestone-de68d082-3af3-4454-8554-d546bd98db5f",
-        "startDate": "2026-03-29",
-        "endDate": "2026-03-29",
+        "startDate": "2026-03-25",
+        "endDate": "2026-03-25",
         "label": "사업 설명회 개최"
       },
       {
@@ -1770,7 +1770,7 @@
       {
         "id": "milestone-8640ddb7-461c-460c-9129-d0dd0e2995b0",
         "startDate": "2026-05-09",
-        "endDate": "NaN-NaN-NaN",
+        "endDate": "2026-05-09",
         "label": "사업 설명회 온라인 개최"
       },
       {
