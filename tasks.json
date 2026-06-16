@@ -634,7 +634,7 @@
   {
     "id": "task-10-7247a5e5-6bd4-4a77-913b-6254f24ea948",
     "category": "rnd-management",
-    "order": 1,
+    "order": 2,
     "title": "국가연구데이터법 제정",
     "owner": "성과평가정책과",
     "manager": "신유진, 정용찬",
@@ -738,7 +738,7 @@
   {
     "id": "task-12-13ba4693-4866-415f-a38f-d9d794df9a7d",
     "category": "rnd-management",
-    "order": 2,
+    "order": 0,
     "title": "R&D 예타 폐지 및 대형 R&D 투자•관리 시스템 전면 개편",
     "owner": "연구개발타당성심사팀",
     "manager": "송호준, 김홍주",
@@ -1342,12 +1342,12 @@
   {
     "id": "task-23-97a64b38-2e26-49af-8eb6-19bf3745cab5",
     "category": "rnd-management",
-    "order": 16,
+    "order": 15,
     "title": "연구비 부정사용 제재처분 강화",
     "owner": "연구윤리권익보호과",
     "manager": "",
     "start": "2026-07-01",
-    "end": "2026-09-30",
+    "end": "2026-09-29",
     "visible": false,
     "complete": false,
     "tentative": false,
@@ -1364,7 +1364,7 @@
   {
     "id": "task-24-d83e97a0-ed14-46ac-aa6c-6a5bb37105a3",
     "category": "rnd-management",
-    "order": 0,
+    "order": 1,
     "title": "과학기술혁신펀드 운용",
     "owner": "성과평가정책과",
     "manager": "심혜영, 박지영, 정용찬",
@@ -1422,7 +1422,7 @@
   {
     "id": "task-25-9a30af8f-fe3f-4e84-a3d7-735df1f0f455",
     "category": "rnd-management",
-    "order": 15,
+    "order": 16,
     "title": "국제공동연구 연구비 관리 및 IP 확보 제도개선",
     "owner": "성과평가정책과 · 연구제도혁신과",
     "manager": "",
