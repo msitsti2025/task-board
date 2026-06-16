@@ -418,7 +418,7 @@
   {
     "id": "task-7-c6807e7d-c844-438c-a0ed-3f47ead950db",
     "category": "science-policy",
-    "order": 7,
+    "order": 8,
     "title": "제6차 과학기술기본계획 수립",
     "owner": "과학기술정책과",
     "manager": "정건영, 노명종",
@@ -482,7 +482,7 @@
   {
     "id": "task-8-94bfb498-e583-44e5-830b-b3ab1c81b4ab",
     "category": "science-policy",
-    "order": 10,
+    "order": 12,
     "title": "우리의 과학(K-Science) 정책 추진",
     "owner": "과학기술전략과",
     "manager": "이종우, 김홍석",
@@ -1664,7 +1664,7 @@
   {
     "id": "task-73e27614-849b-49fd-9b4e-1a608283c9ce",
     "category": "science-policy",
-    "order": 8,
+    "order": 9,
     "title": "탄소중립 기술혁신 종합로드맵 마련",
     "owner": "과학기술전략과",
     "manager": "이종우, 박정순",
@@ -1704,7 +1704,7 @@
   {
     "id": "task-568c1bb1-a0a5-4d96-b498-786eaecfd8ab",
     "category": "science-policy",
-    "order": 5,
+    "order": 6,
     "title": "데이터 기반 국가전략기술 인재 분석",
     "owner": "과학기술혁신지원팀",
     "manager": "김주연, 지현진",
@@ -1738,7 +1738,7 @@
   {
     "id": "task-feecfd3a-f4f1-44aa-a80c-96ec25eb7156",
     "category": "science-policy",
-    "order": 9,
+    "order": 11,
     "title": "범부처 현장수요 신속대응 연구개발 지원",
     "owner": "과학기술정책조정과",
     "manager": "이국화, 이성하",
@@ -1775,7 +1775,7 @@
       },
       {
         "id": "milestone-870275e1-53f9-4564-9686-bd1220239bd5",
-        "startDate": "2026-06-01",
+        "startDate": "2026-06-03",
         "endDate": "2026-11-27",
         "label": "지원과제 선정 및 과제 착수"
       },
@@ -1830,7 +1830,7 @@
   {
     "id": "task-a73fc0c0-88f2-4f19-b008-d755b7101cad",
     "category": "science-policy",
-    "order": 6,
+    "order": 7,
     "title": "혁신도전형 R&D 사업군 제도개선",
     "owner": "과학기술정책조정과",
     "manager": "이국화, 조영찬",
@@ -2204,7 +2204,7 @@
   {
     "id": "task-5e56f373-096d-4f14-bd0d-e98c77629a8e",
     "category": "science-policy",
-    "order": 13,
+    "order": 5,
     "title": "범부처 기술관리체계 정비 및 협업",
     "owner": "전략기술육성과",
     "manager": "신소영, 송영훈",
@@ -2268,7 +2268,7 @@
   {
     "id": "task-36214bbc-e68a-4e86-98aa-e59c26a0aedd",
     "category": "science-policy",
-    "order": 14,
+    "order": 10,
     "title": "R&D 사업화 시스템 고도화",
     "owner": "과학기술혁신지원팀",
     "manager": "김주연, 지현진",
