@@ -1752,38 +1752,38 @@
       {
         "id": "milestone-de68d082-3af3-4454-8554-d546bd98db5f",
         "startDate": "2026-03-29",
-        "endDate": "NaN-NaN-NaN",
+        "endDate": "2026-03-29",
         "label": "사업 설명회 개최"
       },
       {
+        "id": "milestone-870275e1-53f9-4564-9686-bd1220239bd5",
+        "startDate": "2026-04-01",
+        "endDate": "2026-06-30",
+        "label": "1차 지원과제 수요조사 및 선정"
+      },
+      {
         "id": "milestone-449c64f2-f10e-41ce-8d56-a5feaf91e542",
-        "startDate": "2026-04-27",
-        "endDate": "2025-06-27",
+        "startDate": "2026-04-30",
+        "endDate": "2025-04-30",
         "label": "신속대응위원회 출범 간담회 개최"
       },
       {
         "id": "milestone-8640ddb7-461c-460c-9129-d0dd0e2995b0",
-        "startDate": "2026-05-02",
-        "endDate": "2025-08-18",
+        "startDate": "2026-05-12",
+        "endDate": "2026-05-12",
         "label": "사업 설명회 온라인 개최"
       },
       {
         "id": "milestone-d2af5e37-44a1-4294-9b60-e9cd166b1ca5",
-        "startDate": "2026-05-18",
-        "endDate": "2026-05-15",
-        "label": "각 부처 대상 수요과제 제안서 접수"
+        "startDate": "2026-07-01",
+        "endDate": "2026-09-30",
+        "label": "2차 지원과제 수요조사 및 선정"
       },
       {
-        "id": "milestone-870275e1-53f9-4564-9686-bd1220239bd5",
-        "startDate": "2026-03-30",
-        "endDate": "2026-07-01",
-        "label": "지원과제 선정 및 과제 착수"
-      },
-      {
-        "id": "milestone-94554c63-076e-48e5-b0dc-e156708b476d",
+        "id": "milestone-781a659a-eeed-4d34-8902-717d630173d7",
         "startDate": "2026-10-01",
-        "endDate": "2026-10-31",
-        "label": "범부처 현장수요 신속대응 연구개발 필요과제 수요조사"
+        "endDate": "2026-12-31",
+        "label": "3차 지원과제 수요조사 및 선정"
       }
     ]
   },
