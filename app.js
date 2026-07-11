@@ -1741,7 +1741,7 @@ function printTasks() {
             <div class="task-title">${esc(task.title)}</div>
             <div class="task-meta">
               ${task.owner ? `<span>소관: ${esc(task.owner)}</span>` : ""}
-              ${task.manager ? `<span>담당자: ${esc(task.manager)}</span>` : ""}
+              ${isStaff && task.manager ? `<span>담당자: ${esc(task.manager)}</span>` : ""}
               <span>기간: ${fmtDate(task.start)} ~ ${fmtDate(task.end)}</span>
             </div>
             ${task.content ? `<div class="task-content">${esc(task.content).replace(/\n/g, "<br>")}</div>` : ""}
@@ -2147,7 +2147,7 @@ function openSnakeModal(item) {
   const parts = [];
   if (cat) parts.push(cat.label);
   if (item.owner) parts.push(`소관: ${item.owner}`);
-  if (item.manager) parts.push(`담당자: ${item.manager}`);
+  if (isStaff && item.manager) parts.push(`담당자: ${item.manager}`);
   if (item.start && item.end) parts.push(`${formatDateLabel(item.start)} ~ ${formatDateLabel(item.end)}`);
   snakeTaskMeta.textContent = parts.join(" · ");
   snakeTaskContent.textContent = item.content || "";
