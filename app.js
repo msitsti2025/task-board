@@ -1672,6 +1672,17 @@ function printTasks() {
   function fmtDate(d) {
     return d ? formatDateLabel(d) : "";
   }
+  function coverTitleLines(title, org) {
+    const t = String(title || "").trim();
+    const o = String(org || "").trim();
+    if (o && t.includes(o)) {
+      const idx = t.indexOf(o);
+      const before = t.slice(0, idx).trim();
+      const after = t.slice(idx + o.length).trim();
+      return [before, o, after].filter(Boolean);
+    }
+    return t.split(/\s+/).filter(Boolean);
+  }
 
   const printableItems = items
     .filter((item) => item.visible !== false)
@@ -1790,7 +1801,7 @@ function printTasks() {
 <body>
 <div class="cover">
   <p class="cover-org">${escapeHtml(appSettings.company)} · ${escapeHtml(appSettings.organization)}</p>
-  <h1>${escapeHtml(appSettings.dashboardTitle).replace(/\s/g, "<br>")}</h1>
+  <h1>${coverTitleLines(appSettings.dashboardTitle, appSettings.organization).map(escapeHtml).join("<br>")}</h1>
   <p class="cover-date">인쇄일: ${today}</p>
 </div>
 ${tocHtml}
