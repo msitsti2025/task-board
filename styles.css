@@ -1166,7 +1166,7 @@ body:has(.drag-date-tooltip.is-visible) .draggable-point,
   }
 
   :root {
-    --axis-label: 360px;
+    --axis-label: 140px;
   }
 }
 
